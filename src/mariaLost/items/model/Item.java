@@ -1,7 +1,7 @@
 package mariaLost.items.model;
 
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -9,10 +9,10 @@ import javafx.geometry.Point2D;
 public class Item implements mariaLost.items.interfaces.Item {
 
     public final static int size = 30;
+    protected Point2D position;
     private String name;
     private String spriteName;
     private boolean passable;
-    private Point2D position;
 
 
     /**
@@ -30,7 +30,7 @@ public class Item implements mariaLost.items.interfaces.Item {
             case 1:
                 this.name="wall";
                 this.spriteName = "wall.png";
-                this.passable = true;
+                this.passable = false;
                 this.position = new Point2D(x, y);
                 break;
             default:
@@ -54,9 +54,13 @@ public class Item implements mariaLost.items.interfaces.Item {
         return passable;
     }
 
+    public void setPassable(boolean passable) {
+        this.passable = passable;
+    }
+
     @Override
-    public Bounds getBounds() {
-        return null;
+    public Rectangle2D getBounds() {
+        return new Rectangle2D(position.getX(), position.getY(), size, size);
     }
 
     public String getName() {
@@ -74,12 +78,6 @@ public class Item implements mariaLost.items.interfaces.Item {
     public void setSpriteName(String spriteName) {
         this.spriteName = spriteName;
     }
-
-    public void setPassable(boolean passable) {
-        this.passable = passable;
-    }
-
-
 
     public int getSize() {
         return size;

@@ -1,31 +1,29 @@
 package mariaLost.items.model;
 
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
-import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.interfaces.Movable;
 
 /**
  * Created by elsacollet on 01/02/2017.
  */
-public class LittlePlayer extends Item implements Movable{
+public class LittlePlayer extends Item implements Movable {
 
 
     private Point2D speed = new Point2D(0, 0);
-    private BoundingBox boundingBox = new BoundingBox(10 * 16, 10 * 16, 14, 14);
+
     /**
      * Constructeur d'un objet petit joeur sur le plateau
-     * @param name name of the real player
+     *
+     * @param name       name of the real player
      * @param spriteName image use to represente the player
-     * @param passable capacity of an item to be passable or not
+     * @param passable   capacity of an item to be passable or not
      */
     public LittlePlayer(String name, String spriteName, boolean passable) {
         super(name, spriteName, passable);
     }
 
-    public int getSize(){
-        return 40;
+    public int getSize() {
+        return size;
     }
 
     @Override
@@ -35,7 +33,7 @@ public class LittlePlayer extends Item implements Movable{
 
     @Override
     public void setSpeed(Point2D speed) {
-        this.speed =speed;
+        this.speed = speed;
     }
 
     @Override
@@ -45,22 +43,12 @@ public class LittlePlayer extends Item implements Movable{
 
     @Override
     public void setPosition(Point2D position) {
-        boundingBox = new BoundingBox(position.getX(), position.getY(), boundingBox.getWidth(), boundingBox.getHeight());
-
+        super.position = position;
     }
+
     @Override
     public void setPosition(double x, double y) {
-
         setPosition(new Point2D(x, y));
-    }
-
-
-    public Point2D getPosition() {
-        return new Point2D(boundingBox.getMinX(), boundingBox.getMinY());
-    }
-
-    public BoundingBox getBoundingBox() {
-        return boundingBox;
     }
 
 }

@@ -1,21 +1,24 @@
 package mariaLost.gamePlay.controller;
+
 import javafx.animation.AnimationTimer;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
-import javafx.geometry.Point2D;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import mariaLost.gamePlay.model.GroundFloor;
 import mariaLost.gamePlay.view.FloorView;
-import mariaLost.items.interfaces.Movable;
 import mariaLost.items.model.Item;
 import mariaLost.items.model.LittlePlayer;
 import mariaLost.items.model.Motor;
 import mariaLost.mainApp.controller.MainApp;
 import mariaLost.player.model.Player;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -29,33 +32,34 @@ public class GameLayoutController {
     private FloorView mapView;
     private MainApp mainApp;
     private LittlePlayer littlePlayer;
-    private ArrayList<Item> listMovableItem;
+    private ArrayList<LittlePlayer> listMovableItem;
     private Group layout;
 
 
-    public void setPlayer(Player p){
-        this.player = p;
-    }
-    public void setMainApp(MainApp mainApp){
-        this.mainApp = mainApp;
-    }
     public GameLayoutController(Player player) {
         this.littlePlayer = new LittlePlayer(player.getName(), "player.png", false);
         this.map = new GroundFloor();
    //     this.mapView = new FloorView(map);
-        this.listMovableItem = new ArrayList<Item>();
+        this.listMovableItem = new ArrayList<>();
         this.listMovableItem.add(littlePlayer);
         System.out.println(listMovableItem.size());
         System.out.println(map.getFloorList().size());
 
     }
 
+    public void setPlayer(Player p) {
+        this.player = p;
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 
     public void startGame(){
         System.out.println("demarrage player");
 
         Canvas canvas = new Canvas();
-        littlePlayer.setPosition(250, 300);
+        littlePlayer.setPosition(90, 150);
         mainApp.getRoot().heightProperty();
         canvas.heightProperty().bind(mainApp.getRoot().heightProperty());
         canvas.widthProperty().bind(mainApp.getRoot().widthProperty());
@@ -79,6 +83,7 @@ public class GameLayoutController {
         AnimationTimer at = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                canvas.requestFocus();
                 draw(canvas,  map.getFloorList());
                 draw(canvas, listMovableItem);
                 //System.out.println(perso.getVitesse());
@@ -96,7 +101,7 @@ public class GameLayoutController {
 
         layout.setAutoSizeChildren(true);
 
-   /*     mapView.getCanvas().setOnKeyPressed(new EventHandler<KeyEvent>() {
+        canvas.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 System.out.println("onkeyPress");
@@ -129,7 +134,8 @@ public class GameLayoutController {
                         littlePlayer.setSpeed(0, 0);
                 }
             }
-        });*/
+        });
+
         System.out.println("TEST affichage vue: \n");
     }
 
@@ -140,25 +146,20 @@ public class GameLayoutController {
      * @param canvas
      * @param listItem
      */
-    public void draw(Canvas canvas, Iterable<Item> listItem){
-        System.out.println("draw !");
+    public void draw(Canvas canvas, Iterable<? extends Item> listItem) {
+        //System.out.println("draw !");
         GraphicsContext context = canvas.getGraphicsContext2D();
         int x =0, y=0;
         for (Iterator<? extends Item> iterator = listItem.iterator(); iterator.hasNext(); ) {
             Item next = iterator.next();
-            if(next instanceof Movable){
-                Point2D bounds = next.getPosition();
-                x = (int) bounds.getX();
-                y = (int) bounds.getY();
-            }else{
                 x= (int) next.getPosition().getX();
                 y= (int) next.getPosition().getY();
-            }
+
             Image im= new Image("file:resources/Images/"+next.getSpriteName());
-           System.out.println("x  y " + x +" "+ y + " "+ next.getName());
+            //System.out.println("draw x  y " + x +" "+ y + " "+ next.getName());
            // System.out.println(" item " + next.getName() + map.getNbCaseY());
 
-            context.drawImage(im, x, y);
+            context.drawImage(im, x, y, next.getSize(), next.getSize());
 
        /*     if (next instanceof Movable) {
                 context.setFill(Color.GREEN);

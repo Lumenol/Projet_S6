@@ -1,8 +1,9 @@
 package mariaLost.items.model;
 
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
+import mariaLost.items.interfaces.Item;
+import mariaLost.items.interfaces.Movable;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,24 +13,24 @@ import java.util.LinkedList;
  */
 public class Motor {
 
-    public static void mooving(Iterable<Item> objets, Iterable<Item> mobile) {
-        LinkedList<Item> total = new LinkedList<>();
-        for (Iterator<Item> iterator = objets.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
+    public static void mooving(Iterable<? extends mariaLost.items.interfaces.Item> objets, Iterable<? extends Movable> mobile) {
+        LinkedList<mariaLost.items.interfaces.Item> total = new LinkedList<>();
+        for (Iterator<? extends Item> iterator = objets.iterator(); iterator.hasNext(); ) {
+            mariaLost.items.interfaces.Item next = iterator.next();
             total.add(next);
         }
-        for (Iterator<Item> iterator = mobile.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
+        for (Iterator<? extends Movable> iterator = mobile.iterator(); iterator.hasNext(); ) {
+            Movable next = iterator.next();
             total.add(next);
         }
 
-        for (Iterator<Item> iterator = mobile.iterator(); iterator.hasNext(); ) {
-            LittlePlayer next = (LittlePlayer) iterator.next();
+        for (Iterator<? extends Movable> iterator = mobile.iterator(); iterator.hasNext(); ) {
+            Movable next = (LittlePlayer) iterator.next();
             deplace(next, total);
         }
     }
 
-    private static void deplace(LittlePlayer mobile, Iterable<Item> items) {
+    private static void deplace(Movable mobile, Iterable<mariaLost.items.interfaces.Item> items) {
         Point2D speed = mobile.getSpeed();
         double vx = speed.getX();
         double vy = speed.getY();
@@ -38,27 +39,27 @@ public class Motor {
         }
     }
 
-    private static void deplace(LittlePlayer movableItem, Iterable<Item> items, double vx, double vy) {
-        Bounds rect = null;
-        Bounds bounds = movableItem.getBoundingBox();
+    private static void deplace(Movable movableItem, Iterable<mariaLost.items.interfaces.Item> items, double vx, double vy) {
+        Rectangle2D rect = null;
+        Rectangle2D bounds = movableItem.getBounds();
 
         if (vx >= 0 && vy >= 0) {
-            rect = new BoundingBox(bounds.getMinX(), bounds.getMinY(), bounds.getWidth() + vx, vy + bounds.getHeight());
+            rect = new Rectangle2D(bounds.getMinX(), bounds.getMinY(), bounds.getWidth() + vx, vy + bounds.getHeight());
         } else if (vx >= 0 && vy <= 0) {
-            rect = new BoundingBox(bounds.getMinX(), bounds.getMinY() + vy, bounds.getWidth() + vx, -vy + bounds.getHeight());
+            rect = new Rectangle2D(bounds.getMinX(), bounds.getMinY() + vy, bounds.getWidth() + vx, -vy + bounds.getHeight());
         } else if (vx <= 0 && vy <= 0) {
-            rect = new BoundingBox(bounds.getMinX() + vx, vy + bounds.getMinY(), bounds.getWidth() - vx, -vy + bounds.getHeight());
+            rect = new Rectangle2D(bounds.getMinX() + vx, vy + bounds.getMinY(), bounds.getWidth() - vx, -vy + bounds.getHeight());
         } else {
-            rect = new BoundingBox(vx + bounds.getMinX(), bounds.getMinY(), bounds.getWidth() - vx, vy + bounds.getHeight());
+            rect = new Rectangle2D(vx + bounds.getMinX(), bounds.getMinY(), bounds.getWidth() - vx, vy + bounds.getHeight());
         }
 
-        LinkedList<Item> listItem = new LinkedList<>();
-        double minHeight = movableItem.getBoundingBox().getHeight();
-        double minWidth = movableItem.getBoundingBox().getWidth();
+        LinkedList<mariaLost.items.interfaces.Item> listItem = new LinkedList<>();
+        double minHeight = movableItem.getBounds().getHeight();
+        double minWidth = movableItem.getBounds().getWidth();
 
-        for (Iterator<Item> iterator = items.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
-            Bounds bounds1 = next.getBounds();
+        for (Iterator<mariaLost.items.interfaces.Item> iterator = items.iterator(); iterator.hasNext(); ) {
+            mariaLost.items.interfaces.Item next = iterator.next();
+            Rectangle2D bounds1 = next.getBounds();
 
             if (movableItem != next && rect.intersects(bounds1)) {
                 minHeight = Math.min(minHeight, bounds1.getHeight());
@@ -68,21 +69,23 @@ public class Motor {
         }
 
         if (Math.abs(vx) >= minWidth || Math.abs(vy) >= minHeight) {
-            deplace(movableItem, listItem, (int)vx / 2, (int)vy / 2);
-            deplace(movableItem, listItem, vx-(int)vx / 2, vy-(int)vy / 2);
+            deplace(movableItem, listItem, (int) vx / 2, (int) vy / 2);
+            deplace(movableItem, listItem, vx - (int) vx / 2, vy - (int) vy / 2);
         } else {
-            affine(movableItem, listItem, (int)vx, (int)vy);
+            affine(movableItem, listItem, (int) vx, (int) vy);
         }
     }
 
-    private static void affine(LittlePlayer movableItem, LinkedList<Item> listItem, int vx, int vy) {
-        System.err.println("vx= "+vx+"\tvy= "+vy);
+    private static void affine(Movable movableItem, LinkedList<mariaLost.items.interfaces.Item> listItem, int vx, int vy) {
+        System.err.println("vx= " + vx + "\tvy= " + vy);
         Point2D position = movableItem.getPosition();
         double xMin = position.getX();
         double yMin = position.getY();
         double xMax = xMin + vx;
         double yMax = yMin + vy;
 
+        vx = (int) Math.signum(vx);
+        vy = (int) Math.signum(vy);
 
         while (xMax != xMin) {
             double x = xMin;
@@ -108,10 +111,10 @@ public class Motor {
 
     }
 
-    private static boolean collision(Item item, Iterable<Item> listItem) {
-        Bounds bounds = item.getBounds();
-        for (Iterator<Item> iterator = listItem.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
+    private static boolean collision(mariaLost.items.interfaces.Item item, Iterable<mariaLost.items.interfaces.Item> listItem) {
+        Rectangle2D bounds = item.getBounds();
+        for (Iterator<mariaLost.items.interfaces.Item> iterator = listItem.iterator(); iterator.hasNext(); ) {
+            mariaLost.items.interfaces.Item next = iterator.next();
             if (!next.isPassable() && bounds.intersects(next.getBounds())) {
                 return true;
             }
