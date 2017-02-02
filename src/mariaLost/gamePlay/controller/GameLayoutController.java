@@ -8,11 +8,11 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import mariaLost.gamePlay.model.GroundFloor;
 import mariaLost.gamePlay.view.FloorView;
+import mariaLost.items.interfaces.Movable;
 import mariaLost.items.model.Item;
 import mariaLost.items.model.LittlePlayer;
 import mariaLost.items.model.Motor;
@@ -21,6 +21,8 @@ import mariaLost.player.model.Player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import static javafx.scene.input.KeyCode.*;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -39,7 +41,7 @@ public class GameLayoutController {
     public GameLayoutController(Player player) {
         this.littlePlayer = new LittlePlayer(player.getName(), "player.png", false);
         this.map = new GroundFloor();
-   //     this.mapView = new FloorView(map);
+
         this.listMovableItem = new ArrayList<>();
         this.listMovableItem.add(littlePlayer);
         System.out.println(listMovableItem.size());
@@ -63,8 +65,6 @@ public class GameLayoutController {
         mainApp.getRoot().heightProperty();
         canvas.heightProperty().bind(mainApp.getRoot().heightProperty());
         canvas.widthProperty().bind(mainApp.getRoot().widthProperty());
-        //   draw(canvas, mapView.getFloorList());
-        //  draw(canvas, listMovableItem);
 
         ScheduledService<Void> SS = new ScheduledService<Void>() {
             @Override
@@ -92,44 +92,59 @@ public class GameLayoutController {
         at.start();
         canvas.requestFocus();
         this.layout = new Group();
-
-        layout.minWidth(map.getLengthX());
-        layout.minHeight(map.getLengthY());
-
-        //    this.layout.getChildren().add(mapView.getCanvas());
         this.layout.getChildren().add(canvas);
-
         layout.setAutoSizeChildren(true);
 
+        /**
+         * Actions à réaliser sur le CANVAS
+         */
+        /**
+         * Méthode pour arreter le déplacement quand le joueur cesse d'appuyer.
+         */
+        canvas.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                littlePlayer.setSpeed(0, 0);
+            }
+        });
+        /**
+         * TODO Voir pour la vitesse de départ qui est un peu lente
+         */
+        /**
+         * Méthode pour faire avancer le joeur dans le canevas
+         */
         canvas.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println("onkeyPress");
                 switch (event.getCode()) {
-                    case Z:
-                        System.err.println(KeyCode.Z);
+                    case Z :
+                        littlePlayer.setSpeed(littlePlayer.getSpeed().add(0, -1));
+                        break;
+                    case UP:
                         littlePlayer.setSpeed(littlePlayer.getSpeed().add(0, -1));
                         break;
 
                     case S:
-
-                        System.err.println(KeyCode.S);
+                        littlePlayer.setSpeed(littlePlayer.getSpeed().add(0, 1));
+                        break;
+                    case DOWN:
                         littlePlayer.setSpeed(littlePlayer.getSpeed().add(0, 1));
                         break;
 
                     case Q:
-
-                        System.err.println(KeyCode.Q);
-
+                        littlePlayer.setSpeed(littlePlayer.getSpeed().add(-1, 0));
+                        break;
+                    case LEFT:
                         littlePlayer.setSpeed(littlePlayer.getSpeed().add(-1, 0));
                         break;
 
                     case D:
-
-                        System.err.println(KeyCode.D);
                         littlePlayer.setSpeed(littlePlayer.getSpeed().add(1, 0));
                         break;
-
+                    case RIGHT:
+                        littlePlayer.setSpeed(littlePlayer.getSpeed().add(1, 0));
+                        break;
                     case SPACE:
                         littlePlayer.setSpeed(0, 0);
                 }
@@ -147,7 +162,6 @@ public class GameLayoutController {
      * @param listItem
      */
     public void draw(Canvas canvas, Iterable<? extends Item> listItem) {
-        //System.out.println("draw !");
         GraphicsContext context = canvas.getGraphicsContext2D();
         int x =0, y=0;
         for (Iterator<? extends Item> iterator = listItem.iterator(); iterator.hasNext(); ) {
@@ -156,22 +170,13 @@ public class GameLayoutController {
                 y= (int) next.getPosition().getY();
 
             Image im= new Image("file:resources/Images/"+next.getSpriteName());
-            //System.out.println("draw x  y " + x +" "+ y + " "+ next.getName());
-           // System.out.println(" item " + next.getName() + map.getNbCaseY());
-
-            context.drawImage(im, x, y, next.getSize(), next.getSize());
-
-       /*     if (next instanceof Movable) {
-                context.setFill(Color.GREEN);
-            } else if (next.isPassable()) {
-                context.setFill(Color.BLUE);
-            } else {
-                context.setFill(Color.RED);
-            }*/
-         //   Bounds boundary = next.getBounds();
-          //  context.fillRect(10, 10, 10, 10 );
-          //  context.fillRect(boundary.getMinX()*ratio, boundary.getMinY()*ratio, boundary.getWidth()*ratio, boundary.getHeight()*ratio);
-        }
+            if(next instanceof Movable){
+                System.out.println(next.getBounds().toString());
+                context.drawImage(im, x, y, next.getSize(), next.getSize());
+            }else {
+                context.drawImage(im, x, y, next.getSize(), next.getSize());
+            }
+     }
     }
 
     public Group getGroup(){

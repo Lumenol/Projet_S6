@@ -1,6 +1,7 @@
 package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Movable;
 
 /**
@@ -10,7 +11,7 @@ public class LittlePlayer extends Item implements Movable {
 
 
     private Point2D speed = new Point2D(0, 0);
-
+    private int size = 40;
     /**
      * Constructeur d'un objet petit joeur sur le plateau
      *
@@ -23,7 +24,7 @@ public class LittlePlayer extends Item implements Movable {
     }
 
     public int getSize() {
-        return size;
+        return this.size;
     }
 
     @Override
@@ -50,5 +51,8 @@ public class LittlePlayer extends Item implements Movable {
     public void setPosition(double x, double y) {
         setPosition(new Point2D(x, y));
     }
-
+    @Override
+    public Rectangle2D getBounds() {
+        return new Rectangle2D(position.getX(), position.getY(), size, size);
+    }
 }

@@ -8,7 +8,7 @@ import javafx.geometry.Rectangle2D;
  */
 public class Item implements mariaLost.items.interfaces.Item {
 
-    public final static int size = 30;
+    public final static int size = 50;
     protected Point2D position;
     private String name;
     private String spriteName;
@@ -54,10 +54,6 @@ public class Item implements mariaLost.items.interfaces.Item {
         return passable;
     }
 
-    public void setPassable(boolean passable) {
-        this.passable = passable;
-    }
-
     @Override
     public Rectangle2D getBounds() {
         return new Rectangle2D(position.getX(), position.getY(), size, size);
@@ -67,17 +63,11 @@ public class Item implements mariaLost.items.interfaces.Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getSpriteName() {
         return spriteName;
     }
 
-    public void setSpriteName(String spriteName) {
-        this.spriteName = spriteName;
-    }
 
     public int getSize() {
         return size;
