@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * Created by crede on 28/01/2017.
  */
 public class Moteur_Physique {
-    public static void deplacement(Iterable<Objet> objets, Iterable<Objet_Mobile> mobile) {
+ /*   public static void deplacement(Iterable<Objet> objets, Iterable<Objet_Mobile> mobile) {
         LinkedList<Objet> total = new LinkedList<>();
         for (Iterator<Objet> iterator = objets.iterator(); iterator.hasNext(); ) {
             Objet next = iterator.next();
@@ -120,5 +120,5 @@ public class Moteur_Physique {
         return false;
     }
 
-
+*/
 }

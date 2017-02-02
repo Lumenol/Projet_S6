@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import mariaLost.items.model.Motor;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -265,7 +266,7 @@ public class TestMP extends Application {
                 return new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
-                        Moteur_Physique.deplacement(objets, mobile);
+     //                   Motor.mooving(objets, mobile);
                         return null;
                     }
                 };
