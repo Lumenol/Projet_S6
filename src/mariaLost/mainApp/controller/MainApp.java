@@ -48,11 +48,11 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("file:resources/Images/logo.png"));
 
         //Player pour test
-        Player p = new Player("Elsa", 0, 0);
+     //   Player p = new Player("Elsa", 0, 0);
         showRoot();
-        showPlayLayout(p);
+       // showPlayLayout(p);
       //  showRoot();
-      //  showPlayerData();
+        showPlayerData();
     }
 
     public void showRoot(){
@@ -111,12 +111,12 @@ public class MainApp extends Application {
 
     public void showPlayLayout(Player player) {
         try {
-          //  root.setScaleX(this.primaryStage.getMinHeight());
-           // root.setScaleY(this.primaryStage.getMinWidth());
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource(playFilePath));
             ButtonBar menuBar = loader.load();
             root.setTop(menuBar);
+            menuBar.autosize();
             // Give the controller access to the main app.
             MenuBarController controller = loader.getController();
             controller.setMainApp(this);
@@ -126,8 +126,6 @@ public class MainApp extends Application {
             controllerGame.setMainApp(this);
             controllerGame.startGame();
             root.setCenter(controllerGame.getPage());
-
-
 
         } catch (Exception e) {
             e.printStackTrace();

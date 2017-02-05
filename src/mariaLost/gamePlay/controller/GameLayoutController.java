@@ -59,12 +59,6 @@ public class GameLayoutController {
     }
 
     public void startGame(){
-        System.out.println("demarrage player");
-        page.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
-      //  mainApp.getRoot().heightProperty();
-     //   mapview.getCanvas().heightProperty().bind(page.heightProperty());
-       // mapview.getCanvas().widthProperty().bind(page.widthProperty());
-
         ScheduledService<Void> SS = new ScheduledService<Void>() {
             @Override
             protected Task<Void> createTask() {
@@ -79,7 +73,6 @@ public class GameLayoutController {
         };
 
         SS.setPeriod(Duration.millis(240));
-        SS.start();
         AnimationTimer at = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -88,14 +81,18 @@ public class GameLayoutController {
                 mapview.draw(movable.getItemList());
             }
         };
+        SS.start();
         at.start();
+
+
         mapview.getCanvas().requestFocus();
-        this.layout = new Group();
-       // this.layout.getChildren().add( );
-       // page.getChildren().add(mapview.getCanvas());
+        page.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
         AnchorPane littlePlayerOverview = new AnchorPane();
         littlePlayerOverview.setMinSize(Parameters.SQUARE_WIDTH, 50);
         littlePlayerOverview.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
+
         page.setCenter(mapview.getCanvas());
         page.setTop(littlePlayerOverview);
 
