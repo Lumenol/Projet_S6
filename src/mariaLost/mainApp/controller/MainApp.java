@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
+import mariaLost.mainApp.model.Parameters;
 import mariaLost.player.controller.PlayerDetailsController;
 import mariaLost.player.controller.PlayerOverviewController;
 import mariaLost.player.model.Player;
@@ -60,7 +61,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rootFilePath));
 
             root = loader.load();
-            root.setMinSize(600, 600);
+            root.setMinSize(mariaLost.mainApp.model.Parameters.PAGE_WIDTH, mariaLost.mainApp.model.Parameters.PAGE_HEIGHT);
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
 
@@ -124,7 +125,7 @@ public class MainApp extends Application {
             GameLayoutController controllerGame = new GameLayoutController(player);
             controllerGame.setMainApp(this);
             controllerGame.startGame();
-            root.setCenter(controllerGame.getGroup());
+            root.setCenter(controllerGame.getPage());
 
 
 

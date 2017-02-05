@@ -4,6 +4,7 @@ import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.model.Item;
 import mariaLost.items.model.MovableItem;
+import mariaLost.mainApp.model.Parameters;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,7 +31,7 @@ public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.ga
         this.littlePlayer = new MovableItem(littlePlayername, "player.png", false );
 
         this.itemList = new ArrayList<>();
-        littlePlayer.setPosition(90, 150);
+        littlePlayer.setPosition(Parameters.CASE_WIDTH*4, Parameters.CASE_HEIGHT *5);
         add(littlePlayer);
     }
 
@@ -92,7 +93,7 @@ public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.ga
             String [] cutLine = line.split(" ");
 
             this.dimensionFloor = new Dimension2D(Double.parseDouble((cutLine[0])),  Double.parseDouble((cutLine[1])));
-
+            System.out.print(dimensionFloor.toString());
             int x=0;
             int y=0;
             line=in.readLine();
@@ -100,7 +101,7 @@ public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.ga
                 cutLine=line.split("\\|");
                 for(String s: cutLine){
                     int codeItem=Integer.parseInt(s);
-                    Item floor = new mariaLost.items.model.Item(codeItem, x* 50, y* 50);
+                    Item floor = new mariaLost.items.model.Item(codeItem, x* Parameters.CASE_WIDTH, y* Parameters.CASE_HEIGHT);
                     add(floor);
                     y++;
                 }

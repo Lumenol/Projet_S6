@@ -4,6 +4,7 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import mariaLost.items.interfaces.Drawable;
+import mariaLost.mainApp.model.Parameters;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -28,14 +29,14 @@ public class Item implements mariaLost.items.interfaces.Item, Drawable {
                 this.spriteName = "dirt.png";
                 this.passable = true;
                 this.position = new Point2D(x, y);
-                size = new Rectangle2D(x * 50, y*50, 50, 50);
+                size = new Rectangle2D(x *Parameters.CASE_WIDTH, y* Parameters.CASE_HEIGHT, Parameters.CASE_WIDTH, Parameters.CASE_HEIGHT);
                 break;
             case 1:
                 this.name="wall";
                 this.spriteName = "wall.png";
                 this.passable = false;
                 this.position = new Point2D(x, y);
-                this.size = new Rectangle2D(x, y, 50, 50);
+                this.size = new Rectangle2D(x, y, Parameters.CASE_WIDTH, Parameters.CASE_HEIGHT);
                 break;
             default:
                 break;

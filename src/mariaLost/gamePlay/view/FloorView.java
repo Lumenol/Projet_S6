@@ -4,9 +4,11 @@ import javafx.geometry.Dimension2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.interfaces.Movable;
 import mariaLost.items.model.Item;
+import mariaLost.mainApp.model.Parameters;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +22,8 @@ public class FloorView {
 
 
     public FloorView(Dimension2D dimension2D) {
-        this.canvas = new Canvas();
+        this.canvas = new Canvas(Parameters.NUMBER_OF_CASE_X * Parameters.CASE_WIDTH, Parameters.NUMBER_OF_CASE_Y *Parameters.CASE_HEIGHT );
+        //this.canvas.autosize();
     }
 
     public Canvas getCanvas() {
@@ -29,15 +32,11 @@ public class FloorView {
 
     public void draw(Collection<? extends Item > itemListView){
         GraphicsContext context = this.canvas.getGraphicsContext2D();
-        int x =0, y=0;
+        context.fill();
         for (Iterator<? extends Item> iterator = itemListView.iterator(); iterator.hasNext(); ) {
             Item next = iterator.next();
-            x= (int) next.getPosition().getX();
-            y= (int) next.getPosition().getY();
-            context.drawImage(next.getImage() , x, y, next.getSize().getHeight(), next.getSize().getWidth());
-
+            context.drawImage(next.getImage() , next.getPosition().getX(), next.getPosition().getY(), next.getSize().getHeight(), next.getSize().getWidth());
         }
     }
-
 
 }

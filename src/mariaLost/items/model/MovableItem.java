@@ -3,6 +3,7 @@ package mariaLost.items.model;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Movable;
+import mariaLost.mainApp.model.Parameters;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -21,12 +22,12 @@ public class MovableItem extends Item implements Movable, mariaLost.items.interf
      */
     public MovableItem(String name, String spriteName, boolean passable) {
         super(name, spriteName, passable);
-        size = new Rectangle2D(super.getPosition().getX(), super.getPosition().getY(), 34, 46);
+        size = new Rectangle2D(super.getPosition().getX(), super.getPosition().getY(), Parameters.MOVABLE_ITEM_WIDTH, Parameters.MOVABLE_ITEM_HEIGHT);
     }
 
     public MovableItem(MovableItem movableItem){
         super(movableItem.getName(), movableItem.getSpriteName(), movableItem.isPassable());
-        super.size = new Rectangle2D(super.getPosition().getX(), super.getPosition().getY(), 34, 46);
+        super.size = new Rectangle2D(super.getPosition().getX(), super.getPosition().getY(), Parameters.MOVABLE_ITEM_WIDTH, Parameters.MOVABLE_ITEM_HEIGHT);
 
     }
 

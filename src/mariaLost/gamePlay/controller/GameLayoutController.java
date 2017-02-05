@@ -4,8 +4,14 @@ import javafx.animation.AnimationTimer;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.*;
+import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import mariaLost.gamePlay.model.Floor;
 import mariaLost.gamePlay.view.FloorView;
@@ -15,7 +21,12 @@ import mariaLost.items.model.MovableItem;
 
 import mariaLost.items.model.Motor;
 import mariaLost.mainApp.controller.MainApp;
+import mariaLost.mainApp.model.Parameters;
 import mariaLost.player.model.Player;
+
+import java.awt.*;
+
+import static javafx.scene.paint.Color.ALICEBLUE;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -27,7 +38,7 @@ public class GameLayoutController {
     private Floor< MovableItem> movable;
     private FloorView mapview;
     private MainApp mainApp;
-
+    private BorderPane page;
     private Group layout;
 
     public GameLayoutController(Player player) {
@@ -35,6 +46,8 @@ public class GameLayoutController {
         this.movable = new Floor<>(player.getName());
         //Création du canevas
         this.mapview = new FloorView(map.getDimension());
+        this.page = new BorderPane();
+        page.setMinSize(Parameters.SQUARE_WIDTH, Parameters.SQUARE_HEIGHT);
     }
 
     public void setPlayer(Player p) {
@@ -47,10 +60,10 @@ public class GameLayoutController {
 
     public void startGame(){
         System.out.println("demarrage player");
-
+        page.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
       //  mainApp.getRoot().heightProperty();
-        mapview.getCanvas().heightProperty().bind(mainApp.getRoot().heightProperty());
-        mapview.getCanvas().widthProperty().bind(mainApp.getRoot().widthProperty());
+     //   mapview.getCanvas().heightProperty().bind(page.heightProperty());
+       // mapview.getCanvas().widthProperty().bind(page.widthProperty());
 
         ScheduledService<Void> SS = new ScheduledService<Void>() {
             @Override
@@ -78,8 +91,16 @@ public class GameLayoutController {
         at.start();
         mapview.getCanvas().requestFocus();
         this.layout = new Group();
-        this.layout.getChildren().add( mapview.getCanvas());
-        layout.setAutoSizeChildren(true);
+       // this.layout.getChildren().add( );
+       // page.getChildren().add(mapview.getCanvas());
+        AnchorPane littlePlayerOverview = new AnchorPane();
+        littlePlayerOverview.setMinSize(Parameters.SQUARE_WIDTH, 50);
+        littlePlayerOverview.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        page.setCenter(mapview.getCanvas());
+        page.setTop(littlePlayerOverview);
+
+
+     //   layout.setAutoSizeChildren(true);
 
         /**
          * Actions à réaliser sur le CANVAS
@@ -143,7 +164,7 @@ public class GameLayoutController {
 
 
 
-    public Group getGroup(){
-        return layout;
+    public BorderPane getPage(){
+        return page;
     }
 }
