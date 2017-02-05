@@ -2,11 +2,12 @@ package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import mariaLost.items.interfaces.Movable;
 
 /**
  * Created by elsacollet on 01/02/2017.
  */
-public class Item implements mariaLost.items.interfaces.Item {
+public class Item implements mariaLost.items.interfaces.Item{
 
     public final static int size = 50;
     protected Point2D position;
@@ -72,11 +73,5 @@ public class Item implements mariaLost.items.interfaces.Item {
     public int getSize() {
         return size;
     }
-
-
-
-
-
-
 
 }

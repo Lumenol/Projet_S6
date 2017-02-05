@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class Motor {
 
-    public static void mooving(Iterable<? extends mariaLost.items.interfaces.Item> objets, Iterable<? extends Movable> mobile) {
+    public static void mooving(Iterable<? extends mariaLost.items.interfaces.Item> objets, Iterable<? extends mariaLost.items.interfaces.Movable> mobile) {
         LinkedList<mariaLost.items.interfaces.Item> total = new LinkedList<>();
         for (Iterator<? extends Item> iterator = objets.iterator(); iterator.hasNext(); ) {
             mariaLost.items.interfaces.Item next = iterator.next();
@@ -25,7 +25,7 @@ public class Motor {
         }
 
         for (Iterator<? extends Movable> iterator = mobile.iterator(); iterator.hasNext(); ) {
-            Movable next = (LittlePlayer) iterator.next();
+            Movable next = (MovableItem) iterator.next();
             deplace(next, total);
         }
     }

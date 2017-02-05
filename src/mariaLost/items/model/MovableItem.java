@@ -7,7 +7,7 @@ import mariaLost.items.interfaces.Movable;
 /**
  * Created by elsacollet on 01/02/2017.
  */
-public class LittlePlayer extends Item implements Movable {
+public class MovableItem extends Item implements Movable, mariaLost.items.interfaces.Item {
 
 
     private Point2D speed = new Point2D(0, 0);
@@ -19,7 +19,10 @@ public class LittlePlayer extends Item implements Movable {
      * @param spriteName image use to represente the player
      * @param passable   capacity of an item to be passable or not
      */
-    public LittlePlayer(String name, String spriteName, boolean passable) {
+    public MovableItem(MovableItem movableItem){
+        super(movableItem.getName(), movableItem.getSpriteName(), movableItem.isPassable());
+    }
+    public MovableItem(String name, String spriteName, boolean passable) {
         super(name, spriteName, passable);
     }
 
@@ -51,6 +54,17 @@ public class LittlePlayer extends Item implements Movable {
     public void setPosition(double x, double y) {
         setPosition(new Point2D(x, y));
     }
+
+    @Override
+    public Point2D getPosition() {
+        return super.getPosition();
+    }
+
+    @Override
+    public boolean isPassable() {
+        return super.isPassable();
+    }
+
     @Override
     public Rectangle2D getBounds() {
         return new Rectangle2D(position.getX(), position.getY(), size, size);

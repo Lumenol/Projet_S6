@@ -1,17 +1,7 @@
 package mariaLost.gamePlay.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import mariaLost.gamePlay.model.GroundFloor;
-import mariaLost.gamePlay.view.FloorView;
-import mariaLost.items.model.Item;
 import mariaLost.mainApp.controller.MainApp;
-import mariaLost.player.model.Player;
 
 /**
  * Created by elsacollet on 23/01/2017.
