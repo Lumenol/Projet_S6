@@ -100,7 +100,7 @@ public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.ga
                 cutLine=line.split("\\|");
                 for(String s: cutLine){
                     int codeItem=Integer.parseInt(s);
-                    Item floor = new mariaLost.items.model.Item(codeItem, x* mariaLost.items.model.Item.size, y* mariaLost.items.model.Item.size);
+                    Item floor = new mariaLost.items.model.Item(codeItem, x* 50, y* 50);
                     add(floor);
                     y++;
                 }

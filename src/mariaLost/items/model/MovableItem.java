@@ -11,7 +11,7 @@ public class MovableItem extends Item implements Movable, mariaLost.items.interf
 
 
     private Point2D speed = new Point2D(0, 0);
-    private int size = 40;
+    private Rectangle2D size;
     /**
      * Constructeur d'un objet petit joeur sur le plateau
      *
@@ -19,14 +19,18 @@ public class MovableItem extends Item implements Movable, mariaLost.items.interf
      * @param spriteName image use to represente the player
      * @param passable   capacity of an item to be passable or not
      */
-    public MovableItem(MovableItem movableItem){
-        super(movableItem.getName(), movableItem.getSpriteName(), movableItem.isPassable());
-    }
     public MovableItem(String name, String spriteName, boolean passable) {
         super(name, spriteName, passable);
+        size = new Rectangle2D(super.getPosition().getX(), super.getPosition().getY(), 34, 46);
     }
 
-    public int getSize() {
+    public MovableItem(MovableItem movableItem){
+        super(movableItem.getName(), movableItem.getSpriteName(), movableItem.isPassable());
+        super.size = new Rectangle2D(super.getPosition().getX(), super.getPosition().getY(), 34, 46);
+
+    }
+
+    public Rectangle2D getSize() {
         return this.size;
     }
 
@@ -67,6 +71,6 @@ public class MovableItem extends Item implements Movable, mariaLost.items.interf
 
     @Override
     public Rectangle2D getBounds() {
-        return new Rectangle2D(position.getX(), position.getY(), size, size);
+        return new Rectangle2D(position.getX(), position.getY(), size.getHeight(), size.getWidth());
     }
 }

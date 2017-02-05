@@ -2,14 +2,15 @@ package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import mariaLost.items.interfaces.Movable;
+import javafx.scene.image.Image;
+import mariaLost.items.interfaces.Drawable;
 
 /**
  * Created by elsacollet on 01/02/2017.
  */
-public class Item implements mariaLost.items.interfaces.Item{
+public class Item implements mariaLost.items.interfaces.Item, Drawable {
 
-    public final static int size = 50;
+    public Rectangle2D size;
     protected Point2D position;
     private String name;
     private String spriteName;
@@ -27,12 +28,14 @@ public class Item implements mariaLost.items.interfaces.Item{
                 this.spriteName = "dirt.png";
                 this.passable = true;
                 this.position = new Point2D(x, y);
+                size = new Rectangle2D(x * 50, y*50, 50, 50);
                 break;
             case 1:
                 this.name="wall";
                 this.spriteName = "wall.png";
                 this.passable = false;
                 this.position = new Point2D(x, y);
+                this.size = new Rectangle2D(x, y, 50, 50);
                 break;
             default:
                 break;
@@ -43,6 +46,8 @@ public class Item implements mariaLost.items.interfaces.Item{
         this.name=name;
         this.spriteName = spriteName;
         this.passable = passable;
+        this.position = new Point2D(0, 0);
+        this.size = new Rectangle2D(0, 0, 0, 0);
     }
 
     @Override
@@ -57,21 +62,21 @@ public class Item implements mariaLost.items.interfaces.Item{
 
     @Override
     public Rectangle2D getBounds() {
-        return new Rectangle2D(position.getX(), position.getY(), size, size);
+        return size;
+    }
+
+    @Override
+    public Image getImage() {
+       return new Image("file:resources/Images/"+ spriteName);
     }
 
     public String getName() {
         return name;
     }
-
-
     public String getSpriteName() {
         return spriteName;
     }
-
-
-    public int getSize() {
+    public Rectangle2D getSize() {
         return size;
     }
-
 }
