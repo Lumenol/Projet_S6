@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playerListWrapper>
     <player>
-        <level>0</level>
+        <level>2</level>
         <name>Elsa</name>
-        <score>0</score>
+        <score>123</score>
     </player>
 </playerListWrapper>

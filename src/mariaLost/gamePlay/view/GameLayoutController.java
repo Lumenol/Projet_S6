@@ -1,32 +1,27 @@
-package mariaLost.gamePlay.controller;
+package mariaLost.gamePlay.view;
 
 import javafx.animation.AnimationTimer;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
-import javafx.geometry.*;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import mariaLost.gamePlay.model.Floor;
-import mariaLost.gamePlay.view.FloorView;
-import mariaLost.items.interfaces.Movable;
 import mariaLost.items.model.Item;
-import mariaLost.items.model.MovableItem;
-
 import mariaLost.items.model.Motor;
+import mariaLost.items.model.MovableItem;
 import mariaLost.mainApp.controller.MainApp;
 import mariaLost.mainApp.model.Parameters;
 import mariaLost.player.model.Player;
-
-import java.awt.*;
-
-import static javafx.scene.paint.Color.ALICEBLUE;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -40,15 +35,23 @@ public class GameLayoutController {
     private MainApp mainApp;
     private BorderPane page;
     private Group layout;
+    private String littlePlayerBarPath = "../../gamePlay/view/littlePlayerBar.fxml";
+
+
+
 
     public GameLayoutController(Player player) {
+        this.player =player;
         this.map = new Floor<>();
         this.movable = new Floor<>(player.getName());
         //Création du canevas
         this.mapview = new FloorView(map.getDimension());
         this.page = new BorderPane();
         page.setMinSize(Parameters.SQUARE_WIDTH, Parameters.SQUARE_HEIGHT);
+        playerBar();
     }
+
+
 
     public void setPlayer(Player p) {
         this.player = p;
@@ -57,6 +60,31 @@ public class GameLayoutController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+
+    public void playerBar(){
+        try {
+
+            System.out.println("Anchor pane");
+
+            FXMLLoader loader2 = new FXMLLoader();
+            loader2.setLocation(getClass().getResource(littlePlayerBarPath));
+            AnchorPane littlePlayerOverview = loader2.load();
+            LittlePlayerBarController controller2 = loader2.getController();
+            controller2.setMainApp(this);
+            controller2.setPlayer(player);
+            controller2.setBar();
+            page.setTop(littlePlayerOverview);
+
+
+ //           littlePlayerOverview.setMinSize(Parameters.SQUARE_WIDTH, 50);
+   //         littlePlayerOverview.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+           // page.setTop(littlePlayerOverview);
+
+        }catch(Exception e ){
+            e.printStackTrace();
+        }
+    }
+
 
     public void startGame(){
         ScheduledService<Void> SS = new ScheduledService<Void>() {
@@ -88,16 +116,7 @@ public class GameLayoutController {
         mapview.getCanvas().requestFocus();
         page.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        AnchorPane littlePlayerOverview = new AnchorPane();
-        littlePlayerOverview.setMinSize(Parameters.SQUARE_WIDTH, 50);
-        littlePlayerOverview.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-
-
         page.setCenter(mapview.getCanvas());
-        page.setTop(littlePlayerOverview);
-
-
-     //   layout.setAutoSizeChildren(true);
 
         /**
          * Actions à réaliser sur le CANVAS

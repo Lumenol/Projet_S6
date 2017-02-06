@@ -1,7 +1,5 @@
 package mariaLost.mainApp.controller;
 
-import mariaLost.mainApp.controller.MainApp;
-
 /**
  * Created by elsacollet on 01/02/2017.
  */

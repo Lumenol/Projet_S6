@@ -10,9 +10,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import mariaLost.gamePlay.controller.GameLayoutController;
+import mariaLost.gamePlay.view.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
-import mariaLost.mainApp.model.Parameters;
+import mariaLost.gamePlay.view.LittlePlayerBarController;
 import mariaLost.player.controller.PlayerDetailsController;
 import mariaLost.player.controller.PlayerOverviewController;
 import mariaLost.player.model.Player;
@@ -79,7 +79,7 @@ public class MainApp extends Application {
         try {
             //Load personOverView
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource(playerOverviewFilePath));
+            loader.setLocation(getClass().getResource(playerOverviewFilePath));
             AnchorPane playerOverview = loader.load();;
 
             //Set personOverView dans le centre de la fenetre
@@ -98,7 +98,7 @@ public class MainApp extends Application {
     public void showNewPlayer(Player player) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource(playerDetailsFilePath));
+            loader.setLocation(getClass().getResource(playerDetailsFilePath));
             AnchorPane newPlayer = loader.load();
             root.setCenter(newPlayer);
             PlayerDetailsController controller = loader.getController();
@@ -113,13 +113,14 @@ public class MainApp extends Application {
         try {
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource(playFilePath));
+            loader.setLocation(getClass().getResource(playFilePath));
             ButtonBar menuBar = loader.load();
             root.setTop(menuBar);
             menuBar.autosize();
             // Give the controller access to the main app.
             MenuBarController controller = loader.getController();
             controller.setMainApp(this);
+
 
             //Set the game layout
             GameLayoutController controllerGame = new GameLayoutController(player);

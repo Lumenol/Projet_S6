@@ -3,14 +3,9 @@ package mariaLost.gamePlay.view;
 import javafx.geometry.Dimension2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.interfaces.Movable;
 import mariaLost.items.model.Item;
 import mariaLost.mainApp.model.Parameters;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
