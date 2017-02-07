@@ -1,3 +1,5 @@
+package uml.gamePlay.interfaces;
+
 /**
  * Created by crede on 31/01/2017.
  */

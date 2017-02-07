@@ -1,5 +1,7 @@
-import javafx.geometry.Bounds;
+package uml.gamePlay.interfaces;
+
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 
 
 /**
@@ -10,5 +12,5 @@ public interface Item {
 
     boolean isPassable();
 
-    Bounds getBounds();
+    Rectangle2D getBounds();
 }

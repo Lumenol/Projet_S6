@@ -16,11 +16,9 @@ import java.util.Collection;
  * Created by elsacollet on 03/02/2017.
  */
 public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.gamePlay.interfaces.Floor {
-    private String fileName= "resources/Floor/ground_map.txt";
-
-    private MovableItem littlePlayer;
-
     protected ArrayList<T> itemList;
+    private String fileName= "resources/Floor/ground_map.txt";
+    private MovableItem littlePlayer;
     private Dimension2D dimensionFloor;
 
     /**
@@ -31,7 +29,7 @@ public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.ga
         this.littlePlayer = new MovableItem(littlePlayername, "player.png", false );
 
         this.itemList = new ArrayList<>();
-        littlePlayer.setPosition(Parameters.CASE_WIDTH*4, Parameters.CASE_HEIGHT *5);
+        littlePlayer.setPosition(Parameters.CASE_WIDTH * 3, Parameters.CASE_HEIGHT * 5);
         add(littlePlayer);
     }
 
@@ -103,10 +101,10 @@ public class Floor<T extends mariaLost.items.model.Item> implements mariaLost.ga
                     int codeItem=Integer.parseInt(s);
                     Item floor = new mariaLost.items.model.Item(codeItem, x* Parameters.CASE_WIDTH, y* Parameters.CASE_HEIGHT);
                     add(floor);
-                    y++;
+                    x++;
                 }
-                x++;
-                y=0;
+                x = 0;
+                y++;
                 line=in.readLine();
             }
 

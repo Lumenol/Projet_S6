@@ -20,7 +20,7 @@ public class Item implements mariaLost.items.interfaces.Item, Drawable {
 
     /**
      * Constructeur d'un objet
-     * @param codeItem code du fichier transformant en Item
+     * @param codeItem code du fichier transformant en AbstractItem
      */
     public Item(int codeItem, int x, int y){
         switch (codeItem) {
@@ -29,7 +29,7 @@ public class Item implements mariaLost.items.interfaces.Item, Drawable {
                 this.spriteName = "dirt.png";
                 this.passable = true;
                 this.position = new Point2D(x, y);
-                size = new Rectangle2D(x *Parameters.CASE_WIDTH, y* Parameters.CASE_HEIGHT, Parameters.CASE_WIDTH, Parameters.CASE_HEIGHT);
+                size = new Rectangle2D(x, y, Parameters.CASE_WIDTH, Parameters.CASE_HEIGHT);
                 break;
             case 1:
                 this.name="wall";
