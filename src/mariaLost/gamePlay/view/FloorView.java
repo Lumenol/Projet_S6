@@ -1,6 +1,7 @@
 package mariaLost.gamePlay.view;
 
 import javafx.geometry.Dimension2D;
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,15 +27,15 @@ public class FloorView {
         return canvas;
     }
 
-    public void draw(Collection<Collection<? extends Drawable>> itemListView) {
+    public void draw(Collection<Collection<? extends Drawable>> itemListView, Point2D subtract) {
         GraphicsContext context = this.canvas.getGraphicsContext2D();
-        context.fill();
+        context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (Iterator<Collection<? extends Drawable>> iterator = itemListView.iterator(); iterator.hasNext(); ) {
             Collection<? extends Drawable> next = iterator.next();
             for (Iterator<? extends Drawable> iterator1 = next.iterator(); iterator1.hasNext(); ) {
                 Drawable drawable = iterator1.next();
                 Rectangle2D drawableBounds = drawable.getBounds();
-                context.drawImage(drawable.getImage(), drawableBounds.getMinX(), drawableBounds.getMinY(), drawableBounds.getWidth(), drawableBounds.getHeight());
+                context.drawImage(drawable.getImage(), drawableBounds.getMinX() - subtract.getX(), drawableBounds.getMinY() - subtract.getY(), drawableBounds.getWidth(), drawableBounds.getHeight());
             }
         }
 

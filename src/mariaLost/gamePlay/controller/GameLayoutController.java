@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
@@ -37,7 +38,7 @@ public class GameLayoutController {
         this.player = player;
         this.world = new World(new mariaLost.gamePlay.model.Player());
         try {
-            world.loadFloorFromFile("resources/Floor/ground_map.txt");
+            world.loadFloorFromFile("resources/Floor/donjon.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,13 +85,14 @@ public class GameLayoutController {
 
     public void startGame() {
 
-
         AnimationTimer at = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 Canvas canvas = mapview.getCanvas();
                 canvas.requestFocus();
-                mapview.draw(world.getDrawableFromSquare(new Rectangle2D(0, 0, canvas.getWidth(), canvas.getHeight())));
+                Point2D centerOfPlayer = world.centerOfPlayer();
+                Point2D subtract = centerOfPlayer.subtract(canvas.getWidth() / 2, canvas.getHeight() / 2);
+                mapview.draw(world.getDrawableFromSquare(new Rectangle2D(subtract.getX(), subtract.getY(), canvas.getWidth(), canvas.getHeight())), subtract);
             }
         };
         page.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));

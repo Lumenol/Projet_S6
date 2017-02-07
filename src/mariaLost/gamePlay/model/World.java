@@ -9,11 +9,9 @@ import javafx.util.Duration;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.AbstractMobileItem;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -52,15 +50,8 @@ public class World implements Model {
         floor = new FloorFromFile(fileName);
         Dimension2D dimension = floor.getDimension();
         player.setSpeed(Point2D.ZERO);
-        Collection<? extends Item> itemFromSquare = floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
 
-        for (Iterator<? extends Item> iterator = itemFromSquare.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
-            if (next.isPassable()) {
-                player.setPosition(next.getPosition());
-                break;
-            }
-        }
+        player.setPosition(floor.getStart());
 
     }
 

@@ -1,6 +1,7 @@
 package mariaLost.gamePlay.interfaces;
 
 import javafx.geometry.Dimension2D;
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Item;
 
@@ -24,5 +25,7 @@ public interface Floor {
      * @return dimensions
      */
     Dimension2D getDimension();
+
+    Point2D getStart();
 
 }
