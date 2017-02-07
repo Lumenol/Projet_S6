@@ -1,10 +1,10 @@
-package uml.gamePlay.model;
+package mariaLost.gamePlay.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import uml.gamePlay.interfaces.ActionableItem;
-import uml.gamePlay.interfaces.Item;
-import uml.gamePlay.interfaces.MobileItem;
+import mariaLost.items.interfaces.ActionableItem;
+import mariaLost.items.interfaces.Item;
+import mariaLost.items.interfaces.MobileItem;
 
 import java.util.Collection;
 import java.util.Iterator;

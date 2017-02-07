@@ -1,7 +1,7 @@
-package uml.gamePlay.model;
+package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
-import uml.gamePlay.interfaces.MobileItem;
+import mariaLost.items.interfaces.MobileItem;
 
 /**
  * Created by crede on 06/02/2017.

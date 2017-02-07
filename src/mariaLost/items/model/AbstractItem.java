@@ -1,14 +1,15 @@
-package uml.gamePlay.model;
+package mariaLost.items.model;
 
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import uml.gamePlay.interfaces.Drawable;
+import mariaLost.items.interfaces.Drawable;
+import mariaLost.items.interfaces.Item;
 
 /**
  * Created by crede on 06/02/2017.
  */
-public abstract class AbstractItem implements uml.gamePlay.interfaces.Item, Drawable {
+public abstract class AbstractItem implements Item, Drawable {
     protected Point2D position;
     private javafx.geometry.Dimension2D size;
 

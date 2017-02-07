@@ -1,4 +1,4 @@
-package uml.gamePlay.model;
+package mariaLost.gamePlay.model;
 
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
@@ -6,9 +6,11 @@ import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.util.Duration;
-import uml.gamePlay.interfaces.Drawable;
-import uml.gamePlay.interfaces.Item;
-import uml.gamePlay.interfaces.Model;
+import mariaLost.gamePlay.interfaces.Model;
+import mariaLost.gamePlay.tools.Direction;
+import mariaLost.items.interfaces.Drawable;
+import mariaLost.items.interfaces.Item;
+import mariaLost.items.model.AbstractMobileItem;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -77,8 +79,8 @@ public class World implements Model {
     }
 
     @Override
-    public void setSpeedPlayer(double vx, double vy) {
-        player.setSpeed(vx, vy);
+    public void setDirectionPlayer(Direction direction) {
+        player.setSpeed(direction.getDirection());
     }
 
     @Override

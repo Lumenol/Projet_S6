@@ -10,9 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import mariaLost.gamePlay.view.GameLayoutController;
+import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
-import mariaLost.gamePlay.view.LittlePlayerBarController;
 import mariaLost.player.controller.PlayerDetailsController;
 import mariaLost.player.controller.PlayerOverviewController;
 import mariaLost.player.model.Player;
@@ -34,6 +33,14 @@ public class MainApp extends Application {
     private String playerOverviewFilePath = "../../player/view/playerOverview.fxml";
     private String playerDetailsFilePath = "../../player/view/playerDetails.fxml";
 
+
+    public MainApp() {
+        System.out.println("Main App ");
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     public BorderPane getRoot() {
         return root;
@@ -73,7 +80,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
 
     public void showPlayerData() {
         try {
@@ -133,13 +139,14 @@ public class MainApp extends Application {
         }
     }
 
-
     public PlayerReader getPlayerReader() {
         return playerReader;
     }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
     public ObservableList<Player> getPlayerList() {
         return playerList;
     }
@@ -147,13 +154,6 @@ public class MainApp extends Application {
     public void setPlayerList(List<Player> list){
         this.playerList.clear();
         this.playerList.addAll(list);
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-    public MainApp(){
-        System.out.println("Main App ");
     }
 
     /**

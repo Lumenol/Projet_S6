@@ -1,4 +1,4 @@
-package uml.gamePlay.interfaces;
+package mariaLost.items.interfaces;
 
 /**
  * Created by crede on 31/01/2017.

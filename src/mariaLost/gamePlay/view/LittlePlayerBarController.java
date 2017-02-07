@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import mariaLost.mainApp.controller.MainApp;
+import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.player.model.Player;
 
 /**
@@ -13,9 +13,11 @@ import mariaLost.player.model.Player;
  */
 public class LittlePlayerBarController {
 
+    @FXML
+    protected ImageView moneyImageView;
+    AnchorPane littlePlayerOverview;
     private GameLayoutController mainApp;
     private Player player;
-    AnchorPane littlePlayerOverview;
     @FXML
     private Label moneyLabel;
     @FXML
@@ -25,24 +27,25 @@ public class LittlePlayerBarController {
     @FXML
     private ImageView heartImageView;
     @FXML
-    protected ImageView moneyImageView;
-    @FXML
     private Label namePlayerLabel;
+
+    public LittlePlayerBarController() {
+    }
 
     @FXML
     public void initialize(){
         System.out.println("initialisation game layout");
 
     }
+
     public void setPlayer(Player player){
         this.player = player;
     }
+
     public void setMainApp(GameLayoutController main){
         this.mainApp = main;
     }
 
-    public LittlePlayerBarController() {
-    }
     public void setBar(){
         this.scoreLabel.setText(Integer.toString(this.player.getScore()));
         this.levelLabel.setText(Integer.toString(this.player.getLevel())) ;

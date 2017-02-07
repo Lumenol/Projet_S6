@@ -1,4 +1,4 @@
-package uml.gamePlay.model;
+package mariaLost.parameters;
 
 /**
  * Created by elsacollet on 05/02/2017.

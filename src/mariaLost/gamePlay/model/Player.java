@@ -1,6 +1,8 @@
-package uml.gamePlay.model;
+package mariaLost.gamePlay.model;
 
 import javafx.scene.image.Image;
+import mariaLost.items.model.AbstractMobileItem;
+import mariaLost.parameters.Parameters;
 
 /**
  * Created by crede on 06/02/2017.

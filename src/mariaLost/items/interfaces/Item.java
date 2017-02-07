@@ -3,8 +3,9 @@ package mariaLost.items.interfaces;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 
+
 /**
- * Created by elsacollet on 01/02/2017.
+ * Created by crede on 31/01/2017.
  */
 public interface Item {
     Point2D getPosition();
@@ -12,5 +13,4 @@ public interface Item {
     boolean isPassable();
 
     Rectangle2D getBounds();
-
 }

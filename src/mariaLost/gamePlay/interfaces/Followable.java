@@ -1,4 +1,4 @@
-package uml.gamePlay.interfaces;
+package mariaLost.gamePlay.interfaces;
 
 import javafx.geometry.Point2D;
 

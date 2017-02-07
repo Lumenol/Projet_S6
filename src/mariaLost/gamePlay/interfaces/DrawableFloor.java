@@ -1,7 +1,8 @@
-package uml.gamePlay.interfaces;
+package mariaLost.gamePlay.interfaces;
 
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
+import mariaLost.items.interfaces.Drawable;
 
 import java.util.Collection;
 

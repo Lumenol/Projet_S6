@@ -1,6 +1,7 @@
-package mariaLost.gamePlay.view;
+package mariaLost.gamePlay.controller;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -10,10 +11,13 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import mariaLost.gamePlay.model.World;
+import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.view.FloorView;
+import mariaLost.gamePlay.view.LittlePlayerBarController;
 import mariaLost.mainApp.controller.MainApp;
 import mariaLost.mainApp.model.Parameters;
 import mariaLost.player.model.Player;
-import uml.gamePlay.model.World;
 
 /**
  * Created by elsacollet on 01/02/2017.
@@ -31,7 +35,7 @@ public class GameLayoutController {
 
     public GameLayoutController(Player player) {
         this.player = player;
-        this.world = new World(new uml.gamePlay.model.Player());
+        this.world = new World(new mariaLost.gamePlay.model.Player());
         try {
             world.loadFloorFromFile("resources/Floor/ground_map.txt");
         } catch (Exception e) {
@@ -92,7 +96,7 @@ public class GameLayoutController {
         page.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         page.setCenter(mapview.getCanvas());
-
+        SimpleObjectProperty<Direction> direction = new SimpleObjectProperty<>(Direction.ANY);
         /**
          * Actions à réaliser sur le CANVAS
          */
@@ -102,9 +106,12 @@ public class GameLayoutController {
         mapview.getCanvas().setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                world.setSpeedPlayer(0, 0);
+                direction.set(Direction.ANY);
+                world.setDirectionPlayer(direction.get());
             }
         });
+
+
         /**
          * TODO Voir pour la vitesse de départ qui est un peu lente
          */
@@ -118,24 +125,26 @@ public class GameLayoutController {
                 switch (event.getCode()) {
                     case Z:
                     case UP:
-                        world.setSpeedPlayer(0, -10);
+                        direction.set(direction.get().compose(Direction.UP));
                         break;
 
                     case S:
                     case DOWN:
-                        world.setSpeedPlayer(0, 10);
+                        direction.set(direction.get().compose(Direction.DOWN));
                         break;
 
                     case Q:
                     case LEFT:
-                        world.setSpeedPlayer(-10, 0);
+                        direction.set(direction.get().compose(Direction.LEFT));
                         break;
 
                     case D:
                     case RIGHT:
-                        world.setSpeedPlayer(10, 0);
+                        direction.set(direction.get().compose(Direction.RIGHT));
                         break;
+                    default:
                 }
+                world.setDirectionPlayer(direction.get());
             }
         });
         world.start();

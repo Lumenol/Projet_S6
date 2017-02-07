@@ -1,9 +1,11 @@
-package uml.gamePlay.model;
+package mariaLost.gamePlay.model;
 
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
-import uml.gamePlay.interfaces.Drawable;
-import uml.gamePlay.interfaces.Item;
+import mariaLost.items.interfaces.Drawable;
+import mariaLost.items.interfaces.Item;
+import mariaLost.items.model.AbstractItem;
+import mariaLost.parameters.Parameters;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
