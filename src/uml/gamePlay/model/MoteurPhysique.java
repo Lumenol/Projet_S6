@@ -2,6 +2,7 @@ package uml.gamePlay.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import uml.gamePlay.interfaces.ActionableItem;
 import uml.gamePlay.interfaces.Item;
 import uml.gamePlay.interfaces.MobileItem;
 
@@ -117,8 +118,12 @@ public class MoteurPhysique {
         Rectangle2D limite = item.getBounds();
         for (Iterator<Item> iterator = (Iterator<Item>) items.iterator(); iterator.hasNext(); ) {
             Item next = iterator.next();
-            if (!next.isPassable() && limite.intersects(next.getBounds())) {
-                return next.getBounds();
+            if (limite.intersects(next.getBounds())) {
+                if (next instanceof ActionableItem) {
+                    ((ActionableItem) next).action(item);
+                }
+                if (!next.isPassable())
+                    return next.getBounds();
             }
         }
         return null;
