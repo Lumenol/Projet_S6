@@ -1,7 +1,6 @@
 package mariaLost.gamePlay.model;
 
 import javafx.geometry.Dimension2D;
-import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.interfaces.Item;
@@ -21,8 +20,8 @@ public class FloorFromFile extends AbstractFloor {
 
     private AbstractItem[][] items = null;
     private Dimension2D dimension;
-    private Point2D beginning = null;
-    private Point2D end = null;
+    private Rectangle2D beginning = null;
+    private Rectangle2D end = null;
 
     public FloorFromFile(String fileName) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -73,6 +72,9 @@ public class FloorFromFile extends AbstractFloor {
         if (beginning == null) {
             throw new Exception("Il n'y as pas de départ");
         }
+        if (end == null) {
+            throw new Exception("Il n'y as pas d'arrive");
+        }
     }
 
     private AbstractItem intToItem(int codeItem, int x, int y) throws IllegalArgumentException {
@@ -85,11 +87,11 @@ public class FloorFromFile extends AbstractFloor {
                 return new Wall(x, y);
             case 2:
                 Ground beginning = new Ground(x, y);
-                this.beginning = beginning.getPosition();
+                this.beginning = beginning.getBounds();
                 return beginning;
             case 3:
                 EndCase end = new EndCase(x, y);
-                this.end = end.getPosition();
+                this.end = end.getBounds();
                 return end;
             case 4:
                 return new BreakableWall(x, y);
@@ -123,12 +125,12 @@ public class FloorFromFile extends AbstractFloor {
     }
 
     @Override
-    public Point2D getBeginning() {
+    public Rectangle2D getBeginning() {
         return beginning;
     }
 
     @Override
-    public Point2D getEnd() {
+    public Rectangle2D getEnd() {
         return end;
     }
 

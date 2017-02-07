@@ -36,13 +36,9 @@ public class GameLayoutController {
     public GameLayoutController(Player player) {
         this.player = player;
         this.world = new World(new mariaLost.gamePlay.model.Player());
-        try {
-            world.loadFloorFromFile("resources/Floor/donjon.txt");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         //Création du canevas
-        this.mapview = new FloorView(world.getDimension());
+        this.mapview = new FloorView();
         this.page = new BorderPane();
         page.setMinSize(Parameters.SQUARE_WIDTH, Parameters.SQUARE_HEIGHT);
         playerBar();

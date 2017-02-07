@@ -27,6 +27,10 @@ public class World implements Model {
 
     private AbstractMobileItem player;
 
+    private int world = 0;
+
+    private String mapPath = "resources/Floor/";
+
     private ScheduledService<Void> moteur = new ScheduledService<Void>() {
         @Override
         protected Task<Void> createTask() {
@@ -39,6 +43,12 @@ public class World implements Model {
                     MoteurPhysique.move(itemFromSquare, mobileItem);
                     mobileItem.removeIf(abstractMobileItem -> abstractMobileItem.isFinished());
                     items.removeIf(abstractItem -> abstractItem.isFinished());
+
+                    if (playerAtTheEnd()) {
+                        world = (world + 1) % 3;
+                        loadWorld(world);
+                    }
+
                     return null;
                 }
             };
@@ -57,9 +67,11 @@ public class World implements Model {
         floor = new FloorFromFile(fileName);
         Dimension2D dimension = floor.getDimension();
         player.setSpeed(Point2D.ZERO);
+        player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
 
-        player.setPosition(floor.getBeginning());
-
+        items.clear();
+        mobileItem.clear();
+        mobileItem.add(player);
     }
 
     @Override
@@ -83,7 +95,18 @@ public class World implements Model {
 
     @Override
     public void start() {
+        if (floor == null) {
+            loadWorld(world);
+        }
         moteur.start();
+    }
+
+    private void loadWorld(int i) {
+        try {
+            loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -98,5 +121,9 @@ public class World implements Model {
         double centerX = playerBounds.getWidth() / 2;
         double centerY = playerBounds.getHeight() / 2;
         return new Point2D(playerBounds.getMinX() + centerX, playerBounds.getMinY() + centerY);
+    }
+
+    public boolean playerAtTheEnd() {
+        return floor.getEnd().contains(centerOfPlayer()) || player.getBounds().contains(floor.getEnd());
     }
 }

@@ -1,6 +1,5 @@
 package mariaLost.gamePlay.view;
 
-import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +17,7 @@ public class FloorView {
     private Canvas canvas;
 
 
-    public FloorView(Dimension2D dimension2D) {
+    public FloorView() {
         this.canvas = new Canvas(Parameters.NUMBER_OF_CASE_X * Parameters.CASE_WIDTH, Parameters.NUMBER_OF_CASE_Y * Parameters.CASE_HEIGHT);
         //this.canvas.autosize();
     }
