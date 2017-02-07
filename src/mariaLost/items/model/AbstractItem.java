@@ -19,7 +19,11 @@ public abstract class AbstractItem implements Item, Drawable {
     }
 
     @Override
+    public boolean isFinished() {
+        return false;
+    }
 
+    @Override
     public Point2D getPosition() {
         return position;
     }

@@ -154,7 +154,6 @@ public class GameLayoutController {
         mapview.getCanvas().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println(event.getCode());
                 switch (event.getCode()) {
                     case Z:
                     case UP:

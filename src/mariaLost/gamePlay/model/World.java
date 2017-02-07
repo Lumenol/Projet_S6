@@ -9,6 +9,8 @@ import javafx.util.Duration;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.interfaces.Drawable;
+import mariaLost.items.interfaces.Item;
+import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
 
 import java.util.Collection;
@@ -21,6 +23,7 @@ public class World implements Model {
 
     private AbstractFloor floor;
     private Collection<AbstractMobileItem> mobileItem = new LinkedList<>();
+    private Collection<AbstractItem> items = new LinkedList<>();
 
     private AbstractMobileItem player;
 
@@ -31,7 +34,11 @@ public class World implements Model {
                 @Override
                 protected Void call() throws Exception {
                     Dimension2D dimension = floor.getDimension();
-                    MoteurPhysique.move(floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight())), mobileItem);
+                    Collection<Item> itemFromSquare = (Collection<Item>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
+                    itemFromSquare.addAll(items);
+                    MoteurPhysique.move(itemFromSquare, mobileItem);
+                    mobileItem.removeIf(abstractMobileItem -> abstractMobileItem.isFinished());
+                    items.removeIf(abstractItem -> abstractItem.isFinished());
                     return null;
                 }
             };
@@ -51,7 +58,7 @@ public class World implements Model {
         Dimension2D dimension = floor.getDimension();
         player.setSpeed(Point2D.ZERO);
 
-        player.setPosition(floor.getStart());
+        player.setPosition(floor.getBeginning());
 
     }
 

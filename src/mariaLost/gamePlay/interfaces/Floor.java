@@ -26,6 +26,8 @@ public interface Floor {
      */
     Dimension2D getDimension();
 
-    Point2D getStart();
+    Point2D getBeginning();
+
+    Point2D getEnd();
 
 }

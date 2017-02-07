@@ -21,7 +21,8 @@ public class FloorFromFile extends AbstractFloor {
 
     private AbstractItem[][] items = null;
     private Dimension2D dimension;
-    private Point2D start = null;
+    private Point2D beginning = null;
+    private Point2D end = null;
 
     public FloorFromFile(String fileName) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -69,21 +70,29 @@ public class FloorFromFile extends AbstractFloor {
             }
         }
         br.close();
-        if (start == null) {
+        if (beginning == null) {
             throw new Exception("Il n'y as pas de départ");
         }
     }
 
     private AbstractItem intToItem(int codeItem, int x, int y) throws IllegalArgumentException {
+        x = x * Parameters.CASE_WIDTH;
+        y = y * Parameters.CASE_HEIGHT;
         switch (codeItem) {
-            case 2:
-                Ground ground = new Ground(x * Parameters.CASE_WIDTH, y * Parameters.CASE_HEIGHT);
-                start = ground.getPosition();
-                return ground;
             case 0:
-                return new Ground(x * Parameters.CASE_WIDTH, y * Parameters.CASE_HEIGHT);
+                return new Ground(x, y);
             case 1:
-                return new Wall(x * Parameters.CASE_WIDTH, y * Parameters.CASE_HEIGHT);
+                return new Wall(x, y);
+            case 2:
+                Ground beginning = new Ground(x, y);
+                this.beginning = beginning.getPosition();
+                return beginning;
+            case 3:
+                EndCase end = new EndCase(x, y);
+                this.end = end.getPosition();
+                return end;
+            case 4:
+                return new BreakableWall(x, y);
             default:
                 throw new IllegalArgumentException("Pas de correspondence pour codeItem");
         }
@@ -92,10 +101,10 @@ public class FloorFromFile extends AbstractFloor {
     @Override
     public Collection<? extends Item> getItemFromSquare(Rectangle2D square) {
         int largeurMin = Math.max(0, (int) square.getMinX()) / Parameters.CASE_WIDTH;
-        int largeurMax = Math.min((int) dimension.getWidth(), (int) square.getMaxX()) / Parameters.CASE_WIDTH;
+        double largeurMax = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters.CASE_WIDTH;
 
         int hauteurMin = Math.max(0, (int) square.getMinY()) / Parameters.CASE_HEIGHT;
-        int hauteurMax = Math.min((int) dimension.getHeight(), (int) square.getMaxY()) / Parameters.CASE_WIDTH;
+        double hauteurMax = Math.min(dimension.getHeight(), square.getMaxY()) / Parameters.CASE_WIDTH;
 
         LinkedList<Item> linkedList = new LinkedList<>();
 
@@ -114,8 +123,13 @@ public class FloorFromFile extends AbstractFloor {
     }
 
     @Override
-    public Point2D getStart() {
-        return start;
+    public Point2D getBeginning() {
+        return beginning;
+    }
+
+    @Override
+    public Point2D getEnd() {
+        return end;
     }
 
     @Override

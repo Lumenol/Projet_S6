@@ -16,7 +16,7 @@ public class Player extends AbstractMobileItem {
     }
 
     public Player(double x, double y) {
-        super(x, y, Parameters.MOVABLE_ITEM_WIDTH, Parameters.MOVABLE_ITEM_HEIGHT, 10);
+        super(x, y, Parameters.MOVABLE_ITEM_WIDTH, Parameters.MOVABLE_ITEM_HEIGHT, 5);
     }
 
     @Override
