@@ -1,7 +1,6 @@
 package mariaLost.gamePlay.controller;
 
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -98,7 +97,9 @@ public class GameLayoutController {
         page.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         page.setCenter(mapview.getCanvas());
-        SimpleObjectProperty<Direction> direction = new SimpleObjectProperty<>(Direction.ANY);
+
+        boolean touche[] = new boolean[4];
+
         /**
          * Actions à réaliser sur le CANVAS
          */
@@ -108,8 +109,38 @@ public class GameLayoutController {
         mapview.getCanvas().setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                direction.set(Direction.ANY);
-                world.setDirectionPlayer(direction.get());
+                switch (event.getCode()) {
+                    case Z:
+                    case UP:
+                        touche[0] = false;
+                        break;
+
+                    case S:
+                    case DOWN:
+                        touche[1] = false;
+                        break;
+
+                    case Q:
+                    case LEFT:
+                        touche[2] = false;
+                        break;
+
+                    case D:
+                    case RIGHT:
+                        touche[3] = false;
+                        break;
+                    default:
+                }
+                Direction d = Direction.ANY;
+                if (touche[0])
+                    d = d.compose(Direction.UP);
+                if (touche[1])
+                    d = d.compose(Direction.DOWN);
+                if (touche[2])
+                    d = d.compose(Direction.LEFT);
+                if (touche[3])
+                    d = d.compose(Direction.RIGHT);
+                world.setDirectionPlayer(d);
             }
         });
 
@@ -127,26 +158,35 @@ public class GameLayoutController {
                 switch (event.getCode()) {
                     case Z:
                     case UP:
-                        direction.set(direction.get().compose(Direction.UP));
+                        touche[0] = true;
                         break;
 
                     case S:
                     case DOWN:
-                        direction.set(direction.get().compose(Direction.DOWN));
+                        touche[1] = true;
                         break;
 
                     case Q:
                     case LEFT:
-                        direction.set(direction.get().compose(Direction.LEFT));
+                        touche[2] = true;
                         break;
 
                     case D:
                     case RIGHT:
-                        direction.set(direction.get().compose(Direction.RIGHT));
+                        touche[3] = true;
                         break;
                     default:
                 }
-                world.setDirectionPlayer(direction.get());
+                Direction d = Direction.ANY;
+                if (touche[0])
+                    d = d.compose(Direction.UP);
+                if (touche[1])
+                    d = d.compose(Direction.DOWN);
+                if (touche[2])
+                    d = d.compose(Direction.LEFT);
+                if (touche[3])
+                    d = d.compose(Direction.RIGHT);
+                world.setDirectionPlayer(d);
             }
         });
         world.start();
