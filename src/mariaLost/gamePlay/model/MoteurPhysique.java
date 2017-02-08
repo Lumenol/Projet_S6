@@ -14,7 +14,15 @@ import java.util.LinkedList;
  * Created by crede on 28/01/2017.
  */
 public class MoteurPhysique {
+
+    /**
+     * Deplace les objet de mobileItems en prenant en compte les collisions
+     *
+     * @param items       Items du monde
+     * @param mobileItems Items à déplacer
+     */
     public static void move(Collection<? extends Item> items, Collection<? extends MobileItem> mobileItems) {
+
         LinkedList<Item> allItems = new LinkedList<>();
         allItems.addAll(items);
         allItems.addAll(mobileItems);
@@ -39,6 +47,7 @@ public class MoteurPhysique {
         Point2D point2D = mobileItem.getPosition();
         Rectangle2D bounds = mobileItem.getBounds();
 
+        //défini la zone dans laquel mobileItem peux entre en collision avec d'autre objet
         if (vx >= 0 && vy >= 0) { //Vers le bas à droite
             rect = new Rectangle2D(point2D.getX(), point2D.getY(), bounds.getWidth() + vx, vy + bounds.getHeight());
         } else if (vx >= 0 && vy <= 0) { //Vers le haut à droite
@@ -53,6 +62,7 @@ public class MoteurPhysique {
         double hauteurMin = bounds.getHeight();
         double largeurMin = bounds.getWidth();
 
+        //récuppère les Items de la zone et cherche les dimmentions du plus petit
         for (Iterator<Item> iterator = (Iterator<Item>) items.iterator(); iterator.hasNext(); ) {
             Item next = iterator.next();
             Rectangle2D limite1 = next.getBounds();
@@ -64,14 +74,25 @@ public class MoteurPhysique {
             }
         }
 
+        // Si la vitesse est suppérieur au dimmention de l'objet le plus petit on découpe le dléplacement pour ne pas passe a travers l'objet
         if (Math.abs(vx) >= largeurMin || Math.abs(vy) >= hauteurMin) {
+            //effectue la premiere partie du dléplacement puis la deuxieme
             return move(mobileItem, items1, (int) vx / 2, (int) vy / 2) &&
                     move(mobileItem, items1, vx - (int) vx / 2, vy - (int) vy / 2);
         } else {
+            //effectue le deplacement
             return refine(mobileItem, items1, vx, vy);
         }
     }
 
+    /**
+     * Effectue le déplacement a proprement parler
+     * @param mobileItem
+     * @param items
+     * @param vx
+     * @param vy
+     * @return vrai si aucun objet n'as été percute
+     */
     private static boolean refine(MobileItem mobileItem, Collection<? extends Item> items, double vx, double vy) {
         boolean retour = true;
 
@@ -82,10 +103,12 @@ public class MoteurPhysique {
         double yMin = position.getY();
         double xMax = xMin + vx;
         double yMax = yMin + vy;
+
         if (vx != 0) {
             // while (collision!= null) {
 
             mobileItem.setPosition(xMax, yMin);
+            //essaye de se rendre a la position d'arrivée si il y a une collision alors place l'item avant l'objet percute
             if ((collision = collision(mobileItem, items)) != null) {
                 if (vx > 0) {
                     xMax = collision.getMinX() - mobileItem.getBounds().getWidth();
@@ -100,6 +123,7 @@ public class MoteurPhysique {
         if (vy != 0) {
             //collision = Rectangle2D.EMPTY;
             //while (collision != null) {
+            //essaye de se rendre a la position d'arrivée si il y a une collision alors place l'item avant l'objet percute
             if ((collision = collision(mobileItem, items)) != null) {
                 if (vy > 0) {
                     yMax = collision.getMinY() - mobileItem.getBounds().getHeight();
@@ -114,6 +138,12 @@ public class MoteurPhysique {
         return retour;
     }
 
+    /**
+     * Vérifie si un objet entre en collision avec d'autre si c'est le cas retourne la zone occupe par l'objet percute si cet objet est un ActionableItem il est active avec item en parramettre
+     * @param item objet deplace
+     * @param items objet potentiellement percutable
+     * @return zone de l'objet percute ou null sinon
+     */
     private static Rectangle2D collision(Item item, Collection<? extends Item> items) {
         Rectangle2D limite = item.getBounds();
         for (Iterator<Item> iterator = (Iterator<Item>) items.iterator(); iterator.hasNext(); ) {
