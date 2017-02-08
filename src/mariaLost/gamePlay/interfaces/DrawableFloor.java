@@ -20,7 +20,7 @@ public interface DrawableFloor {
     Collection<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square);
 
     /**
-     * Retourne les dimmention de l'etage
+     * Retourne les dimmentions de l'etage
      *
      * @return dimensions
      */

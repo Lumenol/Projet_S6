@@ -39,13 +39,13 @@ public class MoteurPhysique {
         Point2D point2D = mobileItem.getPosition();
         Rectangle2D bounds = mobileItem.getBounds();
 
-        if (vx >= 0 && vy >= 0) {
+        if (vx >= 0 && vy >= 0) { //Vers le bas à droite
             rect = new Rectangle2D(point2D.getX(), point2D.getY(), bounds.getWidth() + vx, vy + bounds.getHeight());
-        } else if (vx >= 0 && vy <= 0) {
+        } else if (vx >= 0 && vy <= 0) { //Vers le haut à droite
             rect = new Rectangle2D(point2D.getX(), point2D.getY() + vy, bounds.getWidth() + vx, -vy + bounds.getHeight());
-        } else if (vx <= 0 && vy <= 0) {
+        } else if (vx <= 0 && vy <= 0) {//Vers le haut à gauche
             rect = new Rectangle2D(point2D.getX() + vx, vy + point2D.getY(), bounds.getWidth() - vx, -vy + bounds.getHeight());
-        } else {
+        } else {//Vers le bas à gauche
             rect = new Rectangle2D(vx + point2D.getX(), point2D.getY(), bounds.getWidth() - vx, vy + bounds.getHeight());
         }
 

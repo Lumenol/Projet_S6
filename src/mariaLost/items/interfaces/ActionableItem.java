@@ -5,6 +5,11 @@ package mariaLost.items.interfaces;
  */
 public interface ActionableItem extends Item {
 
+    /**
+     * Acction déclancher quand o percute l'Item
+     *
+     * @param o
+     */
     void action(Item o);
 
 }

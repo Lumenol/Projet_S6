@@ -18,7 +18,7 @@ public class FloorView {
 
 
     public FloorView() {
-        this.canvas = new Canvas(Parameters.NUMBER_OF_CASE_X * Parameters.CASE_WIDTH, Parameters.NUMBER_OF_CASE_Y * Parameters.CASE_HEIGHT);
+        this.canvas = new Canvas(Parameters.NUMBER_OF_CASE_X * mariaLost.parameters.Parameters.CASE_WIDTH, Parameters.NUMBER_OF_CASE_Y * mariaLost.parameters.Parameters.CASE_HEIGHT);
         //this.canvas.autosize();
     }
 

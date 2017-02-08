@@ -20,13 +20,20 @@ public interface Floor {
     Collection<? extends Item> getItemFromSquare(Rectangle2D square);
 
     /**
-     * Retourne les dimmention de l'etage
+     * Retourne les dimmentions de l'etage
      * @return dimensions
      */
     Dimension2D getDimension();
 
+    /**
+     * @return Zone de départ
+     */
     Rectangle2D getBeginning();
 
+    /**
+     *
+     * @return Zone de d'arrivée
+     */
     Rectangle2D getEnd();
 
 }

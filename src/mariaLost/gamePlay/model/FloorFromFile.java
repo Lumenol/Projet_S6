@@ -24,8 +24,10 @@ public class FloorFromFile extends AbstractFloor {
     private Rectangle2D end = null;
 
     public FloorFromFile(String fileName) throws Exception {
+
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String lineRead = br.readLine();
+
         if (null == lineRead) {
             throw new Exception("Le fichier est vide");
         }
@@ -33,7 +35,9 @@ public class FloorFromFile extends AbstractFloor {
         if (stringTokenizer.countTokens() != 2) {
             throw new Exception("Erreur ligne 1");
         }
+
         int largeur, hauteur;
+
         try {
             largeur = Integer.parseInt(stringTokenizer.nextToken());
             hauteur = Integer.parseInt(stringTokenizer.nextToken());
@@ -69,6 +73,7 @@ public class FloorFromFile extends AbstractFloor {
             }
         }
         br.close();
+
         if (beginning == null) {
             throw new Exception("Il n'y as pas de départ");
         }
