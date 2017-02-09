@@ -2,10 +2,10 @@ package mariaLost.gamePlay.model;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import mariaLost.gamePlay.model.animation.*;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.model.AbstractMobileItem;
 import mariaLost.parameters.Parameters;
-import mariaLost.player.view.*;
 
 /**
  * Created by crede on 06/02/2017.
