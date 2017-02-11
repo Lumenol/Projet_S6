@@ -9,11 +9,11 @@ import javafx.util.Duration;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
 
 import java.util.Collection;
+import java.util.Deque;
 import java.util.LinkedList;
 
 /**
@@ -22,7 +22,6 @@ import java.util.LinkedList;
 public class World implements Model {
 
     private AbstractFloor floor;
-    private Collection<AbstractMobileItem> mobileItem = new LinkedList<>();
     private Collection<AbstractItem> items = new LinkedList<>();
 
     private AbstractMobileItem player;
@@ -38,10 +37,9 @@ public class World implements Model {
                 @Override
                 protected Void call() throws Exception {
                     Dimension2D dimension = floor.getDimension();
-                    Collection<Item> itemFromSquare = (Collection<Item>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
+                    Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                     itemFromSquare.addAll(items);
-                    MoteurPhysique.move(itemFromSquare, mobileItem);
-                    mobileItem.removeIf(abstractMobileItem -> abstractMobileItem.isFinished());
+                    MoteurPhysique.move(itemFromSquare);
                     items.removeIf(abstractItem -> abstractItem.isFinished());
 
                     if (playerAtTheEnd()) {
@@ -58,7 +56,7 @@ public class World implements Model {
 
     public World(AbstractMobileItem player) {
         this.player = player;
-        mobileItem.add(player);
+        items.add(player);
 
         moteur.setPeriod(Duration.millis(16));
     }
@@ -70,14 +68,14 @@ public class World implements Model {
         player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
 
         items.clear();
-        mobileItem.clear();
-        mobileItem.add(player);
+        items.clear();
+        items.add(player);
     }
 
     @Override
-    public Collection<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
-        Collection<Collection<? extends Drawable>> floorDrawableFromSquare = floor.getDrawableFromSquare(square);
-        floorDrawableFromSquare.add(mobileItem);
+    public Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
+        Deque<Collection<? extends Drawable>> floorDrawableFromSquare = floor.getDrawableFromSquare(square);
+        floorDrawableFromSquare.addLast(items);
         return floorDrawableFromSquare;
     }
 

@@ -6,7 +6,7 @@ package mariaLost.parameters;
 public class Parameters {
     public static final int CASE_WIDTH = 64;
     public static final int CASE_HEIGHT = 64;
-    public static final int MOVABLE_ITEM_WIDTH = 50;
+    public static final int MOVABLE_ITEM_WIDTH = 40;
     public static final int MOVABLE_ITEM_HEIGHT = 50;
 
 }

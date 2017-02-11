@@ -3,13 +3,13 @@ package mariaLost.gamePlay.model;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.parameters.Parameters;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Collection;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -106,14 +106,14 @@ public class FloorFromFile extends AbstractFloor {
     }
 
     @Override
-    public Collection<? extends Item> getItemFromSquare(Rectangle2D square) {
+    public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
         int largeurMin = Math.max(0, (int) square.getMinX()) / Parameters.CASE_WIDTH;
         double largeurMax = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters.CASE_WIDTH;
 
         int hauteurMin = Math.max(0, (int) square.getMinY()) / Parameters.CASE_HEIGHT;
         double hauteurMax = Math.min(dimension.getHeight(), square.getMaxY()) / Parameters.CASE_WIDTH;
 
-        LinkedList<Item> linkedList = new LinkedList<>();
+        LinkedList<AbstractItem> linkedList = new LinkedList<>();
 
         for (int i = hauteurMin; i < hauteurMax; i++) {
             for (int j = largeurMin; j < largeurMax; j++) {
@@ -140,7 +140,7 @@ public class FloorFromFile extends AbstractFloor {
     }
 
     @Override
-    public Collection<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
+    public Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
         LinkedList<Collection<? extends Drawable>> linkedList = new LinkedList<>();
         linkedList.add((Collection<? extends Drawable>) getItemFromSquare(square));
         return linkedList;

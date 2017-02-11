@@ -2,9 +2,9 @@ package mariaLost.gamePlay.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import mariaLost.items.interfaces.ActionableItem;
 import mariaLost.items.interfaces.Item;
 import mariaLost.items.interfaces.MobileItem;
+import mariaLost.items.model.AbstractItem;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,24 +16,19 @@ import java.util.LinkedList;
 public class MoteurPhysique {
 
     /**
-     * Deplace les objet de mobileItems en prenant en compte les collisions
+     * Deplace les objet de items en prenant en compte les collisions
      *
-     * @param items       Items du monde
-     * @param mobileItems Items à déplacer
+     * @param items Items du monde
      */
-    public static void move(Collection<? extends Item> items, Collection<? extends MobileItem> mobileItems) {
+    public static void move(Collection<? extends AbstractItem> items) {
 
-        LinkedList<Item> allItems = new LinkedList<>();
-        allItems.addAll(items);
-        allItems.addAll(mobileItems);
-
-        for (Iterator<MobileItem> iterator = (Iterator<MobileItem>) mobileItems.iterator(); iterator.hasNext(); ) {
-            MobileItem next = iterator.next();
-            move(next, allItems);
+        for (Iterator<AbstractItem> iterator = (Iterator<AbstractItem>) items.iterator(); iterator.hasNext(); ) {
+            AbstractItem next = iterator.next();
+            move(next, items);
         }
     }
 
-    private static void move(MobileItem mobileItem, Collection<? extends Item> items) {
+    private static void move(AbstractItem mobileItem, Collection<? extends AbstractItem> items) {
         Point2D vitesse = mobileItem.getSpeed();
         double vx = vitesse.getX();
         double vy = vitesse.getY();
@@ -42,7 +37,7 @@ public class MoteurPhysique {
         }
     }
 
-    private static boolean move(MobileItem mobileItem, Collection<? extends Item> items, double vx, double vy) {
+    private static boolean move(AbstractItem mobileItem, Collection<? extends AbstractItem> items, double vx, double vy) {
         Rectangle2D rect = null;
         Point2D point2D = mobileItem.getPosition();
         Rectangle2D bounds = mobileItem.getBounds();
@@ -58,13 +53,13 @@ public class MoteurPhysique {
             rect = new Rectangle2D(vx + point2D.getX(), point2D.getY(), bounds.getWidth() - vx, vy + bounds.getHeight());
         }
 
-        LinkedList<Item> items1 = new LinkedList<>();
+        LinkedList<AbstractItem> items1 = new LinkedList<>();
         double hauteurMin = bounds.getHeight();
         double largeurMin = bounds.getWidth();
 
         //récuppère les Items de la zone et cherche les dimmentions du plus petit
-        for (Iterator<Item> iterator = (Iterator<Item>) items.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
+        for (Iterator<AbstractItem> iterator = (Iterator<AbstractItem>) items.iterator(); iterator.hasNext(); ) {
+            AbstractItem next = iterator.next();
             Rectangle2D limite1 = next.getBounds();
 
             if (mobileItem != next && rect.intersects(limite1)) {
@@ -87,13 +82,14 @@ public class MoteurPhysique {
 
     /**
      * Effectue le déplacement a proprement parler
+     *
      * @param mobileItem
      * @param items
      * @param vx
      * @param vy
      * @return vrai si aucun objet n'as été percute
      */
-    private static boolean refine(MobileItem mobileItem, Collection<? extends Item> items, double vx, double vy) {
+    private static boolean refine(MobileItem mobileItem, Collection<? extends AbstractItem> items, double vx, double vy) {
         boolean retour = true;
 
         Rectangle2D collision = Rectangle2D.EMPTY;
@@ -140,18 +136,17 @@ public class MoteurPhysique {
 
     /**
      * Vérifie si un objet entre en collision avec d'autre si c'est le cas retourne la zone occupe par l'objet percute si cet objet est un ActionableItem il est active avec item en parramettre
-     * @param item objet deplace
+     *
+     * @param item  objet deplace
      * @param items objet potentiellement percutable
      * @return zone de l'objet percute ou null sinon
      */
-    private static Rectangle2D collision(Item item, Collection<? extends Item> items) {
+    private static Rectangle2D collision(Item item, Collection<? extends AbstractItem> items) {
         Rectangle2D limite = item.getBounds();
-        for (Iterator<Item> iterator = (Iterator<Item>) items.iterator(); iterator.hasNext(); ) {
-            Item next = iterator.next();
+        for (Iterator<AbstractItem> iterator = (Iterator<AbstractItem>) items.iterator(); iterator.hasNext(); ) {
+            AbstractItem next = iterator.next();
             if (limite.intersects(next.getBounds())) {
-                if (next instanceof ActionableItem) {
-                    ((ActionableItem) next).action(item);
-                }
+                next.action(item);
                 if (!next.isPassable())
                     return next.getBounds();
             }

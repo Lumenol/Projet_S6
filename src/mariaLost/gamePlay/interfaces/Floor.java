@@ -2,7 +2,7 @@ package mariaLost.gamePlay.interfaces;
 
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
-import mariaLost.items.interfaces.Item;
+import mariaLost.items.model.AbstractItem;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ public interface Floor {
      * @param square zone
      * @return Item de la zone
      */
-    Collection<? extends Item> getItemFromSquare(Rectangle2D square);
+    Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square);
 
     /**
      * Retourne les dimmentions de l'etage

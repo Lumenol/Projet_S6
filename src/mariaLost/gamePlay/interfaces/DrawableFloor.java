@@ -5,6 +5,7 @@ import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Drawable;
 
 import java.util.Collection;
+import java.util.Deque;
 
 /**
  * Created by crede on 06/02/2017.
@@ -17,7 +18,7 @@ public interface DrawableFloor {
      * @param square zone
      * @return les plus profond en premier
      */
-    Collection<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square);
+    Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square);
 
     /**
      * Retourne les dimmentions de l'etage
