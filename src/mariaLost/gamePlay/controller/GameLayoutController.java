@@ -32,6 +32,8 @@ public class GameLayoutController {
     private BorderPane page;
     private Player player;
 
+    private PlayerBarController controller;
+
 
     public GameLayoutController(User user) {
         this.user = user;
@@ -60,7 +62,7 @@ public class GameLayoutController {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_PLAYER_BAR));
             AnchorPane barPlayerOverview = loader.load();
-            PlayerBarController controller = loader.getController();
+            controller = loader.getController();
             controller.setMainApp(this);
             controller.setUser(user);
             controller.setBar(player);
@@ -77,6 +79,9 @@ public class GameLayoutController {
         AnimationTimer at = new AnimationTimer() {
             @Override
             public void handle(long now) {
+
+                controller.setBar(player);
+
                 Canvas canvas = mapview.getCanvas();
                 canvas.requestFocus();
                 Point2D centerOfPlayer = world.centerOfPlayer();

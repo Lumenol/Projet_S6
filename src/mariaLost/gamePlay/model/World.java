@@ -11,6 +11,7 @@ import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
+import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.Collection;
 import java.util.Deque;
@@ -28,7 +29,7 @@ public class World implements Model {
 
     private int world = 0;
 
-    private String mapPath = "resources/Floor/";
+    private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
     private ScheduledService<Void> moteur = new ScheduledService<Void>() {
         @Override
