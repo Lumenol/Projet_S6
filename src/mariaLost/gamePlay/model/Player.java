@@ -48,6 +48,13 @@ public class Player extends AbstractMobileItem {
 
         }
     }
+    
+    @Override //change la vitesse pour que le joueur se dirige vers sa destination
+    public void setDestination(Point2D destination){
+    	super.setDestination(destination);
+    	setSpeed(destination.subtract(this.position));
+    }
+    
 
     private void changeAnimation(Animation a) {
         if (a != animation) {

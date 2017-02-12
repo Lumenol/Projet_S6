@@ -9,6 +9,7 @@ import mariaLost.items.interfaces.MobileItem;
 public abstract class AbstractMobileItem extends AbstractItem implements MobileItem {
     protected double speedLimite;
     private Point2D speed = new Point2D(0, 0);
+    private Point2D destination=new Point2D(0,0);
 
     public AbstractMobileItem(double x, double y, double width, double height) {
         this(x, y, width, height, 1.0);
@@ -48,4 +49,19 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
     public void setPosition(double x, double y) {
         setPosition(new Point2D(x, y));
     }
+    
+    @Override
+    public void setDestination(Point2D destination){
+    	this.destination=destination;
+    }
+    
+    @Override
+    public Point2D getDestination(){
+    	return destination;
+    }
+    @Override
+    public boolean isOnDestination(){
+    	return this.getBounds().contains(destination);
+    }
+    
 }

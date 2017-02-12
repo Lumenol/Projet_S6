@@ -9,6 +9,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import mariaLost.gamePlay.model.World;
@@ -184,6 +185,19 @@ public class GameLayoutController {
                 world.setDirectionPlayer(d);
             }
         });
+        
+        // Lorsque que l'on clique quelque part on défini une destination pour le personnage
+        mapview.getCanvas().setOnMouseClicked(new EventHandler<MouseEvent>(){
+        	public void handle(MouseEvent event){
+        		//TODO verification destination valide
+        		Point2D subtract = world.centerOfPlayer().subtract(mapview.getCanvas().getWidth() / 2, mapview.getCanvas().getHeight() / 2);
+        		Point2D destination=new Point2D(event.getX(),event.getY());
+        		world.setPlayerDestination(destination.add(subtract));		
+        	}
+        });
+        
+        
+        
         world.start();
         at.start();
         System.out.println("TEST affichage vue: \n");

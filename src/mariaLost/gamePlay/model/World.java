@@ -124,4 +124,9 @@ public class World implements Model {
     public boolean playerAtTheEnd() {
         return floor.getEnd().contains(centerOfPlayer()) || player.getBounds().contains(floor.getEnd());
     }
+    
+    public void setPlayerDestination(Point2D coordinate){
+    	player.setDestination(coordinate);
+    }
+    
 }
