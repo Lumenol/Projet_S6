@@ -4,7 +4,8 @@ import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractItem;
-import mariaLost.parameters.Parameters;
+import mariaLost.items.model.Money;
+import mariaLost.parameters.Parameters_MariaLost;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,6 +23,7 @@ public class FloorFromFile extends AbstractFloor {
     private Dimension2D dimension;
     private Rectangle2D beginning = null;
     private Rectangle2D end = null;
+    private Collection<AbstractItem> gettingItemList = new LinkedList<>();
 
     public FloorFromFile(String fileName) throws Exception {
 
@@ -44,9 +46,8 @@ public class FloorFromFile extends AbstractFloor {
         } catch (Exception e) {
             throw new Exception("Erreur ligne 1");
         }
-
         items = new AbstractItem[hauteur][largeur];
-        dimension = new Dimension2D(largeur * Parameters.CASE_WIDTH, hauteur * Parameters.CASE_HEIGHT);
+        dimension = new Dimension2D(largeur * Parameters_MariaLost.CASE_WIDTH, hauteur * Parameters_MariaLost.CASE_HEIGHT);
 
         for (int i = 0; i < hauteur; i++) {
             lineRead = br.readLine();
@@ -82,10 +83,13 @@ public class FloorFromFile extends AbstractFloor {
         }
     }
 
+
     private AbstractItem intToItem(int codeItem, int x, int y) throws IllegalArgumentException {
-        x = x * Parameters.CASE_WIDTH;
-        y = y * Parameters.CASE_HEIGHT;
+        x = x * Parameters_MariaLost.CASE_WIDTH;
+        y = y * Parameters_MariaLost.CASE_HEIGHT;
         switch (codeItem) {
+            case 5:
+                gettingItemList.add(new Money(x, y));
             case 0:
                 return new Ground(x, y);
             case 1:
@@ -107,11 +111,14 @@ public class FloorFromFile extends AbstractFloor {
 
     @Override
     public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
-        int largeurMin = Math.max(0, (int) square.getMinX()) / Parameters.CASE_WIDTH;
-        double largeurMax = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters.CASE_WIDTH;
 
-        int hauteurMin = Math.max(0, (int) square.getMinY()) / Parameters.CASE_HEIGHT;
-        double hauteurMax = Math.min(dimension.getHeight(), square.getMaxY()) / Parameters.CASE_WIDTH;
+        gettingItemList.removeIf(abstractItem -> abstractItem.isFinished());
+
+        int largeurMin = Math.max(0, (int) square.getMinX()) / Parameters_MariaLost.CASE_WIDTH;
+        double largeurMax = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters_MariaLost.CASE_WIDTH;
+
+        int hauteurMin = Math.max(0, (int) square.getMinY()) / Parameters_MariaLost.CASE_HEIGHT;
+        double hauteurMax = Math.min(dimension.getHeight(), square.getMaxY()) / Parameters_MariaLost.CASE_WIDTH;
 
         LinkedList<AbstractItem> linkedList = new LinkedList<>();
 
@@ -120,6 +127,12 @@ public class FloorFromFile extends AbstractFloor {
                 linkedList.add(items[i][j]);
             }
         }
+
+        gettingItemList.forEach(abstractItem -> {
+            if (abstractItem.getBounds().intersects(square)) {
+                linkedList.addLast(abstractItem);
+            }
+        });
 
         return linkedList;
     }
@@ -142,7 +155,7 @@ public class FloorFromFile extends AbstractFloor {
     @Override
     public Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
         LinkedList<Collection<? extends Drawable>> linkedList = new LinkedList<>();
-        linkedList.add((Collection<? extends Drawable>) getItemFromSquare(square));
+        linkedList.addLast(getItemFromSquare(square));
         return linkedList;
     }
 }

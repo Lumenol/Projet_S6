@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import mariaLost.gamePlay.controller.GameLayoutController;
-import mariaLost.player.model.Player;
+import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 06/02/2017.
@@ -17,7 +17,7 @@ public class LittlePlayerBarController {
     protected ImageView moneyImageView;
     AnchorPane littlePlayerOverview;
     private GameLayoutController mainApp;
-    private Player player;
+    private User player;
     @FXML
     private Label moneyLabel;
     @FXML
@@ -38,7 +38,7 @@ public class LittlePlayerBarController {
 
     }
 
-    public void setPlayer(Player player){
+    public void setPlayer(User player) {
         this.player = player;
     }
 

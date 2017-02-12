@@ -5,7 +5,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.mainApp.model.Parameters;
+import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -18,8 +18,9 @@ public class FloorView {
 
 
     public FloorView() {
-        this.canvas = new Canvas(Parameters.NUMBER_OF_CASE_X * mariaLost.parameters.Parameters.CASE_WIDTH, Parameters.NUMBER_OF_CASE_Y * mariaLost.parameters.Parameters.CASE_HEIGHT);
-        //this.canvas.autosize();
+        this.canvas = new Canvas(
+                Parameters_MariaLost.NUMBER_OF_CASE_X * Parameters_MariaLost.CASE_WIDTH
+                , Parameters_MariaLost.NUMBER_OF_CASE_Y * Parameters_MariaLost.CASE_HEIGHT);
     }
 
     public Canvas getCanvas() {

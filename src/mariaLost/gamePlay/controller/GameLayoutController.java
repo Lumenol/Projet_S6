@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -15,39 +14,40 @@ import javafx.scene.paint.Color;
 import mariaLost.gamePlay.model.World;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.view.FloorView;
-import mariaLost.gamePlay.view.LittlePlayerBarController;
+import mariaLost.gamePlay.view.PlayerBarController;
+import mariaLost.items.model.Player;
 import mariaLost.mainApp.controller.MainApp;
-import mariaLost.mainApp.model.Parameters;
-import mariaLost.player.model.Player;
+import mariaLost.parameters.Parameters_MariaLost;
+import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 01/02/2017.
  */
 public class GameLayoutController {
 
-    private Player player;
+    private User user;
     private World world;
     private FloorView mapview;
     private MainApp mainApp;
     private BorderPane page;
-    private Group layout;
-    private String littlePlayerBarPath = "../../gamePlay/view/littlePlayerBar.fxml";
+    private Player player;
 
 
-    public GameLayoutController(Player player) {
-        this.player = player;
-        this.world = new World(new mariaLost.gamePlay.model.Player());
+    public GameLayoutController(User user) {
+        this.user = user;
+        this.player = new Player();
+        this.world = new World(this.player);
 
         //Création du canevas
         this.mapview = new FloorView();
         this.page = new BorderPane();
-        page.setMinSize(Parameters.SQUARE_WIDTH, Parameters.SQUARE_HEIGHT);
+        page.setMinSize(Parameters_MariaLost.CASE_WIDTH, Parameters_MariaLost.CASE_HEIGHT);
         playerBar();
     }
 
 
-    public void setPlayer(Player p) {
-        this.player = p;
+    public void setUser(User p) {
+        this.user = p;
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -57,21 +57,14 @@ public class GameLayoutController {
     public void playerBar() {
         try {
 
-            System.out.println("Anchor pane");
-
-            FXMLLoader loader2 = new FXMLLoader();
-            loader2.setLocation(getClass().getResource(littlePlayerBarPath));
-            AnchorPane littlePlayerOverview = loader2.load();
-            LittlePlayerBarController controller2 = loader2.getController();
-            controller2.setMainApp(this);
-            controller2.setPlayer(player);
-            controller2.setBar();
-            page.setTop(littlePlayerOverview);
-
-
-            //           littlePlayerOverview.setMinSize(Parameters.SQUARE_WIDTH, 50);
-            //         littlePlayerOverview.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-            // page.setTop(littlePlayerOverview);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_PLAYER_BAR));
+            AnchorPane barPlayerOverview = loader.load();
+            PlayerBarController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setUser(user);
+            controller.setBar(player);
+            page.setTop(barPlayerOverview);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -185,19 +178,18 @@ public class GameLayoutController {
                 world.setDirectionPlayer(d);
             }
         });
-        
+
         // Lorsque que l'on clique quelque part on défini une destination pour le personnage
-        mapview.getCanvas().setOnMouseClicked(new EventHandler<MouseEvent>(){
-        	public void handle(MouseEvent event){
-        		//TODO verification destination valide
-        		Point2D subtract = world.centerOfPlayer().subtract(mapview.getCanvas().getWidth() / 2, mapview.getCanvas().getHeight() / 2);
-        		Point2D destination=new Point2D(event.getX(),event.getY());
-        		world.setPlayerDestination(destination.add(subtract));		
-        	}
+        mapview.getCanvas().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                //TODO verification destination valide
+                Point2D subtract = world.centerOfPlayer().subtract(mapview.getCanvas().getWidth() / 2, mapview.getCanvas().getHeight() / 2);
+                Point2D destination = new Point2D(event.getX(), event.getY());
+                world.setPlayerDestination(destination.add(subtract));
+            }
         });
-        
-        
-        
+
+
         world.start();
         at.start();
         System.out.println("TEST affichage vue: \n");

@@ -1,17 +1,20 @@
-package mariaLost.gamePlay.model;
+package mariaLost.items.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.model.animation.*;
 import mariaLost.gamePlay.tools.Direction;
-import mariaLost.items.model.AbstractMobileItem;
-import mariaLost.parameters.Parameters;
+import mariaLost.parameters.Parameters_MariaLost;
 
 /**
  * Created by crede on 06/02/2017.
  */
 public class Player extends AbstractMobileItem {
 
+    private IntegerProperty money = new SimpleIntegerProperty(0);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
 
@@ -20,9 +23,26 @@ public class Player extends AbstractMobileItem {
     }
 
     public Player(double x, double y) {
-        super(x, y, Parameters.MOVABLE_ITEM_WIDTH, Parameters.MOVABLE_ITEM_HEIGHT, 10);
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, 10);
     }
 
+    public void addMoney(int price) {
+        System.out.println("add money " + money);
+
+        setMoney(getMoney() + price);
+    }
+
+    public int getMoney() {
+        return money.get();
+    }
+
+    public void setMoney(int money) {
+        this.money.set(money);
+    }
+
+    public ReadOnlyIntegerProperty moneyProperty() {
+        return money;
+    }
 
     @Override
     public void setSpeed(Point2D speed) {

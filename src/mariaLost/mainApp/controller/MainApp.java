@@ -12,26 +12,22 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
-import mariaLost.player.controller.PlayerDetailsController;
-import mariaLost.player.controller.PlayerOverviewController;
-import mariaLost.player.model.Player;
-import mariaLost.player.model.PlayerReader;
+import mariaLost.parameters.Parameters_MariaLost;
+import mariaLost.user.controller.UserDetailsController;
+import mariaLost.user.controller.UserOverviewController;
+import mariaLost.user.model.User;
+import mariaLost.user.model.UserReader;
 
 import java.io.IOException;
 import java.util.List;
+
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane root;
-    private PlayerReader playerReader;
-    private ObservableList<Player> playerList = FXCollections.observableArrayList();
-
-    //Ressources FXML
-    private String rootFilePath = "../../mainApp/view/root.fxml";
-    private String playFilePath = "../../gamePlay/view/playLayout.fxml";
-    private String playerOverviewFilePath = "../../player/view/playerOverview.fxml";
-    private String playerDetailsFilePath = "../../player/view/playerDetails.fxml";
+    private UserReader userReader;
+    private ObservableList<User> userList = FXCollections.observableArrayList();
 
 
     public MainApp() {
@@ -48,27 +44,24 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        playerReader = new PlayerReader(this);
+        this.userReader = new UserReader(this);
 
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Maria Lost - " + playerReader.getPlayerFilePath().getName());
-        this.primaryStage.getIcons().add(new Image("file:resources/Images/logo.png"));
+        this.primaryStage.setTitle("Maria Lost - " + userReader.getUserFile().getName());
+        this.primaryStage.getIcons().add(new Image(Parameters_MariaLost.IMAGE_LOGO));
 
-        //Player pour test
-     //   Player p = new Player("Elsa", 0, 0);
+
         showRoot();
-       // showPlayLayout(p);
-      //  showRoot();
-        showPlayerData();
+        showUserData();
     }
 
     public void showRoot(){
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(rootFilePath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Parameters_MariaLost.FILEPATH_ROOT));
 
             root = loader.load();
-            root.setMinSize(mariaLost.mainApp.model.Parameters.PAGE_WIDTH, mariaLost.mainApp.model.Parameters.PAGE_HEIGHT);
+            root.setMinSize(Parameters_MariaLost.PAGE_WIDTH, Parameters_MariaLost.PAGE_HEIGHT);
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
 
@@ -81,18 +74,19 @@ public class MainApp extends Application {
         }
     }
 
-    public void showPlayerData() {
+    public void showUserData() {
         try {
             //Load personOverView
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(playerOverviewFilePath));
-            AnchorPane playerOverview = loader.load();;
+            loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_USER_OVERVIEW));
+            AnchorPane userOverview = loader.load();
+            ;
 
             //Set personOverView dans le centre de la fenetre
-            root.setCenter(playerOverview);
+            root.setCenter(userOverview);
 
             //Give the controller access to the mainApp
-            PlayerOverviewController controller = loader.getController();
+            UserOverviewController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {
@@ -101,25 +95,25 @@ public class MainApp extends Application {
 
     }
 
-    public void showNewPlayer(Player player) {
+    public void showNewUser(User user) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(playerDetailsFilePath));
-            AnchorPane newPlayer = loader.load();
-            root.setCenter(newPlayer);
-            PlayerDetailsController controller = loader.getController();
+            loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_USER_DETAILS));
+            AnchorPane newUer = loader.load();
+            root.setCenter(newUer);
+            UserDetailsController controller = loader.getController();
             controller.setMainApp(this);
-            controller.setPlayer(player);
+            controller.setUser(user);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    public void showPlayLayout(Player player) {
+    public void showPlayLayout(User user) {
         try {
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(playFilePath));
+            loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_PLAY));
             ButtonBar menuBar = loader.load();
             root.setTop(menuBar);
             menuBar.autosize();
@@ -129,7 +123,7 @@ public class MainApp extends Application {
 
 
             //Set the game layout
-            GameLayoutController controllerGame = new GameLayoutController(player);
+            GameLayoutController controllerGame = new GameLayoutController(user);
             controllerGame.setMainApp(this);
             controllerGame.startGame();
             root.setCenter(controllerGame.getPage());
@@ -139,39 +133,39 @@ public class MainApp extends Application {
         }
     }
 
-    public PlayerReader getPlayerReader() {
-        return playerReader;
+    public UserReader getUserReader() {
+        return userReader;
     }
 
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    public ObservableList<Player> getPlayerList() {
-        return playerList;
+    public ObservableList<User> getUserList() {
+        return userList;
     }
 
-    public void setPlayerList(List<Player> list){
-        this.playerList.clear();
-        this.playerList.addAll(list);
+    public void setUserList(List<User> list) {
+        this.userList.clear();
+        this.userList.addAll(list);
     }
 
     /**
-     * Enregistre les changements sur la liste de player
+     * Enregistre les changements sur la liste de user
      * Add
-     * @param player
+     * @param user
      */
-    public void addPlayerList(Player player) {
-        playerList.add(player);
-        playerReader.savePlayerToFile();
+    public void addUserList(User user) {
+        userList.add(user);
+        userReader.saveUserToFile();
     }
 
     /**
      * Supprime un joueur de la liste et met à jour le fichier de sauvegarde
      */
-    public void deletePlayerFromList(Player player){
-        playerList.remove(player);
-        playerReader.savePlayerToFile();
+    public void deleteUserFromList(User user) {
+        userList.remove(user);
+        userReader.saveUserToFile();
 
     }
 }

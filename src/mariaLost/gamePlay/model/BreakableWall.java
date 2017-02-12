@@ -5,7 +5,8 @@ import javafx.scene.image.Image;
 import mariaLost.items.interfaces.ActionableItem;
 import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.AbstractItem;
-import mariaLost.parameters.Parameters;
+import mariaLost.items.model.Player;
+import mariaLost.parameters.Parameters_MariaLost;
 
 /**
  * Created by crede on 06/02/2017.
@@ -15,7 +16,7 @@ public class BreakableWall extends AbstractItem implements ActionableItem {
     private AbstractItem me = null;
 
     public BreakableWall(double x, double y) {
-        super(x, y, Parameters.CASE_WIDTH, Parameters.CASE_HEIGHT);
+        super(x, y, Parameters_MariaLost.CASE_WIDTH, Parameters_MariaLost.CASE_HEIGHT);
         me = new Wall(x, y);
     }
 
