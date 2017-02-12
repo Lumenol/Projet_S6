@@ -32,7 +32,6 @@ public class Player extends AbstractMobileItem {
         } else {
             //calcul de l'angle de deplacement
             double angle = ((speed.getY() >= 0 ? 1 : -1) * speed.angle(Direction.RIGHT.getDirection()) + 360) % 360;
-            System.out.println(angle);
             if (45 <= angle && angle <= 135) {//bas
                 changeAnimation(animations[0]);
             } else if (135 < angle && angle < 225) {//gauche

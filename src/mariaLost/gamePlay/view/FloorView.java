@@ -27,6 +27,7 @@ public class FloorView {
     }
 
     public void draw(Collection<Collection<? extends Drawable>> itemListView, Point2D subtract) {
+        subtract = new Point2D((int) subtract.getX(), (int) subtract.getY());
         GraphicsContext context = this.canvas.getGraphicsContext2D();
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (Iterator<Collection<? extends Drawable>> iterator = itemListView.iterator(); iterator.hasNext(); ) {
