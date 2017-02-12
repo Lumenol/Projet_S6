@@ -51,17 +51,18 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
     }
     
     @Override
-    public void setDestination(Point2D destination){
-    	this.destination=destination;
+    public Point2D getDestination() {
+        return destination;
     }
     
     @Override
-    public Point2D getDestination(){
-    	return destination;
+    public void setDestination(Point2D destination) {
+        this.destination = destination;
     }
+
     @Override
     public boolean isOnDestination(){
-    	return this.getBounds().contains(destination);
+        return getDestination() != null && this.getBounds().contains(destination);
     }
     
 }

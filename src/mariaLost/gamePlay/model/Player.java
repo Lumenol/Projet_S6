@@ -26,35 +26,36 @@ public class Player extends AbstractMobileItem {
 
     @Override
     public void setSpeed(Point2D speed) {
-        Point2D oldSpeed = getSpeed();
         super.setSpeed(speed);
         speed = getSpeed();
-        if (!oldSpeed.equals(speed)) {
-            if (speed.equals(Point2D.ZERO)) {
-                animation.stop();
-            } else {
-                //calcul de l'angle de deplacement
-                double angle = ((speed.getY() >= 0 ? 1 : -1) * speed.angle(Direction.RIGHT.getDirection()) + 360) % 360;
-                if (45 <= angle && angle <= 135) {//bas
-                    changeAnimation(animations[0]);
-                } else if (angle < 135 && angle < 225) {//droite
-                    changeAnimation(animations[1]);
-                } else if (225 <= angle && angle <= 315) {//haut
-                    changeAnimation(animations[2]);
-                } else {//gauche
-                    changeAnimation(animations[3]);
-                }
+        if (speed.equals(Point2D.ZERO)) {
+            animation.stop();
+        } else {
+            //calcul de l'angle de deplacement
+            double angle = ((speed.getY() >= 0 ? 1 : -1) * speed.angle(Direction.RIGHT.getDirection()) + 360) % 360;
+            if (45 <= angle && angle <= 135) {//bas
+                changeAnimation(animations[0]);
+            } else if (angle < 135 && angle < 225) {//droite
+                changeAnimation(animations[1]);
+            } else if (225 <= angle && angle <= 315) {//haut
+                changeAnimation(animations[2]);
+            } else {//gauche
+                changeAnimation(animations[3]);
             }
-
         }
+
+
     }
-    
+
     @Override //change la vitesse pour que le joueur se dirige vers sa destination
-    public void setDestination(Point2D destination){
-    	super.setDestination(destination);
-    	setSpeed(destination.subtract(this.position));
+    public void setDestination(Point2D destination) {
+        super.setDestination(destination);
+        if (destination != null)
+            setSpeed(destination.subtract(this.position));
+        else
+            setSpeed(Point2D.ZERO);
     }
-    
+
 
     private void changeAnimation(Animation a) {
         if (a != animation) {

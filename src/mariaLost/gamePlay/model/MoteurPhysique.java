@@ -33,12 +33,11 @@ public class MoteurPhysique {
         double vx = vitesse.getX();
         double vy = vitesse.getY();
         if (vx != 0 || vy != 0) {
-        	if(!mobileItem.isOnDestination()){
+            if (!mobileItem.isOnDestination()) {
                 move(mobileItem, items, vx, vy);
-        	}else{
-        		mobileItem.setDestination(new Point2D(0,0));
-        		mobileItem.setSpeed(0,0);
-        	}
+            } else {
+                mobileItem.setDestination(null);
+            }
         }
     }
 
