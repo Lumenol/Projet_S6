@@ -36,6 +36,7 @@ public class MoteurPhysique {
         	if(!mobileItem.isOnDestination()){
                 move(mobileItem, items, vx, vy);
         	}else{
+        		mobileItem.setDestination(new Point2D(0,0));
         		mobileItem.setSpeed(0,0);
         	}
         }
