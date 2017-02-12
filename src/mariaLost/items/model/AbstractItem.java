@@ -26,6 +26,21 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     }
 
     @Override
+    public Point2D getDestination() {
+        return null;
+    }
+
+    @Override
+    public void setDestination(Point2D destination) {
+
+    }
+
+    @Override
+    public boolean isOnDestination() {
+        return false;
+    }
+
+    @Override
     public Point2D getSpeed() {
         return Point2D.ZERO;
     }
