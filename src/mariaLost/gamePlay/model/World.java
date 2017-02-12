@@ -88,6 +88,7 @@ public class World implements Model {
 
     @Override
     public void setDirectionPlayer(Direction direction) {
+        player.setDestination(null);
         player.setSpeed(direction.getDirection());
     }
 

@@ -27,20 +27,20 @@ public class Player extends AbstractMobileItem {
     @Override
     public void setSpeed(Point2D speed) {
         super.setSpeed(speed);
-        speed = getSpeed();
         if (speed.equals(Point2D.ZERO)) {
             animation.stop();
         } else {
             //calcul de l'angle de deplacement
             double angle = ((speed.getY() >= 0 ? 1 : -1) * speed.angle(Direction.RIGHT.getDirection()) + 360) % 360;
+            System.out.println(angle);
             if (45 <= angle && angle <= 135) {//bas
                 changeAnimation(animations[0]);
-            } else if (angle < 135 && angle < 225) {//droite
-                changeAnimation(animations[1]);
+            } else if (135 < angle && angle < 225) {//gauche
+                changeAnimation(animations[3]);
             } else if (225 <= angle && angle <= 315) {//haut
                 changeAnimation(animations[2]);
-            } else {//gauche
-                changeAnimation(animations[3]);
+            } else {//droite
+                changeAnimation(animations[1]);
             }
         }
 

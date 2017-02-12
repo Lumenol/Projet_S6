@@ -10,7 +10,7 @@ import mariaLost.items.interfaces.MobileItem;
 public abstract class AbstractMobileItem extends AbstractItem implements MobileItem {
     protected double speedLimite;
     private Point2D speed = new Point2D(0, 0);
-    private Point2D destination = new Point2D(0, 0);
+    private Point2D destination = null;
 
     public AbstractMobileItem(double x, double y, double width, double height) {
         this(x, y, width, height, 1.0);
@@ -33,6 +33,7 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
 
     @Override
     public Point2D getSpeed() {
+        setDestination(getDestination());
         return speed;
     }
 
@@ -58,6 +59,9 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
 
     @Override
     public void setDestination(Point2D destination) {
+        if (this.destination != null && destination == null) {
+            setSpeed(Point2D.ZERO);
+        }
         this.destination = destination;
         if (destination != null) {
             Rectangle2D bounds = getBounds();
@@ -65,8 +69,7 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
             double centerY = bounds.getHeight() / 2;
             Point2D center = new Point2D(bounds.getMinX() + centerX, bounds.getMinY() + centerY);
             setSpeed(destination.subtract(center));
-        } else
-            setSpeed(Point2D.ZERO);
+        }
     }
 
     @Override
