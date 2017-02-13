@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111"
+            fx:controller="mariaLost.gamePlay.view.PlayerBarController">
+    <children>
+        <ImageView fx:id="heartImageView" fitHeight="31.0" fitWidth="53.0" layoutX="14.0" layoutY="10.0"
+                   pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="moneyImageView" fitHeight="31.0" fitWidth="53.0" layoutX="87.0" layoutY="10.0"
+                   pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="moneyLabel" layoutX="149.0" layoutY="17.0" prefHeight="17.0" prefWidth="53.0" text="Money"/>
+        <Label fx:id="nameUserLabel" layoutX="257.0" layoutY="17.0" text="Player's name"/>
+        <Label layoutX="403.0" layoutY="17.0" text="Score"/>
+        <Label layoutX="511.0" layoutY="17.0" text="Level"/>
+        <Label fx:id="scoreLabel" layoutX="463.0" layoutY="17.0" text="0"/>
+        <Label fx:id="levelLabel" layoutX="566.0" layoutY="17.0" text="0"/>
+    </children>
+</AnchorPane>
