@@ -1,4 +1,4 @@
-package mariaLost.gamePlay.model.animation;
+package mariaLost.items.model.animation;
 
 import javafx.scene.image.Image;
 import javafx.util.Duration;

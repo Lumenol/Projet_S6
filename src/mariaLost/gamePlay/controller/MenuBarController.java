@@ -23,18 +23,18 @@ public class MenuBarController {
      * Methode pour l'affichage du background
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         System.out.println("Initialisation");
     }
 
 
     @FXML
-    public void handleMenu(){
-       try{
-           mainApp.start(mainApp.getPrimaryStage());
-       }catch(Exception e){
-           e.printStackTrace();
-       }
+    public void handleMenu() {
+        try {
+            mainApp.start(mainApp.getPrimaryStage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -43,7 +43,7 @@ public class MainApp extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         this.userReader = new UserReader(this);
 
         this.primaryStage = primaryStage;
@@ -55,7 +55,7 @@ public class MainApp extends Application {
         showUserData();
     }
 
-    public void showRoot(){
+    public void showRoot() {
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Parameters_MariaLost.FILEPATH_ROOT));
@@ -104,7 +104,7 @@ public class MainApp extends Application {
             UserDetailsController controller = loader.getController();
             controller.setMainApp(this);
             controller.setUser(user);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -153,6 +153,7 @@ public class MainApp extends Application {
     /**
      * Enregistre les changements sur la liste de user
      * Add
+     *
      * @param user
      */
     public void addUserList(User user) {

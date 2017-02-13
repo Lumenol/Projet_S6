@@ -14,6 +14,7 @@ public interface Drawable {
 
     /**
      * Image de l'objet
+     *
      * @return
      */
     Image getImage();

@@ -17,18 +17,21 @@ public interface Item {
 
     /**
      * Position d'un Item dans le plan
+     *
      * @return
      */
     Point2D getPosition();
 
     /**
      * Vrai si l'Item est franchissable
+     *
      * @return
      */
     boolean isPassable();
 
     /**
      * Zone occupe par l'Item
+     *
      * @return
      */
     Rectangle2D getBounds();

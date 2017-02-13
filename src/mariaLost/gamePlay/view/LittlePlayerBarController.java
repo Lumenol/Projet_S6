@@ -33,7 +33,7 @@ public class LittlePlayerBarController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         System.out.println("initialisation game layout");
 
     }
@@ -42,14 +42,14 @@ public class LittlePlayerBarController {
         this.player = player;
     }
 
-    public void setMainApp(GameLayoutController main){
+    public void setMainApp(GameLayoutController main) {
         this.mainApp = main;
     }
 
-    public void setBar(){
+    public void setBar() {
         this.scoreLabel.setText(Integer.toString(this.player.getScore()));
-        this.levelLabel.setText(Integer.toString(this.player.getLevel())) ;
-        this.namePlayerLabel.setText(this.player.getName()) ;
+        this.levelLabel.setText(Integer.toString(this.player.getLevel()));
+        this.namePlayerLabel.setText(this.player.getName());
         this.moneyLabel.setText("0");
         this.heartImageView.setImage(new Image("file:resources/Images/heart3.png"));
         this.moneyImageView.setImage(new Image("file:resources/Images/moneyFull.png"));

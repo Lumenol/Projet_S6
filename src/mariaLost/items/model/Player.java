@@ -5,8 +5,8 @@ import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
-import mariaLost.gamePlay.model.animation.*;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.items.model.animation.*;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**

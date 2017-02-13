@@ -16,11 +16,11 @@ public interface MobileItem extends Item {
     void setPosition(Point2D position);
 
     void setPosition(double x, double y);
-    
-    void setDestination(Point2D destination);
-    
+
     Point2D getDestination();
-    
+
+    void setDestination(Point2D destination);
+
     boolean isOnDestination();
 
 }

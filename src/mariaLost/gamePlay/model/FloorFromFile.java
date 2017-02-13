@@ -3,8 +3,7 @@ package mariaLost.gamePlay.model;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.model.AbstractItem;
-import mariaLost.items.model.Money;
+import mariaLost.items.model.*;
 import mariaLost.parameters.Parameters_MariaLost;
 
 import java.io.BufferedReader;

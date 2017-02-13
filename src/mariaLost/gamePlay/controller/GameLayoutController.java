@@ -101,42 +101,39 @@ public class GameLayoutController {
         /**
          * Méthode pour arreter le déplacement quand le joueur cesse d'appuyer.
          */
-        mapview.getCanvas().setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case Z:
-                    case UP:
-                        touche[0] = false;
-                        break;
+        mapview.getCanvas().setOnKeyReleased(event -> {
+            switch (event.getCode()) {
+                case Z:
+                case UP:
+                    touche[0] = false;
+                    break;
 
-                    case S:
-                    case DOWN:
-                        touche[1] = false;
-                        break;
+                case S:
+                case DOWN:
+                    touche[1] = false;
+                    break;
 
-                    case Q:
-                    case LEFT:
-                        touche[2] = false;
-                        break;
+                case Q:
+                case LEFT:
+                    touche[2] = false;
+                    break;
 
-                    case D:
-                    case RIGHT:
-                        touche[3] = false;
-                        break;
-                    default:
-                }
-                Direction d = Direction.ANY;
-                if (touche[0])
-                    d = d.compose(Direction.UP);
-                if (touche[1])
-                    d = d.compose(Direction.DOWN);
-                if (touche[2])
-                    d = d.compose(Direction.LEFT);
-                if (touche[3])
-                    d = d.compose(Direction.RIGHT);
-                world.setDirectionPlayer(d);
+                case D:
+                case RIGHT:
+                    touche[3] = false;
+                    break;
+                default:
             }
+            Direction d = Direction.ANY;
+            if (touche[0])
+                d = d.compose(Direction.UP);
+            if (touche[1])
+                d = d.compose(Direction.DOWN);
+            if (touche[2])
+                d = d.compose(Direction.LEFT);
+            if (touche[3])
+                d = d.compose(Direction.RIGHT);
+            world.setDirectionPlayer(d);
         });
 
 

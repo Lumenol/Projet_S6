@@ -21,6 +21,7 @@ public interface Floor {
 
     /**
      * Retourne les dimmentions de l'etage
+     *
      * @return dimensions
      */
     Dimension2D getDimension();
@@ -31,7 +32,6 @@ public interface Floor {
     Rectangle2D getBeginning();
 
     /**
-     *
      * @return Zone de d'arrivée
      */
     Rectangle2D getEnd();

@@ -7,10 +7,10 @@ public class RootController {
 
     private MainApp mainApp;
 
-    public RootController(){
+    public RootController() {
     }
 
-    public void setMainApp(MainApp mapp){
+    public void setMainApp(MainApp mapp) {
         this.mainApp = mapp;
     }
 
