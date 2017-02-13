@@ -66,9 +66,9 @@ public class World implements Model {
         floor = new FloorFromFile(fileName);
         Dimension2D dimension = floor.getDimension();
         player.setSpeed(Point2D.ZERO);
+        player.setDestination(null);
         player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
 
-        items.clear();
         items.clear();
         items.add(player);
     }
