@@ -3,457 +3,452 @@
   <ID>JAVA</ID>
   <OriginalElement>mariaLost</OriginalElement>
   <nodes>
-    <node x="1544.0740885119994" y="280.0">mariaLost.items.model.Wall</node>
-    <node x="361.0" y="965.0">mariaLost.gamePlay.tools.Direction</node>
-    <node x="768.562003968254" y="360.0">mariaLost.items.model.animation.Animation</node>
-    <node x="1705.9036339665447" y="80.0">mariaLost.items.interfaces.ActionableItem</node>
-    <node x="1527.1998238968633" y="470.0">mariaLost.gamePlay.model.FloorFromFile</node>
-    <node x="1038.051361239272" y="470.0">mariaLost.items.model.animation.AnimationWalkingBack</node>
-    <node x="1944.4453006332114" y="280.0">mariaLost.gamePlay.interfaces.DrawableFloor</node>
-    <node x="1431.7921176046177" y="160.0">mariaLost.items.model.AbstractItem</node>
-    <node x="552.3271902530945" y="890.0">mariaLost.gamePlay.controller.MenuBarController</node>
-    <node x="786.1555279059388" y="800.0">mariaLost.gamePlay.view.LittlePlayerBarController</node>
-    <node x="1852.1953006332114" y="280.0">mariaLost.gamePlay.interfaces.Floor</node>
-    <node x="1468.3240885119994" y="360.0">mariaLost.items.model.BreakableWall</node>
-    <node x="323.20759794846936" y="700.0">mariaLost.user.model.UserReader</node>
-    <node x="876.0513612392721" y="700.0">mariaLost.gamePlay.controller.GameLayoutController</node>
-    <node x="1405.8240885119994" y="280.0">mariaLost.items.model.MoneyItem</node>
-    <node x="1467.2921176046177" y="80.0">mariaLost.items.interfaces.Drawable</node>
-    <node x="1311.8240885119994" y="280.0">mariaLost.items.model.Ground</node>
-    <node x="420.3271902530945" y="890.0">mariaLost.mainApp.controller.RootController</node>
-    <node x="1981.4453006332114" y="360.0">mariaLost.gamePlay.interfaces.Followable</node>
-    <node x="1153.551361239272" y="80.0">mariaLost.items.interfaces.MobileItem</node>
-    <node x="1761.1953006332114" y="280.0">mariaLost.items.model.Money</node>
-    <node x="1590.6990885119994" y="600.0">mariaLost.gamePlay.model.World</node>
-    <node x="631.0054209861777" y="470.0">mariaLost.items.model.animation.AnimationWalkingFront</node>
-    <node x="457.0054209861777" y="470.0">mariaLost.items.model.animation.AnimationWalkingLeft</node>
-    <node x="0.0" y="890.0">mariaLost.user.controller.UserDetailsController</node>
-    <node x="1427.7921176046177" y="0.0">mariaLost.items.interfaces.Item</node>
-    <node x="1856.4453006332114" y="360.0">mariaLost.gamePlay.model.AbstractFloor</node>
-    <node x="1992.9453006332114" y="470.0">mariaLost.gamePlay.interfaces.Model</node>
-    <node x="290.2083333333335" y="470.0">mariaLost.user.model.User</node>
-    <node x="1237.5939748756357" y="600.0">mariaLost.gamePlay.view.FloorView</node>
-    <node x="0.0" y="965.0">mariaLost.parameters.Parameters_MariaLost</node>
-    <node x="856.0513612392721" y="470.0">mariaLost.items.model.animation.AnimationWalkingRight</node>
-    <node x="1621.0740885119994" y="280.0">mariaLost.items.model.EndCase</node>
-    <node x="165.0000000000001" y="890.0">mariaLost.user.controller.UserOverviewController</node>
-    <node x="445.1867779059387" y="800.0">mariaLost.mainApp.controller.MainApp</node>
-    <node x="593.7508013642056" y="600.0">mariaLost.gamePlay.view.PlayerBarController</node>
-    <node x="195.0" y="965.0">mariaLost.gamePlay.model.MoteurPhysique</node>
-    <node x="309.70759794846936" y="600.0">mariaLost.user.model.UserListWrapper</node>
-    <node x="1142.551361239272" y="280.0">mariaLost.items.model.AbstractMobileItem</node>
-    <node x="903.5513612392721" y="600.0">mariaLost.items.model.Player</node>
+    <node x="577.7666666666668" y="291.0">mariaLost.items.model.Wall</node>
+    <node x="427.0" y="1025.0">mariaLost.gamePlay.tools.Direction</node>
+    <node x="1281.6474206349203" y="378.0">mariaLost.items.model.animation.Animation</node>
+    <node x="307.16666666666674" y="87.0">mariaLost.items.interfaces.ActionableItem</node>
+    <node x="478.50678571428546" y="485.0">mariaLost.gamePlay.model.FloorFromFile</node>
+    <node x="1601.6817857142855" y="485.0">mariaLost.items.model.animation.AnimationWalkingBack</node>
+    <node x="22.75" y="291.0">mariaLost.gamePlay.interfaces.DrawableFloor</node>
+    <node x="563.3823015873016" y="174.0">mariaLost.items.model.AbstractItem</node>
+    <node x="1725.529920634921" y="943.0">mariaLost.gamePlay.controller.MenuBarController</node>
+    <node x="1204.3916666666669" y="846.0">mariaLost.gamePlay.view.LittlePlayerBarController</node>
+    <node x="385.26666666666677" y="378.0">mariaLost.items.model.BreakableWall</node>
+    <node x="196.5000000000001" y="291.0">mariaLost.gamePlay.interfaces.Floor</node>
+    <node x="1917.8155317460316" y="739.0">mariaLost.user.model.UserReader</node>
+    <node x="1106.0166666666669" y="739.0">mariaLost.gamePlay.controller.GameLayoutController</node>
+    <node x="532.5166666666668" y="87.0">mariaLost.items.interfaces.Drawable</node>
+    <node x="465.76666666666677" y="291.0">mariaLost.items.model.Ground</node>
+    <node x="0.0" y="378.0">mariaLost.gamePlay.interfaces.Followable</node>
+    <node x="1564.529920634921" y="943.0">mariaLost.mainApp.controller.RootController</node>
+    <node x="844.0166666666668" y="87.0">mariaLost.items.interfaces.MobileItem</node>
+    <node x="541.6416666666668" y="632.0">mariaLost.gamePlay.model.World</node>
+    <node x="293.5000000000001" y="291.0">mariaLost.items.model.Money</node>
+    <node x="906.2666666666668" y="485.0">mariaLost.items.model.animation.AnimationWalkingFront</node>
+    <node x="2246.8200396825396" y="943.0">mariaLost.user.controller.UserDetailsController</node>
+    <node x="1127.2666666666669" y="485.0">mariaLost.items.model.animation.AnimationWalkingLeft</node>
+    <node x="640.1474206349203" y="0.0">mariaLost.items.interfaces.Item</node>
+    <node x="136.0000000000001" y="378.0">mariaLost.gamePlay.model.AbstractFloor</node>
+    <node x="15.0" y="485.0">mariaLost.gamePlay.interfaces.Model</node>
+    <node x="1947.4450396825396" y="485.0">mariaLost.user.model.User</node>
+    <node x="847.8291666666668" y="632.0">mariaLost.gamePlay.view.FloorView</node>
+    <node x="0.0" y="1025.0">mariaLost.parameters.Parameters_MariaLost</node>
+    <node x="1380.6817857142855" y="485.0">mariaLost.items.model.animation.AnimationWalkingRight</node>
+    <node x="1699.1000000000001" y="846.0">mariaLost.mainApp.controller.MainApp</node>
+    <node x="682.7666666666668" y="291.0">mariaLost.items.model.EndCase</node>
+    <node x="2027.8200396825396" y="943.0">mariaLost.user.controller.UserOverviewController</node>
+    <node x="1490.2666666666669" y="632.0">mariaLost.gamePlay.view.PlayerBarController</node>
+    <node x="1901.3155317460316" y="632.0">mariaLost.user.model.UserListWrapper</node>
+    <node x="233.0" y="1025.0">mariaLost.gamePlay.model.MoteurPhysique</node>
+    <node x="1181.2666666666669" y="632.0">mariaLost.items.model.Player</node>
+    <node x="802.7666666666668" y="291.0">mariaLost.items.model.AbstractMobileItem</node>
   </nodes>
   <notes />
   <edges>
     <edge source="mariaLost.items.model.animation.AnimationWalkingLeft" target="mariaLost.items.model.animation.Animation">
-      <point x="0.0" y="-15.0" />
-      <point x="533.5054209861777" y="430.0" />
-      <point x="776.062003968254" y="430.0" />
-      <point x="-37.5" y="15.0" />
-    </edge>
-    <edge source="mariaLost.user.controller.UserOverviewController" target="mariaLost.user.model.User">
-      <point x="-39.75" y="-15.0" />
-      <point x="204.7500000000001" y="570.0" />
-      <point x="308.0208333333335" y="570.0" />
-      <point x="-10.6875" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="1222.7666666666669" y="465.0" />
+      <point x="1328.3140873015868" y="465.0" />
+      <point x="-9.333333333333371" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.World" target="mariaLost.items.model.AbstractItem">
-      <point x="-13.200000000000045" y="-15.0" />
-      <point x="1610.4990885119992" y="570.0" />
-      <point x="1292.051361239272" y="570.0" />
-      <point x="1292.051361239272" y="230.0" />
-      <point x="1445.7012085137087" y="230.0" />
-      <point x="-37.090909090909065" y="15.0" />
+      <point x="16.799999999999955" y="-18.5" />
+      <point x="600.4416666666667" y="602.0" />
+      <point x="792.2666666666668" y="602.0" />
+      <point x="792.2666666666668" y="241.0" />
+      <point x="672.1823015873016" y="241.0" />
+      <point x="44.799999999999955" y="18.5" />
+    </edge>
+    <edge source="mariaLost.user.controller.UserOverviewController" target="mariaLost.user.model.User">
+      <point x="49.75" y="-18.5" />
+      <point x="2177.0700396825396" y="612.0" />
+      <point x="1996.9450396825396" y="612.0" />
+      <point x="13.5" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.AbstractItem" target="mariaLost.items.interfaces.MobileItem">
-      <point x="-38.25" y="-15.0" />
-      <point x="1444.5421176046177" y="135.0" />
-      <point x="1224.801361239272" y="135.0" />
-      <point x="23.75" y="15.0" />
+      <point x="48.0" y="-18.5" />
+      <point x="675.3823015873016" y="149.0" />
+      <point x="874.0166666666668" y="149.0" />
+      <point x="-30.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.GameLayoutController" target="mariaLost.user.model.User">
-      <point x="-68.44444444444446" y="-15.0" />
-      <point x="884.6069167948276" y="680.0" />
-      <point x="583.2508013642056" y="680.0" />
-      <point x="583.2508013642056" y="560.0" />
-      <point x="336.5208333333335" y="560.0" />
-      <point x="17.8125" y="15.0" />
+      <point x="85.33333333333314" y="-18.5" />
+      <point x="1287.35" y="719.0" />
+      <point x="1671.7666666666669" y="719.0" />
+      <point x="1671.7666666666669" y="582.0" />
+      <point x="1960.9450396825396" y="582.0" />
+      <point x="-22.5" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.GameLayoutController" target="mariaLost.gamePlay.view.PlayerBarController">
-      <point x="-51.33333333333337" y="-15.0" />
-      <point x="901.7180279059387" y="670.0" />
-      <point x="627.7508013642056" y="670.0" />
-      <point x="-34.0" y="15.0" />
-    </edge>
-    <edge source="mariaLost.gamePlay.model.World" target="mariaLost.gamePlay.model.AbstractFloor">
-      <point x="13.200000000000045" y="-15.0" />
-      <point x="1636.8990885119993" y="570.0" />
-      <point x="1935.1953006332114" y="570.0" />
-      <point x="26.25" y="15.0" />
+      <point x="42.666666666666515" y="-18.5" />
+      <point x="1244.6833333333334" y="699.0" />
+      <point x="1533.0166666666669" y="699.0" />
+      <point x="-42.75" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Money" target="mariaLost.items.model.AbstractItem">
-      <point x="-17.75" y="-15.0" />
-      <point x="1778.9453006332114" y="210.0" />
-      <point x="1529.1557539682542" y="210.0" />
-      <point x="46.363636363636374" y="15.0" />
+      <point x="22.0" y="-18.5" />
+      <point x="359.5000000000001" y="241.0" />
+      <point x="569.7823015873017" y="241.0" />
+      <point x="-57.59999999999991" y="18.5" />
     </edge>
-    <edge source="mariaLost.user.model.UserListWrapper" target="mariaLost.user.model.User">
-      <point x="0.0" y="-15.0" />
-      <point x="369.70759794846936" y="580.0" />
-      <point x="322.2708333333335" y="580.0" />
-      <point x="3.5625" y="15.0" />
+    <edge source="mariaLost.gamePlay.model.World" target="mariaLost.gamePlay.model.AbstractFloor">
+      <point x="-16.799999999999955" y="-18.5" />
+      <point x="566.8416666666668" y="602.0" />
+      <point x="169.0000000000001" y="602.0" />
+      <point x="-33.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.BreakableWall" target="mariaLost.items.model.Ground">
-      <point x="-43.19999999999999" y="-15.0" />
-      <point x="1479.1240885119994" y="335.0" />
-      <point x="1367.3240885119994" y="335.0" />
-      <point x="18.5" y="15.0" />
+      <point x="27.799999999999955" y="-18.5" />
+      <point x="482.5666666666667" y="353.0" />
+      <point x="488.76666666666677" y="353.0" />
+      <point x="-23.0" y="18.5" />
+    </edge>
+    <edge source="mariaLost.user.model.UserListWrapper" target="mariaLost.user.model.User">
+      <point x="0.0" y="-18.5" />
+      <point x="1977.3155317460316" y="612.0" />
+      <point x="1987.9450396825396" y="612.0" />
+      <point x="4.5" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.World" target="mariaLost.items.model.AbstractMobileItem">
-      <point x="-26.399999999999977" y="-15.0" />
-      <point x="1597.2990885119993" y="580.0" />
-      <point x="1217.551361239272" y="580.0" />
-      <point x="1217.551361239272" y="335.0" />
-      <point x="1246.801361239272" y="335.0" />
-      <point x="34.75" y="15.0" />
+      <point x="33.59999999999991" y="-18.5" />
+      <point x="617.2416666666667" y="612.0" />
+      <point x="884.7666666666668" y="612.0" />
+      <point x="884.7666666666668" y="353.0" />
+      <point x="846.5166666666668" y="353.0" />
+      <point x="-43.75" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.AbstractFloor" target="mariaLost.gamePlay.interfaces.Floor">
-      <point x="-26.25" y="-15.0" />
-      <point x="0.0" y="15.0" />
+      <point x="33.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Ground" target="mariaLost.items.model.AbstractItem">
-      <point x="0.0" y="-15.0" />
-      <point x="1348.8240885119994" y="250.0" />
-      <point x="1464.2466630591632" y="250.0" />
-      <point x="-18.54545454545456" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="511.76666666666677" y="271.0" />
+      <point x="608.1823015873016" y="271.0" />
+      <point x="-19.200000000000045" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.animation.AnimationWalkingRight" target="mariaLost.items.model.animation.Animation">
-      <point x="0.0" y="-15.0" />
-      <point x="936.5513612392721" y="450.0" />
-      <point x="821.062003968254" y="450.0" />
-      <point x="7.5" y="15.0" />
+      <point x="-1.1368683772161603E-13" y="-18.5" />
+      <point x="1481.1817857142853" y="465.0" />
+      <point x="1346.9807539682536" y="465.0" />
+      <point x="9.333333333333371" y="18.5" />
     </edge>
     <edge source="mariaLost.items.interfaces.ActionableItem" target="mariaLost.items.interfaces.Item">
-      <point x="0.0" y="-15.0" />
-      <point x="1763.4036339665447" y="55.0" />
-      <point x="1476.125450937951" y="55.0" />
-      <point x="19.333333333333314" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="379.66666666666674" y="57.0" />
+      <point x="652.314087301587" y="57.0" />
+      <point x="-24.333333333333258" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.GameLayoutController" target="mariaLost.gamePlay.view.FloorView">
-      <point x="34.22222222222217" y="-15.0" />
-      <point x="987.2735834614942" y="660.0" />
-      <point x="1302.0939748756357" y="660.0" />
-      <point x="21.5" y="15.0" />
+      <point x="-21.33333333333337" y="-18.5" />
+      <point x="1180.6833333333334" y="689.0" />
+      <point x="929.5791666666668" y="689.0" />
+      <point x="27.25" y="18.5" />
     </edge>
     <edge source="mariaLost.user.controller.UserDetailsController" target="mariaLost.user.model.User">
-      <point x="0.0" y="-15.0" />
-      <point x="72.5" y="870.0" />
-      <point x="53.833333333333485" y="870.0" />
-      <point x="53.833333333333485" y="560.0" />
-      <point x="300.8958333333335" y="560.0" />
-      <point x="-17.8125" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="2338.8200396825396" y="923.0" />
+      <point x="2341.6401190476186" y="923.0" />
+      <point x="2341.6401190476186" y="602.0" />
+      <point x="2005.9450396825396" y="602.0" />
+      <point x="22.5" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Player" target="mariaLost.items.model.animation.AnimationWalkingFront">
-      <point x="-9.428571428571445" y="-15.0" />
-      <point x="927.1227898107006" y="520.0" />
-      <point x="711.5054209861777" y="520.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="mariaLost.items.model.MoneyItem" target="mariaLost.items.model.AbstractItem">
-      <point x="0.0" y="-15.0" />
-      <point x="1453.3240885119994" y="260.0" />
-      <point x="1473.5193903318905" y="260.0" />
-      <point x="-9.272727272727252" y="15.0" />
+      <point x="-23.714285714285666" y="-18.5" />
+      <point x="1199.052380952381" y="602.0" />
+      <point x="1006.2666666666668" y="602.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.EndCase" target="mariaLost.items.model.AbstractItem">
-      <point x="0.0" y="-15.0" />
-      <point x="1660.5740885119994" y="230.0" />
-      <point x="1510.6102994227997" y="230.0" />
-      <point x="27.81818181818187" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="732.2666666666668" y="251.0" />
+      <point x="659.3823015873016" y="251.0" />
+      <point x="32.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.view.LittlePlayerBarController" target="mariaLost.user.model.User">
-      <point x="-40.5" y="-15.0" />
-      <point x="826.6555279059388" y="750.0" />
-      <point x="570.1605235864279" y="750.0" />
-      <point x="570.1605235864279" y="570.0" />
-      <point x="329.3958333333335" y="570.0" />
-      <point x="10.6875" y="15.0" />
-    </edge>
-    <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.Wall">
-      <point x="-6.6875" y="-15.0" />
-      <point x="1574.0123238968633" y="410.0" />
-      <point x="1586.8240885119994" y="410.0" />
-      <point x="14.25" y="15.0" />
-    </edge>
-    <edge source="mariaLost.items.model.BreakableWall" target="mariaLost.items.model.AbstractItem">
-      <point x="-21.600000000000023" y="-15.0" />
-      <point x="1500.7240885119993" y="335.0" />
-      <point x="1511.3240885119994" y="335.0" />
-      <point x="1511.3240885119994" y="260.0" />
-      <point x="1482.7921176046177" y="260.0" />
-      <point x="0.0" y="15.0" />
+      <point x="51.0" y="-18.5" />
+      <point x="1357.3916666666669" y="826.0" />
+      <point x="1680.7666666666669" y="826.0" />
+      <point x="1680.7666666666669" y="592.0" />
+      <point x="1969.9450396825396" y="592.0" />
+      <point x="-13.5" y="18.5" />
     </edge>
     <edge source="mariaLost.user.model.UserReader" target="mariaLost.user.model.UserListWrapper">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.Wall">
+      <point x="8.375" y="-18.5" />
+      <point x="553.8817857142855" y="435.0" />
+      <point x="632.5166666666668" y="435.0" />
+      <point x="18.25" y="18.5" />
+    </edge>
+    <edge source="mariaLost.items.model.BreakableWall" target="mariaLost.items.model.AbstractItem">
+      <point x="-27.799999999999955" y="-18.5" />
+      <point x="426.9666666666668" y="353.0" />
+      <point x="443.76666666666677" y="353.0" />
+      <point x="443.76666666666677" y="251.0" />
+      <point x="582.5823015873017" y="251.0" />
+      <point x="-44.799999999999955" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.interfaces.Followable" target="mariaLost.gamePlay.interfaces.DrawableFloor">
-      <point x="0.0" y="-15.0" />
-      <point x="27.5" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="-35.25" y="18.5" />
     </edge>
     <edge source="mariaLost.items.interfaces.MobileItem" target="mariaLost.items.interfaces.Item">
-      <point x="0.0" y="-15.0" />
-      <point x="1201.051361239272" y="55.0" />
-      <point x="1437.4587842712845" y="55.0" />
-      <point x="-19.333333333333314" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="904.0166666666668" y="67.0" />
+      <point x="700.9807539682536" y="67.0" />
+      <point x="24.333333333333258" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.AbstractFloor" target="mariaLost.gamePlay.interfaces.DrawableFloor">
-      <point x="26.25" y="-15.0" />
-      <point x="1935.1953006332114" y="335.0" />
-      <point x="1971.9453006332114" y="335.0" />
-      <point x="-27.5" y="15.0" />
+      <point x="-33.0" y="-18.5" />
+      <point x="169.0000000000001" y="353.0" />
+      <point x="128.5" y="353.0" />
+      <point x="35.25" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.AbstractItem" target="mariaLost.items.interfaces.Drawable">
-      <point x="12.75" y="-15.0" />
-      <point x="1495.5421176046177" y="135.0" />
-      <point x="1508.7921176046177" y="135.0" />
-      <point x="0.0" y="15.0" />
+      <point x="-16.0" y="-18.5" />
+      <point x="611.3823015873016" y="149.0" />
+      <point x="586.0166666666668" y="149.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.AbstractMobileItem" target="mariaLost.items.interfaces.MobileItem">
-      <point x="-34.75" y="-15.0" />
-      <point x="-23.75" y="15.0" />
+      <point x="43.75" y="-18.5" />
+      <point x="30.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Player" target="mariaLost.items.model.animation.AnimationWalkingBack">
-      <point x="18.85714285714289" y="-15.0" />
-      <point x="955.408504096415" y="570.0" />
-      <point x="1117.051361239272" y="570.0" />
-      <point x="0.0" y="15.0" />
+      <point x="23.714285714285666" y="-18.5" />
+      <point x="1246.4809523809524" y="552.0" />
+      <point x="1700.1817857142855" y="552.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.gamePlay.model.AbstractFloor">
-      <point x="46.8125" y="-15.0" />
-      <point x="1627.5123238968633" y="450.0" />
-      <point x="1882.6953006332114" y="450.0" />
-      <point x="-26.25" y="15.0" />
+      <point x="-58.625" y="-18.5" />
+      <point x="486.88178571428546" y="465.0" />
+      <point x="235.0000000000001" y="465.0" />
+      <point x="33.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.GameLayoutController" target="mariaLost.mainApp.controller.MainApp">
-      <point x="0.0" y="15.0" />
-      <point x="953.0513612392721" y="770.0" />
-      <point x="521.2701112392721" y="770.0" />
-      <point x="34.58333333333337" y="-15.0" />
+      <point x="63.999999999999886" y="18.5" />
+      <point x="1266.0166666666667" y="806.0" />
+      <point x="1725.1000000000001" y="806.0" />
+      <point x="-26.0" y="-18.5" />
     </edge>
     <edge source="mariaLost.mainApp.controller.MainApp" target="mariaLost.user.model.User">
-      <point x="-34.58333333333337" y="-15.0" />
-      <point x="452.1034445726053" y="780.0" />
-      <point x="299.20759794846936" y="780.0" />
-      <point x="299.20759794846936" y="580.0" />
-      <point x="315.1458333333335" y="580.0" />
-      <point x="-3.5625" y="15.0" />
+      <point x="-8.666666666666742" y="-18.5" />
+      <point x="1742.4333333333334" y="796.0" />
+      <point x="1890.8155317460316" y="796.0" />
+      <point x="1890.8155317460316" y="602.0" />
+      <point x="1978.9450396825396" y="602.0" />
+      <point x="-4.5" y="18.5" />
     </edge>
     <edge source="mariaLost.mainApp.controller.RootController" target="mariaLost.mainApp.controller.MainApp">
-      <point x="0.0" y="-15.0" />
-      <point x="476.3271902530945" y="870.0" />
-      <point x="497.0617779059387" y="870.0" />
-      <point x="10.375" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="1635.029920634921" y="923.0" />
+      <point x="1712.1000000000001" y="923.0" />
+      <point x="-39.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Player" target="mariaLost.items.model.animation.Animation">
-      <point x="-18.85714285714289" y="-15.0" />
-      <point x="917.6942183821292" y="530.0" />
-      <point x="620.5054209861777" y="530.0" />
-      <point x="620.5054209861777" y="440.0" />
-      <point x="791.062003968254" y="440.0" />
-      <point x="-22.5" y="15.0" />
+      <point x="35.571428571428555" y="-18.5" />
+      <point x="1258.3380952380953" y="562.0" />
+      <point x="1809.1817857142855" y="562.0" />
+      <point x="1809.1817857142855" y="445.0" />
+      <point x="1384.3140873015868" y="445.0" />
+      <point x="46.66666666666663" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.Money">
-      <point x="33.43749999999994" y="-15.0" />
-      <point x="1614.1373238968633" y="440.0" />
-      <point x="1796.6953006332114" y="440.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="mariaLost.gamePlay.view.PlayerBarController" target="mariaLost.user.model.User">
-      <point x="0.0" y="-15.0" />
-      <point x="661.7508013642056" y="550.0" />
-      <point x="343.6458333333335" y="550.0" />
-      <point x="24.9375" y="15.0" />
+      <point x="-41.875" y="-18.5" />
+      <point x="503.63178571428546" y="455.0" />
+      <point x="337.5000000000001" y="455.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.user.controller.UserOverviewController" target="mariaLost.mainApp.controller.MainApp">
-      <point x="39.75" y="-15.0" />
-      <point x="284.2500000000001" y="860.0" />
-      <point x="476.3117779059387" y="860.0" />
-      <point x="-10.375" y="15.0" />
+      <point x="-49.75" y="-18.5" />
+      <point x="2077.5700396825396" y="913.0" />
+      <point x="1764.1000000000001" y="913.0" />
+      <point x="13.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Player" target="mariaLost.items.model.AbstractMobileItem">
-      <point x="28.285714285714334" y="-15.0" />
-      <point x="964.8370755249864" y="580.0" />
-      <point x="1206.551361239272" y="580.0" />
-      <point x="1206.551361239272" y="335.0" />
-      <point x="1177.301361239272" y="335.0" />
-      <point x="-34.75" y="15.0" />
+      <point x="-35.571428571428555" y="-18.5" />
+      <point x="1187.1952380952382" y="612.0" />
+      <point x="895.7666666666668" y="612.0" />
+      <point x="895.7666666666668" y="353.0" />
+      <point x="934.0166666666668" y="353.0" />
+      <point x="43.75" y="18.5" />
+    </edge>
+    <edge source="mariaLost.gamePlay.view.PlayerBarController" target="mariaLost.user.model.User">
+      <point x="0.0" y="-18.5" />
+      <point x="1575.7666666666669" y="572.0" />
+      <point x="1951.9450396825396" y="572.0" />
+      <point x="-31.5" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.animation.AnimationWalkingBack" target="mariaLost.items.model.animation.Animation">
-      <point x="0.0" y="-15.0" />
-      <point x="1117.051361239272" y="430.0" />
-      <point x="851.062003968254" y="430.0" />
-      <point x="37.5" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="1700.1817857142855" y="455.0" />
+      <point x="1365.6474206349203" y="455.0" />
+      <point x="28.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Player" target="mariaLost.items.model.animation.AnimationWalkingRight">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
+      <point x="11.85714285714289" y="-18.5" />
+      <point x="1234.6238095238095" y="542.0" />
+      <point x="1481.1817857142855" y="542.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.BreakableWall" target="mariaLost.items.interfaces.ActionableItem">
-      <point x="43.19999999999999" y="-15.0" />
-      <point x="1565.5240885119993" y="335.0" />
-      <point x="1750.6953006332114" y="335.0" />
-      <point x="1750.6953006332114" y="135.0" />
-      <point x="1763.4036339665447" y="135.0" />
-      <point x="0.0" y="15.0" />
+      <point x="-55.59999999999991" y="-18.5" />
+      <point x="399.16666666666686" y="353.0" />
+      <point x="393.7500000000001" y="353.0" />
+      <point x="393.7500000000001" y="149.0" />
+      <point x="379.66666666666674" y="149.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.World" target="mariaLost.gamePlay.model.FloorFromFile">
-      <point x="0.0" y="-15.0" />
-      <point x="1623.6990885119994" y="560.0" />
-      <point x="1580.6998238968633" y="560.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.Ground">
-      <point x="-33.4375" y="-15.0" />
-      <point x="1547.2623238968633" y="440.0" />
-      <point x="1330.3240885119994" y="440.0" />
-      <point x="-18.5" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="583.6416666666668" y="592.0" />
+      <point x="545.5067857142855" y="592.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.view.LittlePlayerBarController" target="mariaLost.gamePlay.controller.GameLayoutController">
-      <point x="40.5" y="-15.0" />
-      <point x="907.6555279059388" y="780.0" />
-      <point x="1004.3846945726054" y="780.0" />
-      <point x="51.33333333333337" y="15.0" />
+      <point x="-51.0" y="-18.5" />
+      <point x="1255.3916666666669" y="826.0" />
+      <point x="1138.0166666666669" y="826.0" />
+      <point x="-64.0" y="18.5" />
+    </edge>
+    <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.Ground">
+      <point x="-8.375" y="-18.5" />
+      <point x="537.1317857142855" y="465.0" />
+      <point x="534.7666666666668" y="465.0" />
+      <point x="23.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.EndCase">
-      <point x="6.6875" y="-15.0" />
-      <point x="1587.3873238968633" y="420.0" />
-      <point x="1660.5740885119994" y="420.0" />
-      <point x="0.0" y="15.0" />
+      <point x="58.625" y="-18.5" />
+      <point x="604.1317857142855" y="465.0" />
+      <point x="732.2666666666668" y="465.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.GameLayoutController" target="mariaLost.gamePlay.model.World">
-      <point x="51.33333333333337" y="-15.0" />
-      <point x="1004.3846945726054" y="670.0" />
-      <point x="1607.1990885119994" y="670.0" />
-      <point x="-16.5" y="15.0" />
+      <point x="-64.00000000000011" y="-18.5" />
+      <point x="1138.0166666666667" y="709.0" />
+      <point x="604.6416666666668" y="709.0" />
+      <point x="21.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.BreakableWall">
-      <point x="-20.0625" y="-15.0" />
-      <point x="1560.6373238968633" y="430.0" />
-      <point x="1522.3240885119994" y="430.0" />
-      <point x="0.0" y="15.0" />
+      <point x="-25.125" y="-18.5" />
+      <point x="520.3817857142855" y="445.0" />
+      <point x="454.76666666666677" y="445.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.BreakableWall" target="mariaLost.items.model.Wall">
-      <point x="21.599999999999994" y="-15.0" />
-      <point x="1543.9240885119993" y="335.0" />
-      <point x="1558.3240885119994" y="335.0" />
-      <point x="-14.25" y="15.0" />
-    </edge>
-    <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.AbstractItem">
-      <point x="20.062499999999943" y="-15.0" />
-      <point x="1600.7623238968633" y="430.0" />
-      <point x="1710.5740885119994" y="430.0" />
-      <point x="1710.5740885119994" y="220.0" />
-      <point x="1519.883026695527" y="220.0" />
-      <point x="37.09090909090912" y="15.0" />
+      <point x="55.59999999999991" y="-18.5" />
+      <point x="510.3666666666667" y="353.0" />
+      <point x="596.0166666666668" y="353.0" />
+      <point x="-18.25" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.AbstractItem" target="mariaLost.items.interfaces.ActionableItem">
-      <point x="38.25" y="-15.0" />
-      <point x="1521.0421176046177" y="135.0" />
-      <point x="1725.0703006332114" y="135.0" />
-      <point x="-38.333333333333336" y="15.0" />
+      <point x="-48.0" y="-18.5" />
+      <point x="579.3823015873016" y="149.0" />
+      <point x="428.0" y="149.0" />
+      <point x="48.33333333333326" y="18.5" />
+    </edge>
+    <edge source="mariaLost.gamePlay.model.FloorFromFile" target="mariaLost.items.model.AbstractItem">
+      <point x="41.875" y="-18.5" />
+      <point x="587.3817857142855" y="455.0" />
+      <point x="672.2666666666668" y="455.0" />
+      <point x="672.2666666666668" y="261.0" />
+      <point x="646.5823015873017" y="261.0" />
+      <point x="19.200000000000045" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.AbstractItem" target="mariaLost.items.interfaces.Item">
-      <point x="-12.75" y="-15.0" />
-      <point x="1470.0421176046177" y="135.0" />
-      <point x="1456.7921176046177" y="135.0" />
-      <point x="0.0" y="15.0" />
+      <point x="16.0" y="-18.5" />
+      <point x="643.3823015873016" y="149.0" />
+      <point x="650.0166666666668" y="149.0" />
+      <point x="650.0166666666668" y="67.0" />
+      <point x="676.6474206349203" y="67.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.user.model.UserReader" target="mariaLost.mainApp.controller.MainApp">
-      <point x="31.0" y="15.0" />
-      <point x="400.70759794846936" y="750.0" />
-      <point x="493.6034445726053" y="750.0" />
-      <point x="6.916666666666629" y="-15.0" />
+      <point x="39.66666666666663" y="18.5" />
+      <point x="2016.9821984126984" y="826.0" />
+      <point x="1794.4333333333334" y="826.0" />
+      <point x="43.33333333333337" y="-18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.view.PlayerBarController" target="mariaLost.gamePlay.controller.GameLayoutController">
-      <point x="34.0" y="15.0" />
-      <point x="695.7508013642056" y="660.0" />
-      <point x="918.8291390170498" y="660.0" />
-      <point x="-34.22222222222223" y="-15.0" />
+      <point x="42.75" y="18.5" />
+      <point x="1618.5166666666669" y="709.0" />
+      <point x="1266.0166666666667" y="709.0" />
+      <point x="63.999999999999886" y="-18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.GameLayoutController" target="mariaLost.items.model.Player">
-      <point x="-17.111111111111143" y="-15.0" />
-      <point x="935.9402501281609" y="650.0" />
-      <point x="920.0513612392721" y="650.0" />
-      <point x="-16.5" y="15.0" />
+      <point x="21.333333333333258" y="-18.5" />
+      <point x="1223.3500000000001" y="689.0" />
+      <point x="1243.5166666666669" y="689.0" />
+      <point x="20.75" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Money" target="mariaLost.items.interfaces.ActionableItem">
-      <point x="17.75" y="-15.0" />
-      <point x="1814.4453006332114" y="135.0" />
-      <point x="1801.736967299878" y="135.0" />
-      <point x="38.33333333333337" y="15.0" />
+      <point x="-22.0" y="-18.5" />
+      <point x="315.5000000000001" y="149.0" />
+      <point x="331.3333333333335" y="149.0" />
+      <point x="-48.33333333333326" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.Player" target="mariaLost.items.model.animation.AnimationWalkingLeft">
-      <point x="-28.285714285714334" y="-15.0" />
-      <point x="908.2656469535577" y="540.0" />
-      <point x="533.5054209861777" y="540.0" />
-      <point x="0.0" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.model.World" target="mariaLost.gamePlay.interfaces.Model">
-      <point x="26.400000000000006" y="-15.0" />
-      <point x="1650.0990885119993" y="580.0" />
-      <point x="2026.9453006332114" y="580.0" />
-      <point x="0.0" y="15.0" />
+      <point x="-33.59999999999991" y="-18.5" />
+      <point x="550.0416666666669" y="612.0" />
+      <point x="58.0" y="612.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.AbstractMobileItem" target="mariaLost.items.model.AbstractItem">
-      <point x="34.75" y="-15.0" />
-      <point x="1246.801361239272" y="220.0" />
-      <point x="1436.4284812409815" y="220.0" />
-      <point x="-46.363636363636374" y="15.0" />
+      <point x="-43.75" y="-18.5" />
+      <point x="846.5166666666668" y="231.0" />
+      <point x="684.9823015873015" y="231.0" />
+      <point x="57.59999999999991" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.interfaces.Model" target="mariaLost.gamePlay.interfaces.Followable">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.mainApp.controller.MainApp" target="mariaLost.user.model.UserReader">
-      <point x="-6.916666666666686" y="-15.0" />
-      <point x="479.77011123927196" y="760.0" />
-      <point x="369.70759794846936" y="760.0" />
-      <point x="0.0" y="15.0" />
+      <point x="26.0" y="-18.5" />
+      <point x="1777.1000000000001" y="816.0" />
+      <point x="1977.3155317460316" y="816.0" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="mariaLost.items.model.animation.AnimationWalkingFront" target="mariaLost.items.model.animation.Animation">
-      <point x="0.0" y="-15.0" />
-      <point x="711.5054209861777" y="450.0" />
-      <point x="806.062003968254" y="450.0" />
-      <point x="-7.5" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="1006.2666666666668" y="445.0" />
+      <point x="1290.9807539682536" y="445.0" />
+      <point x="-46.66666666666663" y="18.5" />
     </edge>
     <edge source="mariaLost.gamePlay.controller.MenuBarController" target="mariaLost.mainApp.controller.MainApp">
-      <point x="0.0" y="-15.0" />
-      <point x="619.8271902530945" y="870.0" />
-      <point x="517.8117779059387" y="870.0" />
-      <point x="31.125" y="15.0" />
-    </edge>
-    <edge source="mariaLost.items.model.Wall" target="mariaLost.items.model.AbstractItem">
-      <point x="0.0" y="-15.0" />
-      <point x="1572.5740885119994" y="240.0" />
-      <point x="1501.3375721500724" y="240.0" />
-      <point x="18.54545454545456" y="15.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="1809.529920634921" y="923.0" />
+      <point x="1738.1000000000001" y="923.0" />
+      <point x="-13.0" y="18.5" />
     </edge>
     <edge source="mariaLost.mainApp.controller.MainApp" target="mariaLost.gamePlay.controller.GameLayoutController">
-      <point x="20.75" y="-15.0" />
-      <point x="507.4367779059387" y="760.0" />
-      <point x="901.7180279059387" y="760.0" />
-      <point x="-51.333333333333314" y="15.0" />
+      <point x="-43.333333333333314" y="-18.5" />
+      <point x="1707.7666666666669" y="816.0" />
+      <point x="1202.0166666666669" y="816.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="mariaLost.items.model.Wall" target="mariaLost.items.model.AbstractItem">
+      <point x="0.0" y="-18.5" />
+      <point x="614.2666666666668" y="271.0" />
+      <point x="620.9823015873015" y="271.0" />
+      <point x="-6.400000000000091" y="18.5" />
     </edge>
     <edge source="mariaLost.user.controller.UserDetailsController" target="mariaLost.mainApp.controller.MainApp">
-      <point x="48.33333333333337" y="-15.0" />
-      <point x="120.83333333333337" y="850.0" />
-      <point x="455.5617779059387" y="850.0" />
-      <point x="-31.125" y="15.0" />
+      <point x="-61.33333333333334" y="-18.5" />
+      <point x="2277.486706349206" y="903.0" />
+      <point x="1790.1000000000001" y="903.0" />
+      <point x="39.0" y="18.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4003822264691832" x="951.6867718178936" y="661.0451643403454" />
+  <settings layout="Hierarchic Group" zoom="0.6870665034679723" x="1215.5" y="531.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
