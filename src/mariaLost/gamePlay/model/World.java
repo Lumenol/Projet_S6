@@ -1,11 +1,9 @@
 package mariaLost.gamePlay.model;
 
-import javafx.concurrent.ScheduledService;
-import javafx.concurrent.Task;
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import javafx.util.Duration;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.interfaces.Drawable;
@@ -31,26 +29,21 @@ public class World implements Model {
 
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
-    private ScheduledService<Void> moteur = new ScheduledService<Void>() {
+    private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
-        protected Task<Void> createTask() {
-            return new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    Dimension2D dimension = floor.getDimension();
-                    Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
-                    itemFromSquare.addAll(items);
-                    MoteurPhysique.move(itemFromSquare);
-                    items.removeIf(abstractItem -> abstractItem.isFinished());
+        public void handle(long now) {
+            Dimension2D dimension = floor.getDimension();
+            Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
+            itemFromSquare.addAll(items);
+            MoteurPhysique.move(itemFromSquare);
+            items.removeIf(abstractItem -> abstractItem.isFinished());
 
-                    if (playerAtTheEnd()) {
-                        world = (world + 1) % 3;
-                        loadWorld(world);
-                    }
+            if (playerAtTheEnd()) {
+                world = (world + 1) % 3;
+                loadWorld(world);
+            }
 
-                    return null;
-                }
-            };
+            System.out.println("Mouve");
         }
     };
 
@@ -59,7 +52,7 @@ public class World implements Model {
         this.player = player;
         items.add(player);
 
-        moteur.setPeriod(Duration.millis(16));
+        //moteur.setPeriod(Duration.millis(16));
     }
 
     public void loadFloorFromFile(String fileName) throws Exception {
@@ -76,7 +69,11 @@ public class World implements Model {
     @Override
     public Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
         Deque<Collection<? extends Drawable>> floorDrawableFromSquare = floor.getDrawableFromSquare(square);
-        floorDrawableFromSquare.addLast(items);
+        LinkedList linkedList = new LinkedList();
+        floorDrawableFromSquare.addLast(linkedList);
+        items.forEach(abstractItem -> {
+            if (abstractItem.getBounds().intersects(square)) linkedList.add(abstractItem);
+        });
         return floorDrawableFromSquare;
     }
 
@@ -89,8 +86,10 @@ public class World implements Model {
 
     @Override
     public void setDirectionPlayer(Direction direction) {
-        player.setDestination(null);
-        player.setSpeed(direction.getDirection());
+        if (!direction.equals(Direction.ANY) || player.getDestination() == null) {
+            player.setDestination(null);
+            player.setSpeed(direction.getDirection());
+        }
     }
 
     @Override
@@ -98,7 +97,7 @@ public class World implements Model {
         if (floor == null) {
             loadWorld(world);
         }
-        moteur.start();
+        animationTimer.start();
     }
 
     private void loadWorld(int i) {
@@ -111,7 +110,7 @@ public class World implements Model {
 
     @Override
     public void stop() {
-        moteur.cancel();
+        animationTimer.stop();
     }
 
 

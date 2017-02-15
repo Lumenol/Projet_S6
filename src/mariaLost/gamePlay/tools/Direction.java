@@ -24,12 +24,26 @@ public class Direction {
     public static final Direction DOWN_LEFT = DOWN.compose(LEFT);
 
     public static final Direction DOWN_RIGHT = DOWN.compose(RIGHT);
-
-
     private Point2D direction;
 
     public Direction(double x, double y) {
         direction = new Point2D(x, y).normalize();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Direction direction1 = (Direction) o;
+
+        return getDirection().equals(direction1.getDirection());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getDirection().hashCode();
     }
 
     public Point2D getDirection() {
