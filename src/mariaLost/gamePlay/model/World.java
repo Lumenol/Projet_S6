@@ -29,7 +29,7 @@ public class World implements Model {
 
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
-    private AnimationTimer animationTimer = new AnimationTimer() {
+    private AnimationTimer moteur = new AnimationTimer() {
         @Override
         public void handle(long now) {
             Dimension2D dimension = floor.getDimension();
@@ -42,8 +42,6 @@ public class World implements Model {
                 world = (world + 1) % 3;
                 loadWorld(world);
             }
-
-            System.out.println("Mouve");
         }
     };
 
@@ -51,8 +49,6 @@ public class World implements Model {
     public World(AbstractMobileItem player) {
         this.player = player;
         items.add(player);
-
-        //moteur.setPeriod(Duration.millis(16));
     }
 
     public void loadFloorFromFile(String fileName) throws Exception {
@@ -84,6 +80,7 @@ public class World implements Model {
         return new Dimension2D(0, 0);
     }
 
+
     @Override
     public void setDirectionPlayer(Direction direction) {
         if (!direction.equals(Direction.ANY) || player.getDestination() == null) {
@@ -97,7 +94,7 @@ public class World implements Model {
         if (floor == null) {
             loadWorld(world);
         }
-        animationTimer.start();
+        moteur.start();
     }
 
     private void loadWorld(int i) {
@@ -110,7 +107,7 @@ public class World implements Model {
 
     @Override
     public void stop() {
-        animationTimer.stop();
+        moteur.stop();
     }
 
 

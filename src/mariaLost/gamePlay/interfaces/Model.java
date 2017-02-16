@@ -22,4 +22,5 @@ public interface Model extends Followable {
      * Arrete la boucle du jeu
      */
     void stop();
+
 }

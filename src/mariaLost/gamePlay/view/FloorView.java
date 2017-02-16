@@ -38,13 +38,13 @@ public class FloorView extends Canvas {
         dimensionGameWindow = new Dimension2D(width, height);
         this.floor = floor;
 
-        ratioX.bind(widthProperty().divide(dimensionGameWindow.getWidth()));
-        ratioY.bind(heightProperty().divide(dimensionGameWindow.getHeight()));
+        scaleXProperty().bind(ratioX);
+        scaleYProperty().bind(ratioY);
 
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Point2D point2D = new Point2D(event.getX() / ratioX.get(), event.getY() / ratioY.get());
+                Point2D point2D = new Point2D(event.getX(), event.getY());
                 point2D = point2D.add(origin);
                 fireEvent(new ClicOnMap(event.getButton(), point2D.getX(), point2D.getY()));
             }
@@ -69,7 +69,6 @@ public class FloorView extends Canvas {
         Rectangle2D area = new Rectangle2D(origin.getX(), origin.getY(), dimensionGameWindow.getWidth(), dimensionGameWindow.getHeight());
         Deque<Collection<? extends Drawable>> drawableFromSquare = floor.getDrawableFromSquare(area);
         draw(drawableFromSquare, origin);
-        System.out.println("refresh");
     }
 
     @Override
@@ -79,8 +78,12 @@ public class FloorView extends Canvas {
 
     @Override
     public void resize(double width, double height) {
-        setWidth(width);
-        setHeight(height);
+        /*setWidth(width);
+        setHeight(height);*/
+
+        ratioX.set(width / dimensionGameWindow.getWidth());
+        ratioY.set(height / dimensionGameWindow.getHeight());
+
     }
 
     @Override
@@ -134,7 +137,7 @@ public class FloorView extends Canvas {
             for (Iterator<? extends Drawable> iterator1 = next.iterator(); iterator1.hasNext(); ) {
                 Drawable drawable = iterator1.next();
                 Rectangle2D drawableBounds = drawable.getBounds();
-                context.drawImage(drawable.getImage(), (drawableBounds.getMinX() - origin.getX()) * ratioX.get(), (drawableBounds.getMinY() - origin.getY()) * ratioY.get(), drawableBounds.getWidth() * ratioX.get(), drawableBounds.getHeight() * ratioY.get());
+                context.drawImage(drawable.getImage(), (drawableBounds.getMinX() - origin.getX()), (drawableBounds.getMinY() - origin.getY()), drawableBounds.getWidth(), drawableBounds.getHeight());
             }
         }
     }
