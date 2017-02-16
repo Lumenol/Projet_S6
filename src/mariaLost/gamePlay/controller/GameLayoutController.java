@@ -7,8 +7,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import mariaLost.gamePlay.model.World;
+import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.gamePlay.tools.Direction;
-import mariaLost.gamePlay.view.ClicOnMap;
 import mariaLost.gamePlay.view.GameView;
 import mariaLost.gamePlay.view.PlayerBarController;
 import mariaLost.items.model.Player;
@@ -76,11 +76,10 @@ public class GameLayoutController {
 
 
         // Lorsque que l'on clique quelque part on défini une destination pour le personnage
-        gameView.addEventHandler(ClicOnMap.CLIC_ON_MAP, new EventHandler<ClicOnMap>() {
+        gameView.addEventHandler(ClicOnMapEvent.CLIC_ON_MAP_EVENT_TYPE, new EventHandler<ClicOnMapEvent>() {
             @Override
-            public void handle(ClicOnMap event) {
-                System.out.println(event);
-                if (event.getButton().equals(MouseButton.PRIMARY))
+            public void handle(ClicOnMapEvent event) {
+                if (event.getButton().equals(MouseButton.SECONDARY))
                     world.setPlayerDestination(new Point2D(event.getX(), event.getY()));
             }
         });

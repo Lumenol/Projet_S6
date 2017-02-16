@@ -1,4 +1,4 @@
-package mariaLost.gamePlay.view;
+package mariaLost.gamePlay.tools;
 
 import javafx.event.Event;
 import javafx.event.EventType;
@@ -8,22 +8,22 @@ import javafx.scene.input.MouseButton;
 /**
  * Created by crede on 15/02/2017.
  */
-public class ClicOnMap extends Event {
+public class ClicOnMapEvent extends Event {
 
-    public static EventType<ClicOnMap> CLIC_ON_MAP = new EventType<>();
+    public static final EventType<ClicOnMapEvent> CLIC_ON_MAP_EVENT_TYPE = new EventType<>(Event.ANY, "CLIC_ON_MAP_EVENT_TYPE");
 
     private Point2D coordonne;
     private MouseButton button;
 
-    public ClicOnMap(MouseButton buttton, double x, double y) {
-        super(CLIC_ON_MAP);
+    public ClicOnMapEvent(MouseButton buttton, double x, double y) {
+        super(CLIC_ON_MAP_EVENT_TYPE);
         coordonne = new Point2D(x, y);
         this.button = buttton;
     }
 
     @Override
     public String toString() {
-        return "ClicOnMap{" +
+        return "ClicOnMapEvent{" +
                 "coordonne=" + coordonne +
                 ", button=" + button +
                 '}';

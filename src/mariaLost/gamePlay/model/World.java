@@ -30,17 +30,23 @@ public class World implements Model {
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
     private AnimationTimer moteur = new AnimationTimer() {
+        private long time = 0;
+        private long delay = 16000000L;
+
         @Override
         public void handle(long now) {
-            Dimension2D dimension = floor.getDimension();
-            Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
-            itemFromSquare.addAll(items);
-            MoteurPhysique.move(itemFromSquare);
-            items.removeIf(abstractItem -> abstractItem.isFinished());
+            if (now - time >= delay) {
+                time = now;
+                Dimension2D dimension = floor.getDimension();
+                Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
+                itemFromSquare.addAll(items);
+                MoteurPhysique.move(itemFromSquare);
+                items.removeIf(abstractItem -> abstractItem.isFinished());
 
-            if (playerAtTheEnd()) {
-                world = (world + 1) % 3;
-                loadWorld(world);
+                if (playerAtTheEnd()) {
+                    world = (world + 1) % 3;
+                    loadWorld(world);
+                }
             }
         }
     };

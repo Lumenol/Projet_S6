@@ -47,6 +47,7 @@ public class PlayerBarController {
     @FXML
     public void initialize() {
         moneyImageView.setImage(new Image(Parameters_MariaLost.IMAGE_GOLD));
+
     }
 
     public SimpleIntegerProperty lifeProperty() {

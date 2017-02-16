@@ -1,6 +1,5 @@
 package mariaLost.gamePlay.view;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,6 +11,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import mariaLost.gamePlay.interfaces.DrawableFloor;
+import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.items.interfaces.Drawable;
 
 import java.util.Collection;
@@ -27,9 +27,6 @@ public class FloorView extends Canvas {
     private Point2D origin = Point2D.ZERO;
     private SimpleObjectProperty<Point2D> folow = new SimpleObjectProperty<>(Point2D.ZERO);
 
-    private SimpleDoubleProperty ratioX = new SimpleDoubleProperty(1);
-    private SimpleDoubleProperty ratioY = new SimpleDoubleProperty(1);
-
     private DrawableFloor floor;
 
 
@@ -38,15 +35,13 @@ public class FloorView extends Canvas {
         dimensionGameWindow = new Dimension2D(width, height);
         this.floor = floor;
 
-        scaleXProperty().bind(ratioX);
-        scaleYProperty().bind(ratioY);
 
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Point2D point2D = new Point2D(event.getX(), event.getY());
                 point2D = point2D.add(origin);
-                fireEvent(new ClicOnMap(event.getButton(), point2D.getX(), point2D.getY()));
+                fireEvent(new ClicOnMapEvent(event.getButton(), point2D.getX(), point2D.getY()));
             }
         });
 
@@ -78,11 +73,9 @@ public class FloorView extends Canvas {
 
     @Override
     public void resize(double width, double height) {
-        /*setWidth(width);
-        setHeight(height);*/
 
-        ratioX.set(width / dimensionGameWindow.getWidth());
-        ratioY.set(height / dimensionGameWindow.getHeight());
+        setScaleX(width / dimensionGameWindow.getWidth());
+        setScaleY(height / dimensionGameWindow.getHeight());
 
     }
 
