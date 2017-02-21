@@ -3,6 +3,7 @@ package mariaLost.items.model;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.interfaces.ActionableItem;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.interfaces.Item;
@@ -15,9 +16,17 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     protected Point2D position;
     private javafx.geometry.Dimension2D size;
 
-    public AbstractItem(double x, double y, double width, double height) {
+    private Monnayeur monnayeur;
+
+    public AbstractItem(double x, double y, double width, double height, Monnayeur m) {
         this.size = new Dimension2D(width, height);
         this.position = new Point2D(x, y);
+        monnayeur = m;
+    }
+
+    @Override
+    public Monnayeur getMonnayeur() {
+        return monnayeur;
     }
 
     @Override

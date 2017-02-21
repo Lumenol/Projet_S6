@@ -2,6 +2,7 @@ package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.interfaces.MobileItem;
 
 /**
@@ -12,12 +13,12 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
     private Point2D speed = new Point2D(0, 0);
     private Point2D destination = null;
 
-    public AbstractMobileItem(double x, double y, double width, double height) {
-        this(x, y, width, height, 1.0);
+    public AbstractMobileItem(double x, double y, double width, double height, Monnayeur m) {
+        this(x, y, width, height, m, 1.0);
     }
 
-    public AbstractMobileItem(double x, double y, double width, double height, double speedLimite) {
-        super(x, y, width, height);
+    public AbstractMobileItem(double x, double y, double width, double height, Monnayeur m, double speedLimite) {
+        super(x, y, width, height, m);
         this.speedLimite = speedLimite;
     }
 

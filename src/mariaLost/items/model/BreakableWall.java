@@ -2,6 +2,7 @@ package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.items.interfaces.ActionableItem;
 import mariaLost.items.interfaces.Item;
 import mariaLost.parameters.Parameters_MariaLost;
@@ -14,7 +15,7 @@ public class BreakableWall extends AbstractItem implements ActionableItem {
     private AbstractItem me = null;
 
     public BreakableWall(double x, double y) {
-        super(x, y, Parameters_MariaLost.CASE_WIDTH, Parameters_MariaLost.CASE_HEIGHT);
+        super(x, y, Parameters_MariaLost.CASE_WIDTH, Parameters_MariaLost.CASE_HEIGHT, new DebitOnlyMonnayeur(0));
         me = new Wall(x, y);
     }
 

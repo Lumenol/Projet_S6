@@ -35,7 +35,6 @@ public class GameLayoutController {
         this.user = user;
         this.player = new Player();
         this.world = new World(this.player);
-
         try {
             gameView = new GameView(world);
         } catch (IOException e) {
@@ -84,6 +83,8 @@ public class GameLayoutController {
             }
         });
 
+
+        gameView.moneyProperty().bind(player.getMonnayeur().valueProperty());
 
         world.start();
         gameView.start();

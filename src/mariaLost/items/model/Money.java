@@ -1,6 +1,7 @@
 package mariaLost.items.model;
 
 import javafx.scene.image.Image;
+import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.items.interfaces.ActionableItem;
 import mariaLost.items.interfaces.Item;
 import mariaLost.parameters.Parameters_MariaLost;
@@ -12,12 +13,8 @@ public class Money extends AbstractItem implements ActionableItem {
 
     private static final Image image = new Image(Parameters_MariaLost.IMAGE_GOLD);
 
-    private int price = 10;
-
-    private boolean isFinished = false;
-
     public Money(double x, double y) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT);
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(10));
     }
 
     @Override
@@ -27,15 +24,12 @@ public class Money extends AbstractItem implements ActionableItem {
 
     @Override
     public void action(Item o) {
-        if (o instanceof Player) {
-            ((Player) o).addMoney(price);
-            isFinished = true;
-        }
+        getMonnayeur().Credit(o.getMonnayeur());
     }
 
     @Override
     public boolean isFinished() {
-        return isFinished;
+        return getMonnayeur().getValue() <= 0;
     }
 
     @Override
