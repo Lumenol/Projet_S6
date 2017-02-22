@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" hgap="20.0" xmlns="http://javafx.com/javafx/8.0.111"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" hgap="20.0" xmlns="http://javafx.com/javafx/8.0.111"
           fx:controller="mariaLost.gamePlay.view.PlayerBarController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0"/>
@@ -17,8 +17,6 @@
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <ImageView fx:id="heartImageView" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT"
-                   GridPane.valignment="CENTER"/>
         <ImageView fx:id="moneyImageView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
                    GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
         <Label fx:id="moneyLabel" text="Money" GridPane.columnIndex="1" GridPane.halignment="RIGHT"

@@ -30,7 +30,7 @@ public class Parameters_MariaLost {
      */
     public static final String IMAGE_LOGO = "file:resources/Images/logo.png";
     public static final String IMAGE_GOLD = "file:resources/Images/gold.png";
-    public static final String IMAGE_HEART = "file:resources/Images/gold.png";
+    public static final String IMAGE_HEART = "file:resources/Images/heart.png";
     public static final String IMAGE_WALL = "file:resources/Images/wall.png";
     public static final String IMAGE_DIRT = "file:resources/Images/dirt.png";
     public static final String IMAGE_END_CASE = "file:resources/Images/floor_green.png";

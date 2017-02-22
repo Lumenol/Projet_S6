@@ -85,6 +85,10 @@ public class GameLayoutController {
 
 
         gameView.moneyProperty().bind(player.getMonnayeur().valueProperty());
+        /*
+        En attendant d'avoir de la vie je le mes sur les piece pour voir
+         */
+        gameView.lifeProperty().bind(player.getMonnayeur().valueProperty().divide(30.));
 
         world.start();
         gameView.start();

@@ -1,6 +1,7 @@
 package mariaLost.gamePlay.view;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -70,7 +71,7 @@ public class GameView extends BorderPane {
         animationTimer.stop();
     }
 
-    public SimpleIntegerProperty lifeProperty() {
+    public SimpleDoubleProperty lifeProperty() {
         return barController.lifeProperty();
     }
 
