@@ -44,7 +44,6 @@ public class LifeBar extends Pane {
 
         heart.setMaxSize(nbCoeur * image.getWidth(), image.getHeight());
 
-
         for (int i = 0; i < nbCoeur; i++)
             heart.getChildren().addAll(new ImageView(image));
 
@@ -58,7 +57,6 @@ public class LifeBar extends Pane {
         back.widthProperty().bind(widthProperty());
         back.heightProperty().bind(heightProperty());
         back.setFill(Color.WHITE);
-
     }
 
     public SimpleDoubleProperty progressProperty() {

@@ -24,7 +24,9 @@ public class Life extends Pane {
             lifeBar.progressProperty().bind((progress.subtract((double) i / height)).multiply(height));
             vBox.getChildren().add(lifeBar);
         }
+
     }
+
 
     public void setProgress(double progress) {
         this.progress.set(progress);
