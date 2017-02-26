@@ -59,6 +59,7 @@ public class LifeBar extends Pane {
         back.setFill(Color.WHITE);
     }
 
+
     public SimpleDoubleProperty progressProperty() {
         return progress;
     }
