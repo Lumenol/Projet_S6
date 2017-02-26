@@ -1,14 +1,13 @@
 package mariaLost.gamePlay.model;
 
-import com.sun.tools.javac.util.Pair;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
+import javafx.util.Pair;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.*;
 import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.*;
-import java.util.function.DoubleToIntFunction;
 
 /**
  * Created by elsacollet on 23/02/2017.
@@ -162,7 +161,7 @@ public class GeneratedFloor extends AbstractFloor{
                 if(directionPossible.size()>0){
                     Random rand = new Random();
                     int next= rand.nextInt(directionPossible.size());
-                    createLaby(directionPossible.get(next).fst, directionPossible.get(next).snd);
+                    createLaby(directionPossible.get(next).getKey(), directionPossible.get(next).getValue());
                     directionPossible.remove(next);
                 }
 

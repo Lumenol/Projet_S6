@@ -8,7 +8,7 @@ public class Parameters_MariaLost {
     public static final int CASE_HEIGHT = 50;
     public static final int MOVABLE_ITEM_WIDTH = 40;
     public static final int MOVABLE_ITEM_HEIGHT = 40;
-    public static final int PAGE_WIDTH = 600;
+    public static final int PAGE_WIDTH = 1000;
     public static final int PAGE_HEIGHT = 600;
 
     public static final int NUMBER_OF_CASE_X = 20;
