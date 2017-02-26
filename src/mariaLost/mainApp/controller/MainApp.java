@@ -12,12 +12,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
+import mariaLost.gamePlay.model.GeneratedFloor;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.controller.UserDetailsController;
 import mariaLost.user.controller.UserOverviewController;
 import mariaLost.user.model.User;
 import mariaLost.user.model.UserReader;
 
+import javax.annotation.Generated;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,6 +34,9 @@ public class MainApp extends Application {
 
     public MainApp() {
         System.out.println("Main App ");
+      //  GeneratedFloor floor = new GeneratedFloor(10, 10);
+      //  System.out.println(floor);
+        //System.exit(1);
     }
 
     public static void main(String[] args) {
@@ -50,10 +55,12 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Maria Lost - " + userReader.getUserFile().getName());
         this.primaryStage.getIcons().add(new Image(Parameters_MariaLost.IMAGE_LOGO));
 
-        primaryStage.setMinWidth(2 * Parameters_MariaLost.PAGE_WIDTH);
-        primaryStage.setMinHeight(2 * Parameters_MariaLost.PAGE_HEIGHT);
+      //  primaryStage.setMinWidth(2 * Parameters_MariaLost.PAGE_WIDTH);
+        //primaryStage.setMinHeight(2 * Parameters_MariaLost.PAGE_HEIGHT);
+        primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
+        primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
 
-        primaryStage.setFullScreen(true);
+       // primaryStage.setFullScreen(true);
 
         showRoot();
         showUserData();

@@ -56,6 +56,16 @@ public class World implements Model {
         this.player = player;
         items.add(player);
     }
+    public void loadFloor(int hauteur, int largeur) throws Exception{
+        floor = new GeneratedFloor(hauteur, largeur);
+        Dimension2D dimension = floor.getDimension();
+        player.setSpeed(Point2D.ZERO);
+        player.setDestination(null);
+        player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
+
+        items.clear();
+        items.add(player);
+    }
 
     public void loadFloorFromFile(String fileName) throws Exception {
         floor = new FloorFromFile(fileName);
@@ -105,7 +115,9 @@ public class World implements Model {
 
     private void loadWorld(int i) {
         try {
-            loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
+            loadFloor(Parameters_MariaLost.NUMBER_OF_CASE_Y, Parameters_MariaLost.NUMBER_OF_CASE_X);
+
+           // loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -11,8 +11,8 @@ public class Parameters_MariaLost {
     public static final int PAGE_WIDTH = 600;
     public static final int PAGE_HEIGHT = 600;
 
-    public static final int NUMBER_OF_CASE_X = 9;
-    public static final int NUMBER_OF_CASE_Y = 10;
+    public static final int NUMBER_OF_CASE_X = 20;
+    public static final int NUMBER_OF_CASE_Y = 20;
 
     /**
      * Gestion des fichiers xml

@@ -32,6 +32,8 @@ public class FloorView extends Canvas {
 
     public FloorView(DrawableFloor floor, double width, double height) {
         super(width, height);
+        //dimensionGameWindow = new Dimension2D(10, 10);
+
         dimensionGameWindow = new Dimension2D(width, height);
         this.floor = floor;
 
