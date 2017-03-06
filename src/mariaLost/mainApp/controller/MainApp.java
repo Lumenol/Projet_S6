@@ -50,8 +50,8 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Maria Lost - " + userReader.getUserFile().getName());
         this.primaryStage.getIcons().add(new Image(Parameters_MariaLost.IMAGE_LOGO));
 
-        primaryStage.setMinWidth(2 * Parameters_MariaLost.PAGE_WIDTH);
-        primaryStage.setMinHeight(2 * Parameters_MariaLost.PAGE_HEIGHT);
+        primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
+        primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
 
         primaryStage.setFullScreen(true);
 

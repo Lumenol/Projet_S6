@@ -2,6 +2,7 @@ package mariaLost.items.interfaces;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import mariaLost.gamePlay.tools.Monnayeur;
 
 
 /**
@@ -14,6 +15,13 @@ public interface Item {
      * @return vrai si fini
      */
     boolean isFinished();
+
+    /**
+     * Retourne le Monnayeur a fin d'effectuer des oppération dessus.
+     *
+     * @return
+     */
+    Monnayeur getMonnayeur();
 
     /**
      * Position d'un Item dans le plan
