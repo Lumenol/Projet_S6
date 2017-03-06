@@ -29,6 +29,9 @@ public class Direction {
     public Direction(double x, double y) {
         direction = new Point2D(x, y).normalize();
     }
+    public Direction(Point2D point){
+    	direction=point.normalize();
+    }
 
     @Override
     public boolean equals(Object o) {

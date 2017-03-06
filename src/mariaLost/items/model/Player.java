@@ -15,6 +15,7 @@ import mariaLost.parameters.Parameters_MariaLost;
 public class Player extends AbstractMobileItem {
 
     private IntegerProperty money = new SimpleIntegerProperty(0);
+    private IntegerProperty lifePoint=new SimpleIntegerProperty(100);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
 
@@ -39,6 +40,27 @@ public class Player extends AbstractMobileItem {
     public void setMoney(int money) {
         this.money.set(money);
     }
+    
+	public int getLifePoint() {
+		return lifePoint.get();
+	}
+
+	public void setLifePoint(int lifePoint) {
+		this.lifePoint.set(lifePoint);
+	}
+	
+	public void takeDamage(int damage){
+		if(damage>=0){
+			if(lifePoint.intValue()-damage>0){
+				lifePoint.set(lifePoint.intValue()-damage);
+				System.out.println("damage taken = "+damage);
+				System.out.println("new lifepoint = "+lifePoint);
+			}else{
+				lifePoint.set(0);
+			}
+		}	
+	}
+
 
     public ReadOnlyIntegerProperty moneyProperty() {
         return money;
@@ -78,4 +100,6 @@ public class Player extends AbstractMobileItem {
     public Image getImage() {
         return animation.getImage();
     }
+
+
 }

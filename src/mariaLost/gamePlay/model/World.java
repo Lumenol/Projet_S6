@@ -6,6 +6,7 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
@@ -40,9 +41,10 @@ public class World implements Model {
                 Dimension2D dimension = floor.getDimension();
                 Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                 itemFromSquare.addAll(items);
+                EnemyController.handleEnemies(itemFromSquare);
                 MoteurPhysique.move(itemFromSquare);
                 items.removeIf(abstractItem -> abstractItem.isFinished());
-
+                
                 if (playerAtTheEnd()) {
                     world = (world + 1) % 3;
                     loadWorld(world);
