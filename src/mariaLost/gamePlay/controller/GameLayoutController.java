@@ -83,12 +83,15 @@ public class GameLayoutController {
             }
         });
 
+        gameView.nameProperty().bind(user.nameProperty());
 
         gameView.moneyProperty().bind(player.getMonnayeur().valueProperty());
+
         /*
-        En attendant d'avoir de la vie je le mes sur les piece pour voir
+        Accroche la vie du joueur a la barre de vie de la vue calcul le pourcentage de vie du joueur en considérent qu'il a ça vie maximal a ce moment
          */
-        gameView.lifeProperty().bind(player.getMonnayeur().valueProperty().divide(30.));
+        gameView.lifeProperty().bind(player.lifePointPropertie().divide(player.lifePointPropertie().get()));
+
 
         world.start();
         gameView.start();

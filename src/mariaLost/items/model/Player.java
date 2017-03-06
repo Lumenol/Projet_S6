@@ -1,7 +1,8 @@
 package mariaLost.items.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.Direction;
@@ -14,7 +15,7 @@ import mariaLost.parameters.Parameters_MariaLost;
  */
 public class Player extends AbstractMobileItem {
 
-    private IntegerProperty lifePoint=new SimpleIntegerProperty(100);
+    private DoubleProperty lifePoint = new SimpleDoubleProperty(100);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
 
@@ -24,6 +25,10 @@ public class Player extends AbstractMobileItem {
 
     public Player(double x, double y) {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), 10);
+    }
+
+    public ReadOnlyDoubleProperty lifePointPropertie() {
+        return lifePoint;
     }
 
 	public void takeDamage(int damage){
