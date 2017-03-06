@@ -103,6 +103,9 @@ public class FloorFromFile extends AbstractFloor {
                 return end;
             case 4:
                 return new BreakableWall(x, y);
+            case 6:
+            	gettingItemList.add(new Spider(x, y));
+            	return new Ground(x,y);	
             default:
                 throw new IllegalArgumentException("Pas de correspondence pour codeItem");
         }
