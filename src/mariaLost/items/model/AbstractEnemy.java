@@ -2,6 +2,7 @@ package mariaLost.items.model;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.parameters.Parameters_MariaLost;
 
 public abstract class AbstractEnemy extends AbstractMobileItem {
@@ -21,7 +22,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected Image image;
 	
 	public AbstractEnemy(double x, double y,double speedLimit) {
-		super(x, y,Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT,speedLimit);
+		super(x, y,Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT,new Monnayeur(0),speedLimit);
 	}
 
 	public int getLifePoint() {
