@@ -11,8 +11,7 @@ public class Movement {
 	
 	protected Direction direction;
 	private Duration duration;
-	private long startTime;
-	private Boolean isRunning=false;
+	private double startTime=System.currentTimeMillis();
 	private Animation animation;
 	
 	
@@ -29,23 +28,22 @@ public class Movement {
 		this.animation=animation;
 	}
 	
-	private void start(){
+	public void start(){
 		startTime=System.currentTimeMillis();
-		isRunning=true;
 		animation.play();
 	}
 	
-	private void stop(){
-		isRunning=false;
+	public void stop(){
+		startTime=System.currentTimeMillis()-(duration.toMillis()*2);
 		animation.stop();
 	}
 	
-	
-	protected boolean isOver(){
-		return (System.currentTimeMillis()-startTime)>duration.toMillis();
-	}
 	public boolean isRunning(){
-		return isRunning;
+		if((System.currentTimeMillis()-startTime)<duration.toMillis()){
+			return true;
+		}
+		stop();
+		return false;
 	}
 	
 	final public Image getImage(){
@@ -53,17 +51,16 @@ public class Movement {
 	}
 	
 	public Point2D getSpeed(){
-		if(!isRunning){
-			start();
-		}
-		if(isOver()){
-			stop();
+		if(!isRunning()){
 			return Direction.ANY.getDirection();
 		}
 		return direction.getDirection();
 	}
+
+	
 	
 
+	
 	
 	@Override
 	public boolean equals(Object obj) {

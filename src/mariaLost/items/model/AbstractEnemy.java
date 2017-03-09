@@ -1,8 +1,11 @@
 package mariaLost.items.model;
 
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Monnayeur;
+import mariaLost.items.interfaces.Item;
 import mariaLost.parameters.Parameters_MariaLost;
 
 public abstract class AbstractEnemy extends AbstractMobileItem {
@@ -10,12 +13,13 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 	protected int lifePoint;
 	protected int agroRadius;
+	protected int attackRange;
 	boolean isAgro=false;
 	private double contactTime;
 	protected int damageContact;
 	protected int damageDealt=0;
 	Movement actualMovement;
-	
+	Attack actualAttack;
 
 
 
@@ -61,7 +65,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 	@Override
 	public Image getImage() {
-		return actualMovement.getImage();
+		return ((actualAttack.isRunning())?actualAttack.getImage():actualMovement.getImage());
 	}	
 	
 	
@@ -104,7 +108,85 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 			damageDealt=damageContact;
 		}			
 	}
+	protected Point2D getAttackStartingPoint(Direction direction){
+		if(direction.equals(Direction.RIGHT)){
+			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
+					,this.getPosition().getY()+(this.getBounds().getHeight()/2));
+		}else if(direction.equals(Direction.LEFT)){
+			return new Point2D(this.getPosition().getX()
+					,this.getPosition().getY()+(this.getBounds().getHeight()/2));
+		}else if(direction.equals(Direction.DOWN)){
+			return new Point2D(this.getPosition().getX()+(this.getBounds().getWidth()/2)
+					,this.getPosition().getY()+this.getBounds().getHeight());
+		}else{
+			return new Point2D(this.getPosition().getX()+(this.getBounds().getWidth()/2)
+					,this.getPosition().getY());
+		}
+	}
+	protected boolean isInAttackRange(Rectangle2D playerBound){
+		Rectangle2D leftSide=new Rectangle2D(
+				this.getBounds().getMinX()-attackRange
+				,this.getBounds().getMinY()
+				,this.getBounds().getWidth()
+				,this.getBounds().getHeight());
+		
+		Rectangle2D upperSide=new Rectangle2D(
+				this.getBounds().getMinX()
+				,this.getBounds().getMinY()-attackRange
+				,this.getBounds().getWidth()
+				,this.getBounds().getHeight());
+		
+		Rectangle2D rightSide=new Rectangle2D(
+				this.getBounds().getMinX()+attackRange
+				,this.getBounds().getMinY()
+				,this.getBounds().getWidth()
+				,this.getBounds().getHeight());
+		Rectangle2D rightLower=new Rectangle2D(
+				this.getBounds().getMinX()
+				,this.getBounds().getMinY()+attackRange
+				,this.getBounds().getWidth()
+				,this.getBounds().getHeight());
+		
+		return playerBound.intersects(leftSide)
+				||playerBound.intersects(upperSide)
+				||playerBound.intersects(rightSide)
+				||playerBound.intersects(rightLower);
+	}
 	
+	
+	
+	protected boolean isInPlayerAxis(Player player){
+		Rectangle2D	playerAxisRect;
+		if(itemIsLeft(player)){
+			playerAxisRect=new Rectangle2D(
+					player.getBounds().getMinX()
+					,player.getBounds().getMinY()
+					,this.getBounds().getMaxX()-player.getBounds().getMinX()
+					,player.getBounds().getHeight());
+		}else if(itemIsRight(player)){
+			playerAxisRect=new Rectangle2D(
+					player.getBounds().getMinX()
+					,player.getBounds().getMinY()
+					,player.getBounds().getMinX()-this.getBounds().getMinX()
+					,player.getBounds().getHeight());
+		}else if(itemIsDown(player)){
+			playerAxisRect=new Rectangle2D(
+					player.getBounds().getMinX()
+					,this.getBounds().getMinY()
+					,player.getBounds().getWidth()
+					,player.getBounds().getMaxY()-this.getBounds().getMinY());
+		}else{
+			playerAxisRect=new Rectangle2D(
+					player.getBounds().getMinX()
+					,player.getBounds().getMinY()
+					,player.getBounds().getWidth()
+					,this.getBounds().getMaxY()-player.getBounds().getMinY());
+		}
+		
+		return playerAxisRect.intersects(player.getBounds());
+	}
+	
+
 	
 	public abstract void behave(Player player);
 
