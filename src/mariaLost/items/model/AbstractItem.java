@@ -107,16 +107,16 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
 	}
 	
 	public boolean itemIsUp(Item item){
-		return itemDirection(item.center()).getY()<Math.sin(-Math.PI/4);
+		return itemDirection(item.center()).getY()<=Math.sin(-Math.PI/4);
 	}
 	public boolean itemIsRight(Item item){
-		return itemDirection(item.center()).getX()>Math.cos(Math.PI/4);
+		return itemDirection(item.center()).getX()>=Math.cos(Math.PI/4);
 	}
 	public boolean itemIsLeft(Item item){
-		return itemDirection(item.center()).getX()<Math.cos(3*Math.PI/4);
+		return itemDirection(item.center()).getX()<=Math.cos(3*Math.PI/4);
 	}
 	public boolean itemIsDown(Item item){
-		return itemDirection(item.center()).getY()>Math.sin(Math.PI/4);
+		return itemDirection(item.center()).getY()>=Math.sin(Math.PI/4);
 	}
 	public Point2D speedToAlign(Item item){
 		if(itemIsRight(item)||(itemIsLeft(item))){

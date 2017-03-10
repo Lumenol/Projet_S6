@@ -5,11 +5,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Monnayeur;
-import mariaLost.items.interfaces.Item;
 import mariaLost.parameters.Parameters_MariaLost;
 
 public abstract class AbstractEnemy extends AbstractMobileItem {
-	
 	
 	protected int lifePoint;
 	protected int agroRadius;
@@ -20,7 +18,14 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected int damageDealt=0;
 	Movement actualMovement;
 	Attack actualAttack;
-
+	Movement goUp;
+	Movement goDown;
+	Movement goLeft;
+	Movement goRight;
+	Attack biteUp;
+	Attack biteDown;
+	Attack biteLeft;
+	Attack biteRight;
 
 
 	protected Image image;
@@ -188,9 +193,59 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 
 	
-	public abstract void behave(Player player);
-
-	
-	
-	
+	public void behave(Player player){
+		if(!actualAttack.isRunning()){
+			if(!actualMovement.isRunning()){
+				//choosing an attack
+				if(isInAttackRange(player.getBounds())&&aligned(this,player)){
+					if(itemIsRight(player)){
+						actualAttack=biteRight;
+						actualAttack.start(getAttackStartingPoint(Direction.RIGHT),Direction.RIGHT);
+					}else if(itemIsLeft(player)){
+						actualAttack=biteLeft;
+						actualAttack.start(getAttackStartingPoint(Direction.LEFT),Direction.LEFT);
+					}else if(itemIsUp(player)){
+						actualAttack=biteUp;
+						actualAttack.start(getAttackStartingPoint(Direction.UP),Direction.UP);
+					}else{
+						actualAttack=biteDown;
+						actualAttack.start(getAttackStartingPoint(Direction.DOWN),Direction.DOWN);
+					}
+					
+				//choosing a movement	
+				}else{
+					if(itemIsRight(player)){
+						actualMovement=goRight;
+					}else if(itemIsLeft(player)){
+						actualMovement=goLeft;
+					}else if(itemIsUp(player)){
+						actualMovement=goUp;
+					}else{
+						actualMovement=goDown;
+					}
+					actualMovement.start();
+				}
+			}else{
+				//we are moving
+				if(isInPlayerAxis(player)&&isInAttackRange(player.getBounds())){					
+					if(aligned(this,player)){
+						actualMovement.stop();
+					}else{
+						this.setSpeed(speedToAlign(player));
+						return;
+					}
+				}			
+			}
+			checkDamageContact(player);
+		}else{
+			//we are attacking
+			if(actualAttack.hasHit(player.getBounds())){
+				this.damageDealt=actualAttack.getDamage();
+			}		
+		}	
+		this.setSpeed(actualMovement.getSpeed());
+	}
 }
+	
+	
+

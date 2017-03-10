@@ -19,11 +19,11 @@ public class Attack{
 	private boolean hasDealtDamage;
 
 	
-	public Attack(AreaOfEffect aoe,int damage,Animation animation){
+	public Attack(AreaOfEffect aoe,int damage,Animation animation,Duration duration){
 		this.aoe=aoe;
 		this.damage=damage;
 		this.animation=animation;
-		this.duration=aoe.getDuration();
+		this.duration=duration;
 	}
 	public void start(Point2D attackStartingPoint,Direction direction){
 		aoe.changeDirectionAttack(direction);
@@ -53,7 +53,7 @@ public class Attack{
 				stop();
 				return false;
 			}
-			if(aoe.hasHit(attackStartingPoint,itemBound,System.currentTimeMillis()-startTime)){
+			if(aoe.hasHit(attackStartingPoint,itemBound)){
 				hasDealtDamage=true;
 				return true;
 			}
