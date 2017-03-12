@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import mariaLost.mainApp.controller.MainApp;
+import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
 /**
@@ -25,6 +28,8 @@ public class UserDetailsController {
     private Label scoreLabel;
     @FXML
     private Label levelLabel;
+    @FXML
+    private ImageView avatarImageView;
 
     public UserDetailsController() {
     }
@@ -44,17 +49,19 @@ public class UserDetailsController {
             nameField.setText(user.getName());
             scoreLabel.setText(Integer.toString(user.getScore()));
             levelLabel.setText(Integer.toString(user.getLevel()));
+            this.avatarImageView.setImage(new Image(user.getImage()));
 
         } else {
             nameLabel.setText("New player");
             nameField.setText("");
             scoreLabel.setText("0");
             levelLabel.setText("0");
+            avatarImageView.setImage(new Image(Parameters_MariaLost.AVATAR_DEFAULT));
         }
     }
 
     /**
-     * @return true if the name fild is correct
+     * @return true if the name field is correct
      * @author Elsa Collet
      */
     private boolean isValid() {

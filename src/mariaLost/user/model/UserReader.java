@@ -55,7 +55,9 @@ public class UserReader {
             alert.setTitle("Error");
             alert.setHeaderText("Loading file impossible");
             alert.setContentText("An error occurred. The file " + this.file.getName() + " into " + this.file.getPath() + " can't be open." +
-                    " Please be sure it's an existing .xml file.");
+                    " Please be sure it's an existing .xml file." + e.getMessage());
+            e.printStackTrace();
+
             alert.showAndWait();
 
         }

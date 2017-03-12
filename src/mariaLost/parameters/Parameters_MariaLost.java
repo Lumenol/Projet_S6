@@ -9,7 +9,7 @@ public class Parameters_MariaLost {
     public static final int MOVABLE_ITEM_WIDTH = 40;
     public static final int MOVABLE_ITEM_HEIGHT = 40;
     public static final int PAGE_WIDTH = 600;
-    public static final int PAGE_HEIGHT = 600;
+    public static final int PAGE_HEIGHT = 500;
 
     public static final int NUMBER_OF_CASE_X = 9;
     public static final int NUMBER_OF_CASE_Y = 10;
@@ -34,4 +34,5 @@ public class Parameters_MariaLost {
     public static final String IMAGE_WALL = "file:resources/Images/wall.png";
     public static final String IMAGE_DIRT = "file:resources/Images/dirt.png";
     public static final String IMAGE_END_CASE = "file:resources/Images/floor_green.png";
+    public static final String AVATAR_DEFAULT= "file:resources/Images/WalkingAnimationPlayer/Front/1.png";
 }

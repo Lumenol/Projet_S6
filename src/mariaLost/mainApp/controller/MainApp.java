@@ -50,10 +50,10 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Maria Lost - " + userReader.getUserFile().getName());
         this.primaryStage.getIcons().add(new Image(Parameters_MariaLost.IMAGE_LOGO));
 
-        primaryStage.setMinWidth(2 * Parameters_MariaLost.PAGE_WIDTH);
-        primaryStage.setMinHeight(2 * Parameters_MariaLost.PAGE_HEIGHT);
+        primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
+        primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
 
-        primaryStage.setFullScreen(true);
+       // primaryStage.setFullScreen(true);
 
         showRoot();
         showUserData();
@@ -84,7 +84,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_USER_OVERVIEW));
             AnchorPane userOverview = loader.load();
-            ;
+
 
             //Set personOverView dans le centre de la fenetre
             root.setCenter(userOverview);
