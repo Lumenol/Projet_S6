@@ -15,12 +15,11 @@ public class RangedAttack extends AbstractMobileItem{
 	protected Animation animation;
 	protected Duration duration;
 	protected double startTime;
-	protected Direction direction;
 	
 	
 	public RangedAttack(Point2D startingPoint, Dimension2D areaOfEffect,Direction direction,int damage,Animation animation,Duration duration,double speedLimite) {
 		super(startingPoint.getX(), startingPoint.getY(), areaOfEffect.getWidth(), areaOfEffect.getHeight(), new Monnayeur(0),speedLimite);
-		this.direction=direction;
+		setSpeed(direction.getDirection());
 		this.damage=damage;
 		this.animation=animation;
 		this.duration=duration;
@@ -44,10 +43,6 @@ public class RangedAttack extends AbstractMobileItem{
 	    return true;
 	}
 
-    @Override
-    public Point2D getSpeed() {
-        return direction.getDirection();
-    }
     public boolean isFinished() {
         return !isRunning();
     }

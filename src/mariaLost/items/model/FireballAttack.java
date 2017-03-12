@@ -9,7 +9,7 @@ import mariaLost.items.model.animation.AnimationFireball;
 public class FireballAttack extends RangedAttack{
 
 	public FireballAttack(Point2D startingPoint,Direction direction){
-		super(startingPoint, new Dimension2D(40,15),direction,10,AnimationFireball.getFireball(direction),new Duration(3000),1);
-	}
+        super(startingPoint, new Dimension2D(40, 15), direction, 10, AnimationFireball.getFireball(direction), new Duration(3000), 5);
+    }
 	
 }
