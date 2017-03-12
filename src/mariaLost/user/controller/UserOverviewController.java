@@ -5,7 +5,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import mariaLost.mainApp.controller.MainApp;
+import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
 /**
@@ -18,13 +21,16 @@ public class UserOverviewController {
 
     @FXML
     private TableColumn<User, String> nameColumn;
-
+    @FXML
+    private TableColumn<User, Integer> scoreColumn;
     @FXML
     private Label nameLabel;
     @FXML
     private Label scoreLabel;
     @FXML
     private Label levelLabel;
+    @FXML
+    private ImageView avatarImageView;
 
     private MainApp mainApp;
 
@@ -42,7 +48,7 @@ public class UserOverviewController {
     @FXML
     public void initialize() {
         this.nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-
+        //this.scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty());
         showUserData(null);
         this.tableUser.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showUserData(newValue)
@@ -60,10 +66,14 @@ public class UserOverviewController {
             this.nameLabel.setText(user.getName());
             this.scoreLabel.setText(Integer.toString(user.getScore()));
             this.levelLabel.setText(Integer.toString(user.getLevel()));
+            System.out.println("user.get image" + user.getImage());
+            this.avatarImageView.setImage(new Image(user.getImage()));
         } else {
             this.nameLabel.setText("");
             this.scoreLabel.setText("");
             this.levelLabel.setText("");
+            this.avatarImageView.setImage(new Image(Parameters_MariaLost.IMAGE_LOGO));
+
         }
     }
 

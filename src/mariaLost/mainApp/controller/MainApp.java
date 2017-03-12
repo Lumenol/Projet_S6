@@ -53,7 +53,7 @@ public class MainApp extends Application {
         primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
         primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
 
-        primaryStage.setFullScreen(true);
+       // primaryStage.setFullScreen(true);
 
         showRoot();
         showUserData();
@@ -84,7 +84,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_USER_OVERVIEW));
             AnchorPane userOverview = loader.load();
-            ;
+
 
             //Set personOverView dans le centre de la fenetre
             root.setCenter(userOverview);

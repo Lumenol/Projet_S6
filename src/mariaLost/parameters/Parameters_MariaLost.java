@@ -1,7 +1,5 @@
 package mariaLost.parameters;
 
-import javafx.util.Duration;
-
 /**
  * Created by elsacollet on 05/02/2017.
  */
@@ -39,4 +37,5 @@ public class Parameters_MariaLost {
     public static final String IMAGE_END_CASE = "file:resources/Images/floor_green.png";
     public static final String SPIDER="file:resources/Images/spider/spider_sprite_sheet.png";
     public static final String FIREBALL="file:resources/Images/fireball/fireball_sprite_sheet.png";
+    public static final String AVATAR_DEFAULT= "file:resources/Images/WalkingAnimationPlayer/Front/1.png";
 }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <UserListWrapper>
     <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>0</level>
+        <name>Marcel</name>
+        <score>0</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
         <level>0</level>
         <name>Elsa</name>
         <score>0</score>
