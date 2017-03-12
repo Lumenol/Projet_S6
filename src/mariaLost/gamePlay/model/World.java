@@ -117,7 +117,7 @@ public class World implements Model {
     public void stop() {
         moteur.stop();
     }
-
+    
 
     @Override
     public Point2D centerOfPlayer() {
@@ -134,5 +134,8 @@ public class World implements Model {
     public void setPlayerDestination(Point2D coordinate) {
         player.setDestination(coordinate);
     }
-
+    public void add(AbstractItem item){
+    	items.add(item);
+    }
+    
 }

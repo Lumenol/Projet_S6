@@ -11,6 +11,7 @@ import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.view.GameView;
 import mariaLost.gamePlay.view.PlayerBarController;
+import mariaLost.items.model.FireballAttack;
 import mariaLost.items.model.Player;
 import mariaLost.mainApp.controller.MainApp;
 import mariaLost.user.model.User;
@@ -80,6 +81,10 @@ public class GameLayoutController {
             public void handle(ClicOnMapEvent event) {
                 if (event.getButton().equals(MouseButton.SECONDARY))
                     world.setPlayerDestination(new Point2D(event.getX(), event.getY()));
+                if (event.getButton().equals(MouseButton.PRIMARY)){
+                	Point2D point=new Point2D(event.getX(), event.getY());
+                	world.add(new FireballAttack(player.getAttackStartingPoint(point),player.getDirection(point)));
+                }	
             }
         });
 

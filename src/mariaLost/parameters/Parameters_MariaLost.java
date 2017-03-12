@@ -35,4 +35,5 @@ public class Parameters_MariaLost {
     public static final String IMAGE_DIRT = "file:resources/Images/dirt.png";
     public static final String IMAGE_END_CASE = "file:resources/Images/floor_green.png";
     public static final String SPIDER="file:resources/Images/spider/spider_sprite_sheet.png";
+    public static final String FIREBALL="file:resources/Images/fireball/fireball_sprite_sheet.png";
 }

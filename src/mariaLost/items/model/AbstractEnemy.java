@@ -17,15 +17,15 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected int damageContact;
 	protected int damageDealt=0;
 	Movement actualMovement;
-	Attack actualAttack;
+	MeleeAttack actualAttack;
 	Movement goUp;
 	Movement goDown;
 	Movement goLeft;
 	Movement goRight;
-	Attack biteUp;
-	Attack biteDown;
-	Attack biteLeft;
-	Attack biteRight;
+	MeleeAttack meleeUp;
+	MeleeAttack meleeDown;
+	MeleeAttack meleeLeft;
+	MeleeAttack meleeRight;
 
 
 	protected Image image;
@@ -67,10 +67,10 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	public void resetContactTime(){
 		contactTime=0;
 	}
-	
+
 	@Override
 	public Image getImage() {
-		return ((actualAttack.isRunning())?actualAttack.getImage():actualMovement.getImage());
+		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();
 	}	
 	
 	
@@ -81,6 +81,16 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		int damage=damageDealt;
 		damageDealt=0;
 		return damage;
+	}
+	
+	public void takeDamage(int damage){
+		if(damage>=0){
+			if(lifePoint-damage>0){
+				lifePoint-=damage;
+			}else{
+				lifePoint=0;
+			}
+		}	
 	}
 	
 	//return true if the player is in contact with the enemy for 1 seconde
@@ -162,19 +172,19 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 	protected boolean isInPlayerAxis(Player player){
 		Rectangle2D	playerAxisRect;
-		if(itemIsLeft(player)){
+		if(isLeft(player)){
 			playerAxisRect=new Rectangle2D(
 					player.getBounds().getMinX()
 					,player.getBounds().getMinY()
 					,this.getBounds().getMaxX()-player.getBounds().getMinX()
 					,player.getBounds().getHeight());
-		}else if(itemIsRight(player)){
+		}else if(isRight(player)){
 			playerAxisRect=new Rectangle2D(
 					player.getBounds().getMinX()
 					,player.getBounds().getMinY()
 					,player.getBounds().getMinX()-this.getBounds().getMinX()
 					,player.getBounds().getHeight());
-		}else if(itemIsDown(player)){
+		}else if(isDown(player)){
 			playerAxisRect=new Rectangle2D(
 					player.getBounds().getMinX()
 					,this.getBounds().getMinY()
@@ -194,31 +204,31 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 
 	
 	public void behave(Player player){
+		
 		if(!actualAttack.isRunning()){
 			if(!actualMovement.isRunning()){
 				//choosing an attack
 				if(isInAttackRange(player.getBounds())&&aligned(this,player)){
-					if(itemIsRight(player)){
-						actualAttack=biteRight;
+					if(isRight(player)){
+						actualAttack=meleeRight;
 						actualAttack.start(getAttackStartingPoint(Direction.RIGHT),Direction.RIGHT);
-					}else if(itemIsLeft(player)){
-						actualAttack=biteLeft;
+					}else if(isLeft(player)){
+						actualAttack=meleeLeft;
 						actualAttack.start(getAttackStartingPoint(Direction.LEFT),Direction.LEFT);
-					}else if(itemIsUp(player)){
-						actualAttack=biteUp;
+					}else if(isUp(player)){
+						actualAttack=meleeUp;
 						actualAttack.start(getAttackStartingPoint(Direction.UP),Direction.UP);
 					}else{
-						actualAttack=biteDown;
+						actualAttack=meleeDown;
 						actualAttack.start(getAttackStartingPoint(Direction.DOWN),Direction.DOWN);
 					}
-					
 				//choosing a movement	
 				}else{
-					if(itemIsRight(player)){
+					if(isRight(player)){
 						actualMovement=goRight;
-					}else if(itemIsLeft(player)){
+					}else if(isLeft(player)){
 						actualMovement=goLeft;
-					}else if(itemIsUp(player)){
+					}else if(isUp(player)){
 						actualMovement=goUp;
 					}else{
 						actualMovement=goDown;
@@ -234,15 +244,15 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 						this.setSpeed(speedToAlign(player));
 						return;
 					}
-				}			
+				}
 			}
 			checkDamageContact(player);
 		}else{
 			//we are attacking
 			if(actualAttack.hasHit(player.getBounds())){
 				this.damageDealt=actualAttack.getDamage();
-			}		
-		}	
+			}
+		}
 		this.setSpeed(actualMovement.getSpeed());
 	}
 }

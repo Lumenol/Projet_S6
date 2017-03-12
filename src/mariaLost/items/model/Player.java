@@ -62,8 +62,75 @@ public class Player extends AbstractMobileItem {
                 changeAnimation(animations[1]);
             }
         }
-
-
+    }
+    
+    public Point2D getAttackStartingPoint(Point2D point){
+    	
+    	Point2D direction= this.pointDirection(point);
+    	//RIGHT
+    	if(direction.getX()>Math.cos(Math.PI/6))
+    			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
+    	    			,this.getPosition().getY()+this.getBounds().getHeight()/2);
+    	//LEFT
+    	if(direction.getX()<Math.cos(5*Math.PI/6)){
+    		System.out.println("LEFT");
+			return new Point2D(this.getPosition().getX()
+	    			,this.getPosition().getY()+this.getBounds().getHeight()/2);
+    	}
+    	//UP
+    	if(-direction.getY()>Math.sin(Math.PI/3)){
+    		System.out.println("UP");
+			return new Point2D(this.getPosition().getX()+(this.getBounds().getWidth()/2)
+	    			,this.getPosition().getY());
+    	}	
+    	//DOWN
+    	if(-direction.getY()<Math.sin(5*Math.PI/3))
+    		return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()/2
+	    			,this.getPosition().getY()+this.getBounds().getHeight());
+    	
+    	if(direction.getX()>Math.cos(Math.PI/3))
+    		//UP RIGHT
+    		if(direction.getY()<0){
+    			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
+    	    			,this.getPosition().getY());
+       		//DOWN RIGHT
+    		}else{
+    			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
+    	    			,this.getPosition().getY()+this.getBounds().getHeight());
+    		}
+		//UP LEFT
+    	if(direction.getY()<0){
+    		System.out.println("UP LEFT");
+    		return new Point2D(this.getPosition().getX()
+	    			,this.getPosition().getY());
+		//DOWN LEFT
+		}else{
+			return new Point2D(this.getPosition().getX()
+	    			,this.getPosition().getY()+this.getBounds().getHeight());
+		}
+    }
+    	
+    public Direction getDirection(Point2D point){
+    	Point2D direction= this.pointDirection(point);
+    	if(direction.getX()>Math.cos(Math.PI/6))
+    			return Direction.RIGHT;
+    	if(direction.getX()<Math.cos(5*Math.PI/6))
+			return Direction.LEFT;
+    	if(-direction.getY()>Math.sin(Math.PI/3))
+			return Direction.UP;
+    	if(-direction.getY()<Math.sin(5*Math.PI/3))
+			return Direction.DOWN;
+    	if(direction.getX()>Math.cos(Math.PI/3))
+    		if(direction.getY()<0){
+    			return Direction.UP_RIGHT;
+    		}else{
+    			return Direction.DOWN_RIGHT;
+    		}
+    	if(direction.getY()<0){
+			return Direction.UP_LEFT;
+		}else{
+			return Direction.DOWN_LEFT;
+		}
     }
 
     private void changeAnimation(Animation a) {

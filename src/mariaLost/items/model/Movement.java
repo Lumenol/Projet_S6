@@ -1,7 +1,6 @@
 package mariaLost.items.model;
 
 import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 import mariaLost.gamePlay.tools.Direction;
@@ -39,9 +38,8 @@ public class Movement {
 	}
 	
 	public boolean isRunning(){
-		if((System.currentTimeMillis()-startTime)<duration.toMillis()){
+		if((System.currentTimeMillis()-startTime)<duration.toMillis())
 			return true;
-		}
 		stop();
 		return false;
 	}
@@ -51,13 +49,12 @@ public class Movement {
 	}
 	
 	public Point2D getSpeed(){
-		if(!isRunning()){
+		if(!isRunning())
 			return Direction.ANY.getDirection();
-		}
 		return direction.getDirection();
 	}
 
-	
+
 	
 
 	

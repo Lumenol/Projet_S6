@@ -89,12 +89,15 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     public Rectangle2D getBounds() {
         return new Rectangle2D(position.getX(), position.getY(), size.getWidth(), size.getHeight());
     }
+    
+    
+    
 	public Point2D center(){
 		return new Point2D(this.getBounds().getMinX()+this.getBounds().getWidth()/2
 				,this.getBounds().getMinY()+this.getBounds().getHeight()/2);
 	}
-	private Point2D itemDirection(Point2D positionItem){
-		return positionItem.subtract(this.center()).normalize();
+	public Point2D pointDirection(Point2D point){
+		return point.subtract(this.center()).normalize();
 	}
 	
 	// Return true if 2 item are considered aligned with a 5 pixel margin
@@ -106,20 +109,37 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
 				(center1.getY()-margin<=center2.getY()&&center2.getY()<=center1.getY()+margin);
 	}
 	
-	public boolean itemIsUp(Item item){
-		return itemDirection(item.center()).getY()<=Math.sin(-Math.PI/4);
+	public boolean isUp(Item item){
+		return pointDirection(item.center()).getY()<=Math.sin(-Math.PI/4);
 	}
-	public boolean itemIsRight(Item item){
-		return itemDirection(item.center()).getX()>=Math.cos(Math.PI/4);
+	public boolean isUp(Point2D point){
+		return pointDirection(point).getY()<=Math.sin(-Math.PI/4);
 	}
-	public boolean itemIsLeft(Item item){
-		return itemDirection(item.center()).getX()<=Math.cos(3*Math.PI/4);
+	
+	public boolean isRight(Item item){
+		return pointDirection(item.center()).getX()>=Math.cos(Math.PI/4);
 	}
-	public boolean itemIsDown(Item item){
-		return itemDirection(item.center()).getY()>=Math.sin(Math.PI/4);
+	public boolean isRight(Point2D point){
+		return pointDirection(point).getX()>=Math.cos(Math.PI/4);
 	}
+	
+	public boolean isLeft(Item item){
+		return pointDirection(item.center()).getX()<=Math.cos(3*Math.PI/4);
+	}
+	public boolean isLeft(Point2D point){
+		return pointDirection(point).getX()<=Math.cos(3*Math.PI/4);
+	}
+	
+	public boolean isDown(Item item){
+		return pointDirection(item.center()).getY()>=Math.sin(Math.PI/4);
+	}
+	public boolean isDown(Point2D point){
+		return pointDirection(point).getY()>=Math.sin(Math.PI/4);
+	}
+	
+	
 	public Point2D speedToAlign(Item item){
-		if(itemIsRight(item)||(itemIsLeft(item))){
+		if(isRight(item)||(isLeft(item))){
 			if(this.center().getY()<item.center().getY()){
 				return Direction.DOWN.getDirection();
 			}else{

@@ -1,4 +1,4 @@
-package mariaLost.items.model;
+package mariaLost.items.model.animation;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
-public class SpriteSheetLoader {
+public abstract class SpriteSheetLoader {
 	
 	// return a List of frame from a sprite sheet
 	public static List<Image> load(String spriteSheetPath,int nbRow,int nbColumn, int first, int last){
@@ -19,8 +19,7 @@ public class SpriteSheetLoader {
 		if(last<first){
 			throw new IllegalArgumentException("Le numéro de la première frame ne peut être inférieur à celui de la dernière.");
 		}
-		
-		
+
 		int frameHeight=(int)spriteSheet.getHeight()/nbRow;
 		int frameWidth=(int)spriteSheet.getWidth()/nbColumn;
 		List<Image> list=new LinkedList<Image>();
@@ -36,8 +35,7 @@ public class SpriteSheetLoader {
 	}
 	
 	// return an image with useless transparant border removed
-	private static WritableImage cleanImage(WritableImage image){
-		
+	private static WritableImage cleanImage(WritableImage image){	
 		PixelReader pixelReader=image.getPixelReader();
 		int upperLeftX=(int)image.getWidth();
 		int upperLeftY=0;
@@ -71,7 +69,6 @@ public class SpriteSheetLoader {
 		}
 		int imageWidth=lowerRightX-upperLeftX;	
 		int imageHeight=lowerRightY-upperLeftY;	
-		
 		return new WritableImage(pixelReader,upperLeftX, upperLeftY, imageWidth, imageHeight);
 	}
 	
