@@ -151,7 +151,7 @@ public class MoteurPhysique {
             AbstractItem next = iterator.next();
             if (limite.intersects(next.getBounds())) {
                 next.action(item);
-                if (!next.isPassable())
+                if (!next.isPassable() && !item.isPassable())
                     return next.getBounds();
             }
         }
