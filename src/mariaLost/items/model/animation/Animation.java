@@ -80,5 +80,7 @@ public class Animation {
             this.ratio = ratio;
         }
     }
-
+    public boolean isOver(){
+    	return courant==frames.length-1;
+    }
 }

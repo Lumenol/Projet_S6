@@ -67,6 +67,11 @@ public class Spider extends AbstractEnemy{
 		List<Image> spriteBiteRight=SpriteSheetLoader.load(Parameters_MariaLost.SPIDER,5,10,31,34);
 		Animation animationBiteRight=new Animation(Duration.millis(100),spriteBiteRight);
 		meleeRight=new MeleeAttack(new Dimension2D(10,10),Direction.RIGHT,15,animationBiteRight,new Duration(400));
+		
+		List<Image> deathSprite=SpriteSheetLoader.load(Parameters_MariaLost.SPIDER,5,10,41,44);
+		deathSprite.addAll(SpriteSheetLoader.load(Parameters_MariaLost.SPIDER,5,10,44,44));
+		deathSprite.addAll(SpriteSheetLoader.load(Parameters_MariaLost.SPIDER,5,10,44,44));
+		death=new Animation(Duration.millis(150),deathSprite);
 
 		actualMovement=goDown;
 		actualAttack=meleeDown;
