@@ -83,7 +83,7 @@ public class GameLayoutController {
                     world.setPlayerDestination(new Point2D(event.getX(), event.getY()));
                 if (event.getButton().equals(MouseButton.PRIMARY)){
                 	Point2D point=new Point2D(event.getX(), event.getY());
-                	world.add(new FireballAttack(player.getAttackStartingPoint(point),player.getDirection(point)));
+                	world.add(FireballAttack.getFireball(player.getAttackStartingPoint(point),player.getDirection(point)));
                 }	
             }
         });

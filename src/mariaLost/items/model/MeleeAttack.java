@@ -12,7 +12,6 @@ public class MeleeAttack extends AbstractAttack{
 	
 	protected Point2D attackStartingPoint;
 	protected boolean isAttacking=false;
-	protected boolean hasDealtDamage;
 	protected Dimension2D aoe;
 	
 	
@@ -24,7 +23,6 @@ public class MeleeAttack extends AbstractAttack{
 	public void start(Point2D attackStartingPoint,Direction direction){
 		changeDirectionAttack(direction);
 		isAttacking=true;
-		hasDealtDamage=false;
 		this.attackStartingPoint=attackStartingPoint;
 		startTime=System.currentTimeMillis();
 		animation.play();
@@ -42,17 +40,11 @@ public class MeleeAttack extends AbstractAttack{
 	
 	
 	public boolean hasHit(Rectangle2D itemBound){
-		if(!hasDealtDamage){
-			if(!isRunning()){
-				stop();
-				return false;
-			}
-			if(hasHit(attackStartingPoint,itemBound)){
-				hasDealtDamage=true;
-				return true;
-			}
+		if(!isRunning()){
+			stop();
+			return false;
 		}
-		return false;
+		return hasHit(attackStartingPoint,itemBound);
 	}
 
 

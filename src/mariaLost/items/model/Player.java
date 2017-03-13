@@ -18,6 +18,8 @@ public class Player extends AbstractMobileItem {
     private DoubleProperty lifePoint = new SimpleDoubleProperty(100);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
+	private double lastTimeDamaged=System.currentTimeMillis();
+
 
     public Player() {
         this(0, 0);
@@ -32,7 +34,11 @@ public class Player extends AbstractMobileItem {
     }
 
 	public void takeDamage(int damage){
-		if(damage>=0){
+		if(damage<0){
+			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
+		}
+		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
+			lastTimeDamaged=System.currentTimeMillis();
 			if(lifePoint.intValue()-damage>0){
 				lifePoint.set(lifePoint.intValue()-damage);
 				System.out.println("damage taken = "+damage);
@@ -65,50 +71,31 @@ public class Player extends AbstractMobileItem {
     }
     
     public Point2D getAttackStartingPoint(Point2D point){
-    	
-    	Point2D direction= this.pointDirection(point);
-    	//RIGHT
-    	if(direction.getX()>Math.cos(Math.PI/6))
+    	if(isRight(point))
     			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
     	    			,this.getPosition().getY()+this.getBounds().getHeight()/2);
-    	//LEFT
-    	if(direction.getX()<Math.cos(5*Math.PI/6)){
-    		System.out.println("LEFT");
+    	if(isLeft(point))
 			return new Point2D(this.getPosition().getX()
 	    			,this.getPosition().getY()+this.getBounds().getHeight()/2);
-    	}
-    	//UP
-    	if(-direction.getY()>Math.sin(Math.PI/3)){
-    		System.out.println("UP");
+    	if(isUp(point))
 			return new Point2D(this.getPosition().getX()+(this.getBounds().getWidth()/2)
 	    			,this.getPosition().getY());
-    	}	
-    	//DOWN
-    	if(-direction.getY()<Math.sin(5*Math.PI/3))
+    	if(isDown(point))
     		return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()/2
 	    			,this.getPosition().getY()+this.getBounds().getHeight());
-    	
-    	if(direction.getX()>Math.cos(Math.PI/3))
-    		//UP RIGHT
-    		if(direction.getY()<0){
+    	if(isUpperRight(point))
     			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
     	    			,this.getPosition().getY());
-       		//DOWN RIGHT
-    		}else{
+    	if(isLowerRight(point))		
     			return new Point2D(this.getPosition().getX()+this.getBounds().getWidth()
     	    			,this.getPosition().getY()+this.getBounds().getHeight());
-    		}
-		//UP LEFT
-    	if(direction.getY()<0){
-    		System.out.println("UP LEFT");
+    	if(isUpperLeft(point))
     		return new Point2D(this.getPosition().getX()
 	    			,this.getPosition().getY());
-		//DOWN LEFT
-		}else{
-			return new Point2D(this.getPosition().getX()
+    	return new Point2D(this.getPosition().getX()
 	    			,this.getPosition().getY()+this.getBounds().getHeight());
-		}
-    }
+	}
+    
     	
     public Direction getDirection(Point2D point){
     	Point2D direction= this.pointDirection(point);

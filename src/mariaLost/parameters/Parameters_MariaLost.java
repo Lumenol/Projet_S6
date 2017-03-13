@@ -1,5 +1,7 @@
 package mariaLost.parameters;
 
+import javafx.util.Duration;
+
 /**
  * Created by elsacollet on 05/02/2017.
  */
@@ -13,6 +15,7 @@ public class Parameters_MariaLost {
 
     public static final int NUMBER_OF_CASE_X = 9;
     public static final int NUMBER_OF_CASE_Y = 10;
+    public static final Duration DAMAGE_RECOVERY_TIME=new Duration(1000);
 
     /**
      * Gestion des fichiers xml

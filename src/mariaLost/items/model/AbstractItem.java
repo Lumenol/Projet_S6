@@ -115,26 +115,71 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
 	public boolean isUp(Point2D point){
 		return pointDirection(point).getY()<=Math.sin(-Math.PI/4);
 	}
-	
 	public boolean isRight(Item item){
 		return pointDirection(item.center()).getX()>=Math.cos(Math.PI/4);
 	}
 	public boolean isRight(Point2D point){
 		return pointDirection(point).getX()>=Math.cos(Math.PI/4);
 	}
-	
 	public boolean isLeft(Item item){
 		return pointDirection(item.center()).getX()<=Math.cos(3*Math.PI/4);
 	}
 	public boolean isLeft(Point2D point){
 		return pointDirection(point).getX()<=Math.cos(3*Math.PI/4);
 	}
-	
 	public boolean isDown(Item item){
 		return pointDirection(item.center()).getY()>=Math.sin(Math.PI/4);
 	}
 	public boolean isDown(Point2D point){
 		return pointDirection(point).getY()>=Math.sin(Math.PI/4);
+	}
+	public boolean isUpperLeft(Item item){
+		Point2D direction=pointDirection(item.center());
+		return Math.cos(5*Math.PI/6)<direction.getX()
+				&&direction.getX()<Math.cos(2*Math.PI/3)
+				&&direction.getY()<=0;
+	}
+	public boolean isUpperLeft(Point2D point){
+		Point2D direction=pointDirection(point);
+		return Math.cos(5*Math.PI/6)<direction.getX()
+				&&direction.getX()<Math.cos(2*Math.PI/3)
+				&&direction.getY()<=0;
+	}
+	public boolean isLowerLeft(Item item){
+		Point2D direction=pointDirection(item.center());
+		return Math.cos(5*Math.PI/6)<direction.getX()
+				&&direction.getX()<Math.cos(2*Math.PI/3)
+				&&direction.getY()>=0;
+	}
+	public boolean isLowerLeft(Point2D point){
+		Point2D direction=pointDirection(point);
+		return Math.cos(5*Math.PI/6)<direction.getX()
+				&&direction.getX()<Math.cos(2*Math.PI/3)
+				&&direction.getY()>=0;
+	}
+	public boolean isUpperRight(Item item){
+		Point2D direction=pointDirection(item.center());
+		return 	direction.getX()>Math.cos(Math.PI/3)
+				&&direction.getX()<Math.cos(Math.PI/6)
+				&&direction.getY()<=0;
+	}
+	public boolean isUpperRight(Point2D point){
+		Point2D direction=pointDirection(point);
+		return 	direction.getX()>Math.cos(Math.PI/3)
+				&&direction.getX()<Math.cos(Math.PI/6)
+				&&direction.getY()<=0;
+	}
+	public boolean isULowerRight(Item item){
+		Point2D direction=pointDirection(item.center());
+		return 	direction.getX()>Math.cos(Math.PI/3)
+				&&direction.getX()<Math.cos(Math.PI/6)
+				&&direction.getY()>=0;
+	}
+	public boolean isLowerRight(Point2D point){
+		Point2D direction=pointDirection(point);
+		return 	direction.getX()>Math.cos(Math.PI/3)
+				&&direction.getX()<Math.cos(Math.PI/6)
+				&&direction.getY()>=0;
 	}
 	
 	

@@ -16,6 +16,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	private double contactTime;
 	protected int damageContact;
 	protected int damageDealt=0;
+	private double lastTimeDamaged=System.currentTimeMillis();
 	Movement actualMovement;
 	MeleeAttack actualAttack;
 	Movement goUp;
@@ -83,14 +84,20 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		return damage;
 	}
 	
+	
 	public void takeDamage(int damage){
-		if(damage>=0){
+		if(damage<0){
+			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
+		}
+		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
+			lastTimeDamaged=System.currentTimeMillis();
 			if(lifePoint-damage>0){
+				System.out.println("damage taken="+damage);
 				lifePoint-=damage;
 			}else{
 				lifePoint=0;
 			}
-		}	
+		}
 	}
 	
 	//return true if the player is in contact with the enemy for 1 seconde
