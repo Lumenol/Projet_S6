@@ -272,12 +272,15 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	}
 	
 	public void alignToPlayer(Player player){
-		if(isInPlayerAxis(player)&&isInAttackRange(player.getBounds())){					
+		if(isInPlayerAxis(player)&&isInAttackRange(player.getBounds())){
+			System.out.println("is in axis and in attack range");
 			if(aligned(this,player)){
+				System.out.println("is aligned");
 				actualMovement.stop();
 			}else{
+				System.out.println("getting speed to align:"+speedToAlign(player).getX()+","+speedToAlign(player).getY());
 				this.setSpeed(speedToAlign(player));
-				return;
+				
 			}
 		}
 	}
