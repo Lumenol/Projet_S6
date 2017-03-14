@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.animation.Animation;
 
@@ -48,9 +49,6 @@ public class RangedAttack extends AbstractMobileItem {
     }
 
     public boolean isFinished() {
-        if (!isRunning()) {
-            System.out.println("la boule de feu est fini");
-        }
         return !isRunning() && System.currentTimeMillis() - startTime > DUREE_MIN;
     }
 
