@@ -277,7 +277,6 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 				actualMovement.stop();
 			}else{
 				this.setSpeed(speedToAlign(player));
-				return;
 			}
 		}
 	}
