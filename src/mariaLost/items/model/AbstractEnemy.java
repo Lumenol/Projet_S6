@@ -3,8 +3,8 @@ package mariaLost.items.model;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.gamePlay.tools.Direction;
-import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.model.animation.Animation;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -12,11 +12,8 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 	protected int agroRadius;
 	protected int attackRange;
-	boolean isAgro=false;
-	private double contactTime;
 	protected int damageContact;
 	protected int damageDealt=0;
-	private double lastTimeDamaged=System.currentTimeMillis();
 	protected Movement actualMovement;
 	protected 	MeleeAttack actualAttack;
 	protected 	Movement goUp;
@@ -28,10 +25,13 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected MeleeAttack meleeLeft;
 	protected MeleeAttack meleeRight;
 	protected Animation death;
-	
-	public AbstractEnemy(double x, double y,double speedLimit) {
-		super(x, y,Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT,new Monnayeur(0),speedLimit);
-	}
+    boolean isAgro = false;
+    private double contactTime;
+    private double lastTimeDamaged = System.currentTimeMillis();
+
+    public AbstractEnemy(double x, double y,double speedLimit) {
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(0), speedLimit);
+    }
 
 
 	public int getAgroRadius() {
