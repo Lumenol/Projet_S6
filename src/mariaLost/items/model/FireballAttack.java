@@ -8,10 +8,9 @@ import mariaLost.items.model.animation.AnimationFireball;
 
 public class FireballAttack {
 
-    public static RangedAttack getFireball(Point2D startingPoint, Direction direction) {
+    public static RangedAttack getFireball(Point2D startingPoint, Direction speed) {
 
-        Direction speed = direction;
-        direction = direction.adjust();
+        Direction direction = speed.adjust();
 
         Dimension2D dimension;
         if (direction.equals(Direction.RIGHT)) {
