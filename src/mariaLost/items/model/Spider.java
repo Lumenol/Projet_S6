@@ -16,7 +16,7 @@ public class Spider extends AbstractEnemy{
 	public Spider(double x, double y) {
 		super(x, y,1);
 		lifePoint=100;
-		agroRadius=200;
+		agroRadius=100;
 		damageContact=10;
 		attackRange=5;
 		

@@ -56,11 +56,7 @@ public class EnemyController {
 	
 	//return true if the player is in the agro range of the enemy
 	public static boolean agroRange(Player player,AbstractEnemy enemy){
-		Point2D centerPlayer =player.getPosition().add(player.getBounds().getWidth()/2
-													,player.getBounds().getHeight()/2);
-		Point2D centerEnemy =enemy.getPosition().add(enemy.getBounds().getWidth()/2
-													,enemy.getBounds().getHeight()/2);
-		return centerPlayer.distance(centerEnemy)<enemy.getAgroRadius();
+		return player.center().distance(enemy.center())<enemy.getAgroRadius();
 	}
 
 	
