@@ -1,8 +1,6 @@
 
 package mariaLost.items.model;
 
-import java.util.List;
-
 import javafx.geometry.Dimension2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
@@ -10,6 +8,8 @@ import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.model.animation.Animation;
 import mariaLost.items.model.animation.SpriteSheetLoader;
 import mariaLost.parameters.Parameters_MariaLost;
+
+import java.util.List;
 
 public class Spider extends AbstractEnemy{
 
@@ -75,5 +75,5 @@ public class Spider extends AbstractEnemy{
 
 		actualMovement=goDown;
 		actualAttack=meleeDown;
-	}	
+	}
 }
