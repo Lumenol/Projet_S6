@@ -42,6 +42,7 @@ public class GameView extends BorderPane {
         floorView.setOnKeyPressed(event -> keyState.put(event.getCode(), true));
         floorView.setOnKeyReleased(event -> keyState.put(event.getCode(), false));
 
+
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -52,6 +53,10 @@ public class GameView extends BorderPane {
             }
         };
 
+    }
+
+    public void clearKey() {
+        keyState.clear();
     }
 
     @Override
