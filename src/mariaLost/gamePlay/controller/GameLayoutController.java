@@ -102,10 +102,7 @@ public class GameLayoutController {
         gameView.start();
         animationTimer.start();
         gameView.requestFocus();
-        //Garde le focus sur la vue
-        gameView.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.booleanValue()) gameView.requestFocus();
-        });
+
         //Met en pause quand la fenetre n'ai plus selectionné
         mainApp.getPrimaryStage().focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {

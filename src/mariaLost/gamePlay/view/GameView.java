@@ -29,20 +29,25 @@ public class GameView extends BorderPane {
     private Map<KeyCode, Boolean> keyState = new HashMap<>();
 
     public GameView(Followable floor) throws IOException {
+        //Charge le fxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Parameters_MariaLost.FILEPATH_PLAYER_BAR));
         Pane bar = loader.load();
         barController = loader.getController();
         setTop(bar);
+
+        //Crée le Canvas principal
         floorView = new FloorView(floor, Parameters_MariaLost.PAGE_WIDTH, Parameters_MariaLost.PAGE_HEIGHT);
         setCenter(floorView);
 
+        //Centre du joueur
         SimpleObjectProperty<Point2D> centerPlayer = new SimpleObjectProperty<>(Point2D.ZERO);
         floorView.folowProperty().bind(centerPlayer);
 
+        //Enregistre l'état des touche
         floorView.setOnKeyPressed(event -> keyState.put(event.getCode(), true));
         floorView.setOnKeyReleased(event -> keyState.put(event.getCode(), false));
 
-
+//rafraichi la vu
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
