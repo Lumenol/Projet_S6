@@ -19,8 +19,10 @@ public class Life extends Pane {
 
         getChildren().add(vBox);
 
+        //ajoute les différentes lignes de coeurs
         for (int i = 0; i < height; i++) {
             LifeBar lifeBar = new LifeBar(width);
+            //Calcul le poucentage de remplissage de la ligne en fonction du remplissage total
             lifeBar.progressProperty().bind((progress.subtract((double) i / height)).multiply(height));
             vBox.getChildren().add(lifeBar);
         }

@@ -35,7 +35,7 @@ public class FloorView extends Canvas {
         dimensionGameWindow = new Dimension2D(width, height);
         this.floor = floor;
 
-
+//Récupere les clic de sourie et convertie en evenement de clic avec les coordonne dans le labyrinthe
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -45,6 +45,7 @@ public class FloorView extends Canvas {
             }
         });
 
+        //Deplace l'origine quand la position du joueur change
         folow.addListener(new ChangeListener<Point2D>() {
             @Override
             public void changed(ObservableValue<? extends Point2D> observable, Point2D oldValue, Point2D newValue) {
@@ -121,6 +122,7 @@ public class FloorView extends Canvas {
         return folow;
     }
 
+    //Dessine les Items
     public void draw(Collection<Collection<? extends Drawable>> itemListView, Point2D origin) {
         origin = new Point2D((int) origin.getX(), (int) origin.getY());
         GraphicsContext context = getGraphicsContext2D();

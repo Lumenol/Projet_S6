@@ -30,6 +30,7 @@ public class LifeBar extends Pane {
 
         heart.setMaxSize(nbCoeur * image.getWidth(), image.getHeight());
 
+        //Ajoute les coeurs a la ligne
         for (int i = 0; i < nbCoeur; i++)
             heart.getChildren().addAll(new ImageView(image));
 
@@ -37,16 +38,20 @@ public class LifeBar extends Pane {
 
         redLine.setFill(Color.RED);
 
+        //ajuste la position du fond rouge a la position de la ligne
         redLine.translateXProperty().bind(heart.translateXProperty());
         redLine.translateYProperty().bind(heart.translateYProperty());
 
+        //fait suivre la taille du fond rouge au remplissage des coeurs
         redLine.heightProperty().bind(heart.heightProperty());
         redLine.widthProperty().bind(ratio.multiply(heart.widthProperty()));
 
+        //fond blanc des coeurs
         back.widthProperty().bind(widthProperty());
         back.heightProperty().bind(heightProperty());
         back.setFill(Color.WHITE);
 
+        //Ajuste le taux de remplissage
         progress.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {

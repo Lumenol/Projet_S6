@@ -49,10 +49,10 @@ public static RangedAttack getFireball(Point2D startingPoint,Direction direction
 			startingPoint=new Point2D(startingPoint.getX()-dimension.getWidth()
 					,startingPoint.getY());
 		}
-		
-        return new RangedAttack(startingPoint, dimension, direction, 40, AnimationFireball.getFireball(direction), new Duration(3000), 5);
-        
-        
-    }
+
+	return new RangedAttack(startingPoint, dimension, direction, 40, AnimationFireball.getFireball(direction), new Duration(3000), 2);
+
+
+}
 	
 }
