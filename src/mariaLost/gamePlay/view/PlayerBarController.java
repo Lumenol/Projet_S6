@@ -29,7 +29,8 @@ public class PlayerBarController {
     @FXML
     private Label scoreLabel;
 
-    private SimpleDoubleProperty life = new SimpleDoubleProperty();
+    //Permet de faire tempon pour pouvoir modifier les valeurs dans un Thread différent de celui de FX
+    private SimpleDoubleProperty life = new SimpleDoubleProperty(0.5);
     private SimpleIntegerProperty money = new SimpleIntegerProperty();
     private SimpleStringProperty name = new SimpleStringProperty();
     private SimpleIntegerProperty level = new SimpleIntegerProperty();

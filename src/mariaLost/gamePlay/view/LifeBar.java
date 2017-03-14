@@ -25,7 +25,33 @@ public class LifeBar extends Pane {
 
     public LifeBar(int nbCoeur) {
 
+        getChildren().addAll(back, redLine, heart);
+        Image image = new Image(Parameters_MariaLost.IMAGE_HEART, 40, 40, true, true);
 
+        heart.setMaxSize(nbCoeur * image.getWidth(), image.getHeight());
+
+        //Ajoute les coeurs a la ligne
+        for (int i = 0; i < nbCoeur; i++)
+            heart.getChildren().addAll(new ImageView(image));
+
+        SimpleDoubleProperty ratio = new SimpleDoubleProperty(0);
+
+        redLine.setFill(Color.RED);
+
+        //ajuste la position du fond rouge a la position de la ligne
+        redLine.translateXProperty().bind(heart.translateXProperty());
+        redLine.translateYProperty().bind(heart.translateYProperty());
+
+        //fait suivre la taille du fond rouge au remplissage des coeurs
+        redLine.heightProperty().bind(heart.heightProperty());
+        redLine.widthProperty().bind(ratio.multiply(heart.widthProperty()));
+
+        //fond blanc des coeurs
+        back.widthProperty().bind(widthProperty());
+        back.heightProperty().bind(heightProperty());
+        back.setFill(Color.WHITE);
+
+        //Ajuste le taux de remplissage
         progress.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -34,32 +60,12 @@ public class LifeBar extends Pane {
                     v = 0;
                 else if (v > 1)
                     v = 1;
-                redLine.setWidth(v * heart.getWidth());
+                ratio.set(v);
             }
         });
 
-
-        getChildren().addAll(back, redLine, heart);
-        Image image = new Image(Parameters_MariaLost.IMAGE_HEART, 40, 40, true, true);
-
-        heart.setMaxSize(nbCoeur * image.getWidth(), image.getHeight());
-
-
-        for (int i = 0; i < nbCoeur; i++)
-            heart.getChildren().addAll(new ImageView(image));
-
-        redLine.setFill(Color.RED);
-
-        redLine.translateXProperty().bind(heart.translateXProperty());
-        redLine.translateYProperty().bind(heart.translateYProperty());
-
-        redLine.heightProperty().bind(heart.heightProperty());
-
-        back.widthProperty().bind(widthProperty());
-        back.heightProperty().bind(heightProperty());
-        back.setFill(Color.WHITE);
-
     }
+
 
     public SimpleDoubleProperty progressProperty() {
         return progress;

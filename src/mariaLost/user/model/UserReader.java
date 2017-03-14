@@ -7,7 +7,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.prefs.Preferences;
 
 
 /**
@@ -19,18 +18,14 @@ public class UserReader {
      * TODO gerer la creation du fichier configuration.xml sans erreur affichée +
      */
     private MainApp mainApp;
-    private Preferences preferences;
 
-    private String userFile = "parametersUserFile";
     private String fileName = "configuration.xml";
     private File file;
 
     public UserReader(MainApp mapp) {
         this.mainApp = mapp;
 
-        preferences = Preferences.systemNodeForPackage(MainApp.class);
-        preferences.put(userFile, fileName);
-        file = new File(preferences.get(userFile, fileName));
+        file = new File(fileName);
 
         loadUserFromFile();
     }

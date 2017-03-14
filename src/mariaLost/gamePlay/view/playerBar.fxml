@@ -4,14 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" hgap="20.0" xmlns="http://javafx.com/javafx/8.0.111"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" hgap="10.0" xmlns="http://javafx.com/javafx/8.0.111"
           fx:controller="mariaLost.gamePlay.view.PlayerBarController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0"/>
+        <ColumnConstraints percentWidth="20.0"/>
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
@@ -31,6 +31,9 @@
                GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="CENTER"/>
     </children>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
     </padding>
+    <opaqueInsets>
+        <Insets/>
+    </opaqueInsets>
 </GridPane>

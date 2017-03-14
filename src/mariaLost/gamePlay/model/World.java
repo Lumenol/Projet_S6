@@ -6,6 +6,7 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
@@ -31,18 +32,25 @@ public class World implements Model {
 
     private AnimationTimer moteur = new AnimationTimer() {
         private long time = 0;
+        //Limite a 60 Hz
         private long delay = 16000000L;
 
+        //boucle de rafraichissement
         @Override
         public void handle(long now) {
             if (now - time >= delay) {
                 time = now;
+                //recupere tout les items
                 Dimension2D dimension = floor.getDimension();
                 Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                 itemFromSquare.addAll(items);
-                MoteurPhysique.move(itemFromSquare);
-                items.removeIf(abstractItem -> abstractItem.isFinished());
+                EnemyController.handleEnemies(itemFromSquare);
 
+                //Fait bouge les items
+                MoteurPhysique.move(itemFromSquare);
+                //Retire les items qui on terminer leur action
+                items.removeIf(abstractItem -> abstractItem.isFinished());
+                
                 if (playerAtTheEnd()) {
                     world = (world + 1) % 3;
                     loadWorld(world);
@@ -51,7 +59,7 @@ public class World implements Model {
         }
     };
 
-
+    //Définie le joueur
     public World(AbstractMobileItem player) {
         this.player = player;
         items.add(player);
@@ -115,7 +123,7 @@ public class World implements Model {
     public void stop() {
         moteur.stop();
     }
-
+    
 
     @Override
     public Point2D centerOfPlayer() {
@@ -132,5 +140,8 @@ public class World implements Model {
     public void setPlayerDestination(Point2D coordinate) {
         player.setDestination(coordinate);
     }
-
+    public void add(AbstractItem item){
+    	items.add(item);
+    }
+    
 }

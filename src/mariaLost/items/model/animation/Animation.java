@@ -1,5 +1,7 @@
 package mariaLost.items.model.animation;
 
+import java.util.List;
+
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 import javafx.util.Pair;
@@ -25,6 +27,17 @@ public class Animation {
             frames[i] = new Pair<>(duration, images[i]);
         }
     }
+    
+    public Animation(Duration duration, List<Image> listImage) {
+        if (duration.toMillis() <= 0)
+            throw new IllegalArgumentException("Une durée ne dois pas etre nulle");
+        if (listImage.isEmpty())
+            throw new IllegalArgumentException("Il n'y a pas de frame");
+        frames = new Pair[listImage.size()];
+        for (int i = 0; i < listImage.size(); i++) {
+            frames[i] = new Pair<>(duration, listImage.get(i));
+        }
+    }
 
     public Animation(Pair<Duration, Image>... frames) {
         if (frames.length == 0)
@@ -35,6 +48,7 @@ public class Animation {
         }
         this.frames = frames;
     }
+    
 
     final public Image getImage() {
         if (isPlay) {
@@ -66,5 +80,7 @@ public class Animation {
             this.ratio = ratio;
         }
     }
-
+    public boolean isOver(){
+    	return courant==frames.length-1;
+    }
 }

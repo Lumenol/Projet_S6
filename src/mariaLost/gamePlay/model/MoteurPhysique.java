@@ -2,8 +2,6 @@ package mariaLost.gamePlay.model;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
-import mariaLost.items.interfaces.Item;
-import mariaLost.items.interfaces.MobileItem;
 import mariaLost.items.model.AbstractItem;
 
 import java.util.Collection;
@@ -93,7 +91,7 @@ public class MoteurPhysique {
      * @param vy
      * @return vrai si aucun objet n'as été percute
      */
-    private static boolean refine(MobileItem mobileItem, Collection<? extends AbstractItem> items, double vx, double vy) {
+    private static boolean refine(AbstractItem mobileItem, Collection<? extends AbstractItem> items, double vx, double vy) {
         boolean retour = true;
 
         Rectangle2D collision = Rectangle2D.EMPTY;
@@ -145,13 +143,14 @@ public class MoteurPhysique {
      * @param items objet potentiellement percutable
      * @return zone de l'objet percute ou null sinon
      */
-    private static Rectangle2D collision(Item item, Collection<? extends AbstractItem> items) {
+    private static Rectangle2D collision(AbstractItem item, Collection<? extends AbstractItem> items) {
         Rectangle2D limite = item.getBounds();
         for (Iterator<AbstractItem> iterator = (Iterator<AbstractItem>) items.iterator(); iterator.hasNext(); ) {
             AbstractItem next = iterator.next();
             if (limite.intersects(next.getBounds())) {
                 next.action(item);
-                if (!next.isPassable())
+                item.action(next);
+                if (!next.isPassable() && !item.isPassable())
                     return next.getBounds();
             }
         }

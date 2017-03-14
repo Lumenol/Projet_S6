@@ -43,4 +43,12 @@ public interface Item {
      * @return
      */
     Rectangle2D getBounds();
+    
+    
+    /**
+     * Retourne le centre de l'item
+     *
+     * @return
+     */
+    Point2D center();
 }

@@ -11,6 +11,7 @@ import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.view.GameView;
 import mariaLost.gamePlay.view.PlayerBarController;
+import mariaLost.items.model.FireballAttack;
 import mariaLost.items.model.Player;
 import mariaLost.mainApp.controller.MainApp;
 import mariaLost.user.model.User;
@@ -80,23 +81,40 @@ public class GameLayoutController {
             public void handle(ClicOnMapEvent event) {
                 if (event.getButton().equals(MouseButton.SECONDARY))
                     world.setPlayerDestination(new Point2D(event.getX(), event.getY()));
+                if (event.getButton().equals(MouseButton.PRIMARY)){
+                	Point2D point=new Point2D(event.getX(), event.getY());
+                    world.add(FireballAttack.getFireball(player.getAttackStartingPoint(point), new Direction(player.pointDirection(point))));
+                }	
             }
         });
 
+        gameView.nameProperty().bind(user.nameProperty());
 
         gameView.moneyProperty().bind(player.getMonnayeur().valueProperty());
+
         /*
-        En attendant d'avoir de la vie je le mes sur les piece pour voir
+        Accroche la vie du joueur a la barre de vie de la vue calcul le pourcentage de vie du joueur en considérent qu'il a ça vie maximal a ce moment
          */
-        gameView.lifeProperty().bind(player.getMonnayeur().valueProperty().divide(30.));
+        gameView.lifeProperty().bind(player.lifePointPropertie().divide(player.lifePointPropertie().get()));
+
 
         world.start();
         gameView.start();
         animationTimer.start();
         gameView.requestFocus();
-        gameView.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.booleanValue()) gameView.requestFocus();
+
+        //Met en pause quand la fenetre n'ai plus selectionné
+        mainApp.getPrimaryStage().focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                world.start();
+                gameView.start();
+            } else {
+                world.stop();
+                gameView.stop();
+                gameView.clearKey();
+            }
         });
+
 
         System.out.println("TEST affichage vue: \n");
     }
