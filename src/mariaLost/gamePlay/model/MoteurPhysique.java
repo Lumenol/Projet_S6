@@ -71,7 +71,7 @@ public class MoteurPhysique {
             }
         }
 
-        // Si la vitesse est suppérieur au dimmention de l'objet le plus petit on découpe le déplacement pour ne pas passe a travers l'objet
+        // Si la vitesse est suppérieur aux dimensions de l'objet le plus petit on découpe le déplacement pour ne pas passe a travers l'objet
         if (Math.abs(vx) >= largeurMin || Math.abs(vy) >= hauteurMin) {
             //effectue la premiere partie du déplacement puis la deuxieme
             return move(mobileItem, items1, (int) vx / 2, (int) vy / 2) &&
