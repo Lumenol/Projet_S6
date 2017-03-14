@@ -32,17 +32,23 @@ public class World implements Model {
 
     private AnimationTimer moteur = new AnimationTimer() {
         private long time = 0;
+        //Limite a 60 Hz
         private long delay = 16000000L;
 
+        //boucle de rafraichissement
         @Override
         public void handle(long now) {
             if (now - time >= delay) {
                 time = now;
+                //recupere tout les items
                 Dimension2D dimension = floor.getDimension();
                 Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                 itemFromSquare.addAll(items);
                 EnemyController.handleEnemies(itemFromSquare);
+
+                //Fait bouge les items
                 MoteurPhysique.move(itemFromSquare);
+                //Retire les items qui on terminer leur action
                 items.removeIf(abstractItem -> abstractItem.isFinished());
                 
                 if (playerAtTheEnd()) {
@@ -53,7 +59,7 @@ public class World implements Model {
         }
     };
 
-
+    //Définie le joueur
     public World(AbstractMobileItem player) {
         this.player = player;
         items.add(player);

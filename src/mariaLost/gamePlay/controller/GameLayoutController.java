@@ -102,9 +102,19 @@ public class GameLayoutController {
         gameView.start();
         animationTimer.start();
         gameView.requestFocus();
-        gameView.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.booleanValue()) gameView.requestFocus();
+
+        //Met en pause quand la fenetre n'ai plus selectionné
+        mainApp.getPrimaryStage().focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                world.start();
+                gameView.start();
+            } else {
+                world.stop();
+                gameView.stop();
+                gameView.clearKey();
+            }
         });
+
 
         System.out.println("TEST affichage vue: \n");
     }
