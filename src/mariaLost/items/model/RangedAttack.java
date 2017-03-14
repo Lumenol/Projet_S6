@@ -42,7 +42,7 @@ public class RangedAttack extends AbstractMobileItem {
     public boolean isPassable() {
         return true;
     }
-	@Override
+
     public boolean isFinished() {
 		if(!isRunning()){
 			System.out.println("la boule de feu est fini");

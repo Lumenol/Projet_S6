@@ -58,4 +58,26 @@ public class Direction {
         return new Direction(d.getX(), d.getY());
     }
 
+    public Direction adjust() {
+        if (direction.getX() > Math.cos(Math.PI / 6))
+            return Direction.RIGHT;
+        if (direction.getX() < Math.cos(5 * Math.PI / 6))
+            return Direction.LEFT;
+        if (-direction.getY() > Math.sin(Math.PI / 3))
+            return Direction.UP;
+        if (-direction.getY() < Math.sin(5 * Math.PI / 3))
+            return Direction.DOWN;
+        if (direction.getX() > Math.cos(Math.PI / 3))
+            if (direction.getY() < 0) {
+                return Direction.UP_RIGHT;
+            } else {
+                return Direction.DOWN_RIGHT;
+            }
+        if (direction.getY() < 0) {
+            return Direction.UP_LEFT;
+        } else {
+            return Direction.DOWN_LEFT;
+        }
+    }
+
 }
