@@ -49,9 +49,10 @@ public class RangedAttack extends AbstractMobileItem {
 
     @Override
     public void action(Item o) {
-        if (o instanceof AbstractEnemy)
+        if (o instanceof AbstractEnemy) {
             ((AbstractEnemy) o).takeDamage(getDamage());
-        startTime = 0;
+            startTime = 0;
+        }
     }
 
 }
