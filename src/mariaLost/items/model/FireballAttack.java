@@ -8,9 +8,10 @@ import mariaLost.items.model.animation.AnimationFireball;
 
 public class FireballAttack {
 
-    public static RangedAttack getFireball(Point2D startingPoint, Direction speed) {
+    public static RangedAttack getFireball(Point2D startingPoint, Direction direction) {
 
-        Direction direction = speed.adjust();
+        Direction speed = direction;
+        direction = direction.adjust();
 
         Dimension2D dimension;
         if (direction.equals(Direction.RIGHT)) {
@@ -29,10 +30,13 @@ public class FireballAttack {
             dimension = new Dimension2D(15, 40);
             startingPoint = new Point2D(startingPoint.getX() - dimension.getWidth() / 2
                     , startingPoint.getY());
+
+
         } else if (direction.equals(Direction.UP_RIGHT)) {
             dimension = new Dimension2D(40, 20);
             startingPoint = new Point2D(startingPoint.getX()
                     , startingPoint.getY() - dimension.getHeight());
+
         } else if (direction.equals(Direction.UP_LEFT)) {
             dimension = new Dimension2D(40, 20);
             startingPoint = new Point2D(startingPoint.getX() - dimension.getWidth()
@@ -49,5 +53,7 @@ public class FireballAttack {
 
         return new RangedAttack(startingPoint, dimension, speed, 40, AnimationFireball.getFireball(direction), new Duration(3000), 4);
 
+
     }
+
 }
