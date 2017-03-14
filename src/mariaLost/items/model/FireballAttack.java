@@ -48,7 +48,7 @@ public class FireballAttack {
                     , startingPoint.getY());
         }
 
-        return new RangedAttack(startingPoint, dimension, speed, 40, AnimationFireball.getFireball(direction), new Duration(3000), 2);
+        return new RangedAttack(startingPoint, dimension, speed, 40, AnimationFireball.getFireball(direction), new Duration(3000), 4);
 
     }
 }
