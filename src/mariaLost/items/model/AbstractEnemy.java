@@ -219,12 +219,14 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	public void behave(Player player){	
 		if(!lifePoint.equals(0)){
 			if(!actualAttack.isRunning()){
+				//on a rien
 				if(!actualMovement.isRunning()){
 					if(isInAttackRange(player.getBounds())&&aligned(this,player)){
 						attackChoosing(player);
 					}else{
 						movementChoosing(player);
 					}
+				//movement is running	
 				}else{
 					alignToPlayer(player);
 				}
@@ -234,7 +236,6 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 					this.damageDealt=actualAttack.getDamage();
 				}
 			}
-			this.setSpeed(actualMovement.getSpeed());
 		}
 	}
 	
@@ -252,6 +253,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 			actualAttack=meleeDown;
 			actualAttack.start(getAttackStartingPoint(Direction.DOWN),Direction.DOWN);
 		}
+		this.setSpeed(Direction.ANY.getDirection());
 	}
 	
 	public void movementChoosing(Player player){
@@ -264,7 +266,9 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		}else{
 			actualMovement=goDown;
 		}
+		
 		actualMovement.start();
+		this.setSpeed(actualMovement.getSpeed());
 	}
 	
 	public void alignToPlayer(Player player){
