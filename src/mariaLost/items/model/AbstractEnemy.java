@@ -69,14 +69,14 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		
 	@Override
 	public Image getImage() {
-		if(super.lifePoint.equals(0))
+		if (getLifePoint() <= 0)
 			return death.getImage();
 		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();
 	}
 	
 	@Override
 	public boolean isFinished(){
-		return death.isOver()&& super.lifePoint.equals(0);
+		return death.isOver() && getLifePoint() <= 0;
 	}
 	
 	public boolean hasDealtDamage(){
@@ -97,10 +97,10 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 			lastTimeDamaged=System.currentTimeMillis();
 			if(getLifePoint()-damage>0){
 				System.out.println("damage taken="+damage);
-				lifePoint.set(getLifePoint() - damage);
+				setLifePoint(getLifePoint() - damage);
 				System.out.println("Damage enemy : "+ getLifePoint());
 			}else{
-				lifePoint.set(0);
+				setLifePoint(0);
 				death.play();
 
 				System.out.println("Damage enemy dead : "+ getLifePoint());

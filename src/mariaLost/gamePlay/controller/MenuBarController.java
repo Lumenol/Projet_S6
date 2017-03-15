@@ -1,11 +1,9 @@
 package mariaLost.gamePlay.controller;
 
-import com.sun.tools.javadoc.Start;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import mariaLost.mainApp.controller.MainApp;
 import mariaLost.mainApp.controller.Starter;
-import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 23/01/2017.
@@ -35,8 +33,8 @@ public class MenuBarController {
     }
 
 
-    public void setUser(){
-        if(this.start.getCurrentUser() != null) {
+    public void setUser() {
+        if (this.start.getCurrentUser() != null) {
             System.out.print(this.start.getCurrentUser().getName());
 
             this.nameLabel.setText(start.getCurrentUser().getName());
@@ -48,7 +46,7 @@ public class MenuBarController {
     @FXML
     public void handleMenu() {
         try {
-           start.start();
+            start.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
