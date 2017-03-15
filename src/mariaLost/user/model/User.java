@@ -8,7 +8,9 @@ import mariaLost.parameters.Parameters_MariaLost;
 
 /**
  * Created by elsacollet on 23/01/2017.
+ * Classe permettant d'enregistrer un joueur.
  */
+// Possibilité de rajouter fonctionnalités sur avatar avec image
 public class User {
 
     private final StringProperty name;
@@ -73,8 +75,8 @@ public class User {
     public IntegerProperty scoreProperty(){
         return this.score;
     }
-    public StringProperty imageProperty() {
-        return image;
+    public IntegerProperty levelProperty() {
+        return level;
     }
 
 

@@ -15,7 +15,7 @@ public class Spider extends AbstractEnemy{
 
 	public Spider(double x, double y) {
 		super(x, y,1);
-		lifePoint=100;
+		super.lifePoint.set(Parameters_MariaLost.LIFE_POINT_START);
 		agroRadius=200;
 		damageContact=10;
 		attackRange=5;

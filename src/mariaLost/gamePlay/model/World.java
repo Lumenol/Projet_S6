@@ -10,7 +10,10 @@ import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
+import mariaLost.mainApp.controller.MainApp;
+import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
+import sun.applet.Main;
 
 import java.util.Collection;
 import java.util.Deque;
@@ -23,10 +26,8 @@ public class World implements Model {
 
     private AbstractFloor floor;
     private Collection<AbstractItem> items = new LinkedList<>();
-
+    private Starter start;
     private AbstractMobileItem player;
-
-    private int world = 0;
 
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
@@ -50,10 +51,18 @@ public class World implements Model {
                 MoteurPhysique.move(itemFromSquare);
                 //Retire les items qui on terminer leur action
                 items.removeIf(abstractItem -> abstractItem.isFinished());
-                
+
+                if(player.getLifePoint() == 0){
+                    moteur.stop();
+                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE,0 );
+
+                }
                 if (playerAtTheEnd()) {
-                    world = (world + 1) % 3;
-                    loadWorld(world);
+
+                    System.out.println("Fin");
+                    moteur.stop();
+                    start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int)player.getMonnayeur().getValue() );
+
                 }
             }
         }
@@ -61,19 +70,28 @@ public class World implements Model {
 
     //Définie le joueur
     public World(AbstractMobileItem player) {
+        start = Starter.getInstance();
         this.player = player;
         items.add(player);
     }
 
     public void loadFloorFromFile(String fileName) throws Exception {
-        floor = new FloorFromFile(fileName);
-        Dimension2D dimension = floor.getDimension();
-        player.setSpeed(Point2D.ZERO);
-        player.setDestination(null);
-        player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
+        try {
+            floor = new FloorFromFile(fileName);
 
-        items.clear();
-        items.add(player);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            floor = new FloorFromFile(fileName);
+            Dimension2D dimension = floor.getDimension();
+            player.setSpeed(Point2D.ZERO);
+            player.setDestination(null);
+            player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
+
+            items.clear();
+            items.add(player);
+        }
+
     }
 
     @Override
@@ -106,10 +124,11 @@ public class World implements Model {
     @Override
     public void start() {
         if (floor == null) {
-            loadWorld(world);
+            loadWorld(start.getCurrentUser().getLevel());
         }
         moteur.start();
     }
+
 
     private void loadWorld(int i) {
         try {
@@ -123,7 +142,7 @@ public class World implements Model {
     public void stop() {
         moteur.stop();
     }
-    
+
 
     @Override
     public Point2D centerOfPlayer() {

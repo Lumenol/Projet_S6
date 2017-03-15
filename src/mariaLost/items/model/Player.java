@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.model.animation.*;
+import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**
@@ -15,7 +16,9 @@ import mariaLost.parameters.Parameters_MariaLost;
  */
 public class Player extends AbstractMobileItem {
 
-    private DoubleProperty lifePoint = new SimpleDoubleProperty(100);
+
+
+   // private DoubleProperty lifePoint = new SimpleDoubleProperty(Parameters_MariaLost.LIFE_POINT_START);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
 	private double lastTimeDamaged=System.currentTimeMillis();
@@ -29,9 +32,7 @@ public class Player extends AbstractMobileItem {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), 10);
     }
 
-    public ReadOnlyDoubleProperty lifePointPropertie() {
-        return lifePoint;
-    }
+
 
 	public void takeDamage(int damage){
 		if(damage<0){
@@ -39,13 +40,16 @@ public class Player extends AbstractMobileItem {
 		}
 		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
 			lastTimeDamaged=System.currentTimeMillis();
-			if(lifePoint.intValue()-damage>0){
+			if(super.lifePoint.intValue()-damage>0){
 				lifePoint.set(lifePoint.intValue()-damage);
 				System.out.println("damage taken = "+damage);
 				System.out.println("new lifepoint = "+lifePoint);
 			}else{
+			    System.out.println("Lifepoint is 0 = game ovrer");
 				lifePoint.set(0);
-			}
+				Starter start = Starter.getInstance();
+				//start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
+            }
 		}	
 	}
 

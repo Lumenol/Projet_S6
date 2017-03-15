@@ -1,9 +1,13 @@
 package mariaLost.items.model;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.interfaces.MobileItem;
+import mariaLost.parameters.Parameters_MariaLost;
 
 /**
  * Created by crede on 06/02/2017.
@@ -12,6 +16,8 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
     protected double speedLimite;
     private Point2D speed = new Point2D(0, 0);
     private Point2D destination = null;
+    protected DoubleProperty lifePoint = new SimpleDoubleProperty(Parameters_MariaLost.LIFE_POINT_START);
+
 
     public AbstractMobileItem(double x, double y, double width, double height, Monnayeur m) {
         this(x, y, width, height, m, 1.0);
@@ -76,6 +82,20 @@ public abstract class AbstractMobileItem extends AbstractItem implements MobileI
     @Override
     public boolean isOnDestination() {
         return getDestination() != null && this.getBounds().contains(destination);
+    }
+
+   /* public ReadOnlyDoubleProperty getLifePoint(){
+        return lifePoint;
+    }*/
+    public double getLifePoint(){
+        return lifePoint.doubleValue();
+    }
+
+    public DoubleProperty lifePointPropertie() {
+        return lifePoint;
+    }
+    public void setLifePoint(double lifePoint) {
+        this.lifePoint.set(lifePoint);
     }
 
 }
