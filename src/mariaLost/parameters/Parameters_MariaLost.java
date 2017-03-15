@@ -11,12 +11,11 @@ public class Parameters_MariaLost {
     public static final int MOVABLE_ITEM_WIDTH = 40;
     public static final int MOVABLE_ITEM_HEIGHT = 40;
     public static final int PLAY_PAGE_WIDTH =600;
-    public static final int PLAY_PAGE_HEIGHT = 800;
-    public static final int PAGE_WIDTH = 1100;
+    public static final int PLAY_PAGE_HEIGHT = 600;
+    public static final int PAGE_WIDTH = 600;
     public static final int PAGE_HEIGHT = 600;
 
-    public static final int NUMBER_OF_CASE_X = 9;
-    public static final int NUMBER_OF_CASE_Y = 10;
+
     public static final Duration DAMAGE_RECOVERY_TIME=new Duration(1000);
 
     /**
