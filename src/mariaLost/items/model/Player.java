@@ -7,6 +7,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Monnayeur;
+import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.*;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -18,7 +19,8 @@ public class Player extends AbstractMobileItem {
     private DoubleProperty lifePoint = new SimpleDoubleProperty(100);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
-	private double lastTimeDamaged=System.currentTimeMillis();
+    private Timer recoveryTimer=new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
+    private boolean clignotement=true;
 
 
     public Player() {
@@ -37,8 +39,8 @@ public class Player extends AbstractMobileItem {
 		if(damage<0){
 			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
 		}
-		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
-			lastTimeDamaged=System.currentTimeMillis();
+		if(recoveryTimer.isOver()){
+			recoveryTimer.start();
 			if(lifePoint.intValue()-damage>0){
 				lifePoint.set(lifePoint.intValue()-damage);
 				System.out.println("damage taken = "+damage);
@@ -107,6 +109,14 @@ public class Player extends AbstractMobileItem {
 
     @Override
     public Image getImage() {
+    	if(!recoveryTimer.isOver()){
+			if(clignotement){
+				clignotement=false;
+				return new Image(Parameters_MariaLost.TRANSPARANT_IMAGE);
+			}else{
+				clignotement=true;
+			}
+		}
         return animation.getImage();
     }
 

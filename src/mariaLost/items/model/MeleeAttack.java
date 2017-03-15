@@ -24,27 +24,29 @@ public class MeleeAttack extends AbstractAttack{
 		changeDirectionAttack(direction);
 		isAttacking=true;
 		this.attackStartingPoint=attackStartingPoint;
-		startTime=System.currentTimeMillis();
 		animation.play();
+		timer.start();	
 	}
+	
 	
 	private void stop(){
 		isAttacking=false;
 		animation.stop();
+		timer.end();
 	}
 	
-	@Override
+	
 	public boolean isRunning(){
-		return isAttacking&&(System.currentTimeMillis()-startTime)<duration.toMillis();
+		return isAttacking&&!timer.isOver();
 	}
 	
 	
 	public boolean hasHit(Rectangle2D itemBound){
-		if(!isRunning()){
-			stop();
-			return false;
+		if(isRunning()){
+			return hasHit(attackStartingPoint,itemBound);
 		}
-		return hasHit(attackStartingPoint,itemBound);
+		stop();
+		return false;
 	}
 
 

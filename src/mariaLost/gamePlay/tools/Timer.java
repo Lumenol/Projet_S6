@@ -6,33 +6,39 @@ public class Timer {
 	
 	private Duration duration;
 	private double startTime=0;
-	private boolean hasBeenStarted=false;
+	private boolean running=false;
+	private Duration minimum;
 		
 	public Timer(Duration duration){
 		this.duration=duration;
-	}
+		minimum=duration;
+	} 
 	
 	public boolean isOver(){
-		return System.currentTimeMillis()-startTime>duration.toMillis();
+		if(System.currentTimeMillis()-startTime<minimum.toMillis()){
+			return false;
+		}
+		if(System.currentTimeMillis()-startTime>duration.toMillis()){
+			running=false;
+		}
+		return !running;
 	}
+
 	
 	public void start(){
-		if(!hasBeenStarted){
-			startTime=System.currentTimeMillis();
-			hasBeenStarted=true;
-		}
+		startTime=System.currentTimeMillis();
+		running=true;
 	}
 	
-	public Duration timeElapsed(){
-		if(hasBeenStarted){
-			return new Duration(System.currentTimeMillis()-startTime);
-		}
-		return new Duration(0);
-	}
 	
 	
 	public void end(){
-		hasBeenStarted=false;
-		startTime=0;
+		running=false;
 	}
+	
+	
+	public void mustLast(Duration duration){
+		minimum=duration;
+	}
+	
 }

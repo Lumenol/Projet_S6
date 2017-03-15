@@ -5,6 +5,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.Animation;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -16,10 +17,10 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected int damageContact;
 	protected int damageDealt=0;
 	protected Movement actualMovement;
-	protected 	MeleeAttack actualAttack;
-	protected 	Movement goUp;
-	protected 	Movement goDown;
-	protected 	Movement goLeft;
+	protected MeleeAttack actualAttack;
+	protected Movement goUp;
+	protected Movement goDown;
+	protected Movement goLeft;
 	protected Movement goRight;
 	protected MeleeAttack meleeUp;
 	protected MeleeAttack meleeDown;
@@ -27,8 +28,9 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected MeleeAttack meleeRight;
 	protected Animation death;
     boolean isAgro = false;
-    private double contactTime;
-    private double lastTimeDamaged = System.currentTimeMillis();
+    private Timer recoveryTimer=new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
+    private boolean clignotement=true;
+    
 
     public AbstractEnemy(double x, double y,double speedLimit) {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(0), speedLimit);
@@ -57,28 +59,20 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	public void agro(){
 		isAgro=true;
 	}
-	
-	public void noticeContact(){
-		if(contactTime==0){
-			contactTime=System.currentTimeMillis();
-		}
-	}
-	
-	public double getContactDuration() {
-		if(contactTime==0){
-			return 0;
-		}
-		return System.currentTimeMillis()-contactTime;
-	}
-	
-	public void resetContactTime(){
-		contactTime=0;
-	}
+
 		
 	@Override
 	public Image getImage() {
 		if(lifePoint==0)
 			return death.getImage();
+		if(!recoveryTimer.isOver()){
+			if(clignotement){
+				clignotement=false;
+				return new Image(Parameters_MariaLost.TRANSPARANT_IMAGE);
+			}else{
+				clignotement=true;
+			}
+		}
 		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();
 	}
 	
@@ -101,8 +95,8 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		if(damage<0){
 			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
 		}
-		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
-			lastTimeDamaged=System.currentTimeMillis();
+		if(recoveryTimer.isOver()){
+			recoveryTimer.start();
 			if(lifePoint-damage>0){
 				System.out.println("damage taken="+damage);
 				lifePoint-=damage;
@@ -114,19 +108,6 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		}
 	}
 	
-	//return true if the player is in contact with the enemy for 1 seconde
-	public boolean repeatedContact(AbstractMobileItem player){
-		if(contact(player)){
-			noticeContact();
-			if(getContactDuration()>500){
-				resetContactTime();
-				return true;
-			}
-		}else{
-			resetContactTime();
-		}
-		return false;
-	}
 	
 	//return true if the player is in physical contact with an enemy
 	public boolean contact(AbstractMobileItem player){
@@ -138,9 +119,8 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	}
 	
 	protected void checkDamageContact(Player player){
-		if(repeatedContact(player)){
+		if(contact(player))
 			damageDealt=damageContact;
-		}			
 	}
 	
 	protected Point2D getAttackStartingPoint(Direction direction){
