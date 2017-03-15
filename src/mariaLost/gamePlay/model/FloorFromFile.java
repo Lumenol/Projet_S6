@@ -25,8 +25,12 @@ public class FloorFromFile extends AbstractFloor {
     private Collection<AbstractItem> gettingItemList = new LinkedList<>();
 
     public FloorFromFile(String fileName) throws Exception {
-
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new FileReader(fileName));
+        }catch(Exception e){
+            br = new BufferedReader(new FileReader(Parameters_MariaLost.FILEPATH_DEFAUTL_MAP));
+        }
         String lineRead = br.readLine();
 
         if (null == lineRead) {

@@ -10,7 +10,6 @@ import mariaLost.parameters.Parameters_MariaLost;
 
 public abstract class AbstractEnemy extends AbstractMobileItem {
 	
-	protected int lifePoint;
 	protected int agroRadius;
 	protected int attackRange;
 	protected int damageContact;
@@ -34,14 +33,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(0), speedLimit);
     }
 
-	public int getLifePoint() {
-		return lifePoint;
-	}
-	
-	public void setLifePoint(int lifePoint) {
-		this.lifePoint = lifePoint;
-	}
-	
+
 	public int getAgroRadius() {
 		return agroRadius;
 	}
@@ -77,14 +69,14 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		
 	@Override
 	public Image getImage() {
-		if(lifePoint==0)
+		if(super.lifePoint.equals(0))
 			return death.getImage();
 		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();
 	}
 	
 	@Override
 	public boolean isFinished(){
-		return death.isOver()&&lifePoint==0;
+		return death.isOver()&& super.lifePoint.equals(0);
 	}
 	
 	public boolean hasDealtDamage(){
@@ -103,12 +95,16 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		}
 		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
 			lastTimeDamaged=System.currentTimeMillis();
-			if(lifePoint-damage>0){
+			if(getLifePoint()-damage>0){
 				System.out.println("damage taken="+damage);
-				lifePoint-=damage;
+				lifePoint.set(getLifePoint() - damage);
+				System.out.println("Damage enemy : "+ getLifePoint());
 			}else{
-				lifePoint=0;
+				lifePoint.set(0);
 				death.play();
+
+				System.out.println("Damage enemy dead : "+ getLifePoint());
+				this.isFinished();
 				this.setSpeed(Direction.ANY.getDirection());
 			}
 		}
@@ -221,7 +217,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	}
 	
 	public void behave(Player player){	
-		if(lifePoint!=0){
+		if(!lifePoint.equals(0)){
 			if(!actualAttack.isRunning()){
 				//on a rien
 				if(!actualMovement.isRunning()){

@@ -1,7 +1,11 @@
 package mariaLost.gamePlay.controller;
 
+import com.sun.tools.javadoc.Start;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import mariaLost.mainApp.controller.MainApp;
+import mariaLost.mainApp.controller.Starter;
+import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 23/01/2017.
@@ -10,28 +14,41 @@ import mariaLost.mainApp.controller.MainApp;
  * Permet l'affichage du score et du jeu du joueur
  */
 public class MenuBarController {
-    private MainApp mainApp;
+    private Starter start;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label scoreLabel;
+    @FXML
+    private Label levelLabel;
 
     public MenuBarController() {
+        start = Starter.getInstance();
     }
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
 
     /**
      * Methode pour l'affichage du background
      */
     @FXML
     public void initialize() {
-        System.out.println("Initialisation");
     }
 
+
+    public void setUser(){
+        if(this.start.getCurrentUser() != null) {
+            System.out.print(this.start.getCurrentUser().getName());
+
+            this.nameLabel.setText(start.getCurrentUser().getName());
+            this.scoreLabel.setText(Integer.toString(start.getCurrentUser().getScore()));
+            this.levelLabel.setText(Integer.toString(start.getCurrentUser().getLevel()));
+        }
+    }
 
     @FXML
     public void handleMenu() {
         try {
-            mainApp.start(mainApp.getPrimaryStage());
+           start.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

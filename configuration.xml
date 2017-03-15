@@ -2,14 +2,14 @@
 <UserListWrapper>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>0</level>
-        <name>Marcel</name>
-        <score>0</score>
+        <level>7</level>
+        <name>Elsa</name>
+        <score>2120</score>
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>0</level>
-        <name>Elsa</name>
-        <score>0</score>
+        <level>2</level>
+        <name>Marcel</name>
+        <score>20</score>
     </user>
 </UserListWrapper>

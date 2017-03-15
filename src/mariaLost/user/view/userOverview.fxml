@@ -46,10 +46,11 @@
                   <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="174.0" prefWidth="598.0">
                           <children>
-                              <TableView fx:id="tableUser" layoutX="141.0" prefHeight="174.0" prefWidth="328.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tableUser" layoutX="141.0" prefHeight="227.0" prefWidth="369.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="0.0">
                                   <columns>
                                       <TableColumn fx:id="nameColumn" prefWidth="173.0" text="Player" />
-                              <TableColumn fx:id="scoreColumn" editable="false" prefWidth="173.0" text="Score" />
+                              <TableColumn fx:id="scoreColumn" editable="false" prefWidth="108.0" text="Score" />
+                              <TableColumn fx:id="levelColumn" prefWidth="87.0" text="Level" />
                                   </columns>
                               </TableView>
                           </children>

@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**
@@ -52,13 +53,15 @@ public class LifeBar extends Pane {
         back.setFill(Color.WHITE);
 
         //Ajuste le taux de remplissage
+        Starter start = Starter.getInstance();
         progress.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 double v = newValue.doubleValue();
-                if (v < 0)
+                System.out.println("v" + v);
+                if (v < 0) {
                     v = 0;
-                else if (v > 1)
+                }else if (v > 1)
                     v = 1;
                 ratio.set(v);
             }

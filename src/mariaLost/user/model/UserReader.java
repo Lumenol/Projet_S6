@@ -2,32 +2,39 @@ package mariaLost.user.model;
 
 import javafx.scene.control.Alert;
 import mariaLost.mainApp.controller.MainApp;
+import mariaLost.mainApp.controller.Starter;
+import mariaLost.parameters.Parameters_MariaLost;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.lang.reflect.Parameter;
+import java.util.prefs.Preferences;
 
 
 /**
  * Created by elsacollet on 29/01/2017.
+ * Classe qui gère l'accès au fichier des joueurs
+ * Permet de charger dans la main app la liste des joueurs ou de la sauvegarder
  */
 public class UserReader {
 
-    /**
-     * TODO gerer la creation du fichier configuration.xml sans erreur affichée +
-     */
-    private MainApp mainApp;
 
-    private String fileName = "configuration.xml";
+    private Starter mainApp;
+    private Preferences preferences;
+
+    private String userFile = "parametersUserFile";
     private File file;
 
     public UserReader(MainApp mapp) {
-        this.mainApp = mapp;
-
-        file = new File(fileName);
-
-        loadUserFromFile();
+        this.mainApp = Starter.getInstance();
+        preferences = Preferences.systemNodeForPackage(MainApp.class);
+        preferences.put(userFile, Parameters_MariaLost.FILENAME_FILE_USER);
+        file = new File(preferences.get(userFile, Parameters_MariaLost.FILENAME_FILE_USER));
+        if(file.canRead()) {
+            loadUserFromFile();
+        }
     }
 
     public File getUserFile() {
@@ -44,6 +51,7 @@ public class UserReader {
             // Reading XML from the file and unmarshalling.
             UserListWrapper wrapper = (UserListWrapper) unmarshaller.unmarshal(this.file);
             this.mainApp.setUserList(wrapper.getListWrapperUser());
+
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
