@@ -4,22 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
 import mariaLost.gamePlay.view.EndPageController;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.controller.UserDetailsController;
-import mariaLost.user.controller.UserOverviewController;
 import mariaLost.user.model.User;
 import mariaLost.user.model.UserReader;
-import sun.applet.Main;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,27 +22,26 @@ import java.util.List;
  * Created by elsacollet on 14/03/2017.
  */
 public class Starter {
+    private static Starter instance;
+    private static MainApp mainApp;
     private BorderPane root;
     private UserReader userReader;
     private ObservableList<User> userList = FXCollections.observableArrayList();
-
     private User currentUser;
     private int indexCurrentUser;
 
-    private static Starter instance;
-    private static MainApp mainApp;
+    private Starter() {
+    }
 
     public static Starter getInstance(MainApp m){
         mainApp = m;
         instance = new Starter();
         return instance;
     }
+
     public static Starter getInstance() {
         return instance;
     }
-
-    private Starter(){}
-
 
     public void start(){
         this.userReader = new UserReader(mainApp);
@@ -59,7 +52,6 @@ public class Starter {
         mainApp.getPrimaryStage().show();
         this.currentUser = null;
         showUserData();
-
     }
 
     public MainApp getMainApp(){

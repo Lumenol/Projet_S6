@@ -10,10 +10,8 @@ import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
-import mariaLost.mainApp.controller.MainApp;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
-import sun.applet.Main;
 
 import java.util.Collection;
 import java.util.Deque;
@@ -52,13 +50,11 @@ public class World implements Model {
                 //Retire les items qui on terminer leur action
                 items.removeIf(abstractItem -> abstractItem.isFinished());
 
-                if(player.getLifePoint() == 0){
+                if (player.getLifePoint() <= 0) {
                     moteur.stop();
                     start.gameOver(Parameters_MariaLost.GAME_OVER_CODE,0 );
-
                 }
                 if (playerAtTheEnd()) {
-
                     System.out.println("Fin");
                     moteur.stop();
                     start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int)player.getMonnayeur().getValue() );
