@@ -40,15 +40,10 @@ public class Player extends AbstractMobileItem {
 		if(damage<0){
 			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
 		}
-<<<<<<< HEAD
 		if(recoveryTimer.isOver()){
 			recoveryTimer.start();
-			if(lifePoint.intValue()-damage>0){
-=======
-		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
-			lastTimeDamaged=System.currentTimeMillis();
 			if(super.lifePoint.intValue()-damage>0){
->>>>>>> branch 'master' of https://github.com/Lumenol/Projet_S6.git
+
 				lifePoint.set(lifePoint.intValue()-damage);
 				System.out.println("damage taken = "+damage);
 				System.out.println("new lifepoint = "+lifePoint);
