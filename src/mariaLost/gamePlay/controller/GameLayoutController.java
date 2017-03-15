@@ -10,7 +10,6 @@ import mariaLost.gamePlay.model.World;
 import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.view.GameView;
-import mariaLost.gamePlay.view.PlayerBarController;
 import mariaLost.items.model.FireballAttack;
 import mariaLost.items.model.Player;
 import mariaLost.mainApp.controller.Starter;
@@ -30,10 +29,6 @@ public class GameLayoutController {
     private GameView gameView;
     private Player player;
 
-    public Player getPlayer() {
-        return player;
-    }
-
     public GameLayoutController(User user) {
         start = Starter.getInstance();
         this.user = user;
@@ -46,6 +41,9 @@ public class GameLayoutController {
         }
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
     public void setUser(User p) {
         this.user = p;
@@ -117,6 +115,7 @@ public class GameLayoutController {
 
 
     }
+
 
     public void gameOver(int code){
         switch (code){

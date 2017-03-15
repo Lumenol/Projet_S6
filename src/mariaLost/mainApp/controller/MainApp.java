@@ -1,26 +1,9 @@
 package mariaLost.mainApp.controller;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import mariaLost.gamePlay.controller.GameLayoutController;
-import mariaLost.gamePlay.controller.MenuBarController;
 import mariaLost.parameters.Parameters_MariaLost;
-import mariaLost.user.controller.UserDetailsController;
-import mariaLost.user.controller.UserOverviewController;
-import mariaLost.user.model.User;
-import mariaLost.user.model.UserReader;
-import sun.applet.Main;
-
-import java.io.IOException;
-import java.util.List;
 
 
 public class MainApp extends Application {
@@ -34,6 +17,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        //Arrete l'application quand la fermeture est demande
+        primaryStage.setOnCloseRequest(event -> {
+            try {
+                stop();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         this.frontalControler = Starter.getInstance(this);
 
