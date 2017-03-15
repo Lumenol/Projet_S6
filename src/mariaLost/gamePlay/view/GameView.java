@@ -36,7 +36,7 @@ public class GameView extends BorderPane {
         setTop(bar);
 
         //Crée le Canvas principal
-        floorView = new FloorView(floor, Parameters_MariaLost.PAGE_WIDTH, Parameters_MariaLost.PAGE_HEIGHT);
+        floorView = new FloorView(floor, Parameters_MariaLost.PLAY_PAGE_WIDTH, Parameters_MariaLost.PLAY_PAGE_HEIGHT);
         setCenter(floorView);
 
         //Centre du joueur

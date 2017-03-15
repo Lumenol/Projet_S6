@@ -9,6 +9,7 @@ import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.*;
+import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**
@@ -16,7 +17,9 @@ import mariaLost.parameters.Parameters_MariaLost;
  */
 public class Player extends AbstractMobileItem {
 
-    private DoubleProperty lifePoint = new SimpleDoubleProperty(100);
+
+
+   // private DoubleProperty lifePoint = new SimpleDoubleProperty(Parameters_MariaLost.LIFE_POINT_START);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
     private Timer recoveryTimer=new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
@@ -31,23 +34,30 @@ public class Player extends AbstractMobileItem {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), 10);
     }
 
-    public ReadOnlyDoubleProperty lifePointPropertie() {
-        return lifePoint;
-    }
+
 
 	public void takeDamage(int damage){
 		if(damage<0){
 			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
 		}
+<<<<<<< HEAD
 		if(recoveryTimer.isOver()){
 			recoveryTimer.start();
 			if(lifePoint.intValue()-damage>0){
+=======
+		if(System.currentTimeMillis()-lastTimeDamaged>Parameters_MariaLost.DAMAGE_RECOVERY_TIME.toMillis()){
+			lastTimeDamaged=System.currentTimeMillis();
+			if(super.lifePoint.intValue()-damage>0){
+>>>>>>> branch 'master' of https://github.com/Lumenol/Projet_S6.git
 				lifePoint.set(lifePoint.intValue()-damage);
 				System.out.println("damage taken = "+damage);
 				System.out.println("new lifepoint = "+lifePoint);
 			}else{
+			    System.out.println("Lifepoint is 0 = game ovrer");
 				lifePoint.set(0);
-			}
+				Starter start = Starter.getInstance();
+				//start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
+            }
 		}	
 	}
 

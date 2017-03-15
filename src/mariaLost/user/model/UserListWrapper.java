@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Created by elsacollet on 24/01/2017.
- * This class permit us to register player in a xml file as a list of player
+ * Cette classe permet d'enregistrer une liste de joueurs dans un fichier .fxml
  */
 
 @XmlRootElement(name = "UserListWrapper")

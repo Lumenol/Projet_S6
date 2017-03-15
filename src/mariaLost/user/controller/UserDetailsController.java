@@ -4,18 +4,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import mariaLost.mainApp.controller.MainApp;
+import mariaLost.mainApp.controller.Starter;
+import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 24/01/2017.
  *
+ * Permet de modifier ou de créer un nouveau joueur.
  * @author Elsa Collet
  */
 public class UserDetailsController {
 
     private User user;
-    private MainApp mainApp;
+    private Starter start;
 
     @FXML
     private Label nameLabel;
@@ -25,17 +30,15 @@ public class UserDetailsController {
     private Label scoreLabel;
     @FXML
     private Label levelLabel;
+    @FXML
+    private ImageView avatarImageView;
+
 
     public UserDetailsController() {
+
+        this.start = Starter.getInstance();
     }
 
-    public void setMainApp(MainApp mApp) {
-        this.mainApp = mApp;
-    }
-
-    @FXML
-    public void initialize() {
-    }
 
     public void setUser(User user) {
         this.user = user;
@@ -44,18 +47,19 @@ public class UserDetailsController {
             nameField.setText(user.getName());
             scoreLabel.setText(Integer.toString(user.getScore()));
             levelLabel.setText(Integer.toString(user.getLevel()));
+            this.avatarImageView.setImage(new Image(user.getImage()));
 
         } else {
             nameLabel.setText("New player");
             nameField.setText("");
             scoreLabel.setText("0");
             levelLabel.setText("0");
+            avatarImageView.setImage(new Image(Parameters_MariaLost.AVATAR_DEFAULT));
         }
     }
 
     /**
-     * @return true if the name fild is correct
-     * @author Elsa Collet
+     * @return true if the name field is correct
      */
     private boolean isValid() {
         String errorMessage = "";
@@ -74,7 +78,7 @@ public class UserDetailsController {
 
     @FXML
     private void handleCancel() {
-        mainApp.showUserData();
+        start.showUserData();
     }
 
     /**
@@ -86,16 +90,15 @@ public class UserDetailsController {
         if (isValid()) {
             if (this.user == null) {
                 user = new User(nameField.getText());
-                mainApp.addUserList(user);
+                start.addUserList(user);
             } else {
-                mainApp.deleteUserFromList(user);
+                start.deleteUserFromList(user);
                 user = new User(nameField.getText(), Integer.parseInt(scoreLabel.getText()), Integer.parseInt(levelLabel.getText()));
-                mainApp.addUserList(user);
+                start.addUserList(user);
             }
-            mainApp.showUserData();
+            start.showUserData();
 
         }
-
     }
 
 }

@@ -7,6 +7,7 @@ import javafx.util.Duration;
 import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Timer;
+import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.animation.Animation;
 

@@ -29,10 +29,13 @@ public class FireballAttack {
             dimension = new Dimension2D(15, 40);
             startingPoint = new Point2D(startingPoint.getX() - dimension.getWidth() / 2
                     , startingPoint.getY());
+
+
         } else if (direction.equals(Direction.UP_RIGHT)) {
             dimension = new Dimension2D(40, 20);
             startingPoint = new Point2D(startingPoint.getX()
                     , startingPoint.getY() - dimension.getHeight());
+
         } else if (direction.equals(Direction.UP_LEFT)) {
             dimension = new Dimension2D(40, 20);
             startingPoint = new Point2D(startingPoint.getX() - dimension.getWidth()
@@ -49,5 +52,7 @@ public class FireballAttack {
 
         return new RangedAttack(startingPoint, dimension, speed, 25, AnimationFireball.getFireball(direction), new Duration(3000), 4);
 
+
     }
+
 }

@@ -5,11 +5,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import mariaLost.mainApp.controller.MainApp;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import mariaLost.mainApp.controller.Starter;
+import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 23/01/2017.
+ * Cette classe controleur gere la vue d'accueil
  */
 public class UserOverviewController {
 
@@ -18,30 +22,35 @@ public class UserOverviewController {
 
     @FXML
     private TableColumn<User, String> nameColumn;
-
+    @FXML
+    private TableColumn<User, Number> scoreColumn;
+    @FXML
+    private TableColumn<User, Number> levelColumn;
     @FXML
     private Label nameLabel;
     @FXML
     private Label scoreLabel;
     @FXML
     private Label levelLabel;
+    @FXML
+    private ImageView avatarImageView;
 
-    private MainApp mainApp;
+    private Starter start;
 
 
     public UserOverviewController() {
-
-    }
-
-    public void setMainApp(MainApp mA) {
-        this.mainApp = mA;
+        this.start = Starter.getInstance();
         //Add observable list
-        this.tableUser.setItems(mainApp.getUserList());
     }
 
+    /* Met à jour la fenetre en chargeant les colonnes
+     */
     @FXML
     public void initialize() {
+        this.tableUser.setItems(start.getUserList());
         this.nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        this.scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty());
+        this.levelColumn.setCellValueFactory(cellData -> cellData.getValue().levelProperty());
 
         showUserData(null);
         this.tableUser.getSelectionModel().selectedItemProperty().addListener(
@@ -50,8 +59,8 @@ public class UserOverviewController {
     }
 
     /**
-     * Change in the right panel the detail of the user when one is selected
-     * otherwise shows empty textField
+     * Change in the top panel the detail of the user when one is selected
+     * otherwise shows empty textField ad the logo
      *
      * @param user
      */
@@ -60,23 +69,26 @@ public class UserOverviewController {
             this.nameLabel.setText(user.getName());
             this.scoreLabel.setText(Integer.toString(user.getScore()));
             this.levelLabel.setText(Integer.toString(user.getLevel()));
+            this.avatarImageView.setImage(new Image(user.getImage()));
         } else {
             this.nameLabel.setText("");
             this.scoreLabel.setText("");
             this.levelLabel.setText("");
+            this.avatarImageView.setImage(new Image(Parameters_MariaLost.IMAGE_LOGO));
+
         }
     }
 
     @FXML
     private void handleNewUser() {
-        mainApp.showNewUser(null);
+        start.showNewUser(null);
     }
 
     @FXML
     private void handleDelete() {
         User selectedUser = tableUser.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
-            this.mainApp.deleteUserFromList(selectedUser);
+            this.start.deleteUserFromList(selectedUser);
             this.tableUser.getItems().remove(selectedUser);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -89,8 +101,7 @@ public class UserOverviewController {
     @FXML
     private void handleEdit() {
         if (this.tableUser.getSelectionModel().getSelectedIndex() >= 0) {
-            this.mainApp.showNewUser(this.tableUser.getSelectionModel().getSelectedItem());
-
+            this.start.showNewUser(this.tableUser.getSelectionModel().getSelectedItem());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No player selected");
@@ -103,7 +114,7 @@ public class UserOverviewController {
     @FXML
     private void handlePlay() {
         if (this.tableUser.getSelectionModel().getSelectedIndex() >= 0) {
-            this.mainApp.showPlayLayout(this.tableUser.getSelectionModel().getSelectedItem());
+            this.start.showPlayLayout(this.tableUser.getSelectionModel().getSelectedItem());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No player selected");
@@ -114,24 +125,23 @@ public class UserOverviewController {
 
     @FXML
     private void handleSave() {
-        this.mainApp.getUserReader().saveUserToFile();
+        this.start.getUserReader().saveUserToFile();
     }
 
 
     @FXML
     private void handleClose() {
-        this.mainApp.getUserReader().saveUserToFile();
+        this.start.getUserReader().saveUserToFile();
 
         System.exit(0);
     }
 
 
-    //TODO link to API documentation
     @FXML
     private void handleAbout() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Maria Lost");
-        alert.setHeaderText("Information générales");
+        alert.setHeaderText("Informations générales");
         alert.setContentText("Cette application a été réalisée dans " +
                 "le cadre de la Licence 3 par, Elsa Collet, Louis-Maxime Crédeville et Loic Labourbe");
         alert.showAndWait();

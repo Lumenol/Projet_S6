@@ -11,7 +11,6 @@ import mariaLost.parameters.Parameters_MariaLost;
 
 public abstract class AbstractEnemy extends AbstractMobileItem {
 	
-	protected int lifePoint;
 	protected int agroRadius;
 	protected int attackRange;
 	protected int damageContact;
@@ -36,14 +35,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(0), speedLimit);
     }
 
-	public int getLifePoint() {
-		return lifePoint;
-	}
-	
-	public void setLifePoint(int lifePoint) {
-		this.lifePoint = lifePoint;
-	}
-	
+
 	public int getAgroRadius() {
 		return agroRadius;
 	}
@@ -63,7 +55,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		
 	@Override
 	public Image getImage() {
-		if(lifePoint==0)
+		if (getLifePoint() <= 0)
 			return death.getImage();
 		if(!recoveryTimer.isOver()){
 			if(clignotement){
@@ -78,7 +70,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 	@Override
 	public boolean isFinished(){
-		return death.isOver()&&lifePoint==0;
+		return death.isOver() && getLifePoint() <= 0;
 	}
 	
 	public boolean hasDealtDamage(){
@@ -97,12 +89,16 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		}
 		if(recoveryTimer.isOver()){
 			recoveryTimer.start();
-			if(lifePoint-damage>0){
+			if(getLifePoint()-damage>0){
 				System.out.println("damage taken="+damage);
-				lifePoint-=damage;
+				setLifePoint(getLifePoint() - damage);
+				System.out.println("Damage enemy : "+ getLifePoint());
 			}else{
-				lifePoint=0;
+				setLifePoint(0);
 				death.play();
+
+				System.out.println("Damage enemy dead : "+ getLifePoint());
+				this.isFinished();
 				this.setSpeed(Direction.ANY.getDirection());
 			}
 		}
@@ -201,7 +197,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	}
 	
 	public void behave(Player player){	
-		if(lifePoint!=0){
+		if(!lifePoint.equals(0)){
 			if(!actualAttack.isRunning()){
 				//on a rien
 				if(!actualMovement.isRunning()){

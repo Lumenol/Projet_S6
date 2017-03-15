@@ -10,10 +10,10 @@ import mariaLost.gamePlay.model.World;
 import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.view.GameView;
-import mariaLost.gamePlay.view.PlayerBarController;
 import mariaLost.items.model.FireballAttack;
 import mariaLost.items.model.Player;
-import mariaLost.mainApp.controller.MainApp;
+import mariaLost.mainApp.controller.Starter;
+import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
 import java.io.IOException;
@@ -25,14 +25,12 @@ public class GameLayoutController {
 
     private User user;
     private World world;
-    private MainApp mainApp;
+    private Starter start;
     private GameView gameView;
     private Player player;
 
-    private PlayerBarController controller;
-
-
     public GameLayoutController(User user) {
+        start = Starter.getInstance();
         this.user = user;
         this.player = new Player();
         this.world = new World(this.player);
@@ -43,14 +41,14 @@ public class GameLayoutController {
         }
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
     public void setUser(User p) {
         this.user = p;
     }
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
 
 
     public void startGame() {
@@ -104,7 +102,7 @@ public class GameLayoutController {
         gameView.requestFocus();
 
         //Met en pause quand la fenetre n'ai plus selectionné
-        mainApp.getPrimaryStage().focusedProperty().addListener((observable, oldValue, newValue) -> {
+        start.getMainApp().getPrimaryStage().focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 world.start();
                 gameView.start();
@@ -116,10 +114,24 @@ public class GameLayoutController {
         });
 
 
-        System.out.println("TEST affichage vue: \n");
     }
 
 
+    public void gameOver(int code){
+        switch (code){
+            case Parameters_MariaLost.GAME_OVER_CODE :
+                start.getCurrentUser().setScore(start.getCurrentUser().getScore() - Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
+                start.start();
+                break;
+            case Parameters_MariaLost.NEXT_LEVEL_CODE :
+                start.getCurrentUser().setScore(start.getCurrentUser().getScore() + (int) player.getMonnayeur().getValue());
+                break;
+            default:
+                start.start();
+
+        }
+
+    }
     public BorderPane getPage() {
         return gameView;
     }

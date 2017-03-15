@@ -22,12 +22,7 @@ public class PlayerBarController {
     private ImageView moneyImageView;
     @FXML
     private Label moneyLabel;
-    @FXML
-    private Label nameUserLabel;
-    @FXML
-    private Label levelLabel;
-    @FXML
-    private Label scoreLabel;
+
 
     //Permet de faire tempon pour pouvoir modifier les valeurs dans un Thread différent de celui de FX
     private SimpleDoubleProperty life = new SimpleDoubleProperty(0.5);
@@ -42,8 +37,6 @@ public class PlayerBarController {
 
     public void refresh() {
         moneyLabel.setText(money.getValue().toString());
-        scoreLabel.setText(score.getValue().toString());
-        nameUserLabel.setText(name.getValue());
         lifeBar.setProgress(life.get());
     }
 
