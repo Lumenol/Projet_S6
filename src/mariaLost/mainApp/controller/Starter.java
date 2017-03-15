@@ -174,8 +174,11 @@ public class Starter {
         switch (code){
             case Parameters_MariaLost.GAME_OVER_CODE :
                 System.out.println("game over ");
-                currentUser.setScore(currentUser.getScore() - Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
-
+                if(currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER < 0){
+                    currentUser.setScore(0);
+                }else {
+                    currentUser.setScore(currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
+                }
                 break;
             case Parameters_MariaLost.NEXT_LEVEL_CODE :
                 System.out.println("Next Level ");

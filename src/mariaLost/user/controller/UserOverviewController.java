@@ -147,5 +147,12 @@ public class UserOverviewController {
         alert.showAndWait();
 
     }
-
+    @FXML
+    private void handleRules() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Maria Lost - Règles du Jeu ");
+        alert.setHeaderText("Règles du jeu");
+        alert.setContentText("LM Tu dois remplir ici");
+        alert.showAndWait();
+    }
 }
