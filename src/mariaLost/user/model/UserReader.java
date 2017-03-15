@@ -9,7 +9,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.lang.reflect.Parameter;
 import java.util.prefs.Preferences;
 
 
@@ -24,14 +23,11 @@ public class UserReader {
     private Starter mainApp;
     private Preferences preferences;
 
-    private String userFile = "parametersUserFile";
     private File file;
 
     public UserReader(MainApp mapp) {
         this.mainApp = Starter.getInstance();
-        preferences = Preferences.systemNodeForPackage(MainApp.class);
-        preferences.put(userFile, Parameters_MariaLost.FILENAME_FILE_USER);
-        file = new File(preferences.get(userFile, Parameters_MariaLost.FILENAME_FILE_USER));
+        file = new File(Parameters_MariaLost.FILENAME_FILE_USER);
         if(file.canRead()) {
             loadUserFromFile();
         }
