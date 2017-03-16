@@ -18,11 +18,6 @@ import java.util.StringTokenizer;
  */
 public class FloorFromFile extends AbstractFloor {
 
-    private AbstractItem[][] items = null;
-    private Dimension2D dimension;
-    private Rectangle2D beginning = null;
-    private Rectangle2D end = null;
-    private Collection<AbstractItem> gettingItemList = new LinkedList<>();
 
     public FloorFromFile(String fileName) throws Exception {
         BufferedReader br;
@@ -116,58 +111,4 @@ public class FloorFromFile extends AbstractFloor {
     }
 
 
-    @Override
-    public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
-
-        gettingItemList.removeIf(abstractItem -> abstractItem.isFinished());
-
-        int largeurMin = Math.max(0, (int) square.getMinX()) / Parameters_MariaLost.CASE_WIDTH;
-        double largeurMax = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters_MariaLost.CASE_WIDTH;
-
-        int hauteurMin = Math.max(0, (int) square.getMinY()) / Parameters_MariaLost.CASE_HEIGHT;
-        double hauteurMax = Math.min(dimension.getHeight(), square.getMaxY()) / Parameters_MariaLost.CASE_WIDTH;
-
-        LinkedList<AbstractItem> linkedList = new LinkedList<>();
-
-        for (int i = hauteurMin; i < hauteurMax; i++) {
-            for (int j = largeurMin; j < largeurMax; j++) {
-                linkedList.add(items[i][j]);
-            }
-        }
-
-        gettingItemList.forEach(abstractItem -> {
-            if (abstractItem.getBounds().intersects(square)) {
-                linkedList.addLast(abstractItem);
-            }
-        });
-
-        return linkedList;
-    }
-
-    @Override
-    public Dimension2D getDimension() {
-        return dimension;
-    }
-
-    @Override
-    public Collection<AbstractItem> getItems() {
-        return gettingItemList;
-    }
-
-    @Override
-    public Rectangle2D getBeginning() {
-        return beginning;
-    }
-
-    @Override
-    public Rectangle2D getEnd() {
-        return end;
-    }
-
-    @Override
-    public Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
-        LinkedList<Collection<? extends Drawable>> linkedList = new LinkedList<>();
-        linkedList.addLast(getItemFromSquare(square));
-        return linkedList;
-    }
 }

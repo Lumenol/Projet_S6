@@ -7,8 +7,11 @@ import javafx.util.Duration;
  * Created by elsacollet on 05/02/2017.
  */
 public class Parameters_MariaLost {
-    public static final int CASE_WIDTH = 50;
-    public static final int CASE_HEIGHT = 50;
+    public static final int CASE_WIDTH = 100;
+    public static final int CASE_HEIGHT = 100;
+
+
+
     public static final int MOVABLE_ITEM_WIDTH = 40;
     public static final int MOVABLE_ITEM_HEIGHT = 40;
     public static final int PLAY_PAGE_WIDTH = 600;

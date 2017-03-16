@@ -44,7 +44,8 @@ public class World implements Model {
                 time = now;
                 //recupere tout les items
                 Dimension2D dimension = floor.getDimension();
-                Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
+                Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(
+                        new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                 itemFromSquare.addAll(items);
                 EnemyController.handleEnemies(itemFromSquare);
 
@@ -100,14 +101,7 @@ public class World implements Model {
             e.printStackTrace();
         } finally {
             floor = new FloorFromFile(fileName);
-            Dimension2D dimension = floor.getDimension();
-            player.setSpeed(Point2D.ZERO);
-            player.setDestination(null);
-            player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
 
-            items.clear();
-            items.add(player);
-            items.addAll(floor.getItems());
         }
 
     }
@@ -150,7 +144,17 @@ public class World implements Model {
 
     private void loadWorld(int i) {
         try {
-            loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
+            this.floor = new GenerateLaby(i);
+            if(floor == null){
+                loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
+            }
+            player.setSpeed(Point2D.ZERO);
+            player.setDestination(null);
+            player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
+
+            items.clear();
+            items.add(player);
+            items.addAll(floor.getItems());
         } catch (Exception e) {
             e.printStackTrace();
         }
