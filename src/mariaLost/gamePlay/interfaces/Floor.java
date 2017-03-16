@@ -26,6 +26,11 @@ public interface Floor {
      */
     Dimension2D getDimension();
 
+    /*
+    Liste des items tel que les pieces et montre
+     */
+    Collection<AbstractItem> getItems();
+
     /**
      * @return Zone de départ
      */

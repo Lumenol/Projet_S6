@@ -115,6 +115,7 @@ public class FloorFromFile extends AbstractFloor {
         }
     }
 
+
     @Override
     public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
 
@@ -146,6 +147,11 @@ public class FloorFromFile extends AbstractFloor {
     @Override
     public Dimension2D getDimension() {
         return dimension;
+    }
+
+    @Override
+    public Collection<AbstractItem> getItems() {
+        return gettingItemList;
     }
 
     @Override

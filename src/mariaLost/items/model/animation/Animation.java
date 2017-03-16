@@ -1,10 +1,10 @@
 package mariaLost.items.model.animation;
 
-import java.util.List;
-
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 import javafx.util.Pair;
+
+import java.util.List;
 
 /**
  * Created by crede on 09/02/2017.
@@ -17,6 +17,10 @@ public class Animation {
     private double lastTime = 0;
     private double ratio = 1;
 
+    private boolean autoReplay = true;
+    private boolean over = false;
+
+
     public Animation(Duration duration, Image... images) {
         if (duration.toMillis() <= 0)
             throw new IllegalArgumentException("Une durée ne dois pas etre nulle");
@@ -27,7 +31,7 @@ public class Animation {
             frames[i] = new Pair<>(duration, images[i]);
         }
     }
-    
+
     public Animation(Duration duration, List<Image> listImage) {
         if (duration.toMillis() <= 0)
             throw new IllegalArgumentException("Une durée ne dois pas etre nulle");
@@ -48,7 +52,10 @@ public class Animation {
         }
         this.frames = frames;
     }
-    
+
+    public void setAutoReplay(boolean autoReplay) {
+        this.autoReplay = autoReplay;
+    }
 
     final public Image getImage() {
         if (isPlay) {
@@ -56,7 +63,12 @@ public class Animation {
             double delay;
             while (dTime >= (delay = frames[courant].getKey().toMillis() / ratio)) {
                 dTime -= delay;
-                courant = (courant + 1) % frames.length;
+                courant = (courant + 1);
+                if (autoReplay) {
+                    courant = courant % frames.length;
+                } else {
+                    stop();
+                }
             }
             lastTime = System.currentTimeMillis() - dTime;
         }
@@ -66,6 +78,7 @@ public class Animation {
     final public void play() {
         if (!isPlay) {
             isPlay = true;
+            over = false;
             lastTime = System.currentTimeMillis();
         }
     }
@@ -73,6 +86,7 @@ public class Animation {
     final public void stop() {
         isPlay = false;
         courant = 0;
+        over = true;
     }
 
     final public void setRatio(double ratio) {
@@ -80,7 +94,8 @@ public class Animation {
             this.ratio = ratio;
         }
     }
-    public boolean isOver(){
-    	return courant==frames.length-1;
+
+    public boolean isOver() {
+        return over;
     }
 }

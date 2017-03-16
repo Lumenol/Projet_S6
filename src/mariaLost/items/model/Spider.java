@@ -75,5 +75,7 @@ public class Spider extends AbstractEnemy{
 
 		actualMovement=goDown;
 		actualAttack=meleeDown;
+
+		death.setAutoReplay(false);
 	}
 }

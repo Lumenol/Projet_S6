@@ -8,13 +8,16 @@ import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
+import mariaLost.items.model.AbstractEnemy;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
+import mariaLost.items.model.Money;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.Collection;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -48,16 +51,32 @@ public class World implements Model {
                 //Fait bouge les items
                 MoteurPhysique.move(itemFromSquare);
                 //Retire les items qui on terminer leur action
-                items.removeIf(abstractItem -> abstractItem.isFinished());
+
+                Collection<AbstractItem> aAjouter = new LinkedList<>();
+
+                for (Iterator<AbstractItem> iterator = items.iterator(); iterator.hasNext(); ) {
+                    AbstractItem next = iterator.next();
+                    if (next.isFinished()) {
+                        iterator.remove();
+                        // System.out.println(abstractItem.getClass());
+                        if (next instanceof AbstractEnemy) {
+                            Point2D nextPosition = next.getPosition();
+                            aAjouter.add(new Money(nextPosition.getX(), nextPosition.getY()));
+                        }
+                    }
+                }
+                items.addAll(aAjouter);
+
+                // items.removeIf(abstractItem -> abstractItem.isFinished());
 
                 if (player.getLifePoint() <= 0) {
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE,0 );
+                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0);
                 }
                 if (playerAtTheEnd()) {
                     System.out.println("Fin");
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int)player.getMonnayeur().getValue() );
+                    start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int) player.getMonnayeur().getValue());
 
                 }
             }
@@ -75,9 +94,9 @@ public class World implements Model {
         try {
             floor = new FloorFromFile(fileName);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             floor = new FloorFromFile(fileName);
             Dimension2D dimension = floor.getDimension();
             player.setSpeed(Point2D.ZERO);
@@ -86,6 +105,7 @@ public class World implements Model {
 
             items.clear();
             items.add(player);
+            items.addAll(floor.getItems());
         }
 
     }
@@ -155,8 +175,9 @@ public class World implements Model {
     public void setPlayerDestination(Point2D coordinate) {
         player.setDestination(coordinate);
     }
-    public void add(AbstractItem item){
-    	items.add(item);
+
+    public void add(AbstractItem item) {
+        items.add(item);
     }
-    
+
 }
