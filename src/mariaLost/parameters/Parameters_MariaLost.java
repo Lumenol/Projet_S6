@@ -1,7 +1,9 @@
 package mariaLost.parameters;
 
+import javafx.geometry.Dimension2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
+import mariaLost.items.model.animation.SpriteSheetLoader;
 
 /**
  * Created by elsacollet on 05/02/2017.
@@ -84,7 +86,7 @@ public class Parameters_MariaLost {
      */
     public static final int SPIDER_SPRITE_NB_ROW=5;
     public static final int SPIDER_SPRITE_NB_COLUMN=10;
-    public static final double SPIDER_WIDTH=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
+    public static final double SPIDER_WIDTH = SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
     public static final double SPIDER_HEIGHT=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getHeight();
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);

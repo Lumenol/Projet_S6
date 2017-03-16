@@ -98,7 +98,7 @@ public class GameLayoutController {
         /*
         Accroche la vie du joueur a la barre de vie de la vue calcul le pourcentage de vie du joueur
          */
-        gameView.lifeProperty().bind(player.lifePointPropertie().divide(Parameters_MariaLost.LIFE_POINT_START_PLAYER));
+        gameView.lifeProperty().bind(player.lifePointPropertie().divide(Parameters_MariaLost.PLAYER_LIFE_POINT_START));
 
 
         world.start();
