@@ -1,5 +1,6 @@
 package mariaLost.parameters;
 
+import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 /**
@@ -40,9 +41,7 @@ public class Parameters_MariaLost {
     public static final Image IMAGE_WALL = new Image("file:resources/Images/wall.png");
     public static final Image IMAGE_DIRT = new Image("file:resources/Images/dirt.png");
     public static final Image IMAGE_END_CASE = new Image("file:resources/Images/floor_green.png");
-    public static final Image SPIDER = new Image("file:resources/Images/spider/spider_sprite_sheet.png");
-    public static final Image FIREBALL = new Image("file:resources/Images/fireball/fireball_sprite_sheet.png");
-    public static final Image TRANSPARENT_IMAGE = new Image("file:resources/Images/transparant_image.png");
+ 
 
     /**
      * Name of images
@@ -50,10 +49,9 @@ public class Parameters_MariaLost {
 
 
     public static final String AVATAR_DEFAULT = "file:resources/Images/WalkingAnimationPlayer/Front/1.png";
-    public static final String SPIDER = "file:resources/Images/spider/spider_sprite_sheet.png";
-    public static final String FIREBALL = "file:resources/Images/fireball/fireball_sprite_sheet.png";
-    public static final String TRANSPARENT_IMAGE = "file:resources/Images/transparant_image.png";
- 
+    public static final Image SPIDER = new Image("file:resources/Images/spider/spider_sprite_sheet.png");
+    public static final Image FIREBALL = new Image("file:resources/Images/fireball/fireball_sprite_sheet.png");
+    public static final Image TRANSPARENT_IMAGE = new Image("file:resources/Images/transparant_image.png");
     /**
      * Gameplay
      */
