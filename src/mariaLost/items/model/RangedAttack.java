@@ -20,7 +20,7 @@ public class RangedAttack extends AbstractMobileItem {
 
 
     public RangedAttack(Point2D startingPoint, Dimension2D areaOfEffect, Direction direction, int damage, Animation animation, Duration duration, double speedLimite) {
-        super(startingPoint.getX(), startingPoint.getY(), areaOfEffect.getWidth(), areaOfEffect.getHeight(), new DebitOnlyMonnayeur(0), speedLimite);
+        super(startingPoint.getX(), startingPoint.getY(), areaOfEffect.getWidth(), areaOfEffect.getHeight(), new DebitOnlyMonnayeur(0), speedLimite, 0);
         setSpeed(direction.getDirection());
         this.damage = damage;
         this.animation = animation;

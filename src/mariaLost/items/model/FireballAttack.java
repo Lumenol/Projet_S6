@@ -5,6 +5,7 @@ import javafx.geometry.Point2D;
 import javafx.util.Duration;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.model.animation.AnimationFireball;
+import mariaLost.parameters.Parameters_MariaLost;
 
 public class FireballAttack {
 
@@ -50,7 +51,7 @@ public class FireballAttack {
                     , startingPoint.getY());
         }
 
-        return new RangedAttack(startingPoint, dimension, speed, 25, AnimationFireball.getFireball(direction), new Duration(3000), 4);
+        return new RangedAttack(startingPoint, dimension, speed, Parameters_MariaLost.DAMAGE_FIREBALL, AnimationFireball.getFireball(direction), new Duration(3000), 4);
 
 
     }

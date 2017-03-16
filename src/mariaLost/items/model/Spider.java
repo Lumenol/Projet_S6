@@ -13,8 +13,7 @@ import java.util.List;
 public class Spider extends AbstractEnemy {
 
     public Spider(double x, double y) {
-        super(x, y, 1, Parameters_MariaLost.QUANTITEE_ARGENT_SPIDER);
-        super.lifePoint.set(Parameters_MariaLost.LIFE_POINT_START);
+        super(x, y, 1, Parameters_MariaLost.QUANTITEE_ARGENT_SPIDER, Parameters_MariaLost.LIFE_POINT_START_ENNEMIE);
         agroRadius = 200;
         damageContact = 10;
         attackRange = 5;

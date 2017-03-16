@@ -31,9 +31,9 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
     private boolean clignotement=true;
 
 
-	public AbstractEnemy(double x, double y, double speedLimit, double money) {
-		super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(money), speedLimit);
-	}
+    public AbstractEnemy(double x, double y, double speedLimit, double money, double lifePoint) {
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(money), speedLimit, lifePoint);
+    }
 
 
 	public int getAgroRadius() {
@@ -196,9 +196,9 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		return playerAxisRect.intersects(player.getBounds());
 	}
 	
-	public void behave(Player player){	
-		if(!lifePoint.equals(0)){
-			if(!actualAttack.isRunning()){
+	public void behave(Player player){
+        if (getLifePoint() != 0) {
+            if(!actualAttack.isRunning()){
 				//on a rien
 				if(!actualMovement.isRunning()){
 					if(isInAttackRange(player.getBounds())&&aligned(this,player)){

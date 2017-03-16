@@ -6,9 +6,11 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 import mariaLost.gamePlay.model.World;
 import mariaLost.gamePlay.tools.ClicOnMapEvent;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.tools.Timer;
 import mariaLost.gamePlay.view.GameView;
 import mariaLost.items.model.FireballAttack;
 import mariaLost.items.model.Player;
@@ -50,7 +52,6 @@ public class GameLayoutController {
     }
 
 
-
     public void startGame() {
 
         AnimationTimer animationTimer = new AnimationTimer() {
@@ -75,14 +76,18 @@ public class GameLayoutController {
 
         // Lorsque que l'on clique quelque part on défini une destination pour le personnage
         gameView.addEventHandler(ClicOnMapEvent.CLIC_ON_MAP_EVENT_TYPE, new EventHandler<ClicOnMapEvent>() {
+
+            Timer delayAttack = new Timer(Duration.millis(Parameters_MariaLost.DELAY_BETWEEN_FIREBALL));
+
             @Override
             public void handle(ClicOnMapEvent event) {
                 if (event.getButton().equals(MouseButton.SECONDARY))
                     world.setPlayerDestination(new Point2D(event.getX(), event.getY()));
-                if (event.getButton().equals(MouseButton.PRIMARY)){
-                	Point2D point=new Point2D(event.getX(), event.getY());
+                if (event.getButton().equals(MouseButton.PRIMARY) && delayAttack.isOver()) {
+                    delayAttack.start();
+                    Point2D point = new Point2D(event.getX(), event.getY());
                     world.add(FireballAttack.getFireball(player.getAttackStartingPoint(point), new Direction(player.pointDirection(point))));
-                }	
+                }
             }
         });
 
@@ -117,13 +122,13 @@ public class GameLayoutController {
     }
 
 
-    public void gameOver(int code){
-        switch (code){
-            case Parameters_MariaLost.GAME_OVER_CODE :
+    public void gameOver(int code) {
+        switch (code) {
+            case Parameters_MariaLost.GAME_OVER_CODE:
                 start.getCurrentUser().setScore(start.getCurrentUser().getScore() - Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
                 start.start();
                 break;
-            case Parameters_MariaLost.NEXT_LEVEL_CODE :
+            case Parameters_MariaLost.NEXT_LEVEL_CODE:
                 start.getCurrentUser().setScore(start.getCurrentUser().getScore() + (int) player.getMonnayeur().getValue());
                 break;
             default:
@@ -132,6 +137,7 @@ public class GameLayoutController {
         }
 
     }
+
     public BorderPane getPage() {
         return gameView;
     }
