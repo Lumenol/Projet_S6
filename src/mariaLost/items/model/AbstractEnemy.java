@@ -32,8 +32,8 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
     private IncrementableCounter blinkCounter=new IncrementableCounter(Parameters_MariaLost.NUMBER_OF_BLINK);
 
 
-    public AbstractEnemy(double x, double y, double speedLimit, double money, double lifePoint) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(money), speedLimit, lifePoint);
+    public AbstractEnemy(double x, double y,double width,double height, double speedLimit, double money, double lifePoint) {
+        super(x, y, width, height, new DebitOnlyMonnayeur(money), speedLimit, lifePoint);
     }
 
 

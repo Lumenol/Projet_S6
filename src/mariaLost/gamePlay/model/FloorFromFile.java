@@ -110,6 +110,9 @@ public class FloorFromFile extends AbstractFloor {
             case 6:
                 gettingItemList.add(new Spider(x, y));
                 return new Ground(x, y);
+            case 7:
+            	 gettingItemList.add(new Skeleton(x, y));
+                 return new Ground(x, y);
             default:
                 throw new IllegalArgumentException("Pas de correspondence pour codeItem");
         }
@@ -134,12 +137,6 @@ public class FloorFromFile extends AbstractFloor {
                 linkedList.add(items[i][j]);
             }
         }
-
-        gettingItemList.forEach(abstractItem -> {
-            if (abstractItem.getBounds().intersects(square)) {
-                linkedList.addLast(abstractItem);
-            }
-        });
 
         return linkedList;
     }

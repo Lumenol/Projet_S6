@@ -4,7 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" hgap="50.0" xmlns="http://javafx.com/javafx/8.0.111"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" hgap="50.0" styleClass="pane"
+          stylesheets="@styleSheet.css" xmlns="http://javafx.com/javafx/8.0.112-ea"
           fx:controller="mariaLost.gamePlay.view.PlayerBarController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0"/>
