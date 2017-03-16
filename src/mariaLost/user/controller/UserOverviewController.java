@@ -154,7 +154,7 @@ public class UserOverviewController {
         alert.setTitle("Maria Lost - Règles du Jeu ");
         alert.setHeaderText("Règles du jeu");
         alert.setContentText("But\n" +
-                "Il faut atteindre la case de fin en ramassant le plus de pièces et en tuant le plus de montre possible pour augmenter son score\n" +
+                "Il faut atteindre la case de fin en ramassant le plus de d'or et en tuant le plus de montre possible pour augmenter son score\n" +
                 "Une sauvegarde automatique est éffectuée quand la fin du niveau est atteinte si vous mourrez toutes les pièces ramasser son perdu\n" +
                 "\nCommandes\n\n" +
                 "Déplacements\n" +

@@ -9,8 +9,8 @@ import mariaLost.items.model.animation.SpriteSheetLoader;
  * Created by elsacollet on 05/02/2017.
  */
 public class Parameters_MariaLost {
-    public static final int CASE_WIDTH = 50;
-    public static final int CASE_HEIGHT = 50;
+    public static final int CASE_WIDTH = 64;
+    public static final int CASE_HEIGHT = 64;
     public static final int MOVABLE_ITEM_WIDTH = 40;
     public static final int MOVABLE_ITEM_HEIGHT = 40;
     public static final int PLAY_PAGE_WIDTH = 600;
@@ -38,11 +38,11 @@ public class Parameters_MariaLost {
      */
 
     public static final Image IMAGE_LOGO = new Image("file:resources/Images/logo.png");
-    public static final Image IMAGE_GOLD = new Image("file:resources/Images/gold.png");
+    public static final Image IMAGE_GOLD = new Image("file:resources/Images/tiled/gold_nugget.png");
     public static final Image IMAGE_HEART = new Image("file:resources/Images/heart.png", 40, 40, true, true);
-    public static final Image IMAGE_WALL = new Image("file:resources/Images/wall.png");
-    public static final Image IMAGE_DIRT = new Image("file:resources/Images/dirt.png");
-    public static final Image IMAGE_END_CASE = new Image("file:resources/Images/floor_green.png");
+    public static final Image IMAGE_WALL = new Image("file:resources/Images/tiled/stonebrick_mossy.png");
+    public static final Image IMAGE_GROUND = new Image("file:resources/Images/tiled/cobblestone.png");
+    public static final Image IMAGE_END_CASE = new Image("file:resources/Images/tiled/trapdoor.png");
  
 
     /**
