@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import mariaLost.parameters.Parameters_MariaLost;
@@ -43,7 +42,7 @@ public class PlayerBarController {
 
     @FXML
     public void initialize() {
-        moneyImageView.setImage(new Image(Parameters_MariaLost.IMAGE_GOLD));
+        moneyImageView.setImage(Parameters_MariaLost.IMAGE_GOLD);
         lifeBar = new Life(5, 2);
         rootPane.add(lifeBar, 0, 0);
     }

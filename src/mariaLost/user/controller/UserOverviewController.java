@@ -74,7 +74,7 @@ public class UserOverviewController {
             this.nameLabel.setText("");
             this.scoreLabel.setText("");
             this.levelLabel.setText("");
-            this.avatarImageView.setImage(new Image(Parameters_MariaLost.IMAGE_LOGO));
+            this.avatarImageView.setImage(Parameters_MariaLost.IMAGE_LOGO);
 
         }
     }

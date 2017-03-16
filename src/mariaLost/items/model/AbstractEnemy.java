@@ -60,7 +60,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		if(!blinkTimer.isOver()){
 			if(blinkCounter<5){
 				blinkCounter++;
-				return new Image(Parameters_MariaLost.TRANSPARENT_IMAGE);
+				return Parameters_MariaLost.TRANSPARENT_IMAGE;
 			}else{
 				blinkCounter=0;
 			}

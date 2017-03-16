@@ -1,5 +1,6 @@
 package mariaLost.parameters;
 
+import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 /**
@@ -21,35 +22,42 @@ public class Parameters_MariaLost {
     /**
      * Gestion des fichiers xml
      */
-    
+
     public static final String FILEPATH_PLAY = "../../gamePlay/view/playLayout.fxml";
     public static final String FILEPATH_USER_OVERVIEW = "../../user/view/userOverview.fxml";
     public static final String FILEPATH_USER_DETAILS = "../../user/view/userDetails.fxml";
     public static final String FILEPATH_PLAYER_BAR = "../../gamePlay/view/playerBar.fxml";
     public static final String FILEPATH_MAP = "resources/Floor/";
     public static final String FILENAME_FILE_USER = "resources/configuration.xml";
-    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";;
+    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";
+    ;
     public static final String FILEPATH_DEFAUTL_MAP = "resources/Floor/0.txt";
 
     /**
      * Gestion des images
      */
-    
-    public static final String IMAGE_LOGO = "file:resources/Images/logo.png";
-    public static final String IMAGE_GOLD = "file:resources/Images/gold.png";
-    public static final String IMAGE_HEART = "file:resources/Images/heart.png";
-    public static final String IMAGE_WALL = "file:resources/Images/wall.png";
-    public static final String IMAGE_DIRT = "file:resources/Images/dirt.png";
-    public static final String IMAGE_END_CASE = "file:resources/Images/floor_green.png";
+
+    public static final Image IMAGE_LOGO = new Image("file:resources/Images/logo.png");
+    public static final Image IMAGE_GOLD = new Image("file:resources/Images/gold.png");
+    public static final Image IMAGE_HEART = new Image("file:resources/Images/heart.png", 40, 40, true, true);
+    public static final Image IMAGE_WALL = new Image("file:resources/Images/wall.png");
+    public static final Image IMAGE_DIRT = new Image("file:resources/Images/dirt.png");
+    public static final Image IMAGE_END_CASE = new Image("file:resources/Images/floor_green.png");
+    public static final Image SPIDER = new Image("file:resources/Images/spider/spider_sprite_sheet.png");
+    public static final Image FIREBALL = new Image("file:resources/Images/fireball/fireball_sprite_sheet.png");
+    public static final Image TRANSPARENT_IMAGE = new Image("file:resources/Images/transparant_image.png");
+
+    /**
+     * Name of images
+     */
+
+
     public static final String AVATAR_DEFAULT = "file:resources/Images/WalkingAnimationPlayer/Front/1.png";
-    public static final String SPIDER = "file:resources/Images/spider/spider_sprite_sheet.png";
-    public static final String FIREBALL = "file:resources/Images/fireball/fireball_sprite_sheet.png";
-    public static final String TRANSPARENT_IMAGE = "file:resources/Images/transparant_image.png";
- 
+
     /**
      * Gameplay
      */
-    
+
     public static final int GAME_OVER_CODE = 1;
     public static final int NEXT_LEVEL_CODE = 0;
     public static final int SCORE_LOOSE_GAME_OVER = -100;

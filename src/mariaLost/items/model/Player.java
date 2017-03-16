@@ -112,7 +112,7 @@ public class Player extends AbstractMobileItem {
         if (!recoveryTimer.isOver()) {
             if (clignotement) {
                 clignotement = false;
-                return new Image(Parameters_MariaLost.TRANSPARENT_IMAGE);
+                return Parameters_MariaLost.TRANSPARENT_IMAGE;
             } else {
                 clignotement = true;
             }

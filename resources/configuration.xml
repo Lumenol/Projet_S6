@@ -2,8 +2,8 @@
 <UserListWrapper>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>3</level>
+        <level>4</level>
         <name>Elsa</name>
-        <score>40</score>
+        <score>90</score>
     </user>
 </UserListWrapper>
