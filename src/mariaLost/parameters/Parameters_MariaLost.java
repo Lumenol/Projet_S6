@@ -21,19 +21,20 @@ public class Parameters_MariaLost {
     /**
      * Gestion des fichiers xml
      */
+    
     public static final String FILEPATH_PLAY = "../../gamePlay/view/playLayout.fxml";
     public static final String FILEPATH_USER_OVERVIEW = "../../user/view/userOverview.fxml";
     public static final String FILEPATH_USER_DETAILS = "../../user/view/userDetails.fxml";
     public static final String FILEPATH_PLAYER_BAR = "../../gamePlay/view/playerBar.fxml";
     public static final String FILEPATH_MAP = "resources/Floor/";
     public static final String FILENAME_FILE_USER = "resources/configuration.xml";
-    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";
-    ;
+    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";;
     public static final String FILEPATH_DEFAUTL_MAP = "resources/Floor/0.txt";
 
     /**
      * Gestion des images
      */
+    
     public static final String IMAGE_LOGO = "file:resources/Images/logo.png";
     public static final String IMAGE_GOLD = "file:resources/Images/gold.png";
     public static final String IMAGE_HEART = "file:resources/Images/heart.png";
@@ -43,18 +44,21 @@ public class Parameters_MariaLost {
     public static final String AVATAR_DEFAULT = "file:resources/Images/WalkingAnimationPlayer/Front/1.png";
     public static final String SPIDER = "file:resources/Images/spider/spider_sprite_sheet.png";
     public static final String FIREBALL = "file:resources/Images/fireball/fireball_sprite_sheet.png";
+    public static final String TRANSPARENT_IMAGE = "file:resources/Images/transparant_image.png";
+ 
+    /**
+     * Gameplay
+     */
+    
     public static final int GAME_OVER_CODE = 1;
     public static final int NEXT_LEVEL_CODE = 0;
-
     public static final int SCORE_LOOSE_GAME_OVER = -100;
     public static final double LIFE_POINT_START_PLAYER = 100;
     public static final double LIFE_POINT_START_ENNEMIE = 50;
-
     public static final int QUANTITEE_ARGENT_PIECE = 10;
     public static final int QUANTITEE_ARGENT_SPIDER = 20;
-
-
-    public static final String TRANSPARANT_IMAGE = "file:resources/Images/transparant_image.png";
     public static final int DAMAGE_FIREBALL = (int) (LIFE_POINT_START_ENNEMIE / 5);
     public static double DELAY_BETWEEN_FIREBALL = 250;
+    public static Duration BLINKING_TIME = new Duration(500);
+
 }

@@ -27,8 +27,8 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected MeleeAttack meleeRight;
 	protected Animation death;
     boolean isAgro = false;
-    private Timer recoveryTimer=new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
-    private boolean clignotement=true;
+    private Timer blinkTimer=new Timer(Parameters_MariaLost.BLINKING_TIME);
+    private int blinkCounter=0;
 
 
     public AbstractEnemy(double x, double y, double speedLimit, double money, double lifePoint) {
@@ -57,12 +57,12 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	public Image getImage() {
 		if (getLifePoint() <= 0)
 			return death.getImage();
-		if(!recoveryTimer.isOver()){
-			if(clignotement){
-				clignotement=false;
-				return new Image(Parameters_MariaLost.TRANSPARANT_IMAGE);
+		if(!blinkTimer.isOver()){
+			if(blinkCounter<5){
+				blinkCounter++;
+				return new Image(Parameters_MariaLost.TRANSPARENT_IMAGE);
 			}else{
-				clignotement=true;
+				blinkCounter=0;
 			}
 		}
 		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();
@@ -87,20 +87,17 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		if(damage<0){
 			throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
 		}
-		if(recoveryTimer.isOver()){
-			recoveryTimer.start();
-			if(getLifePoint()-damage>0){
-				System.out.println("damage taken="+damage);
-				setLifePoint(getLifePoint() - damage);
-				System.out.println("Damage enemy : "+ getLifePoint());
-			}else{
-				setLifePoint(0);
-				death.play();
-
-				System.out.println("Damage enemy dead : "+ getLifePoint());
-				this.isFinished();
-				this.setSpeed(Direction.ANY.getDirection());
-			}
+		blinkTimer.start();
+		
+		if(getLifePoint()-damage>0){
+			System.out.println("damage taken="+damage);
+			setLifePoint(getLifePoint() - damage);
+			System.out.println("Damage enemy : "+ getLifePoint());
+		}else{
+			setLifePoint(0);
+			death.play();
+			System.out.println("Damage enemy dead : "+ getLifePoint());
+			this.setSpeed(Direction.ANY.getDirection());
 		}
 	}
 	

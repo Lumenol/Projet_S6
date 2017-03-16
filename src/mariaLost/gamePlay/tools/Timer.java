@@ -33,6 +33,7 @@ public class Timer {
 	
 	
 	public void end(){
+		startTime=0;
 		running=false;
 	}
 	
