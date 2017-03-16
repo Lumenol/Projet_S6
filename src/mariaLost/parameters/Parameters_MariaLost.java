@@ -16,7 +16,6 @@ public class Parameters_MariaLost {
     public static final int PAGE_HEIGHT = 600;
 
 
-    public static final Duration DAMAGE_RECOVERY_TIME = new Duration(1000);
 
     /**
      * Gestion des fichiers xml
@@ -49,7 +48,7 @@ public class Parameters_MariaLost {
     /**
      * Gameplay
      */
-    
+    public static final Duration DAMAGE_RECOVERY_TIME = new Duration(500);
     public static final int GAME_OVER_CODE = 1;
     public static final int NEXT_LEVEL_CODE = 0;
     public static final int SCORE_LOOSE_GAME_OVER = -100;
@@ -58,7 +57,8 @@ public class Parameters_MariaLost {
     public static final int QUANTITEE_ARGENT_PIECE = 10;
     public static final int QUANTITEE_ARGENT_SPIDER = 20;
     public static final int DAMAGE_FIREBALL = (int) (LIFE_POINT_START_ENNEMIE / 5);
-    public static double DELAY_BETWEEN_FIREBALL = 250;
-    public static Duration BLINKING_TIME = new Duration(500);
+    public static final double DELAY_BETWEEN_FIREBALL = 250;
+    public static final Duration BLINKING_TIME = new Duration(500);
+    public static final int NUMBER_OF_BLINK =4;
 
 }

@@ -12,7 +12,8 @@ public class Timer {
 	public Timer(Duration duration){
 		this.duration=duration;
 		minimum=duration;
-	} 
+	}
+
 	
 	public boolean isOver(){
 		if(System.currentTimeMillis()-startTime<minimum.toMillis()){

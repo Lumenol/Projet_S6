@@ -15,6 +15,7 @@ import mariaLost.items.interfaces.MobileItem;
  */
 public abstract class AbstractItem implements Item, MobileItem, ActionableItem, Drawable {
     protected Point2D position;
+    private Point2D previousPosition;
     private javafx.geometry.Dimension2D size;
 
     private Monnayeur monnayeur;
@@ -84,7 +85,15 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     public void setPosition(Point2D position) {
 
     }
-
+    
+    /**
+     * 
+     * @return
+     */
+	public boolean positionHasChanged(){
+		return !this.getPosition().equals(previousPosition);
+	}
+	
     @Override
     public Rectangle2D getBounds() {
         return new Rectangle2D(position.getX(), position.getY(), size.getWidth(), size.getHeight());
