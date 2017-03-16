@@ -64,13 +64,14 @@ public class Animation {
             while (dTime >= (delay = frames[courant].getKey().toMillis() / ratio)) {
                 dTime -= delay;
                 courant = (courant + 1);
-                if (autoReplay) {
-                    courant = courant % frames.length;
-                } else {
-                    stop();
-                    over = true;
-                    courant = frames.length - 1;
-                }
+                if (courant >= frames.length)
+                    if (autoReplay) {
+                        courant = 0;
+                    } else {
+                        stop();
+                        over = true;
+                        courant = frames.length - 1;
+                    }
             }
             lastTime = System.currentTimeMillis() - dTime;
         }
