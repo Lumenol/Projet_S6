@@ -2,44 +2,56 @@ package mariaLost.items.model;
 
 
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.Animation;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
 import javafx.util.Duration;
 
-public class MeleeAttack extends AbstractAttack{
-	
-	protected Point2D attackStartingPoint;
-	protected boolean isAttacking=false;
-	protected Dimension2D aoe;
+public class MeleeAttack{
+	private int damage; 
+	private Animation animation;
+	private Direction direction;
+	private Timer attackTimer;
+	private Point2D attackStartingPoint;
+	private Dimension2D aoe;
 	
 	
 	public MeleeAttack(Dimension2D areaOfEffect, Direction direction,int damage,Animation animation,Duration duration){
-		super(damage,animation,duration,direction);
+		this.damage = damage;
+		this.animation = animation;
+		this.direction = direction;
+		attackTimer=new Timer(duration);		
 		this.aoe=areaOfEffect;
 	}
 	
 	public void start(Point2D attackStartingPoint,Direction direction){
 		changeDirectionAttack(direction);
-		isAttacking=true;
 		this.attackStartingPoint=attackStartingPoint;
 		animation.play();
-		timer.start();	
+		attackTimer.start();	
 	}
 	
 	
 	private void stop(){
-		isAttacking=false;
 		animation.stop();
-		timer.end();
+		attackTimer.end();
 	}
 	
 	
 	public boolean isRunning(){
-		return isAttacking&&!timer.isOver();
+		return !attackTimer.isOver();
 	}
 	
+	public Image getImage() {
+		return animation.getImage();
+	}
+
+	public int getDamage() {
+		return damage;
+	}
 	
 	public boolean hasHit(Rectangle2D itemBound){
 		if(isRunning()){
