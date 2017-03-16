@@ -138,12 +138,6 @@ public class FloorFromFile extends AbstractFloor {
             }
         }
 
-        gettingItemList.forEach(abstractItem -> {
-            if (abstractItem.getBounds().intersects(square)) {
-                linkedList.addLast(abstractItem);
-            }
-        });
-
         return linkedList;
     }
 
