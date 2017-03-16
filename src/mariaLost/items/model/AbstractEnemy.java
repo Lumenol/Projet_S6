@@ -30,12 +30,10 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
     boolean isAgro = false;
     private Timer blinkTimer=new Timer(Parameters_MariaLost.BLINKING_TIME);
     private IncrementableCounter blinkCounter=new IncrementableCounter(Parameters_MariaLost.NUMBER_OF_BLINK);
-    private Point2D previousPosition;
 
 
     public AbstractEnemy(double x, double y, double speedLimit, double money, double lifePoint) {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(money), speedLimit, lifePoint);
-        previousPosition=this.getPosition();
     }
 
 
@@ -262,7 +260,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 				actualMovement=goDown;
 			}
 		}
-		previousPosition=this.getPosition();
+		setPreviousPositionToActual();
 		actualMovement.start();
 		this.setSpeed(actualMovement.getSpeed());
 	}

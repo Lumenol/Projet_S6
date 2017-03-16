@@ -23,6 +23,7 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     public AbstractItem(double x, double y, double width, double height, Monnayeur m) {
         this.size = new Dimension2D(width, height);
         this.position = new Point2D(x, y);
+        this.previousPosition=new Point2D(x, y);;
         monnayeur = m;
     }
 
@@ -92,6 +93,9 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
      */
 	public boolean positionHasChanged(){
 		return !this.getPosition().equals(previousPosition);
+	}
+	public void setPreviousPositionToActual(){
+        this.previousPosition=new Point2D(this.position.getX(),this.position.getY());
 	}
 	
     @Override
