@@ -9,8 +9,6 @@ import mariaLost.parameters.Parameters_MariaLost;
  */
 public class Ground extends AbstractItem {
 
-    private static final Image image = new Image(Parameters_MariaLost.IMAGE_DIRT);
-
     public Ground(double x, double y) {
         super(x, y, Parameters_MariaLost.CASE_WIDTH, Parameters_MariaLost.CASE_HEIGHT, new DebitOnlyMonnayeur(0));
     }
@@ -22,6 +20,6 @@ public class Ground extends AbstractItem {
 
     @Override
     public Image getImage() {
-        return image;
+        return Parameters_MariaLost.IMAGE_DIRT;
     }
 }

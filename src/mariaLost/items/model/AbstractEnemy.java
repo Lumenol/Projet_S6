@@ -63,7 +63,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 				blinkCounter.reset();
 			}else{
 				blinkCounter.increment();
-				return new Image(Parameters_MariaLost.TRANSPARENT_IMAGE);
+				return Parameters_MariaLost.TRANSPARENT_IMAGE;
 			}
 		}
 		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();

@@ -11,7 +11,6 @@ import mariaLost.parameters.Parameters_MariaLost;
  */
 public class Money extends AbstractItem implements ActionableItem {
 
-    private static final Image image = new Image(Parameters_MariaLost.IMAGE_GOLD);
 
     public Money(double x, double y) {
         this(x, y, 0);
@@ -38,7 +37,7 @@ public class Money extends AbstractItem implements ActionableItem {
 
     @Override
     public Image getImage() {
-        return image;
+        return Parameters_MariaLost.IMAGE_GOLD;
     }
 
 }

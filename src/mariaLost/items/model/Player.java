@@ -116,7 +116,7 @@ public class Player extends AbstractMobileItem {
 				blinkCounter.reset();
 			}else{
 				blinkCounter.increment();
-				return new Image(Parameters_MariaLost.TRANSPARENT_IMAGE);
+				return Parameters_MariaLost.TRANSPARENT_IMAGE;
 			}
         }
         return animation.getImage();

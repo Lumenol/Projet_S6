@@ -27,13 +27,14 @@ public class LifeBar extends Pane {
     public LifeBar(int nbCoeur) {
 
         getChildren().addAll(back, redLine, heart);
-        Image image = new Image(Parameters_MariaLost.IMAGE_HEART, 40, 40, true, true);
+        Image image = Parameters_MariaLost.IMAGE_HEART;
 
         heart.setMaxSize(nbCoeur * image.getWidth(), image.getHeight());
 
         //Ajoute les coeurs a la ligne
-        for (int i = 0; i < nbCoeur; i++)
+        for (int i = 0; i < nbCoeur; i++) {
             heart.getChildren().addAll(new ImageView(image));
+        }
 
         SimpleDoubleProperty ratio = new SimpleDoubleProperty(0);
 

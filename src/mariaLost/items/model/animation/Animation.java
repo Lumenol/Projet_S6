@@ -64,11 +64,14 @@ public class Animation {
             while (dTime >= (delay = frames[courant].getKey().toMillis() / ratio)) {
                 dTime -= delay;
                 courant = (courant + 1);
-                if (autoReplay) {
-                    courant = courant % frames.length;
-                } else {
-                    stop();
-                }
+                if (courant >= frames.length)
+                    if (autoReplay) {
+                        courant = 0;
+                    } else {
+                        stop();
+                        over = true;
+                        courant = frames.length - 1;
+                    }
             }
             lastTime = System.currentTimeMillis() - dTime;
         }
@@ -86,7 +89,6 @@ public class Animation {
     final public void stop() {
         isPlay = false;
         courant = 0;
-        over = true;
     }
 
     final public void setRatio(double ratio) {

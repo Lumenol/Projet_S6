@@ -1,7 +1,6 @@
 package mariaLost.mainApp.controller;
 
 import javafx.application.Application;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -31,7 +30,7 @@ public class MainApp extends Application {
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Maria Lost - ");
-        this.primaryStage.getIcons().add(new Image(Parameters_MariaLost.IMAGE_LOGO));
+        this.primaryStage.getIcons().add(Parameters_MariaLost.IMAGE_LOGO);
 
         this. primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
         this.primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
