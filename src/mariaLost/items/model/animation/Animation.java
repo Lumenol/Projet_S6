@@ -68,6 +68,7 @@ public class Animation {
                     courant = courant % frames.length;
                 } else {
                     stop();
+                    over = true;
                     courant = frames.length - 1;
                 }
             }
@@ -87,7 +88,6 @@ public class Animation {
     final public void stop() {
         isPlay = false;
         courant = 0;
-        over = true;
     }
 
     final public void setRatio(double ratio) {
