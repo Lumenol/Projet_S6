@@ -68,6 +68,7 @@ public class Animation {
                     courant = courant % frames.length;
                 } else {
                     stop();
+                    courant = frames.length - 1;
                 }
             }
             lastTime = System.currentTimeMillis() - dTime;
