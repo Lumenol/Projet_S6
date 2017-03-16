@@ -20,6 +20,6 @@ public class Ground extends AbstractItem {
 
     @Override
     public Image getImage() {
-        return Parameters_MariaLost.IMAGE_DIRT;
+        return Parameters_MariaLost.IMAGE_GROUND;
     }
 }

@@ -2,7 +2,6 @@ package mariaLost.gamePlay.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import mariaLost.mainApp.controller.Starter;
@@ -28,7 +27,7 @@ public class EndPageController {
     @FXML
     private ImageView avatarImageView;
 
-    public EndPageController(){
+    public EndPageController() {
         start = Starter.getInstance();
     }
 
@@ -41,7 +40,7 @@ public class EndPageController {
             scoreLabel.setText(Integer.toString(user.getScore()));
             levelLabel.setText(Integer.toString(user.getLevel()));
             this.avatarImageView.setImage(new Image(user.getImage()));
-            switch (code){
+            switch (code) {
                 case Parameters_MariaLost.NEXT_LEVEL_CODE:
                     this.text.setText("Well Done !");
                     break;
@@ -52,12 +51,12 @@ public class EndPageController {
     }
 
     @FXML
-    public void handlePlay(){
+    public void handlePlay() {
         start.showPlayLayout(user);
     }
 
     @FXML
-    public  void handleMenu(){
+    public void handleMenu() {
         start.start();
     }
 

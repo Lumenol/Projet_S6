@@ -32,16 +32,11 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Maria Lost - ");
         this.primaryStage.getIcons().add(Parameters_MariaLost.IMAGE_LOGO);
 
-        this. primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
+        this.primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
         this.primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
         this.frontalControler.start();
-       // this.frontalControler.showUserData();
+        // this.frontalControler.showUserData();
     }
-
-
-
-
-
 
 
     public Stage getPrimaryStage() {

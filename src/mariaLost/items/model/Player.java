@@ -3,6 +3,7 @@ package mariaLost.items.model;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.tools.IncrementableCounter;
 import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.*;
@@ -19,7 +20,8 @@ public class Player extends AbstractMobileItem {
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
     private Timer recoveryTimer = new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
-    private boolean clignotement = true;
+    private IncrementableCounter blinkCounter=new IncrementableCounter(Parameters_MariaLost.NUMBER_OF_BLINK);
+
 
 
     public Player() {
@@ -27,7 +29,7 @@ public class Player extends AbstractMobileItem {
     }
 
     public Player(double x, double y) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), 10, Parameters_MariaLost.LIFE_POINT_START_PLAYER);
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), Parameters_MariaLost.PLAYER_SPEED_LIMIT, Parameters_MariaLost.PLAYER_LIFE_POINT_START);
     }
 
 
@@ -110,12 +112,12 @@ public class Player extends AbstractMobileItem {
     @Override
     public Image getImage() {
         if (!recoveryTimer.isOver()) {
-            if (clignotement) {
-                clignotement = false;
-                return Parameters_MariaLost.TRANSPARENT_IMAGE;
-            } else {
-                clignotement = true;
-            }
+			if(blinkCounter.isMaxvalue()){
+				blinkCounter.reset();
+			}else{
+				blinkCounter.increment();
+				return Parameters_MariaLost.TRANSPARENT_IMAGE;
+			}
         }
         return animation.getImage();
     }

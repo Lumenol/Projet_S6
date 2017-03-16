@@ -43,26 +43,32 @@ public class User {
     public String getName() {
         return name.get();
     }
-    public int getScore() {
-        return score.get();
-    }
-    public int getLevel() {
-        return level.get();
-    }
-    public String getImage() {
-        return image.get();
-    }
 
     //Nécéssaire pour le userListWrapper
     public void setName(String name) {
         this.name.set(name);
     }
+
+    public int getScore() {
+        return score.get();
+    }
+
     public void setScore(int score) {
         this.score.set(score);
     }
+
+    public int getLevel() {
+        return level.get();
+    }
+
     public void setLevel(int level) {
         this.level.set(level);
     }
+
+    public String getImage() {
+        return image.get();
+    }
+
     public void setImage(String image) {
         this.image.set(image);
     }
@@ -72,15 +78,13 @@ public class User {
         return name;
     }
 
-    public IntegerProperty scoreProperty(){
+    public IntegerProperty scoreProperty() {
         return this.score;
     }
+
     public IntegerProperty levelProperty() {
         return level;
     }
-
-
-
 
 
 }

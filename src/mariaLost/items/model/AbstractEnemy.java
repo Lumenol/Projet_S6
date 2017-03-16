@@ -5,6 +5,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.gamePlay.tools.Direction;
+import mariaLost.gamePlay.tools.IncrementableCounter;
 import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.Animation;
 import mariaLost.parameters.Parameters_MariaLost;
@@ -28,11 +29,11 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	protected Animation death;
     boolean isAgro = false;
     private Timer blinkTimer=new Timer(Parameters_MariaLost.BLINKING_TIME);
-    private int blinkCounter=0;
+    private IncrementableCounter blinkCounter=new IncrementableCounter(Parameters_MariaLost.NUMBER_OF_BLINK);
 
 
-    public AbstractEnemy(double x, double y, double speedLimit, double money, double lifePoint) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(money), speedLimit, lifePoint);
+    public AbstractEnemy(double x, double y,double width,double height, double speedLimit, double money, double lifePoint) {
+        super(x, y, width, height, new DebitOnlyMonnayeur(money), speedLimit, lifePoint);
     }
 
 
@@ -58,11 +59,11 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 		if (getLifePoint() <= 0)
 			return death.getImage();
 		if(!blinkTimer.isOver()){
-			if(blinkCounter<5){
-				blinkCounter++;
-				return Parameters_MariaLost.TRANSPARENT_IMAGE;
+			if(blinkCounter.isMaxvalue()){
+				blinkCounter.reset();
 			}else{
-				blinkCounter=0;
+				blinkCounter.increment();
+				return Parameters_MariaLost.TRANSPARENT_IMAGE;
 			}
 		}
 		return actualAttack.isRunning()?actualAttack.getImage():actualMovement.getImage();
@@ -234,19 +235,37 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	}
 	
 	public void movementChoosing(Player player){
-		if(isRight(player)){
-			actualMovement=goRight;
-		}else if(isLeft(player)){
-			actualMovement=goLeft;
-		}else if(isUp(player)){
-			actualMovement=goUp;
+		if(!positionHasChanged()){
+			if(isRight(player)||isLeft(player)){
+				if(player.center().getY()<=this.center().getY()){
+					actualMovement=goUp;
+				}else{
+					actualMovement=goDown;
+				}
+			}else{
+				if(player.center().getX()<=this.center().getX()){
+					actualMovement=goLeft;
+				}else{
+					actualMovement=goRight;
+				}
+			}
 		}else{
-			actualMovement=goDown;
+			if(isRight(player)){
+				actualMovement=goRight;
+			}else if(isLeft(player)){
+				actualMovement=goLeft;
+			}else if(isUp(player)){
+				actualMovement=goUp;
+			}else{
+				actualMovement=goDown;
+			}
 		}
-		
+		setPreviousPositionToActual();
 		actualMovement.start();
 		this.setSpeed(actualMovement.getSpeed());
 	}
+	
+
 	
 	public void alignToPlayer(Player player){
 		if(isInPlayerAxis(player)&&isInAttackRange(player.getBounds())){					
@@ -257,6 +276,8 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 			}
 		}
 	}
+	
+	
 
 }
 	

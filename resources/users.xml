@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<UserListWrapper>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>38</level>
+        <name>Amdulaçava</name>
+        <score>280</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>15</level>
+        <name>Hello</name>
+        <score>1860</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>7</level>
+        <name>LM</name>
+        <score>420</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>11</level>
+        <name>Max</name>
+        <score>830</score>
+    </user>
+</UserListWrapper>

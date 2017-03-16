@@ -9,7 +9,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.prefs.Preferences;
 
 
 /**
@@ -21,14 +20,13 @@ public class UserReader {
 
 
     private Starter mainApp;
-    private Preferences preferences;
 
     private File file;
 
     public UserReader(MainApp mapp) {
         this.mainApp = Starter.getInstance();
         file = new File(Parameters_MariaLost.FILENAME_FILE_USER);
-        if(file.canRead()) {
+        if (file.canRead()) {
             loadUserFromFile();
         }
     }
