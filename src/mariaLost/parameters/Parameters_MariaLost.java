@@ -63,10 +63,7 @@ public class Parameters_MariaLost {
     public static final int GAME_OVER_CODE = 1;
     public static final int NEXT_LEVEL_CODE = 0;
     public static final int SCORE_LOOSE_GAME_OVER = -100;
-    public static final double LIFE_POINT_START_PLAYER = 100;
-    public static final double LIFE_POINT_START_SKELETON = 50;
     public static final int QUANTITEE_ARGENT_PIECE = 10;
-    public static final int QUANTITEE_ARGENT_SKELETON = 40;
     public static final int DAMAGE_FIREBALL = 10;
     public static final double DELAY_BETWEEN_FIREBALL = 250;
     public static final Duration BLINKING_TIME = new Duration(500);
@@ -77,7 +74,13 @@ public class Parameters_MariaLost {
      * All enemies
      */
     public static final int DAMAGE_CONTACT=10;
-    
+
+    /**
+     * Player
+     */
+    public static final int PLAYER_SPEED_LIMIT = 5;
+    public static final double PLAYER_LIFE_POINT_START = 100;
+
     /**
      * Spider
      */
@@ -88,7 +91,7 @@ public class Parameters_MariaLost {
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
     public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(700);
-    public static final int SPIDER_SPEED_LIMIT=1;
+    public static final int SPIDER_SPEED_LIMIT = 4;
     public static final int  SPIDER_QUANTITEE_ARGENT = 20;
     public static final double  SPIDER_LIFE_POINT_START = 30;
     public static final int  SPIDER_AGRO_RADIUS=200;
@@ -105,7 +108,7 @@ public class Parameters_MariaLost {
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);
     public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(600);
-    public static final int SKELETON_SPEED_LIMIT=1;
+    public static final int SKELETON_SPEED_LIMIT = 4;
     public static final int  SKELETON_QUANTITEE_ARGENT = 40;
     public static final double  SKELETON_LIFE_POINT_START = 50;
     public static final int  SKELETON_AGRO_RADIUS=150;

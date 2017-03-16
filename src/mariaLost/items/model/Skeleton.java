@@ -1,17 +1,17 @@
 package mariaLost.items.model;
 
-import java.util.List;
-
 import javafx.scene.image.Image;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.model.animation.Animation;
 import mariaLost.items.model.animation.SpriteSheetLoader;
 import mariaLost.parameters.Parameters_MariaLost;
 
+import java.util.List;
+
 public class Skeleton  extends AbstractEnemy{
 
 	public Skeleton(double x, double y) {
-		super(x, y,Parameters_MariaLost.SKELETON_WIDTH,Parameters_MariaLost.SKELETON_HEIGHT, Parameters_MariaLost.SKELETON_SPEED_LIMIT, Parameters_MariaLost.QUANTITEE_ARGENT_SKELETON, Parameters_MariaLost.SKELETON_LIFE_POINT_START);
+		super(x, y, Parameters_MariaLost.SKELETON_WIDTH, Parameters_MariaLost.SKELETON_HEIGHT, Parameters_MariaLost.SKELETON_SPEED_LIMIT, Parameters_MariaLost.SKELETON_QUANTITEE_ARGENT, Parameters_MariaLost.SKELETON_LIFE_POINT_START);
 		agroRadius = Parameters_MariaLost.SKELETON_AGRO_RADIUS;
 		damageContact = Parameters_MariaLost.DAMAGE_CONTACT;
 		attackRange = Parameters_MariaLost.SKELETON_ATTACK_RANGE;

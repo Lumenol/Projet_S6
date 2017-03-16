@@ -29,7 +29,7 @@ public class Player extends AbstractMobileItem {
     }
 
     public Player(double x, double y) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), 2, Parameters_MariaLost.LIFE_POINT_START_PLAYER);
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), Parameters_MariaLost.PLAYER_SPEED_LIMIT, Parameters_MariaLost.PLAYER_LIFE_POINT_START);
     }
 
 
