@@ -102,7 +102,7 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     public Rectangle2D getBounds() {
         return new Rectangle2D(position.getX(), position.getY(), size.getWidth(), size.getHeight());
     }
-    
+        
     
     
 	public Point2D center(){
