@@ -152,7 +152,16 @@ public class UserOverviewController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Maria Lost - Règles du Jeu ");
         alert.setHeaderText("Règles du jeu");
-        alert.setContentText("LM Tu dois remplir ici");
+        alert.setContentText("But\n" +
+                "Il faut atteindre la case de fin en ramassant le plus de pièces et en tuant le plus de montre possible pour augmenter son score\n" +
+                "Une sauvegarde automatique est éffectuée quand la fin du niveau est atteinte si vous mourrez toutes les pièces ramasser son perdu\n" +
+                "\nCommandes\n\n" +
+                "Déplacements\n" +
+                "Utiliser les touches ZQSD, les flèches ou faite un clic droit pour vous déplacer\n" +
+                "Attaque\n" +
+                "Faite un clic gauche pour lance une attaque dans la direction choisie\n" +
+                "\nVous pouvez retourner a l'écran de selection du personnage en cliquant sur le bouton Menu\n" +
+                "ATTENTION vautre progression dans le niveau sera perdu");
         alert.showAndWait();
     }
 }
