@@ -7,25 +7,25 @@ import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.Animation;
 
 public abstract class AbstractAttack {
-	protected int damage; 
-	protected Animation animation;
-	protected Direction direction;
-	protected Timer timer;
-	
-	public AbstractAttack(int damage, Animation animation, Duration duration, Direction direction) {
-		this.damage = damage;
-		this.animation = animation;
-		this.direction = direction;
-		timer=new Timer(duration);
-	}
-	
-	public Image getImage() {
-		return animation.getImage();
-	}
+    protected int damage;
+    protected Animation animation;
+    protected Direction direction;
+    protected Timer timer;
 
-	public int getDamage() {
-		return damage;
-	}
+    public AbstractAttack(int damage, Animation animation, Duration duration, Direction direction) {
+        this.damage = damage;
+        this.animation = animation;
+        this.direction = direction;
+        timer = new Timer(duration);
+    }
 
-	
+    public Image getImage() {
+        return animation.getImage();
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+
 }

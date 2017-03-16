@@ -11,14 +11,15 @@
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="50.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <ImageView fx:id="moneyImageView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+        <ImageView fx:id="moneyImageView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
+                   GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
         <Label fx:id="moneyLabel" text="Money" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
                GridPane.valignment="CENTER"/>
     </children>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
 </GridPane>

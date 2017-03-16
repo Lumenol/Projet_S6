@@ -24,7 +24,7 @@ public class RangedAttack extends AbstractMobileItem {
         setSpeed(direction.getDirection());
         this.damage = damage;
         this.animation = animation;
-        timer=new Timer(duration);
+        timer = new Timer(duration);
         timer.start();
         timer.mustLast(DUREE_MIN);
     }
@@ -38,12 +38,12 @@ public class RangedAttack extends AbstractMobileItem {
     }
 
     public boolean isRunning() {
-    	return !timer.isOver();
+        return !timer.isOver();
     }
 
 
     public boolean isFinished() {
-    	return timer.isOver();
+        return timer.isOver();
     }
 
     @Override

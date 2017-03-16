@@ -6,15 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import mariaLost.mainApp.controller.MainApp;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
 /**
  * Created by elsacollet on 24/01/2017.
- *
+ * <p>
  * Permet de modifier ou de créer un nouveau joueur.
+ *
  * @author Elsa Collet
  */
 public class UserDetailsController {

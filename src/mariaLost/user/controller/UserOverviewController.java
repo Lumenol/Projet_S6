@@ -147,6 +147,7 @@ public class UserOverviewController {
         alert.showAndWait();
 
     }
+
     @FXML
     private void handleRules() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -96,9 +96,9 @@ public class GameLayoutController {
         gameView.moneyProperty().bind(player.getMonnayeur().valueProperty());
 
         /*
-        Accroche la vie du joueur a la barre de vie de la vue calcul le pourcentage de vie du joueur en considérent qu'il a ça vie maximal a ce moment
+        Accroche la vie du joueur a la barre de vie de la vue calcul le pourcentage de vie du joueur
          */
-        gameView.lifeProperty().bind(player.lifePointPropertie().divide(player.lifePointPropertie().get()));
+        gameView.lifeProperty().bind(player.lifePointPropertie().divide(Parameters_MariaLost.LIFE_POINT_START_PLAYER));
 
 
         world.start();

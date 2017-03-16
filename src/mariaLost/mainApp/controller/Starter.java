@@ -33,7 +33,7 @@ public class Starter {
     private Starter() {
     }
 
-    public static Starter getInstance(MainApp m){
+    public static Starter getInstance(MainApp m) {
         mainApp = m;
         instance = new Starter();
         return instance;
@@ -43,7 +43,7 @@ public class Starter {
         return instance;
     }
 
-    public void start(){
+    public void start() {
         this.userReader = new UserReader(mainApp);
         this.root = new BorderPane();
         this.root.setMinSize(Parameters_MariaLost.PAGE_WIDTH, Parameters_MariaLost.PAGE_HEIGHT);
@@ -54,7 +54,7 @@ public class Starter {
         showUserData();
     }
 
-    public MainApp getMainApp(){
+    public MainApp getMainApp() {
         return mainApp;
     }
 
@@ -90,8 +90,8 @@ public class Starter {
     }
 
     public void showPlayLayout(User user) {
-        this.currentUser= user;
-       // mainApp.getPrimaryStage().setFullScreen(true);
+        this.currentUser = user;
+        // mainApp.getPrimaryStage().setFullScreen(true);
 
         try {
 
@@ -100,7 +100,7 @@ public class Starter {
 
             ButtonBar menuBar = loader.load();
 
-           // this.root.setPrefSize(Parameters_MariaLost.PLAY_PAGE_WIDTH, Parameters_MariaLost.PLAY_PAGE_HEIGHT);
+            // this.root.setPrefSize(Parameters_MariaLost.PLAY_PAGE_WIDTH, Parameters_MariaLost.PLAY_PAGE_HEIGHT);
             this.root.setTop(menuBar);
 
             menuBar.autosize();
@@ -157,7 +157,8 @@ public class Starter {
         this.userReader.saveUserToFile();
 
     }
-    public void updateCurrentUser(){
+
+    public void updateCurrentUser() {
         System.out.println("update ");
 
         this.userList.remove(currentUser);
@@ -169,18 +170,18 @@ public class Starter {
     }
 
 
-    public void gameOver(int code, int money){
-        System.out.println("money : "+money);
-        switch (code){
-            case Parameters_MariaLost.GAME_OVER_CODE :
+    public void gameOver(int code, int money) {
+        System.out.println("money : " + money);
+        switch (code) {
+            case Parameters_MariaLost.GAME_OVER_CODE:
                 System.out.println("game over ");
-                if(currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER < 0){
+                if (currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER < 0) {
                     currentUser.setScore(0);
-                }else {
+                } else {
                     currentUser.setScore(currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
                 }
                 break;
-            case Parameters_MariaLost.NEXT_LEVEL_CODE :
+            case Parameters_MariaLost.NEXT_LEVEL_CODE:
                 System.out.println("Next Level ");
 
                 currentUser.setScore(currentUser.getScore() + money);
@@ -191,9 +192,9 @@ public class Starter {
 
         }
         updateCurrentUser();
-       // this.root.getChildren().removeAll();
+        // this.root.getChildren().removeAll();
 
-        try{
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_ENDPAGE));
             BorderPane endPage = loader.load();
@@ -201,7 +202,7 @@ public class Starter {
             endPageController.setUser(currentUser, code);
             root.setTop(new AnchorPane());
             root.setCenter(endPage);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

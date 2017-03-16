@@ -28,7 +28,7 @@ public class UserReader {
     public UserReader(MainApp mapp) {
         this.mainApp = Starter.getInstance();
         file = new File(Parameters_MariaLost.FILENAME_FILE_USER);
-        if(file.canRead()) {
+        if (file.canRead()) {
             loadUserFromFile();
         }
     }

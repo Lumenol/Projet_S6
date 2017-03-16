@@ -62,7 +62,7 @@ public class LifeBar extends Pane {
                 System.out.println("v" + v);
                 if (v < 0) {
                     v = 0;
-                }else if (v > 1)
+                } else if (v > 1)
                     v = 1;
                 ratio.set(v);
             }
