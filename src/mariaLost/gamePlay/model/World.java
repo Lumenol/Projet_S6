@@ -61,7 +61,9 @@ public class World implements Model {
                         // System.out.println(abstractItem.getClass());
                         if (next instanceof AbstractEnemy) {
                             Point2D nextPosition = next.getPosition();
-                            aAjouter.add(new Money(nextPosition.getX(), nextPosition.getY()));
+                            Money money = new Money(nextPosition.getX(), nextPosition.getY(), next.getMonnayeur().getValue());
+                            aAjouter.add(money);
+
                         }
                     }
                 }

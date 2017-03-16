@@ -7,7 +7,6 @@ import javafx.util.Duration;
 import mariaLost.gamePlay.tools.DebitOnlyMonnayeur;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.gamePlay.tools.Timer;
-import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.animation.Animation;
 
@@ -42,10 +41,6 @@ public class RangedAttack extends AbstractMobileItem {
     	return !timer.isOver();
     }
 
-    @Override
-    public boolean isPassable() {
-        return true;
-    }
 
     public boolean isFinished() {
     	return timer.isOver();
@@ -59,6 +54,9 @@ public class RangedAttack extends AbstractMobileItem {
             ((AbstractEnemy) o).takeDamage(getDamage());
             timer.end();
             setSpeed(Point2D.ZERO);
+        }
+        if (!o.isPassable()) {
+            timer.end();
         }
     }
 

@@ -14,7 +14,11 @@ public class Money extends AbstractItem implements ActionableItem {
     private static final Image image = new Image(Parameters_MariaLost.IMAGE_GOLD);
 
     public Money(double x, double y) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(10));
+        this(x, y, 0);
+    }
+
+    public Money(double x, double y, double solde) {
+        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(solde));
     }
 
     @Override

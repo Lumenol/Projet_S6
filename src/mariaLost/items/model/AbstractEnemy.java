@@ -29,11 +29,11 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
     boolean isAgro = false;
     private Timer recoveryTimer=new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
     private boolean clignotement=true;
-    
 
-    public AbstractEnemy(double x, double y,double speedLimit) {
-        super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(0), speedLimit);
-    }
+
+	public AbstractEnemy(double x, double y, double speedLimit, double money) {
+		super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new DebitOnlyMonnayeur(money), speedLimit);
+	}
 
 
 	public int getAgroRadius() {

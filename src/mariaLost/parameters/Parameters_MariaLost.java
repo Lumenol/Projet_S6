@@ -48,5 +48,9 @@ public class Parameters_MariaLost {
     public static final int SCORE_LOOSE_GAME_OVER = -100;
     public static final double LIFE_POINT_START = 100;
 
+    public static final int QUANTITEE_ARGENT_PIECE = 10;
+    public static final int QUANTITEE_ARGENT_SPIDER = 20;
+
+
     public static final String TRANSPARANT_IMAGE="file:resources/Images/transparant_image.png";
     }

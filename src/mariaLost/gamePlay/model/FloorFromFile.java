@@ -28,7 +28,7 @@ public class FloorFromFile extends AbstractFloor {
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(fileName));
-        }catch(Exception e){
+        } catch (Exception e) {
             br = new BufferedReader(new FileReader(Parameters_MariaLost.FILEPATH_DEFAUTL_MAP));
         }
         String lineRead = br.readLine();
@@ -92,7 +92,7 @@ public class FloorFromFile extends AbstractFloor {
         y = y * Parameters_MariaLost.CASE_HEIGHT;
         switch (codeItem) {
             case 5:
-                gettingItemList.add(new Money(x, y));
+                gettingItemList.add(new Money(x, y, Parameters_MariaLost.QUANTITEE_ARGENT_PIECE));
             case 0:
                 return new Ground(x, y);
             case 1:
@@ -108,8 +108,8 @@ public class FloorFromFile extends AbstractFloor {
             case 4:
                 return new BreakableWall(x, y);
             case 6:
-            	gettingItemList.add(new Spider(x, y));
-            	return new Ground(x,y);	
+                gettingItemList.add(new Spider(x, y));
+                return new Ground(x, y);
             default:
                 throw new IllegalArgumentException("Pas de correspondence pour codeItem");
         }
