@@ -17,7 +17,6 @@ public class Parameters_MariaLost {
     public static final int PAGE_HEIGHT = 600;
 
 
-
     /**
      * Gestion des fichiers xml
      */
@@ -27,8 +26,8 @@ public class Parameters_MariaLost {
     public static final String FILEPATH_USER_DETAILS = "../../user/view/userDetails.fxml";
     public static final String FILEPATH_PLAYER_BAR = "../../gamePlay/view/playerBar.fxml";
     public static final String FILEPATH_MAP = "resources/Floor/";
-    public static final String FILENAME_FILE_USER = "resources/configuration.xml";
-    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";;
+    public static final String FILENAME_FILE_USER = "resources/users.xml";
+    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";
     public static final String FILEPATH_DEFAUTL_MAP = "resources/Floor/0.txt";
 
     /**
@@ -41,7 +40,7 @@ public class Parameters_MariaLost {
     public static final Image IMAGE_WALL = new Image("file:resources/Images/wall.png");
     public static final Image IMAGE_DIRT = new Image("file:resources/Images/dirt.png");
     public static final Image IMAGE_END_CASE = new Image("file:resources/Images/floor_green.png");
- 
+
 
     /**
      * Name of images
@@ -66,6 +65,6 @@ public class Parameters_MariaLost {
     public static final int DAMAGE_FIREBALL = (int) (LIFE_POINT_START_ENNEMIE / 5);
     public static final double DELAY_BETWEEN_FIREBALL = 250;
     public static final Duration BLINKING_TIME = new Duration(500);
-    public static final int NUMBER_OF_BLINK =4;
+    public static final int NUMBER_OF_BLINK = 4;
 
 }
