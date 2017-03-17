@@ -77,7 +77,8 @@ public class GenerateLaby extends AbstractFloor {
         int j = rand.nextInt(NUMBER_CASE_Y - 2) + 1;
 
         generate(j, i);
-        lastTest();
+
+        while (lastTest()) ;
         //Determine begining, ending, and items
 
 
@@ -330,10 +331,11 @@ public class GenerateLaby extends AbstractFloor {
     /**
      * Ce teste s'assure qu'il n'existe pas un carre Ground qui serait innacessible.
      */
-    private void lastTest() {
+    private boolean lastTest() {
+        boolean change = false;
         for (int j = 1; j < NUMBER_CASE_Y - 1; j++) {
             for (int i = 1; i < NUMBER_CASE_X - 1; i++) {
-                //Un ground to seul entouré de walls se transforme en wall
+                //Un ground tout seul entouré de walls se transforme en wall
                 if (items[j - 1][i] instanceof Wall
                         && items[j + 1][i] instanceof Wall
                         && items[j][i - 1] instanceof Wall
@@ -342,10 +344,25 @@ public class GenerateLaby extends AbstractFloor {
                     items[j][i] = new Wall(i * Parameters_MariaLost.CASE_WIDTH, j * Parameters_MariaLost.CASE_HEIGHT);
                     possible[j][i] = false;
                     visited.replace(new Pair<>(j, i), true);
-
+                    change = true;
                 }
+
+                if (!(items[j][i] instanceof Wall) && items[j + 1][i] instanceof Wall && items[j][i + 1] instanceof Wall && !(items[j + 1][i + 1] instanceof Wall)) {
+                    items[j][i] = new Wall(i * Parameters_MariaLost.CASE_WIDTH, j * Parameters_MariaLost.CASE_HEIGHT);
+                    possible[j][i] = false;
+                    visited.replace(new Pair<>(j, i), true);
+                    change = true;
+                } else if (items[j][i] instanceof Wall && items[j + 1][i + 1] instanceof Wall && !(items[j + 1][i] instanceof Wall) && !(items[j][i + 1] instanceof Wall)) {
+                    items[j + 1][i] = new Wall(i * Parameters_MariaLost.CASE_WIDTH, (j + 1) * Parameters_MariaLost.CASE_HEIGHT);
+                    possible[j + 1][i] = false;
+                    visited.replace(new Pair<>(j + 1, i), true);
+                    change = true;
+                }
+
+
             }
         }
+        return change;
     }
 
 
