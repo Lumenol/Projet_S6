@@ -26,7 +26,7 @@ import java.util.LinkedList;
 public class World implements Model {
 
     private AbstractFloor floor;
-    private Collection<AbstractItem> items = new LinkedList<>();
+    private Deque<AbstractItem> items = new LinkedList<>();
     private Starter start;
     private AbstractMobileItem player;
 
@@ -182,8 +182,8 @@ public class World implements Model {
         player.setDestination(coordinate);
     }
 
-    public void add(AbstractItem item) {
-        items.add(item);
+    public void addFisrt(AbstractItem item) {
+        items.addFirst(item);
     }
 
 }

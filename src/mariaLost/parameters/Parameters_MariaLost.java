@@ -66,12 +66,18 @@ public class Parameters_MariaLost {
     public static final int NEXT_LEVEL_CODE = 0;
     public static final int SCORE_LOOSE_GAME_OVER = -100;
     public static final int QUANTITEE_ARGENT_PIECE = 10;
-    public static final int DAMAGE_FIREBALL = 10;
     public static final double DELAY_BETWEEN_FIREBALL = 250;
     public static final Duration BLINKING_TIME = new Duration(500);
     public static final int NUMBER_OF_BLINK =4;
-
-
+   
+    /**
+     * Fireball
+     */
+    
+    
+    public static final int FIREBALL_DAMAGE = 10;
+    public static final int FIREBALL_SPEED = 7;
+    public static final Duration FIREBALL_DURATION = new Duration(3000);
     /**
      * All enemies
      */
@@ -80,7 +86,7 @@ public class Parameters_MariaLost {
     /**
      * Player
      */
-    public static final int PLAYER_SPEED_LIMIT = 5;
+    public static final int PLAYER_SPEED_LIMIT = 6;
     public static final double PLAYER_LIFE_POINT_START = 100;
 
     /**
@@ -92,12 +98,12 @@ public class Parameters_MariaLost {
     public static final double SPIDER_HEIGHT=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getHeight();
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
-    public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(700);
+    public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(250);
     public static final int SPIDER_SPEED_LIMIT = 4;
     public static final int  SPIDER_QUANTITEE_ARGENT = 20;
     public static final double  SPIDER_LIFE_POINT_START = 30;
     public static final int  SPIDER_AGRO_RADIUS=200;
-    public static final int  SPIDER_ATTACK_RANGE=5;
+    public static final int  SPIDER_ATTACK_RANGE=3;
     public static final int SPIDER_ATTACK_DAMAGE=15;
 
     /**
@@ -109,7 +115,7 @@ public class Parameters_MariaLost {
     public static final double SKELETON_HEIGHT=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getHeight();
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);
-    public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(600);
+    public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(350);
     public static final int SKELETON_SPEED_LIMIT = 4;
     public static final int  SKELETON_QUANTITEE_ARGENT = 40;
     public static final double  SKELETON_LIFE_POINT_START = 50;
