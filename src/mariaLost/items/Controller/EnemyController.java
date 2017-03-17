@@ -8,10 +8,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ *  Controller class for all enemies.
+ * @author loic
+ *
+ */
 public class EnemyController {
 	
 /**
- * Extract the player and the enemy from the AbstractItem collection
+ 	* Extract the player and the enemy from the AbstractItem collection
  * @param items
  */
     public static void handleEnemies(Collection<AbstractItem> items) {
@@ -54,8 +59,7 @@ public class EnemyController {
             }
         }
     }
-
-
+    
     /**
      * Check if the player is in the agro radius of an enemy
      * @param player
@@ -65,6 +69,5 @@ public class EnemyController {
     public static boolean agroRange(Player player, AbstractEnemy enemy) {
         return player.center().distance(enemy.center()) < enemy.getAgroRadius();
     }
-
 
 }

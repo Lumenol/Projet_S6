@@ -10,7 +10,13 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 
+/**
+ * This class represents a melee attack.
+ * @author Loïc
+ *
+ */
 public class MeleeAttack{
+	
 	private int damage; 
 	private Animation animation;
 	private Direction direction;
@@ -27,6 +33,7 @@ public class MeleeAttack{
 		this.aoe=areaOfEffect;
 	}
 	
+
 	public void start(Point2D attackStartingPoint,Direction direction){
 		changeDirectionAttack(direction);
 		this.attackStartingPoint=attackStartingPoint;

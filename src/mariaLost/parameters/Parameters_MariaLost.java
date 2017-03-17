@@ -69,15 +69,17 @@ public class Parameters_MariaLost {
     public static final double DELAY_BETWEEN_FIREBALL = 250;
     public static final Duration BLINKING_TIME = new Duration(500);
     public static final int NUMBER_OF_BLINK =4;
+    public static final int ALIGNEMENT_MARGIN =5;
+
    
     /**
      * Fireball
      */
     
-    
     public static final int FIREBALL_DAMAGE = 10;
     public static final int FIREBALL_SPEED = 7;
     public static final Duration FIREBALL_DURATION = new Duration(3000);
+    
     /**
      * All enemies
      */

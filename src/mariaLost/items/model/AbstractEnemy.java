@@ -10,6 +10,11 @@ import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.Animation;
 import mariaLost.parameters.Parameters_MariaLost;
 
+/**
+ * Abstract class for an enemy.
+ * @author Loïc
+ *
+ */
 public abstract class AbstractEnemy extends AbstractMobileItem {
 	
 	protected int agroRadius;
@@ -148,7 +153,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
         if (getLifePoint() != 0) {
             if(!actualAttack.isRunning()){
 				if(!actualMovement.isRunning()){
-					if(isInAttackRange(player.getBounds())&&aligned(this,player)){
+					if(isInAttackRange(player.getBounds())&&this.aligned(player)){
 						attackChoosing(player);
 					}else{
 						movementChoosing(player);
@@ -288,7 +293,7 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	 */
 	public void alignToPlayer(Player player){
 		if(isInPlayerAxis(player)&&isInAttackRange(player.getBounds())){					
-			if(aligned(this,player)){
+			if(aligned(player)){
 				actualMovement.stop();
 			}else{
 				this.setSpeed(speedToAlign(player));

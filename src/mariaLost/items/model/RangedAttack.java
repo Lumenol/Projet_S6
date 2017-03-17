@@ -10,12 +10,18 @@ import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.interfaces.Item;
 import mariaLost.items.model.animation.Animation;
 
+/**
+ * This class represents ranged attacks.
+ * It extends AbstractMobileItem, which means it is intended to be added to the item list in World.
+ * @author loic
+ *
+ */
 public class RangedAttack extends AbstractMobileItem {
 
     private static Duration DUREE_MIN = new Duration(20);
 
-    protected int damage;
-    protected Animation animation;
+    private int damage;
+    private Animation animation;
     private Timer timer;
 
 
