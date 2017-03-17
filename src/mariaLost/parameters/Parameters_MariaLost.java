@@ -15,8 +15,8 @@ public class Parameters_MariaLost {
 
     public static final int MOVABLE_ITEM_WIDTH = 70;
     public static final int MOVABLE_ITEM_HEIGHT = 80;
-    public static final int PLAY_PAGE_WIDTH = 1200;
-    public static final int PLAY_PAGE_HEIGHT = 1200;
+    public static final int PLAY_PAGE_WIDTH = 800;
+    public static final int PLAY_PAGE_HEIGHT = 800;
     public static final int PAGE_WIDTH = 600;
     public static final int PAGE_HEIGHT = 600;
 
