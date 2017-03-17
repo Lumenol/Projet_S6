@@ -137,10 +137,12 @@ public class World implements Model {
 
     @Override
     public void start() {
-        if (floor == null) {
-            loadWorld(start.getCurrentUser().getLevel());
+        if (!finishProperty().get()) {
+            if (floor == null) {
+                loadWorld(start.getCurrentUser().getLevel());
+            }
+            moteur.start();
         }
-        moteur.start();
     }
 
 
