@@ -29,6 +29,8 @@ public class World implements Model {
     private Starter start;
     private AbstractMobileItem player;
 
+    private boolean asFinish = false;
+
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
     private AnimationTimer moteur = new AnimationTimer() {
@@ -69,16 +71,20 @@ public class World implements Model {
                 items.addAll(aAjouter);
                 if (player.getLifePoint() <= 0) {
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player) player);
+                    asFinish = true;
+                    if (!asFinish)
+                        start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player) player);
                 }
                 if (playerAtTheEnd()) {
                     moteur.stop();
-                    start.gameOver(
-                            Parameters_MariaLost.NEXT_LEVEL_CODE
-                            , (int) (player.getMonnayeur().getValue()
-                                    - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
-                            , (Player) player
-                    );
+                    asFinish = true;
+                    if (!asFinish)
+                        start.gameOver(
+                                Parameters_MariaLost.NEXT_LEVEL_CODE
+                                , (int) (player.getMonnayeur().getValue()
+                                        - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
+                                , (Player) player
+                        );
 
                 }
             }
