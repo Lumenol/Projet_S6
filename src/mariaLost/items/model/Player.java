@@ -7,7 +7,6 @@ import mariaLost.gamePlay.tools.IncrementableCounter;
 import mariaLost.gamePlay.tools.Monnayeur;
 import mariaLost.gamePlay.tools.Timer;
 import mariaLost.items.model.animation.*;
-import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**
@@ -19,8 +18,7 @@ public class Player extends AbstractMobileItem {
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
     private Timer recoveryTimer = new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
-    private IncrementableCounter blinkCounter=new IncrementableCounter(Parameters_MariaLost.NUMBER_OF_BLINK);
-
+    private IncrementableCounter blinkCounter = new IncrementableCounter(Parameters_MariaLost.NUMBER_OF_BLINK);
 
 
     public Player() {
@@ -34,8 +32,8 @@ public class Player extends AbstractMobileItem {
     /**
      * The player can't take damages if his recovery timer isn't over.
      * If the player take damages, the recovery timer is started
-     * @param damage
-     * 				The damage to substract to the life points
+     *
+     * @param damage The damage to substract to the life points
      * @pre The damage can't be inferior to 0
      */
     public void takeDamage(int damage) {
@@ -72,13 +70,13 @@ public class Player extends AbstractMobileItem {
             }
         }
     }
-    
-	/**
-	 * Get the attack starting point or the player attack.
-	 * @param point
-	 * 				The point on the plan where the played clicked
-	 * @return a Point2D where the attack of the player is launched.
-	 */
+
+    /**
+     * Get the attack starting point or the player attack.
+     *
+     * @param point The point on the plan where the played clicked
+     * @return a Point2D where the attack of the player is launched.
+     */
     public Point2D getAttackStartingPoint(Point2D point) {
         if (isRight(point))
             return new Point2D(this.getPosition().getX() + this.getBounds().getWidth()
@@ -117,12 +115,12 @@ public class Player extends AbstractMobileItem {
     @Override
     public Image getImage() {
         if (!recoveryTimer.isOver()) {
-			if(blinkCounter.isMaxvalue()){
-				blinkCounter.reset();
-			}else{
-				blinkCounter.increment();
-				return Parameters_MariaLost.TRANSPARENT_IMAGE;
-			}
+            if (blinkCounter.isMaxvalue()) {
+                blinkCounter.reset();
+            } else {
+                blinkCounter.increment();
+                return Parameters_MariaLost.TRANSPARENT_IMAGE;
+            }
         }
         return animation.getImage();
     }

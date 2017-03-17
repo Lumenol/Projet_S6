@@ -13,8 +13,8 @@ import mariaLost.items.model.animation.Animation;
 /**
  * This class represents ranged attacks.
  * It extends AbstractMobileItem, which means it is intended to be added to the item list in World.
- * @author loic
  *
+ * @author loic
  */
 public class RangedAttack extends AbstractMobileItem {
 
@@ -34,36 +34,43 @@ public class RangedAttack extends AbstractMobileItem {
         attackTimer.start();
         attackTimer.mustLast(DUREE_MIN);
     }
+
     /**
-	 * Getter for this attack current image.
-	 * @return an Image
-	 */
+     * Getter for this attack current image.
+     *
+     * @return an Image
+     */
     public Image getImage() {
         return animation.getImage();
     }
+
     /**
-	 * Getter for the attack damage.
-	 * @return an int
-	 */
+     * Getter for the attack damage.
+     *
+     * @return an int
+     */
     public int getDamage() {
         return damage;
     }
+
     /**
-	 * Return true if the attack attackTimer is not over.
-	 * @return a Boolean
-	 */
+     * Return true if the attack attackTimer is not over.
+     *
+     * @return a Boolean
+     */
     public boolean isRunning() {
         return !attackTimer.isOver();
     }
 
     /**
      * Return true if the life of this ranged attack if finished
+     *
      * @return a boolean
      */
     public boolean isFinished() {
         return attackTimer.isOver();
     }
-    
+
     /**
      * The action this ranged attack do when it hit something.
      * If it hits an enemy, it deals damage and disapears.

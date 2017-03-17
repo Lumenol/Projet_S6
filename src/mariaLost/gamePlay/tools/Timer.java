@@ -8,8 +8,8 @@ import javafx.util.Duration;
  * A minimum duration can be set.
  * The class offers the service to know if its timer is over.
  * If the timer hasen's been started, the isOver method return True
- * @author loic
  *
+ * @author loic
  */
 public class Timer {
 
@@ -26,6 +26,7 @@ public class Timer {
     /**
      * To know if the timer is over.
      * If the timer hasen't been started, it is considered over.
+     *
      * @return a boolean
      */
     public boolean isOver() {

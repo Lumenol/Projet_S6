@@ -61,7 +61,7 @@ public class GenerateLaby extends AbstractFloor {
             initialisePossible();
             determineBegin();
             determineEnd();
-        }while(!haveAWay());
+        } while (!haveAWay());
         determineMoney();
 
     }
@@ -100,16 +100,15 @@ public class GenerateLaby extends AbstractFloor {
     private boolean haveAWay(Pair<Integer, Integer> player) {
         ArrayList<Pair<Integer, Integer>> suiteMovement = suiteMovements(player);
 
-        for(int i=0; i< suiteMovement.size(); i++)
-        {
-            if(!visited.getOrDefault(suiteMovement.get(i), false)){
+        for (int i = 0; i < suiteMovement.size(); i++) {
+            if (!visited.getOrDefault(suiteMovement.get(i), false)) {
                 player = suiteMovement.get(i);
-                visited.put(player,true);
+                visited.put(player, true);
                 if (player.equals(end)) {
                     return true;
                 }
 
-                if(haveAWay(player))
+                if (haveAWay(player))
                     return true;
             }
 
@@ -170,10 +169,11 @@ public class GenerateLaby extends AbstractFloor {
     private void initialiseVisited() {
         for (int j = 0; j < NUMBER_CASE_Y; j++) {
             for (int i = 0; i < NUMBER_CASE_X; i++) {
-                    this.visited.put(new Pair<>(j, i), false);
+                this.visited.put(new Pair<>(j, i), false);
             }
         }
     }
+
     /**
      * Calcul à partir du level
      * - l'argent à disposer
@@ -198,7 +198,7 @@ public class GenerateLaby extends AbstractFloor {
         //A ce niveau on connait le nombre max de money que l'on peut mettre et la table
         //des possibles nous permet de savoir ou.
 
-        numberOfMoney =  numberOfMoney * 15 / 100;
+        numberOfMoney = numberOfMoney * 15 / 100;
         numberOfEnnemy = numberOfMoney * level / 100;
 
         if (numberOfEnnemy > numberOfMoney) {

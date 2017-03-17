@@ -3,7 +3,6 @@ package mariaLost.parameters;
 import javafx.geometry.Dimension2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
-import mariaLost.items.model.animation.SpriteSheetLoader;
 
 /**
  * Created by elsacollet on 05/02/2017.
@@ -11,7 +10,6 @@ import mariaLost.items.model.animation.SpriteSheetLoader;
 public class Parameters_MariaLost {
     public static final int CASE_WIDTH = 150;
     public static final int CASE_HEIGHT = 150;
-
 
 
     public static final int MOVABLE_ITEM_WIDTH = 70;
@@ -54,7 +52,7 @@ public class Parameters_MariaLost {
 
     public static final String AVATAR_DEFAULT = "file:resources/Images/WalkingAnimationPlayer/Front/1.png";
     public static final Image SPIDER = new Image("file:resources/Images/spider/spider_sprite_sheet.png");
-    public static final Image SKELETON=new Image("file:resources/Images/skeleton/skeleton_sprite_sheet.png");
+    public static final Image SKELETON = new Image("file:resources/Images/skeleton/skeleton_sprite_sheet.png");
     public static final Image FIREBALL = new Image("file:resources/Images/fireball/fireball_sprite_sheet.png");
     public static final Image TRANSPARENT_IMAGE = new Image("file:resources/Images/transparant_image.png");
     /**
@@ -68,22 +66,22 @@ public class Parameters_MariaLost {
     public static final int QUANTITEE_ARGENT_PIECE = 10;
     public static final double DELAY_BETWEEN_FIREBALL = 250;
     public static final Duration BLINKING_TIME = new Duration(500);
-    public static final int NUMBER_OF_BLINK =4;
-    public static final int ALIGNEMENT_MARGIN =5;
+    public static final int NUMBER_OF_BLINK = 4;
+    public static final int ALIGNEMENT_MARGIN = 5;
 
-   
+
     /**
      * Fireball
      */
-    
+
     public static final int FIREBALL_DAMAGE = 10;
     public static final int FIREBALL_SPEED = 11;
     public static final Duration FIREBALL_DURATION = new Duration(3000);
-    
+
     /**
      * All enemies
      */
-    public static final int DAMAGE_CONTACT=10;
+    public static final int DAMAGE_CONTACT = 10;
 
     /**
      * Player
@@ -94,39 +92,39 @@ public class Parameters_MariaLost {
     /**
      * Spider
      */
-    public static final int SPIDER_SPRITE_NB_ROW=5;
-    public static final int SPIDER_SPRITE_NB_COLUMN=10;
+    public static final int SPIDER_SPRITE_NB_ROW = 5;
+    public static final int SPIDER_SPRITE_NB_COLUMN = 10;
     //public static final double SPIDER_WIDTH = SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
     public static final double SPIDER_WIDTH = 80;
     //public static final double SPIDER_HEIGHT=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getHeight();
-    public static final double SPIDER_HEIGHT=80;
+    public static final double SPIDER_HEIGHT = 80;
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
     public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(200);
     public static final int SPIDER_SPEED_LIMIT = 8;
-    public static final int  SPIDER_QUANTITEE_ARGENT = 20;
-    public static final double  SPIDER_LIFE_POINT_START = 30;
-    public static final int  SPIDER_AGRO_RADIUS=300;
-    public static final int  SPIDER_ATTACK_RANGE=3;
-    public static final int SPIDER_ATTACK_DAMAGE=15;
+    public static final int SPIDER_QUANTITEE_ARGENT = 20;
+    public static final double SPIDER_LIFE_POINT_START = 30;
+    public static final int SPIDER_AGRO_RADIUS = 300;
+    public static final int SPIDER_ATTACK_RANGE = 3;
+    public static final int SPIDER_ATTACK_DAMAGE = 15;
 
     /**
      * Skeleton
      */
-    public static final int SKELETON_SPRITE_NB_ROW=21;
-    public static final int SKELETON_SPRITE_NB_COLUMN=13;
+    public static final int SKELETON_SPRITE_NB_ROW = 21;
+    public static final int SKELETON_SPRITE_NB_COLUMN = 13;
     //public static final double SKELETON_WIDTH=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getWidth();
-    public static final double SKELETON_WIDTH=80;
+    public static final double SKELETON_WIDTH = 80;
     //public static final double SKELETON_HEIGHT=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getHeight();
-    public static final double SKELETON_HEIGHT=80;
+    public static final double SKELETON_HEIGHT = 80;
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);
     public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(250);
     public static final int SKELETON_SPEED_LIMIT = 6;
-    public static final int  SKELETON_QUANTITEE_ARGENT = 40;
-    public static final double  SKELETON_LIFE_POINT_START = 50;
-    public static final int  SKELETON_AGRO_RADIUS=250;
-    public static final int  SKELETON_ATTACK_RANGE=3;
-    public static final int SKELETON_ATTACK_DAMAGE=20;
+    public static final int SKELETON_QUANTITEE_ARGENT = 40;
+    public static final double SKELETON_LIFE_POINT_START = 50;
+    public static final int SKELETON_AGRO_RADIUS = 250;
+    public static final int SKELETON_ATTACK_RANGE = 3;
+    public static final int SKELETON_ATTACK_DAMAGE = 20;
 
 }

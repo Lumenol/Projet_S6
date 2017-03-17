@@ -23,7 +23,7 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
     protected Rectangle2D end = null;
     protected Collection<AbstractItem> gettingItemList = new LinkedList<>();
 
-    public AbstractFloor(){
+    public AbstractFloor() {
 
     }
 
@@ -74,8 +74,8 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
 
     /**
      * Get all the items from a specific square.
-     * @param square
-     * 				The square to get the items from.
+     *
+     * @param square The square to get the items from.
      * @return a Deque of Drawable
      */
     @Override

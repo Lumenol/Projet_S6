@@ -38,7 +38,6 @@ public class UserOverviewController {
     private Starter start;
 
 
-
     public UserOverviewController() {
         this.start = Starter.getInstance();
         //Add observable list
@@ -52,10 +51,10 @@ public class UserOverviewController {
         this.nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         this.scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty());
         this.levelColumn.setCellValueFactory(cellData -> cellData.getValue().levelProperty());
-        if(start.getCurrentUser() != null){
+        if (start.getCurrentUser() != null) {
             this.tableUser.getSelectionModel().select(start.getCurrentUser());
             showUserData(start.getCurrentUser());
-        }else{
+        } else {
             showUserData(null);
         }
         this.tableUser.getSelectionModel().selectedItemProperty().addListener(
@@ -65,7 +64,6 @@ public class UserOverviewController {
                     new_Player_Button.setDefaultButton(false);
                 }
         );
-
 
 
     }

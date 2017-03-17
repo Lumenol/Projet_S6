@@ -9,12 +9,14 @@ import javafx.scene.image.Image;
 public interface Drawable {
     /**
      * Getter for an item bounds.
+     *
      * @return a Rectangle2D which is the area taken by this item in the plan.
      */
     Rectangle2D getBounds();
 
     /**
      * Getter for an item image.
+     *
      * @return an Image
      */
     Image getImage();

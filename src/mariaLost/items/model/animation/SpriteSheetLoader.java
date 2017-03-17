@@ -10,27 +10,23 @@ import java.util.List;
 
 public abstract class SpriteSheetLoader {
 
-	/**
-	 * Load frames from a sprite sheet.
-	 * @param spriteSheet
-	 * 					The image of the sprite sheet.
-	 * @param nbRow
-	 * 				The number of row of the sprite sheet.
-	 * @param nbColumn
-	 * 				The number of column of the sprite sheet.
-	 * @param first
-	 * 				The number of the first frame you want to load
-	 * @param last
-	 * 	  			The number of the last frame you want to load
-	 * @return a List of Image containing the frame from "first" parameters to "last" parameters
-	 *@pre The parameters can't be inferior or equal to 0
-	 */
+    /**
+     * Load frames from a sprite sheet.
+     *
+     * @param spriteSheet The image of the sprite sheet.
+     * @param nbRow       The number of row of the sprite sheet.
+     * @param nbColumn    The number of column of the sprite sheet.
+     * @param first       The number of the first frame you want to load
+     * @param last        The number of the last frame you want to load
+     * @return a List of Image containing the frame from "first" parameters to "last" parameters
+     * @pre The parameters can't be inferior or equal to 0
+     */
     public static List<Image> load(Image spriteSheet, int nbRow, int nbColumn, int first, int last) {
         if (nbRow < 1 || nbColumn < 1 || first < 1 || last < 1)
             throw new IllegalArgumentException("Row number can't be inferior or equal to 0.");
         if (last < first)
             throw new IllegalArgumentException("First frame number can't be inferior to last frame number");
-            
+
         int frameHeight = (int) spriteSheet.getHeight() / nbRow;
         int frameWidth = (int) spriteSheet.getWidth() / nbColumn;
         List<Image> list = new LinkedList<Image>();
@@ -44,11 +40,11 @@ public abstract class SpriteSheetLoader {
         }
         return list;
     }
-    
+
     /**
      * Crop the image to remove the useless transparent pixels.
-     * @param image
-     * 				The image you want to clean.
+     *
+     * @param image The image you want to clean.
      * @return an newly created WritableImage
      */
     private static WritableImage cleanImage(WritableImage image) {

@@ -10,21 +10,21 @@ import mariaLost.items.model.animation.Animation;
 /**
  * This class is for movements.
  * It has a timer and need to be started.
- * @author loic
  *
+ * @author loic
  */
 public class Movement {
 
     protected Direction direction;
     private Duration duration;
     private Animation animation;
-    private Timer movementTimer ;
+    private Timer movementTimer;
 
 
     public Movement(Duration duration, Direction direction, Animation animation) {
         this.direction = direction;
         this.animation = animation;
-        this.movementTimer=new Timer(duration);
+        this.movementTimer = new Timer(duration);
     }
 
     public void start() {

@@ -69,7 +69,7 @@ public class World implements Model {
                 items.addAll(aAjouter);
                 if (player.getLifePoint() <= 0) {
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player)player);
+                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player) player);
                 }
                 if (playerAtTheEnd()) {
                     moteur.stop();

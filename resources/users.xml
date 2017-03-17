@@ -2,7 +2,7 @@
 <UserListWrapper>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>39</level>
+        <level>70</level>
         <name>Amdulaçava</name>
         <score>400</score>
     </user>
@@ -32,8 +32,8 @@
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>10</level>
+        <level>11</level>
         <name>Mathieu</name>
-        <score>280</score>
+        <score>410</score>
     </user>
 </UserListWrapper>
