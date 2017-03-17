@@ -1,10 +1,7 @@
 package mariaLost.user.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import mariaLost.mainApp.controller.Starter;
@@ -17,6 +14,9 @@ import mariaLost.user.model.User;
  */
 public class UserOverviewController {
 
+
+    public Button playButton;
+    public Button new_Player_Button;
     @FXML
     private TableView<User> tableUser;
 
@@ -38,6 +38,7 @@ public class UserOverviewController {
     private Starter start;
 
 
+
     public UserOverviewController() {
         this.start = Starter.getInstance();
         //Add observable list
@@ -51,11 +52,17 @@ public class UserOverviewController {
         this.nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         this.scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty());
         this.levelColumn.setCellValueFactory(cellData -> cellData.getValue().levelProperty());
-
-        showUserData(null);
         this.tableUser.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showUserData(newValue)
+                (observable, oldValue, newValue) -> {
+                    showUserData(newValue);
+                    playButton.setDefaultButton(true);
+                    new_Player_Button.setDefaultButton(false);
+                }
         );
+        if(start.getCurrentUser() != null)
+           this.tableUser.getSelectionModel().select(start.getCurrentUser());
+
+
     }
 
     /**
@@ -71,6 +78,7 @@ public class UserOverviewController {
             this.levelLabel.setText(Integer.toString(user.getLevel()));
             this.avatarImageView.setImage(new Image(user.getImage()));
         } else {
+            start.setCurrentUser(null);
             this.nameLabel.setText("");
             this.scoreLabel.setText("");
             this.levelLabel.setText("");
@@ -90,6 +98,7 @@ public class UserOverviewController {
         if (selectedUser != null) {
             this.start.deleteUserFromList(selectedUser);
             this.tableUser.getItems().remove(selectedUser);
+            start.setCurrentUser(null);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No player selected");
@@ -101,7 +110,10 @@ public class UserOverviewController {
     @FXML
     private void handleEdit() {
         if (this.tableUser.getSelectionModel().getSelectedIndex() >= 0) {
-            this.start.showNewUser(this.tableUser.getSelectionModel().getSelectedItem());
+            User user = this.tableUser.getSelectionModel().getSelectedItem();
+            this.start.showNewUser(user);
+            start.setCurrentUser(user);
+
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No player selected");

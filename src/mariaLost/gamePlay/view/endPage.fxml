@@ -44,7 +44,7 @@
        <ToolBar prefHeight="40.0" prefWidth="200.0" styleClass="pane" BorderPane.alignment="CENTER">
         <items>
           <Button mnemonicParsing="false" onAction="#handleMenu" text="Menu" />
-            <Button mnemonicParsing="true" onAction="#handlePlay" text="Play" />
+            <Button mnemonicParsing="true" onAction="#handlePlay" text="Play" defaultButton="true"/>
         </items>
       </ToolBar>
    </bottom>

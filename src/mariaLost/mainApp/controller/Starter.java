@@ -175,6 +175,7 @@ public class Starter {
         switch (code) {
             case Parameters_MariaLost.GAME_OVER_CODE:
                 System.out.println("game over ");
+//Atention une erreur NullPinteur exception
                 if (currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER < 0) {
                     currentUser.setScore(0);
                 } else {
@@ -205,5 +206,9 @@ public class Starter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }

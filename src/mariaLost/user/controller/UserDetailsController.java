@@ -96,9 +96,11 @@ public class UserDetailsController {
                 user = new User(nameField.getText(), Integer.parseInt(scoreLabel.getText()), Integer.parseInt(levelLabel.getText()));
                 start.addUserList(user);
             }
+            start.setCurrentUser(user);
             start.showUserData();
 
         }
+
     }
 
 }
