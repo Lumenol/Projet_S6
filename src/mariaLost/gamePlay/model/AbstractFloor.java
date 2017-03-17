@@ -30,8 +30,6 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
     @Override
     public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
 
-        //gettingItemList.removeIf(abstractItem -> abstractItem.isFinished());
-
         int minWidth = Math.max(0, (int) square.getMinX()) / Parameters_MariaLost.CASE_WIDTH;
         double maxWidth = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters_MariaLost.CASE_WIDTH;
 
@@ -45,15 +43,6 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
                 linkedList.add(items[i][j]);
             }
         }
-       /*// if(!gettingItemList.isEmpty()) {
-
-            gettingItemList.forEach(abstractItem -> {
-                if (abstractItem.getBounds().intersects(square)) {
-                    linkedList.addLast(abstractItem);
-                }
-            });
-       // }*/
-
         return linkedList;
     }
 

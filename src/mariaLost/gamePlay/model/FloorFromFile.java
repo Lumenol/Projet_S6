@@ -36,18 +36,18 @@ public class FloorFromFile extends AbstractFloor {
             throw new Exception("Erreur ligne 1");
         }
 
-        int largeur, hauteur;
+        int width, height;
 
         try {
-            largeur = Integer.parseInt(stringTokenizer.nextToken());
-            hauteur = Integer.parseInt(stringTokenizer.nextToken());
+            width = Integer.parseInt(stringTokenizer.nextToken());
+            height = Integer.parseInt(stringTokenizer.nextToken());
         } catch (Exception e) {
             throw new Exception("Erreur ligne 1");
         }
-        items = new AbstractItem[hauteur][largeur];
-        dimension = new Dimension2D(largeur * Parameters_MariaLost.CASE_WIDTH, hauteur * Parameters_MariaLost.CASE_HEIGHT);
+        items = new AbstractItem[height][width];
+        dimension = new Dimension2D(width * Parameters_MariaLost.CASE_WIDTH, height * Parameters_MariaLost.CASE_HEIGHT);
 
-        for (int i = 0; i < hauteur; i++) {
+        for (int i = 0; i < height; i++) {
             lineRead = br.readLine();
 
             if (null == lineRead) {
@@ -56,11 +56,11 @@ public class FloorFromFile extends AbstractFloor {
 
             stringTokenizer = new StringTokenizer(lineRead, "|");
 
-            if (stringTokenizer.countTokens() != largeur) {
+            if (stringTokenizer.countTokens() != width) {
                 throw new Exception("Erreur ligne " + (i + 2));
             }
 
-            for (int j = 0; j < largeur; j++) {
+            for (int j = 0; j < width; j++) {
                 int codeItem;
                 try {
                     codeItem = Integer.parseInt(stringTokenizer.nextToken());
