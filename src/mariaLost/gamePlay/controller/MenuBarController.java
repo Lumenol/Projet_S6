@@ -39,7 +39,6 @@ public class MenuBarController {
 
     public void setUser() {
         if (this.start.getCurrentUser() != null) {
-            System.out.print(this.start.getCurrentUser().getName());
 
             this.nameLabel.setText(start.getCurrentUser().getName());
             this.scoreLabel.setText(Integer.toString(start.getCurrentUser().getScore()));

@@ -42,10 +42,8 @@ public class Player extends AbstractMobileItem {
             if (getLifePoint() - damage > 0) {
 
                 setLifePoint(getLifePoint() - damage);
-                System.out.println("damage taken = " + damage);
-                System.out.println("new lifepoint = " + getLifePoint());
+
             } else {
-                System.out.println("Lifepoint is 0 = game ovrer");
                 setLifePoint(0);
                 Starter start = Starter.getInstance();
                 //start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);

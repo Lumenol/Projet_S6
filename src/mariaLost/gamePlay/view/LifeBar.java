@@ -59,7 +59,6 @@ public class LifeBar extends Pane {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 double v = newValue.doubleValue();
-                System.out.println("v" + v);
                 if (v < 0) {
                     v = 0;
                 } else if (v > 1)

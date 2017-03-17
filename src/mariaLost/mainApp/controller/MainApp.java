@@ -28,13 +28,12 @@ public class MainApp extends Application {
 
         this.frontalControler = Starter.getInstance(this);
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Maria Lost - ");
+        this.primaryStage.setTitle("Maria Lost");
         this.primaryStage.getIcons().add(Parameters_MariaLost.IMAGE_LOGO);
 
         this.primaryStage.setMinWidth(Parameters_MariaLost.PAGE_WIDTH);
         this.primaryStage.setMinHeight(Parameters_MariaLost.PAGE_HEIGHT);
         this.frontalControler.start();
-        // this.frontalControler.showUserData();
     }
 
 
