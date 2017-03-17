@@ -33,7 +33,8 @@ public class GenerateLaby extends AbstractFloor {
      * @param level permet le calcul de différents paramètres
      */
     public GenerateLaby(int level) {
-        this.level = level;
+        //limite pour surcharger la pile
+        this.level = Math.min(70, level);
         this.NUMBER_CASE_Y = NUMBER_CASE_Y + level;
         this.NUMBER_CASE_X = NUMBER_CASE_X + level;
         //Calcul hauteur et largeur

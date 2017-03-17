@@ -29,7 +29,6 @@ public class Starter {
     private UserReader userReader;
     private ObservableList<User> userList = FXCollections.observableArrayList();
     private User currentUser;
-    private int indexCurrentUser;
 
     private Starter() {
     }
