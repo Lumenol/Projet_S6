@@ -42,8 +42,8 @@ public class Parameters_MariaLost {
     public static final Image IMAGE_LOGO = new Image("file:resources/Images/logo.png");
     public static final Image IMAGE_GOLD = new Image("file:resources/Images/tiled/gold_nugget.png");
     public static final Image IMAGE_HEART = new Image("file:resources/Images/heart.png", 40, 40, true, true);
-    public static final Image IMAGE_WALL = new Image("file:resources/Images/tiled/stonebrick_mossy.png");
-    public static final Image IMAGE_GROUND = new Image("file:resources/Images/tiled/cobblestone.png");
+    public static final Image IMAGE_WALL = new Image("file:resources/Images/tiled/brick.png");
+    public static final Image IMAGE_GROUND = new Image("file:resources/Images/tiled/sandstone_top.png");
     public static final Image IMAGE_END_CASE = new Image("file:resources/Images/tiled/trapdoor.png");
 
 
