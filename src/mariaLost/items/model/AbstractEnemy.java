@@ -178,16 +178,16 @@ public abstract class AbstractEnemy extends AbstractMobileItem {
 	public void attackChoosing(Player player){
 		if(isRight(player)){
 			actualAttack=meleeRight;
-			actualAttack.start(getAttackStartingPoint(Direction.RIGHT),Direction.RIGHT);
+			actualAttack.start(getAttackStartingPoint(Direction.RIGHT));
 		}else if(isLeft(player)){
 			actualAttack=meleeLeft;
-			actualAttack.start(getAttackStartingPoint(Direction.LEFT),Direction.LEFT);
+			actualAttack.start(getAttackStartingPoint(Direction.LEFT));
 		}else if(isUp(player)){
 			actualAttack=meleeUp;
-			actualAttack.start(getAttackStartingPoint(Direction.UP),Direction.UP);
+			actualAttack.start(getAttackStartingPoint(Direction.UP));
 		}else{
 			actualAttack=meleeDown;
-			actualAttack.start(getAttackStartingPoint(Direction.DOWN),Direction.DOWN);
+			actualAttack.start(getAttackStartingPoint(Direction.DOWN));
 		}
 		this.setSpeed(Direction.ANY.getDirection());
 	}

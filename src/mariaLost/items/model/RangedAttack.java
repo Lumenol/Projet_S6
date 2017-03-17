@@ -22,7 +22,7 @@ public class RangedAttack extends AbstractMobileItem {
 
     private int damage;
     private Animation animation;
-    private Timer timer;
+    private Timer attackTimer;
 
 
     public RangedAttack(Point2D startingPoint, Dimension2D areaOfEffect, Direction direction, int damage, Animation animation, Duration duration, double speedLimite) {
@@ -30,39 +30,55 @@ public class RangedAttack extends AbstractMobileItem {
         setSpeed(direction.getDirection());
         this.damage = damage;
         this.animation = animation;
-        timer = new Timer(duration);
-        timer.start();
-        timer.mustLast(DUREE_MIN);
+        attackTimer = new Timer(duration);
+        attackTimer.start();
+        attackTimer.mustLast(DUREE_MIN);
     }
-
+    /**
+	 * Getter for this attack current image.
+	 * @return an Image
+	 */
     public Image getImage() {
         return animation.getImage();
     }
-
+    /**
+	 * Getter for the attack damage.
+	 * @return an int
+	 */
     public int getDamage() {
         return damage;
     }
-
+    /**
+	 * Return true if the attack attackTimer is not over.
+	 * @return a Boolean
+	 */
     public boolean isRunning() {
-        return !timer.isOver();
+        return !attackTimer.isOver();
     }
 
-
+    /**
+     * Return true if the life of this ranged attack if finished
+     * @return a boolean
+     */
     public boolean isFinished() {
-        return timer.isOver();
+        return attackTimer.isOver();
     }
-
+    
+    /**
+     * The action this ranged attack do when it hit something.
+     * If it hits an enemy, it deals damage and disapears.
+     * If it hits something else which is non passable, it disapears
+     */
     @Override
     public void action(Item o) {
         if (o instanceof AbstractEnemy) {
-            System.out.println("touché");
             ((AbstractEnemy) o).agro();
             ((AbstractEnemy) o).takeDamage(getDamage());
-            timer.end();
+            attackTimer.end();
             setSpeed(Point2D.ZERO);
         }
         if (!o.isPassable()) {
-            timer.end();
+            attackTimer.end();
         }
     }
 

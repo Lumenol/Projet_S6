@@ -33,33 +33,55 @@ public class MeleeAttack{
 		this.aoe=areaOfEffect;
 	}
 	
-
-	public void start(Point2D attackStartingPoint,Direction direction){
-		changeDirectionAttack(direction);
+	/**
+	 * Start the animation and timer of this melee attack.
+	 * @param attackStartingPoint
+	 * @param direction
+	 */
+	public void start(Point2D attackStartingPoint){
 		this.attackStartingPoint=attackStartingPoint;
 		animation.play();
 		attackTimer.start();	
 	}
 	
-	
+	/**
+	 * Stop the attack.
+	 */
 	private void stop(){
 		animation.stop();
 		attackTimer.end();
 	}
 	
-	
+	/**
+	 * Return true if the attack timer is not over.
+	 * @return a Boolean
+	 */
 	public boolean isRunning(){
 		return !attackTimer.isOver();
 	}
 	
+	/**
+	 * Getter for this attack current image.
+	 * @return an Image
+	 */
 	public Image getImage() {
 		return animation.getImage();
 	}
-
+	/**
+	 * Getter for the attack damage.
+	 * @return an int
+	 */
 	public int getDamage() {
 		return damage;
 	}
 	
+	/**
+	 * Determine if the attack is still running and if it has hit something.
+	 * If the timer is over, call the stop method to stop the attack.
+	 * @param itemBound
+	 * 					The bound of item.
+	 * @return
+	 */
 	public boolean hasHit(Rectangle2D itemBound){
 		if(isRunning()){
 			return hasHit(attackStartingPoint,itemBound);
@@ -68,8 +90,14 @@ public class MeleeAttack{
 		return false;
 	}
 
-
-	
+	/**
+	 * Determine if the attack has hit an item.
+	 * @param attackStartingPoint
+	 * 							The starting point of the attack in the plan
+	 * @param itemBound
+	 * 					The bounds of the item we want to know if it is hit.
+	 * @return a boolean
+	 */
 	private boolean hasHit(Point2D attackStartingPoint,Rectangle2D itemBound){
 		Rectangle2D areaOfHit;
 		if(direction.equals(Direction.RIGHT)){
@@ -96,17 +124,4 @@ public class MeleeAttack{
 		return areaOfHit.intersects(itemBound);
 	}
 	
-	private void changeDirectionAttack(Direction newDirection){
-		if(direction.equals(Direction.LEFT)||direction.equals(Direction.RIGHT)){
-			if(newDirection.equals(Direction.UP)||newDirection.equals(Direction.DOWN)){
-				aoe=new Dimension2D(aoe.getHeight(),aoe.getWidth());
-			}
-		}else{
-			if(newDirection.equals(Direction.LEFT)||newDirection.equals(Direction.RIGHT)){
-				aoe= new Dimension2D(aoe.getHeight(),aoe.getWidth());
-			}
-		}
-		direction=newDirection;
-	}
-
 }
