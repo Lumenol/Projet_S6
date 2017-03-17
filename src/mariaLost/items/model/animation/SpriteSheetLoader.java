@@ -10,12 +10,21 @@ import java.util.List;
 
 public abstract class SpriteSheetLoader {
 
-    // return a List of frame from a sprite sheet
-    public static List<Image> load(String spriteSheetPath, int nbRow, int nbColumn, int first, int last) {
-        return load(new Image(spriteSheetPath), nbRow, nbColumn, first, last);
-    }
-
-    // return a List of frame from a sprite sheet
+	/**
+	 * Load frames from a sprite sheet.
+	 * @param spriteSheet
+	 * 					The image of the sprite sheet.
+	 * @param nbRow
+	 * 				The number of row of the sprite sheet.
+	 * @param nbColumn
+	 * 				The number of column of the sprite sheet.
+	 * @param first
+	 * 				The number of the first frame you want to load
+	 * @param last
+	 * 	  			The number of the last frame you want to load
+	 * @return a List of Image containing the frame from "first" parameters to "last" parameters
+	 *@pre The parameters can't be inferior or equal to 0
+	 */
     public static List<Image> load(Image spriteSheet, int nbRow, int nbColumn, int first, int last) {
         if (nbRow < 1 || nbColumn < 1 || first < 1 || last < 1) {
             throw new IllegalArgumentException("Le nombre de ligne ne peut être négatif ou null.");
@@ -38,7 +47,13 @@ public abstract class SpriteSheetLoader {
         return list;
     }
 
-    // return an image with useless transparant border removed
+    
+    /**
+     * Crop the image to remove the useless transparent pixels.
+     * @param image
+     * 				The image you want to clean.
+     * @return an newly created WritableImage
+     */
     private static WritableImage cleanImage(WritableImage image) {
         PixelReader pixelReader = image.getPixelReader();
         int upperLeftX = (int) image.getWidth();
