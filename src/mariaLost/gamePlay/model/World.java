@@ -1,6 +1,9 @@
 package mariaLost.gamePlay.model;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -8,7 +11,10 @@ import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.model.*;
+import mariaLost.items.model.AbstractEnemy;
+import mariaLost.items.model.AbstractItem;
+import mariaLost.items.model.AbstractMobileItem;
+import mariaLost.items.model.Money;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -28,6 +34,8 @@ public class World implements Model {
     private Deque<AbstractItem> items = new LinkedList<>();
     private Starter start;
     private AbstractMobileItem player;
+
+    private BooleanProperty finish = new SimpleBooleanProperty(false);
 
     private boolean asFinish = false;
 
@@ -69,23 +77,8 @@ public class World implements Model {
                     }
                 }
                 items.addAll(aAjouter);
-                if (player.getLifePoint() <= 0) {
-                    moteur.stop();
-                    asFinish = true;
-                    if (!asFinish)
-                        start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player) player);
-                }
-                if (playerAtTheEnd()) {
-                    moteur.stop();
-                    asFinish = true;
-                    if (!asFinish)
-                        start.gameOver(
-                                Parameters_MariaLost.NEXT_LEVEL_CODE
-                                , (int) (player.getMonnayeur().getValue()
-                                        - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
-                                , (Player) player
-                        );
-
+                if (player.getLifePoint() <= 0 || playerAtTheEnd()) {
+                    finish.set(true);
                 }
             }
         }
@@ -96,6 +89,10 @@ public class World implements Model {
         start = Starter.getInstance();
         this.player = player;
         items.add(player);
+    }
+
+    public ReadOnlyBooleanProperty finishProperty() {
+        return finish;
     }
 
     public void loadFloorFromFile(String fileName) throws Exception {

@@ -2,12 +2,6 @@
 <UserListWrapper>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>50</level>
-        <name>Elsa</name>
-        <score>5000</score>
-    </user>
-    <user>
-        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
         <level>15</level>
         <name>Loic</name>
         <score>100</score>
@@ -17,5 +11,11 @@
         <level>6</level>
         <name>Louis-Maxime</name>
         <score>50</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>51</level>
+        <name>Elsa</name>
+        <score>4430</score>
     </user>
 </UserListWrapper>

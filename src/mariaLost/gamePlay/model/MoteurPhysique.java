@@ -56,8 +56,7 @@ public class MoteurPhysique {
         }
 
         LinkedList<AbstractItem> items1 = new LinkedList<>();
-        double hauteurMin = bounds.getHeight();
-        double largeurMin = bounds.getWidth();
+        double distanceMin = Math.min(bounds.getHeight(), bounds.getWidth());
 
         //récuppère les Items de la zone et cherche les dimmentions du plus petit
         for (Iterator<AbstractItem> iterator = (Iterator<AbstractItem>) items.iterator(); iterator.hasNext(); ) {
@@ -65,14 +64,14 @@ public class MoteurPhysique {
             Rectangle2D limite1 = next.getBounds();
 
             if (mobileItem != next && rect.intersects(limite1)) {
-                hauteurMin = Math.min(hauteurMin, limite1.getHeight());
-                largeurMin = Math.min(largeurMin, limite1.getWidth());
+                distanceMin = Math.min(distanceMin, limite1.getHeight());
+                distanceMin = Math.min(distanceMin, limite1.getWidth());
                 items1.add(next);
             }
         }
 
         // Si la vitesse est suppérieur aux dimensions de l'objet le plus petit on découpe le déplacement pour ne pas passe a travers l'objet
-        if (Math.abs(vx) >= largeurMin || Math.abs(vy) >= hauteurMin) {
+        if (Math.abs(vx) >= distanceMin || Math.abs(vy) >= distanceMin) {
             //effectue la premiere partie du déplacement puis la deuxieme
             return move(mobileItem, items1, (int) vx / 2, (int) vy / 2) &&
                     move(mobileItem, items1, vx - (int) vx / 2, vy - (int) vy / 2);
