@@ -46,18 +46,23 @@ public class GenerateLaby extends AbstractFloor {
         this.visited = new HashMap<>();
 
         //Initialise visited et items
-        for (int j = 0; j < NUMBER_CASE_Y; j++) {
-            for (int i = 0; i < NUMBER_CASE_X; i++) {
-                super.items[j][i] = new Wall(i * Parameters_MariaLost.CASE_WIDTH, j * Parameters_MariaLost.CASE_HEIGHT);
-                visited.put(new Pair<>(j, i), false);
-            }
-        }
-        initialisePossible();
 
         //Permet de tester qu'il existe bien un chemin de begining à end
-        //do {
-        createLaby();
-        // }while(!isAWay());
+        do {
+            for (int j = 0; j < NUMBER_CASE_Y; j++) {
+                for (int i = 0; i < NUMBER_CASE_X; i++) {
+                    super.items[j][i] = new Wall(i * Parameters_MariaLost.CASE_WIDTH, j * Parameters_MariaLost.CASE_HEIGHT);
+                }
+            }
+            initialiseVisited();
+            initialisePossible();
+            createLaby();
+            initialisePossible();
+            determineBegin();
+            determineEnd();
+        }while(!haveAWay());
+        determineMoney();
+
     }
 
     /**
@@ -73,10 +78,7 @@ public class GenerateLaby extends AbstractFloor {
         generate(j, i);
         lastTest();
         //Determine begining, ending, and items
-        initialisePossible();
-        determineBegin();
-        determineEnd();
-        determineMoney();
+
 
     }
 
@@ -86,35 +88,35 @@ public class GenerateLaby extends AbstractFloor {
      *
      * @return vrai s'il existe un chemin
      */
-    private boolean isAWay() {
+    private boolean haveAWay() {
+        initialiseVisited();
         Pair<Integer, Integer> player = begin;
+        visited.put(player, true);
         System.out.println("Avancer !");
-        avancer(player);
-        System.out.println("test");
-        if (player == end) {
-            System.out.println("C'est bon !");
-            return true;
-        } else {
-            System.out.println("C'est pas bon !");
-            return false;
-        }
+        return haveAWay(player);
     }
 
-    private void avancer(Pair<Integer, Integer> player) {
 
+    private boolean haveAWay(Pair<Integer, Integer> player) {
         ArrayList<Pair<Integer, Integer>> suiteMovement = suiteMovements(player);
-        while (!suiteMovement.isEmpty()) {
 
-            Random rand = new Random();
-            int next = rand.nextInt(suiteMovement.size());
-            if (player == end) {
-                System.out.println("C'est bon !");
-                return;
+        for(int i=0; i< suiteMovement.size(); i++)
+        {
+            if(!visited.getOrDefault(suiteMovement.get(i), false)){
+                player = suiteMovement.get(i);
+                visited.put(player,true);
+                System.out.println("position Perso !" +player.getKey()+", "+ player.getValue());
+                if (player.equals(end)) {
+                    System.out.println("C'est bon !");
+                    return true;
+                }
+
+                if(haveAWay(player))
+                    return true;
             }
-            suiteMovement.remove(next);
-            avancer(player);
+
         }
-        //System.out.println("C'est pas bon !");
+        return false;
     }
 
     /**
@@ -126,20 +128,20 @@ public class GenerateLaby extends AbstractFloor {
     public ArrayList<Pair<Integer, Integer>> suiteMovements(Pair<Integer, Integer> player) {
         ArrayList<Pair<Integer, Integer>> suiteMovement = new ArrayList<>();
         //Au nord
-        if (player.getKey() - 1 > 0 && items[player.getKey() - 1][player.getValue()] instanceof Ground) {
+        if (player.getKey() - 1 > 0 && items[player.getKey() - 1][player.getValue()].isPassable()) {
             suiteMovement.add(new Pair<>(player.getKey() - 1, player.getValue()));
         }
         //Au Sud
-        if (player.getKey() + 1 < NUMBER_CASE_Y - 1 && items[player.getKey() + 1][player.getValue()] instanceof Ground) {
+        if (player.getKey() + 1 < NUMBER_CASE_Y - 1 && items[player.getKey() + 1][player.getValue()].isPassable()) {
             suiteMovement.add(new Pair<>(player.getKey() + 1, player.getValue()));
         }
 
         //A l'ouest
-        if (player.getValue() - 1 > 0 && items[player.getKey()][player.getValue() - 1] instanceof Ground) {
+        if (player.getValue() - 1 > 0 && items[player.getKey()][player.getValue() - 1].isPassable()) {
             suiteMovement.add(new Pair<>(player.getKey(), player.getValue() - 1));
         }
         //A l'est
-        if (player.getValue() + 1 < NUMBER_CASE_X - 1 && items[player.getKey()][player.getValue() + 1] instanceof Ground) {
+        if (player.getValue() + 1 < NUMBER_CASE_X - 1 && items[player.getKey()][player.getValue() + 1].isPassable()) {
             suiteMovement.add(new Pair<>(player.getKey(), player.getValue() + 1));
         }
 
@@ -163,6 +165,17 @@ public class GenerateLaby extends AbstractFloor {
         }
     }
 
+    /**
+     * créer un contour d'impossible dans le tableau des possibles et
+     * initialise l'interieur à possible
+     */
+    private void initialiseVisited() {
+        for (int j = 0; j < NUMBER_CASE_Y; j++) {
+            for (int i = 0; i < NUMBER_CASE_X; i++) {
+                    this.visited.put(new Pair<>(j, i), false);
+            }
+        }
+    }
     /**
      * Calcul à partir du level
      * - l'argent à disposer
