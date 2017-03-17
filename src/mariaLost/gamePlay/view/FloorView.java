@@ -35,7 +35,7 @@ public class FloorView extends Canvas {
         dimensionGameWindow = new Dimension2D(width, height);
         this.floor = floor;
 
-//Récupere les clic de sourie et convertie en evenement de clic avec les coordonne dans le labyrinthe
+        //Récupere les clic de sourie et convertie en evenement de clic avec les coordonne dans le labyrinthe
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

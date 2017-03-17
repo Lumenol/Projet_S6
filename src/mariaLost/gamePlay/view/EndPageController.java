@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import mariaLost.items.model.Player;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
@@ -26,20 +27,27 @@ public class EndPageController {
     private Label levelLabel;
     @FXML
     private ImageView avatarImageView;
+    @FXML
+    private Label moneyLabel;
+
+    @FXML
+    private Label lifeLabel;
 
     public EndPageController() {
         start = Starter.getInstance();
     }
 
 
-    public void setUser(User user, int code) {
+    public void setUser(User user, int code, Player player) {
         this.user = user;
 
         if (this.user != null) {
-            nameLabel.setText(user.getName());
-            scoreLabel.setText(Integer.toString(user.getScore()));
-            levelLabel.setText(Integer.toString(user.getLevel()));
+            this.nameLabel.setText(user.getName());
+            this.scoreLabel.setText(Integer.toString(user.getScore()));
+            this.levelLabel.setText(Integer.toString(user.getLevel()));
             this.avatarImageView.setImage(new Image(user.getImage()));
+            this.moneyLabel.setText(Double.toString(player.getMonnayeur().getValue()));
+            this.lifeLabel.setText(Double.toString(player.getLifePoint()));
             switch (code) {
                 case Parameters_MariaLost.NEXT_LEVEL_CODE:
                     this.text.setText("Well Done !");

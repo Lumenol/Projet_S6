@@ -8,10 +8,7 @@ import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.model.AbstractEnemy;
-import mariaLost.items.model.AbstractItem;
-import mariaLost.items.model.AbstractMobileItem;
-import mariaLost.items.model.Money;
+import mariaLost.items.model.*;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -24,6 +21,8 @@ import java.util.LinkedList;
  * Created by crede on 06/02/2017.
  */
 public class World implements Model {
+
+    public static World instance = null;
 
     private AbstractFloor floor;
     private Deque<AbstractItem> items = new LinkedList<>();
@@ -74,12 +73,16 @@ public class World implements Model {
 
                 if (player.getLifePoint() <= 0) {
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0);
+                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player)player);
                 }
                 if (playerAtTheEnd()) {
-                    System.out.println("Fin");
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int) player.getMonnayeur().getValue());
+                    start.gameOver(
+                            Parameters_MariaLost.NEXT_LEVEL_CODE
+                            , (int) (player.getMonnayeur().getValue()
+                                    - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
+                            , (Player) player
+                    );
 
                 }
             }
@@ -145,7 +148,7 @@ public class World implements Model {
     private void loadWorld(int i) {
         try {
             this.floor = new GenerateLaby(i);
-            if(floor == null){
+            if (floor == null) {
                 loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
             }
             player.setSpeed(Point2D.ZERO);

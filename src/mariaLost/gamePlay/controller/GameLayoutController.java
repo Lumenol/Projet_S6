@@ -36,6 +36,9 @@ public class GameLayoutController {
         this.user = user;
         this.player = new Player();
         this.world = new World(this.player);
+
+        world.instance = world;
+
         try {
             gameView = new GameView(world);
         } catch (IOException e) {
@@ -121,22 +124,6 @@ public class GameLayoutController {
 
     }
 
-
-    public void gameOver(int code) {
-        switch (code) {
-            case Parameters_MariaLost.GAME_OVER_CODE:
-                start.getCurrentUser().setScore(start.getCurrentUser().getScore() - Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
-                start.start();
-                break;
-            case Parameters_MariaLost.NEXT_LEVEL_CODE:
-                start.getCurrentUser().setScore(start.getCurrentUser().getScore() + (int) player.getMonnayeur().getValue());
-                break;
-            default:
-                start.start();
-
-        }
-
-    }
 
     public BorderPane getPage() {
         return gameView;

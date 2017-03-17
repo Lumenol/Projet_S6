@@ -2,6 +2,18 @@
 <UserListWrapper>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>39</level>
+        <name>Amdulaçava</name>
+        <score>400</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
+        <level>11</level>
+        <name>Max</name>
+        <score>730</score>
+    </user>
+    <user>
+        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
         <level>12</level>
         <name>LM</name>
         <score>1170</score>
@@ -14,20 +26,14 @@
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>11</level>
-        <name>Max</name>
-        <score>730</score>
-    </user>
-    <user>
-        <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>7</level>
+        <level>10</level>
         <name>Endrew</name>
-        <score>370</score>
+        <score>255</score>
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>39</level>
-        <name>Amdulaçava</name>
-        <score>400</score>
+        <level>10</level>
+        <name>Mathieu</name>
+        <score>280</score>
     </user>
 </UserListWrapper>
