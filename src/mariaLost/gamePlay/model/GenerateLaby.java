@@ -92,7 +92,6 @@ public class GenerateLaby extends AbstractFloor {
         initialiseVisited();
         Pair<Integer, Integer> player = begin;
         visited.put(player, true);
-        System.out.println("Avancer !");
         return haveAWay(player);
     }
 
@@ -105,9 +104,7 @@ public class GenerateLaby extends AbstractFloor {
             if(!visited.getOrDefault(suiteMovement.get(i), false)){
                 player = suiteMovement.get(i);
                 visited.put(player,true);
-                System.out.println("position Perso !" +player.getKey()+", "+ player.getValue());
                 if (player.equals(end)) {
-                    System.out.println("C'est bon !");
                     return true;
                 }
 
@@ -200,8 +197,8 @@ public class GenerateLaby extends AbstractFloor {
         //A ce niveau on connait le nombre max de money que l'on peut mettre et la table
         //des possibles nous permet de savoir ou.
 
-        numberOfMoney = (int) numberOfMoney * 15 / 100;
-        numberOfEnnemy = (int) numberOfMoney * level / 100;
+        numberOfMoney =  numberOfMoney * 15 / 100;
+        numberOfEnnemy = numberOfMoney * level / 100;
 
         if (numberOfEnnemy > numberOfMoney) {
             numberOfEnnemy = numberOfMoney;

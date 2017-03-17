@@ -9,13 +9,13 @@ import mariaLost.items.model.animation.SpriteSheetLoader;
  * Created by elsacollet on 05/02/2017.
  */
 public class Parameters_MariaLost {
-    public static final int CASE_WIDTH = 100;
-    public static final int CASE_HEIGHT = 100;
+    public static final int CASE_WIDTH = 150;
+    public static final int CASE_HEIGHT = 150;
 
 
 
-    public static final int MOVABLE_ITEM_WIDTH = 40;
-    public static final int MOVABLE_ITEM_HEIGHT = 40;
+    public static final int MOVABLE_ITEM_WIDTH = 70;
+    public static final int MOVABLE_ITEM_HEIGHT = 80;
     public static final int PLAY_PAGE_WIDTH = 600;
     public static final int PLAY_PAGE_HEIGHT = 600;
     public static final int PAGE_WIDTH = 600;
@@ -94,17 +94,19 @@ public class Parameters_MariaLost {
     /**
      * Spider
      */
-    public static final int SPIDER_SPRITE_NB_ROW=5;
+    public static final int SPIDER_SPRITE_NB_ROW=6;
     public static final int SPIDER_SPRITE_NB_COLUMN=10;
-    public static final double SPIDER_WIDTH = SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
-    public static final double SPIDER_HEIGHT=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getHeight();
+    //public static final double SPIDER_WIDTH = SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
+    public static final double SPIDER_WIDTH = 80;
+    //public static final double SPIDER_HEIGHT=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getHeight();
+    public static final double SPIDER_HEIGHT=80;
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
     public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(250);
     public static final int SPIDER_SPEED_LIMIT = 4;
     public static final int  SPIDER_QUANTITEE_ARGENT = 20;
     public static final double  SPIDER_LIFE_POINT_START = 30;
-    public static final int  SPIDER_AGRO_RADIUS=200;
+    public static final int  SPIDER_AGRO_RADIUS=300;
     public static final int  SPIDER_ATTACK_RANGE=3;
     public static final int SPIDER_ATTACK_DAMAGE=15;
 
@@ -113,15 +115,17 @@ public class Parameters_MariaLost {
      */
     public static final int SKELETON_SPRITE_NB_ROW=21;
     public static final int SKELETON_SPRITE_NB_COLUMN=13;
-    public static final double SKELETON_WIDTH=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getWidth();
-    public static final double SKELETON_HEIGHT=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getHeight();
+    //public static final double SKELETON_WIDTH=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getWidth();
+    public static final double SKELETON_WIDTH=80;
+    //public static final double SKELETON_HEIGHT=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getHeight();
+    public static final double SKELETON_HEIGHT=80;
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);
     public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(350);
     public static final int SKELETON_SPEED_LIMIT = 4;
     public static final int  SKELETON_QUANTITEE_ARGENT = 40;
     public static final double  SKELETON_LIFE_POINT_START = 50;
-    public static final int  SKELETON_AGRO_RADIUS=150;
+    public static final int  SKELETON_AGRO_RADIUS=250;
     public static final int  SKELETON_ATTACK_RANGE=3;
     public static final int SKELETON_ATTACK_DAMAGE=20;
 

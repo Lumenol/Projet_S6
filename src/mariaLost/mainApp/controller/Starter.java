@@ -50,7 +50,6 @@ public class Starter {
         Scene scene = new Scene(root);
         mainApp.getPrimaryStage().setScene(scene);
         mainApp.getPrimaryStage().show();
-        this.currentUser = null;
         showUserData();
     }
 
@@ -177,10 +176,9 @@ public class Starter {
         if (getCurrentUser() == null)
             return;
         System.out.println("money : " + money);
+    public void gameOver(int code, int money, Player player) {
         switch (code) {
             case Parameters_MariaLost.GAME_OVER_CODE:
-                System.out.println("game over ");
-//Atention une erreur NullPinteur exception
                 if (currentUser.getScore() + Parameters_MariaLost.SCORE_LOOSE_GAME_OVER < 0) {
                     currentUser.setScore(0);
                 } else {
@@ -188,7 +186,6 @@ public class Starter {
                 }
                 break;
             case Parameters_MariaLost.NEXT_LEVEL_CODE:
-                System.out.println("Next Level ");
 
                 currentUser.setScore(currentUser.getScore() + money);
                 currentUser.setLevel(currentUser.getLevel() + 1);
@@ -205,11 +202,11 @@ public class Starter {
             loader.setLocation(getClass().getResource(Parameters_MariaLost.FILEPATH_ENDPAGE));
             BorderPane endPage = loader.load();
             EndPageController endPageController = loader.getController();
-            endPageController.setUser(currentUser, code);
+            endPageController.setUser(currentUser, code, player);
             root.setTop(new AnchorPane());
             root.setCenter(endPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-}
+

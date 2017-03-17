@@ -8,10 +8,7 @@ import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.model.AbstractEnemy;
-import mariaLost.items.model.AbstractItem;
-import mariaLost.items.model.AbstractMobileItem;
-import mariaLost.items.model.Money;
+import mariaLost.items.model.*;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -76,11 +73,16 @@ public class World implements Model {
 
                 if (player.getLifePoint() <= 0) {
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0);
+                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player)player);
                 }
                 if (playerAtTheEnd()) {
                     moteur.stop();
-                    start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int) player.getMonnayeur().getValue());
+                    start.gameOver(
+                            Parameters_MariaLost.NEXT_LEVEL_CODE
+                            , (int) (player.getMonnayeur().getValue()
+                                    - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
+                            , (Player) player
+                    );
 
                 }
             }
