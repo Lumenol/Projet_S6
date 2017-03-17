@@ -117,7 +117,6 @@ public class Starter {
             controllerGame.startGame();
 
             this.root.setCenter(controllerGame.getPage());
-            System.out.println("Controller set user done");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,7 +158,6 @@ public class Starter {
     }
 
     public void updateCurrentUser() {
-        System.out.println("update ");
 
         this.userList.remove(currentUser);
         addUserList(currentUser);
