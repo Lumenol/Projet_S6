@@ -3,6 +3,7 @@ package mariaLost.parameters;
 import javafx.geometry.Dimension2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
+import mariaLost.items.model.animation.SpriteSheetLoader;
 
 /**
  * Created by elsacollet on 05/02/2017.
@@ -76,7 +77,7 @@ public class Parameters_MariaLost {
      */
     
     public static final int FIREBALL_DAMAGE = 10;
-    public static final int FIREBALL_SPEED = 7;
+    public static final int FIREBALL_SPEED = 11;
     public static final Duration FIREBALL_DURATION = new Duration(3000);
     
     /**
@@ -87,13 +88,13 @@ public class Parameters_MariaLost {
     /**
      * Player
      */
-    public static final int PLAYER_SPEED_LIMIT = 6;
+    public static final int PLAYER_SPEED_LIMIT = 10;
     public static final double PLAYER_LIFE_POINT_START = 100;
 
     /**
      * Spider
      */
-    public static final int SPIDER_SPRITE_NB_ROW=6;
+    public static final int SPIDER_SPRITE_NB_ROW=5;
     public static final int SPIDER_SPRITE_NB_COLUMN=10;
     //public static final double SPIDER_WIDTH = SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
     public static final double SPIDER_WIDTH = 80;
@@ -102,7 +103,7 @@ public class Parameters_MariaLost {
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
     public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(250);
-    public static final int SPIDER_SPEED_LIMIT = 4;
+    public static final int SPIDER_SPEED_LIMIT = 8;
     public static final int  SPIDER_QUANTITEE_ARGENT = 20;
     public static final double  SPIDER_LIFE_POINT_START = 30;
     public static final int  SPIDER_AGRO_RADIUS=300;
@@ -120,8 +121,8 @@ public class Parameters_MariaLost {
     public static final double SKELETON_HEIGHT=80;
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);
-    public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(350);
-    public static final int SKELETON_SPEED_LIMIT = 4;
+    public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(300);
+    public static final int SKELETON_SPEED_LIMIT = 6;
     public static final int  SKELETON_QUANTITEE_ARGENT = 40;
     public static final double  SKELETON_LIFE_POINT_START = 50;
     public static final int  SKELETON_AGRO_RADIUS=250;
