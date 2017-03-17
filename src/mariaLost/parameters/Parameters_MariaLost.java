@@ -102,7 +102,7 @@ public class Parameters_MariaLost {
     public static final double SPIDER_HEIGHT=80;
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
-    public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(250);
+    public static final Duration SPIDER_MOVEMENT_DURATION = new Duration(200);
     public static final int SPIDER_SPEED_LIMIT = 8;
     public static final int  SPIDER_QUANTITEE_ARGENT = 20;
     public static final double  SPIDER_LIFE_POINT_START = 30;
@@ -121,7 +121,7 @@ public class Parameters_MariaLost {
     public static final double SKELETON_HEIGHT=80;
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);
-    public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(300);
+    public static final Duration SKELETON_MOVEMENT_DURATION = new Duration(250);
     public static final int SKELETON_SPEED_LIMIT = 6;
     public static final int  SKELETON_QUANTITEE_ARGENT = 40;
     public static final double  SKELETON_LIFE_POINT_START = 50;

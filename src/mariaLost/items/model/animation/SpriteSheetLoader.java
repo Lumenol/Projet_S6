@@ -26,13 +26,11 @@ public abstract class SpriteSheetLoader {
 	 *@pre The parameters can't be inferior or equal to 0
 	 */
     public static List<Image> load(Image spriteSheet, int nbRow, int nbColumn, int first, int last) {
-        if (nbRow < 1 || nbColumn < 1 || first < 1 || last < 1) {
-            throw new IllegalArgumentException("Le nombre de ligne ne peut être négatif ou null.");
-        }
-        if (last < first) {
-            throw new IllegalArgumentException("Le numéro de la première frame ne peut être inférieur à celui de la dernière.");
-        }
-
+        if (nbRow < 1 || nbColumn < 1 || first < 1 || last < 1)
+            throw new IllegalArgumentException("Row number can't be inferior or equal to 0.");
+        if (last < first)
+            throw new IllegalArgumentException("First frame number can't be inferior to last frame number");
+            
         int frameHeight = (int) spriteSheet.getHeight() / nbRow;
         int frameWidth = (int) spriteSheet.getWidth() / nbColumn;
         List<Image> list = new LinkedList<Image>();
@@ -46,7 +44,6 @@ public abstract class SpriteSheetLoader {
         }
         return list;
     }
-
     
     /**
      * Crop the image to remove the useless transparent pixels.

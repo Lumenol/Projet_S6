@@ -73,9 +73,6 @@ public class GameLayoutController {
             }
         };
 
-        //directionScheduledService.setPeriod(Duration.millis(100));
-        //directionScheduledService.setOnSucceeded(event -> world.setDirectionPlayer((Direction) event.getSource().getValue()));
-
 
         // Lorsque que l'on clique quelque part on défini une destination pour le personnage
         gameView.addEventHandler(ClicOnMapEvent.CLIC_ON_MAP_EVENT_TYPE, new EventHandler<ClicOnMapEvent>() {

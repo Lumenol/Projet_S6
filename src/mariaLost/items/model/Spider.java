@@ -8,6 +8,11 @@ import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.List;
 
+/**
+ * Spider Class
+ * @author loic
+ *
+ */
 public class Spider extends AbstractEnemy {
 
     public Spider(double x, double y) {

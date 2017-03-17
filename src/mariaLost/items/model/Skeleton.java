@@ -7,7 +7,11 @@ import mariaLost.items.model.animation.SpriteSheetLoader;
 import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.List;
-
+/**
+ * Skeleton Class
+ * @author loic
+ *
+ */
 public class Skeleton  extends AbstractEnemy{
 
 	public Skeleton(double x

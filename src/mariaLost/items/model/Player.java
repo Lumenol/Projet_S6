@@ -16,7 +16,6 @@ import mariaLost.parameters.Parameters_MariaLost;
 public class Player extends AbstractMobileItem {
 
 
-    // private DoubleProperty lifePoint = new SimpleDoubleProperty(Parameters_MariaLost.LIFE_POINT_START);
     private Animation animation = new AnimationWalkingFront();
     private Animation[] animations = {new AnimationWalkingFront(), new AnimationWalkingRight(), new AnimationWalkingBack(), new AnimationWalkingLeft()};
     private Timer recoveryTimer = new Timer(Parameters_MariaLost.DAMAGE_RECOVERY_TIME);
@@ -32,7 +31,13 @@ public class Player extends AbstractMobileItem {
         super(x, y, Parameters_MariaLost.MOVABLE_ITEM_WIDTH, Parameters_MariaLost.MOVABLE_ITEM_HEIGHT, new Monnayeur(0), Parameters_MariaLost.PLAYER_SPEED_LIMIT, Parameters_MariaLost.PLAYER_LIFE_POINT_START);
     }
 
-
+    /**
+     * The player can't take damages if his recovery timer isn't over.
+     * If the player take damages, the recovery timer is started
+     * @param damage
+     * 				The damage to substract to the life points
+     * @pre The damage can't be inferior to 0
+     */
     public void takeDamage(int damage) {
         if (damage < 0) {
             throw new IllegalArgumentException("Les dégats infligés ne peuvent être négatif");
@@ -40,13 +45,9 @@ public class Player extends AbstractMobileItem {
         if (recoveryTimer.isOver()) {
             recoveryTimer.start();
             if (getLifePoint() - damage > 0) {
-
                 setLifePoint(getLifePoint() - damage);
-
             } else {
                 setLifePoint(0);
-                Starter start = Starter.getInstance();
-                //start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, Parameters_MariaLost.SCORE_LOOSE_GAME_OVER);
             }
         }
     }
@@ -71,7 +72,13 @@ public class Player extends AbstractMobileItem {
             }
         }
     }
-
+    
+	/**
+	 * Get the attack starting point or the player attack.
+	 * @param point
+	 * 				The point on the plan where the played clicked
+	 * @return a Point2D where the attack of the player is launched.
+	 */
     public Point2D getAttackStartingPoint(Point2D point) {
         if (isRight(point))
             return new Point2D(this.getPosition().getX() + this.getBounds().getWidth()

@@ -58,7 +58,6 @@ public class World implements Model {
                     AbstractItem next = iterator.next();
                     if (next.isFinished()) {
                         iterator.remove();
-                        // System.out.println(abstractItem.getClass());
                         if (next instanceof AbstractEnemy) {
                             Point2D nextPosition = next.getPosition();
                             Money money = new Money(nextPosition.getX(), nextPosition.getY(), next.getMonnayeur().getValue());
@@ -68,9 +67,6 @@ public class World implements Model {
                     }
                 }
                 items.addAll(aAjouter);
-
-                // items.removeIf(abstractItem -> abstractItem.isFinished());
-
                 if (player.getLifePoint() <= 0) {
                     moteur.stop();
                     start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player)player);

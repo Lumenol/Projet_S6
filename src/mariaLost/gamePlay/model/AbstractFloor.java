@@ -28,6 +28,12 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
     }
 
     @Override
+    /**
+     * Get all the items from a specific square.
+     * @param square
+     * 				The square to get the items from.
+     * @return a Deque of abstract items
+     */
     public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
 
         int minWidth = Math.max(0, (int) square.getMinX()) / Parameters_MariaLost.CASE_WIDTH;
@@ -66,6 +72,12 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
         return end;
     }
 
+    /**
+     * Get all the items from a specific square.
+     * @param square
+     * 				The square to get the items from.
+     * @return a Deque of Drawable
+     */
     @Override
     public Deque<Collection<? extends Drawable>> getDrawableFromSquare(Rectangle2D square) {
         LinkedList<Collection<? extends Drawable>> linkedList = new LinkedList<>();
