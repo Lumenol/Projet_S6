@@ -3,7 +3,6 @@ package mariaLost.parameters;
 import javafx.geometry.Dimension2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
-import mariaLost.items.model.animation.SpriteSheetLoader;
 
 /**
  * Created by elsacollet on 05/02/2017.
@@ -16,8 +15,8 @@ public class Parameters_MariaLost {
 
     public static final int MOVABLE_ITEM_WIDTH = 70;
     public static final int MOVABLE_ITEM_HEIGHT = 80;
-    public static final int PLAY_PAGE_WIDTH = 600;
-    public static final int PLAY_PAGE_HEIGHT = 600;
+    public static final int PLAY_PAGE_WIDTH = 1200;
+    public static final int PLAY_PAGE_HEIGHT = 1200;
     public static final int PAGE_WIDTH = 600;
     public static final int PAGE_HEIGHT = 600;
 

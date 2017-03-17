@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import mariaLost.gamePlay.controller.GameLayoutController;
 import mariaLost.gamePlay.controller.MenuBarController;
 import mariaLost.gamePlay.view.EndPageController;
+import mariaLost.items.model.Player;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.controller.UserDetailsController;
 import mariaLost.user.model.User;
@@ -172,10 +173,6 @@ public class Starter {
         this.currentUser = currentUser;
     }
 
-    public void gameOver(int code, int money) {
-        if (getCurrentUser() == null)
-            return;
-        System.out.println("money : " + money);
     public void gameOver(int code, int money, Player player) {
         switch (code) {
             case Parameters_MariaLost.GAME_OVER_CODE:
@@ -209,4 +206,5 @@ public class Starter {
             e.printStackTrace();
         }
     }
+}
 
