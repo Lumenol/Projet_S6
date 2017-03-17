@@ -5,7 +5,9 @@ import javafx.util.Pair;
 import mariaLost.items.model.*;
 import mariaLost.parameters.Parameters_MariaLost;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by elsacollet on 16/03/2017.
@@ -20,18 +22,20 @@ public class GenerateLaby extends AbstractFloor {
     private Pair<Integer, Integer> end;
     private int numberOfMoney;
     private int numberOfEnnemy;
+    private double probabilityOfSpider = 0.5;
 
     private HashMap<Pair<Integer, Integer>, Boolean> visited;
 
 
     /**
      * Permet d'initialiser
+     *
      * @param level permet le calcul de différents paramètres
      */
     public GenerateLaby(int level) {
         this.level = level;
-        this.NUMBER_CASE_Y = NUMBER_CASE_Y+level;
-        this.NUMBER_CASE_X = NUMBER_CASE_X+level;
+        this.NUMBER_CASE_Y = NUMBER_CASE_Y + level;
+        this.NUMBER_CASE_X = NUMBER_CASE_X + level;
         //Calcul hauteur et largeur
         super.dimension = new Dimension2D(
                 this.NUMBER_CASE_X * Parameters_MariaLost.CASE_WIDTH
@@ -50,7 +54,7 @@ public class GenerateLaby extends AbstractFloor {
         }
         initialisePossible();
 
-       //Permet de tester qu'il existe bien un chemin de begining à end
+        //Permet de tester qu'il existe bien un chemin de begining à end
         //do {
         createLaby();
         // }while(!isAWay());
@@ -161,9 +165,9 @@ public class GenerateLaby extends AbstractFloor {
 
     /**
      * Calcul à partir du level
-     *  - l'argent à disposer
-     *  - le nombre d'ennemies
-     *  Lance leur placement sur la grille
+     * - l'argent à disposer
+     * - le nombre d'ennemies
+     * Lance leur placement sur la grille
      */
     private void determineMoney() {
         this.numberOfEnnemy = 0;
@@ -195,13 +199,17 @@ public class GenerateLaby extends AbstractFloor {
             numberOfMoney--;
         }
         while (numberOfEnnemy != 0) {
-            intToItem(2);
+            if (Math.random() < probabilityOfSpider)
+                intToItem(2);
+            else
+                intToItem(3);
             numberOfEnnemy--;
         }
     }
 
     /**
      * Transforme le code passer en paramètre pour le placer de façon aléatoire sur la grille
+     *
      * @param codeItem
      */
     public void intToItem(int codeItem) {
@@ -221,6 +229,9 @@ public class GenerateLaby extends AbstractFloor {
                     break;
                 case 2:
                     gettingItemList.add(new Spider(x, y));
+                    break;
+                case 3:
+                    gettingItemList.add(new Skeleton(x, y));
                     break;
                 default:
                     throw new IllegalArgumentException("Pas de correspondence pour codeItem");
@@ -330,6 +341,7 @@ public class GenerateLaby extends AbstractFloor {
     /**
      * Cette méthode créer les items ground à proprement parlé. Pour chaque item on poursuit le chemin en notant les
      * différentes possibilités (N, S, E, O)
+     *
      * @param j indice sur la hauteur
      * @param i indice sur la largeur
      */
@@ -381,6 +393,7 @@ public class GenerateLaby extends AbstractFloor {
 
     /**
      * Détermine si toutes les possibilités ont été exploitées
+     *
      * @return true si aucune case n'est possible
      */
     private boolean finish() {

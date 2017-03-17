@@ -8,20 +8,20 @@
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>15</level>
-        <name>Hello</name>
-        <score>1860</score>
+        <level>12</level>
+        <name>LM</name>
+        <score>1170</score>
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
-        <level>7</level>
-        <name>LM</name>
-        <score>420</score>
+        <level>16</level>
+        <name>Hello</name>
+        <score>1900</score>
     </user>
     <user>
         <image>file:resources/Images/WalkingAnimationPlayer/Front/1.png</image>
         <level>11</level>
         <name>Max</name>
-        <score>830</score>
+        <score>730</score>
     </user>
 </UserListWrapper>

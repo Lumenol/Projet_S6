@@ -1,7 +1,9 @@
 package mariaLost.parameters;
 
+import javafx.geometry.Dimension2D;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
+import mariaLost.items.model.animation.SpriteSheetLoader;
 
 /**
  * Created by elsacollet on 05/02/2017.
@@ -19,8 +21,6 @@ public class Parameters_MariaLost {
     public static final int PAGE_WIDTH = 600;
     public static final int PAGE_HEIGHT = 600;
 
-
-    public static final Duration DAMAGE_RECOVERY_TIME = new Duration(1000);
 
     /**
      * Gestion des fichiers xml
@@ -65,8 +65,6 @@ public class Parameters_MariaLost {
     public static final int GAME_OVER_CODE = 1;
     public static final int NEXT_LEVEL_CODE = 0;
     public static final int SCORE_LOOSE_GAME_OVER = -100;
-    public static final double LIFE_POINT_START_PLAYER = 100;
-    public static final double LIFE_POINT_START_ENNEMIE = 50;
     public static final int QUANTITEE_ARGENT_PIECE = 10;
     public static final int DAMAGE_FIREBALL = 10;
     public static final double DELAY_BETWEEN_FIREBALL = 250;
