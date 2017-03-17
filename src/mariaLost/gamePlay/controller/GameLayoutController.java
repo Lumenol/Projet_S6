@@ -36,6 +36,9 @@ public class GameLayoutController {
         this.user = user;
         this.player = new Player();
         this.world = new World(this.player);
+
+        world.instance = world;
+
         try {
             gameView = new GameView(world);
         } catch (IOException e) {

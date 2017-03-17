@@ -3,6 +3,7 @@ package mariaLost.gamePlay.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import mariaLost.gamePlay.model.World;
 import mariaLost.mainApp.controller.Starter;
 
 /**
@@ -46,6 +47,7 @@ public class MenuBarController {
     @FXML
     public void handleMenu() {
         try {
+            World.instance.stop();
             start.start();
         } catch (Exception e) {
             e.printStackTrace();

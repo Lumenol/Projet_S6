@@ -169,8 +169,13 @@ public class Starter {
         return this.currentUser;
     }
 
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
 
     public void gameOver(int code, int money) {
+        if (getCurrentUser() == null)
+            return;
         System.out.println("money : " + money);
         switch (code) {
             case Parameters_MariaLost.GAME_OVER_CODE:
@@ -206,9 +211,5 @@ public class Starter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
     }
 }

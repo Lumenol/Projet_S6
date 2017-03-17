@@ -25,6 +25,8 @@ import java.util.LinkedList;
  */
 public class World implements Model {
 
+    public static World instance = null;
+
     private AbstractFloor floor;
     private Deque<AbstractItem> items = new LinkedList<>();
     private Starter start;
@@ -77,7 +79,6 @@ public class World implements Model {
                     start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0);
                 }
                 if (playerAtTheEnd()) {
-                    System.out.println("Fin");
                     moteur.stop();
                     start.gameOver(Parameters_MariaLost.NEXT_LEVEL_CODE, (int) player.getMonnayeur().getValue());
 
@@ -145,7 +146,7 @@ public class World implements Model {
     private void loadWorld(int i) {
         try {
             this.floor = new GenerateLaby(i);
-            if(floor == null){
+            if (floor == null) {
                 loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
             }
             player.setSpeed(Point2D.ZERO);
