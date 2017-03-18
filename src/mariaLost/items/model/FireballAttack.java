@@ -6,7 +6,7 @@ import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.model.animation.AnimationFireball;
 import mariaLost.parameters.Parameters_MariaLost;
 
-public class FireballAttack {
+public abstract class FireballAttack {
 
     private static Dimension2D horizontal = new Dimension2D(45, 20);
     private static Dimension2D vertical = new Dimension2D(20, 45);

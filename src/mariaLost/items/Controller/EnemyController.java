@@ -13,7 +13,7 @@ import java.util.LinkedList;
  *
  * @author loic
  */
-public class EnemyController {
+public abstract class EnemyController {
 
     /**
      * Extract the player and the enemy from the AbstractItem collection
