@@ -168,16 +168,19 @@ public class UserOverviewController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Maria Lost - Règles du Jeu ");
         alert.setHeaderText("Règles du jeu");
-        alert.setContentText("But\n" +
-                "Il faut atteindre la case de fin en ramassant le plus de d'or et en tuant le plus de montre possible pour augmenter son score\n" +
-                "Une sauvegarde automatique est éffectuée quand la fin du niveau est atteinte si vous mourrez toutes les pièces ramasser son perdu\n" +
-                "\nCommandes\n\n" +
-                "Déplacements\n" +
-                "Utiliser les touches ZQSD, les flèches ou faite un clic droit pour vous déplacer\n" +
-                "Attaque\n" +
-                "Faite un clic gauche pour lance une attaque dans la direction choisie\n" +
-                "\nVous pouvez retourner a l'écran de selection du personnage en cliquant sur le bouton Menu\n" +
-                "ATTENTION vautre progression dans le niveau sera perdu");
+        alert.setContentText(
+                "\t\tObjectif\n"
+                        + "Rejoignez la sortie du labyrinthe (case verte) en ramassant le plus de pièces d'or."
+                        + "En tuant les monstres, vous augmentez votre score.\n"
+                        + "Si vous mourez, toutes les pièces ramassées sont perdues.\n"
+                        + "Vous pouvez retourner au menu principal en cliquant sur le bouton Menu\n"
+                        + "ATTENTION votre progression pour ce niveau sera perdue\n\n"
+                        + "\t\tCommandes\n"
+                        + "\tDéplacements\n"
+                        + "Utilisez les touches ZQSD, les flèches ou faites un clic droit pour vous déplacer\n"
+                        + "\tAttaque\n"
+                        + "Faites un clic gauche là où vous souhaitez envoyer une boulle de feu.\n"
+        );
         alert.showAndWait();
     }
 }
