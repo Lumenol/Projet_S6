@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import mariaLost.mainApp.controller.Starter;
+import mariaLost.mainApp.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 
@@ -169,16 +169,16 @@ public class UserOverviewController {
         alert.setTitle("Maria Lost - Règles du Jeu ");
         alert.setHeaderText("Règles du jeu");
         alert.setContentText(
-                "Aider Maria à sortir de là !"
+                "Aider Maria à sortir de là !\n"
                         + "\t\tObjectif\n"
-                        + "Rejoignez la sortie du labyrinthe en ramassant le plus d'or possible."
+                        + "Rejoignez la sortie du labyrinthe en ramassant le plus d'or possible. "
                         + "En tuant les monstres, vous augmentez votre score.\n"
                         + "Si vous mourez, toutes les pièces ramassées sont perdues et vous perdez des points.\n"
-                        + "Vous pouvez retourner au menu principal en cliquant sur le bouton Menu\n"
-                        + "ATTENTION votre progression pour ce niveau sera perdue\n\n"
+                        + "Vous pouvez retourner au menu principal en cliquant sur le bouton Menu.\n"
+                        + "ATTENTION votre progression pour ce niveau sera perdue.\n\n"
                         + "\t\tCommandes\n"
                         + "\tDéplacements\n"
-                        + "Utilisez les touches ZQSD, les flèches ou faites un clic droit pour vous déplacer\n"
+                        + "Utilisez les touches ZQSD, les flèches ou faites un clic droit pour vous déplacer.\n"
                         + "\tAttaque\n"
                         + "Faites un clic gauche là où vous souhaitez envoyer une boule de feu.\n"
         );

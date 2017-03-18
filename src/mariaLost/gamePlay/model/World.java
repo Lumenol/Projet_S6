@@ -15,7 +15,7 @@ import mariaLost.items.model.AbstractEnemy;
 import mariaLost.items.model.AbstractItem;
 import mariaLost.items.model.AbstractMobileItem;
 import mariaLost.items.model.Money;
-import mariaLost.mainApp.controller.Starter;
+import mariaLost.mainApp.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 import java.util.Collection;

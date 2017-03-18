@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.*?>
 <ButtonBar xmlns:fx="http://javafx.com/fxml/1" styleClass="pane" stylesheets="@styleSheet.css"
-           xmlns="http://javafx.com/javafx/8.0.112" fx:controller="mariaLost.gamePlay.controller.MenuBarController">
+           xmlns="http://javafx.com/javafx/8.0.112-ea" fx:controller="mariaLost.gamePlay.controller.MenuBarController">
     <buttons>
-        <Label fx:id="nameLabel" prefHeight="17.0" prefWidth="103.0" text="Player's name"/>
+        <Label fx:id="nameLabel" prefHeight="17.0" prefWidth="103.0" text="Player's name" textOverrun="WORD_ELLIPSIS"/>
         <Label minWidth="59.0" prefHeight="17.0" text="Level"/>
-        <Label fx:id="levelLabel" text="0"/>
+        <Label fx:id="levelLabel" alignment="CENTER" text="0" textAlignment="RIGHT"/>
         <Label text="Score"/>
-        <Label fx:id="scoreLabel" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="0"/>
+        <Label fx:id="scoreLabel" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="0"
+               textOverrun="WORD_ELLIPSIS"/>
         <Button fx:id="menuButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleMenu" prefHeight="27.0"
                 text="Menu"/>
     </buttons>

@@ -14,7 +14,7 @@ import mariaLost.gamePlay.tools.Timer;
 import mariaLost.gamePlay.view.GameView;
 import mariaLost.items.model.FireballAttack;
 import mariaLost.items.model.Player;
-import mariaLost.mainApp.controller.Starter;
+import mariaLost.mainApp.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 import mariaLost.user.model.User;
 

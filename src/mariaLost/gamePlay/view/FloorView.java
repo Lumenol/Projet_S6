@@ -42,6 +42,7 @@ public class FloorView extends Canvas {
                 Point2D point2D = new Point2D(event.getX(), event.getY());
                 point2D = point2D.add(origin);
                 fireEvent(new ClicOnMapEvent(event.getButton(), point2D.getX(), point2D.getY()));
+                event.consume();
             }
         });
 

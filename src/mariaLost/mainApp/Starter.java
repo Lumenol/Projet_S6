@@ -1,4 +1,4 @@
-package mariaLost.mainApp.controller;
+package mariaLost.mainApp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

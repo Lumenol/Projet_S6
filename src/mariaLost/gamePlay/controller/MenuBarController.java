@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import mariaLost.gamePlay.model.World;
-import mariaLost.mainApp.controller.Starter;
+import mariaLost.mainApp.Starter;
 
 /**
  * Created by elsacollet on 23/01/2017.

@@ -24,13 +24,13 @@ public class Parameters_MariaLost {
      * Gestion des fichiers xml
      */
 
-    public static final String FILEPATH_PLAY = "../../gamePlay/view/playLayout.fxml";
-    public static final String FILEPATH_USER_OVERVIEW = "../../user/view/userOverview.fxml";
-    public static final String FILEPATH_USER_DETAILS = "../../user/view/userDetails.fxml";
+    public static final String FILEPATH_PLAY = "../gamePlay/view/playLayout.fxml";
+    public static final String FILEPATH_USER_OVERVIEW = "../user/view/userOverview.fxml";
+    public static final String FILEPATH_USER_DETAILS = "../user/view/userDetails.fxml";
     public static final String FILEPATH_PLAYER_BAR = "../../gamePlay/view/playerBar.fxml";
     public static final String FILEPATH_MAP = "resources/Floor/";
     public static final String FILENAME_FILE_USER = "resources/users.xml";
-    public static final String FILEPATH_ENDPAGE = "../../gamePlay/view/endPage.fxml";
+    public static final String FILEPATH_ENDPAGE = "../gamePlay/view/endPage.fxml";
     public static final String FILEPATH_DEFAUTL_MAP = "resources/Floor/0.txt";
 
     /**
