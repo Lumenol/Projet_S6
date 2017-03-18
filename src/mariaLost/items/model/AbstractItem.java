@@ -24,8 +24,8 @@ public abstract class AbstractItem implements Item, MobileItem, ActionableItem, 
     public AbstractItem(double x, double y, double width, double height, Monnayeur m) {
         this.size = new Dimension2D(width, height);
         this.position = new Point2D(x, y);
-        this.previousPosition = new Point2D(x, y);
-        ;
+        // previous position needs to be different from position at the begining
+        this.previousPosition = new Point2D(0,0);
         monnayeur = m;
     }
 
