@@ -1,8 +1,8 @@
 package mariaLost.user.model;
 
 import javafx.scene.control.Alert;
-import mariaLost.mainApp.controller.MainApp;
-import mariaLost.mainApp.controller.Starter;
+import mariaLost.mainApp.MainApp;
+import mariaLost.mainApp.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
 import javax.xml.bind.JAXBContext;

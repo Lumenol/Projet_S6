@@ -1,4 +1,4 @@
-package mariaLost.mainApp.controller;
+package mariaLost.mainApp;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -16,15 +16,6 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        //Arrete l'application quand la fermeture est demande
-        primaryStage.setOnCloseRequest(event -> {
-            try {
-                stop();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
 
         this.frontalControler = Starter.getInstance(this);
         this.primaryStage = primaryStage;

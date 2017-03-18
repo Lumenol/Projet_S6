@@ -18,8 +18,6 @@ import mariaLost.items.model.animation.Animation;
  */
 public class RangedAttack extends AbstractMobileItem {
 
-    private static Duration DUREE_MIN = new Duration(20);
-
     private int damage;
     private Animation animation;
     private Timer attackTimer;
@@ -32,7 +30,6 @@ public class RangedAttack extends AbstractMobileItem {
         this.animation = animation;
         attackTimer = new Timer(duration);
         attackTimer.start();
-        attackTimer.mustLast(DUREE_MIN);
     }
 
     /**
@@ -84,9 +81,9 @@ public class RangedAttack extends AbstractMobileItem {
             attackTimer.end();
             setSpeed(Point2D.ZERO);
         }
-        if (!o.isPassable()) {
+        if (!o.isPassable() && !(o instanceof RangedAttack)) {
             attackTimer.end();
         }
-    }
 
+    }
 }
