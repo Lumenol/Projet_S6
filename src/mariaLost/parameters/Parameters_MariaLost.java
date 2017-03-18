@@ -94,9 +94,7 @@ public class Parameters_MariaLost {
      */
     public static final int SPIDER_SPRITE_NB_ROW = 5;
     public static final int SPIDER_SPRITE_NB_COLUMN = 10;
-    //public static final double SPIDER_WIDTH = SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getWidth();
     public static final double SPIDER_WIDTH = 80;
-    //public static final double SPIDER_HEIGHT=SpriteSheetLoader.load(SPIDER, SPIDER_SPRITE_NB_ROW, SPIDER_SPRITE_NB_COLUMN, 1, 1).get(0).getHeight();
     public static final double SPIDER_HEIGHT = 80;
     public static final Dimension2D SPIDER_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SPIDER_ATTACK_DURATION = new Duration(400);
@@ -113,9 +111,7 @@ public class Parameters_MariaLost {
      */
     public static final int SKELETON_SPRITE_NB_ROW = 21;
     public static final int SKELETON_SPRITE_NB_COLUMN = 13;
-    //public static final double SKELETON_WIDTH=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getWidth();
     public static final double SKELETON_WIDTH = 80;
-    //public static final double SKELETON_HEIGHT=SpriteSheetLoader.load(SKELETON, SKELETON_SPRITE_NB_ROW, SKELETON_SPRITE_NB_COLUMN, 131, 131).get(0).getHeight();
     public static final double SKELETON_HEIGHT = 80;
     public static final Dimension2D SKELETON_ATTACK_DIMENSION = new Dimension2D(10, 10);
     public static final Duration SKELETON_ATTACK_DURATION = new Duration(600);

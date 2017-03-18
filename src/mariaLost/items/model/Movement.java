@@ -16,7 +16,6 @@ import mariaLost.items.model.animation.Animation;
 public class Movement {
 
     protected Direction direction;
-    private Duration duration;
     private Animation animation;
     private Timer movementTimer;
 
@@ -55,26 +54,34 @@ public class Movement {
         return direction.getDirection();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Movement other = (Movement) obj;
-        if (direction == null) {
-            if (other.direction != null)
-                return false;
-        } else if (!direction.equals(other.direction))
-            return false;
-        if (duration == null) {
-            if (other.duration != null)
-                return false;
-        } else if (!duration.equals(other.duration))
-            return false;
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
+		result = prime * result + ((movementTimer == null) ? 0 : movementTimer.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Movement other = (Movement) obj;
+		if (direction == null) {
+			if (other.direction != null)
+				return false;
+		} else if (!direction.equals(other.direction))
+			return false;
+		if (movementTimer == null) {
+			if (other.movementTimer != null)
+				return false;
+		} else if (!movementTimer.equals(other.movementTimer))
+			return false;
+		return true;
+	}
 }

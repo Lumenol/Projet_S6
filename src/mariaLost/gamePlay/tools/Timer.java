@@ -23,7 +23,7 @@ public class Timer {
         minimum = duration;
     }
 
-    /**
+	/**
      * To know if the timer is over.
      * If the timer hasen't been started, it is considered over.
      *
@@ -55,5 +55,30 @@ public class Timer {
     public void mustLast(Duration duration) {
         minimum = duration;
     }
+    
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((duration == null) ? 0 : duration.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Timer other = (Timer) obj;
+		if (duration == null) {
+			if (other.duration != null)
+				return false;
+		} else if (!duration.equals(other.duration))
+			return false;
+		return true;
+	}
 
 }
