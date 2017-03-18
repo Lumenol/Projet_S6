@@ -78,17 +78,13 @@ public class GenerateLaby extends AbstractFloor {
 
         generate(j, i);
 
-        //
         while (lastTest()) ;
-        //Determine begining, ending, and items
 
 
     }
 
     /**
-     * Pour Tester qu'il existe bien un chemin
-     * TODO Y'a un problème ladessus. Il Faut s'en assurer pour que le joueur ne reste pas bloqué dans un "couloir"
-     *
+     * Pour Tester qu'il existe bien un chemin*
      * @return vrai s'il existe un chemin
      */
     private boolean haveAWay() {

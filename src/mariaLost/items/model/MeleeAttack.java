@@ -37,7 +37,6 @@ public class MeleeAttack {
 	 * Start the animation and timer of this melee attack.
 	 *
 	 * @param attackStartingPoint
-	 * @param direction
 	 */
 	public void start(Point2D attackStartingPoint) {
 		this.attackStartingPoint = attackStartingPoint;
