@@ -7,6 +7,7 @@ import javafx.scene.input.MouseButton;
 
 /**
  * Created by crede on 15/02/2017.
+ * Event personnaliser représentant clic
  */
 public class ClicOnMapEvent extends Event {
 

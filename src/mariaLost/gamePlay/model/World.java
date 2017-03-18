@@ -1,6 +1,9 @@
 package mariaLost.gamePlay.model;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -8,7 +11,10 @@ import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
 import mariaLost.items.Controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
-import mariaLost.items.model.*;
+import mariaLost.items.model.AbstractEnemy;
+import mariaLost.items.model.AbstractItem;
+import mariaLost.items.model.AbstractMobileItem;
+import mariaLost.items.model.Money;
 import mariaLost.mainApp.controller.Starter;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -29,6 +35,9 @@ public class World implements Model {
     private Starter start;
     private AbstractMobileItem player;
 
+    //Indique quand le niveau est fini
+    private BooleanProperty finish = new SimpleBooleanProperty(false);
+
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
     private AnimationTimer moteur = new AnimationTimer() {
@@ -36,7 +45,7 @@ public class World implements Model {
         //Limite a 60 Hz
         private long delay = 16000000L;
 
-        //boucle de rafraichissement
+        //boucle de rafraîchissement
         @Override
         public void handle(long now) {
             if (now - time >= delay) {
@@ -54,10 +63,12 @@ public class World implements Model {
 
                 Collection<AbstractItem> aAjouter = new LinkedList<>();
 
+                //supprime les items fini
                 for (Iterator<AbstractItem> iterator = items.iterator(); iterator.hasNext(); ) {
                     AbstractItem next = iterator.next();
                     if (next.isFinished()) {
                         iterator.remove();
+                        //Si c'est un ennemi ajoute des piece a ça mort
                         if (next instanceof AbstractEnemy) {
                             Point2D nextPosition = next.getPosition();
                             Money money = new Money(nextPosition.getX(), nextPosition.getY(), next.getMonnayeur().getValue());
@@ -66,20 +77,11 @@ public class World implements Model {
                         }
                     }
                 }
-                items.addAll(aAjouter);
-                if (player.getLifePoint() <= 0) {
-                    moteur.stop();
-                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player) player);
-                }
-                if (playerAtTheEnd()) {
-                    moteur.stop();
-                    start.gameOver(
-                            Parameters_MariaLost.NEXT_LEVEL_CODE
-                            , (int) (player.getMonnayeur().getValue()
-                                    - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
-                            , (Player) player
-                    );
 
+                items.addAll(aAjouter);
+                //Le joueur n'a plus de vie ou a atteint la du donjon
+                if (player.getLifePoint() <= 0 || playerAtTheEnd()) {
+                    finish.set(true);
                 }
             }
         }
@@ -90,6 +92,10 @@ public class World implements Model {
         start = Starter.getInstance();
         this.player = player;
         items.add(player);
+    }
+
+    public ReadOnlyBooleanProperty finishProperty() {
+        return finish;
     }
 
     public void loadFloorFromFile(String fileName) throws Exception {
@@ -134,10 +140,12 @@ public class World implements Model {
 
     @Override
     public void start() {
-        if (floor == null) {
-            loadWorld(start.getCurrentUser().getLevel());
+        if (!finishProperty().get()) {
+            if (floor == null) {
+                loadWorld(start.getCurrentUser().getLevel());
+            }
+            moteur.start();
         }
-        moteur.start();
     }
 
 
@@ -145,6 +153,7 @@ public class World implements Model {
         try {
             this.floor = new GenerateLaby(i);
             if (floor == null) {
+                i = i % 4;
                 loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
             }
             player.setSpeed(Point2D.ZERO);

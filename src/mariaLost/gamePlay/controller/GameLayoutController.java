@@ -101,6 +101,23 @@ public class GameLayoutController {
         gameView.lifeProperty().bind(player.lifePointPropertie().divide(Parameters_MariaLost.PLAYER_LIFE_POINT_START));
 
 
+        world.finishProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                world.stop();
+                gameView.stop();
+                if (world.playerAtTheEnd()) {
+                    start.gameOver(
+                            Parameters_MariaLost.NEXT_LEVEL_CODE
+                            , (int) (player.getMonnayeur().getValue()
+                                    - (Parameters_MariaLost.PLAYER_LIFE_POINT_START - player.getLifePoint()))
+                            , player
+                    );
+                } else {
+                    start.gameOver(Parameters_MariaLost.GAME_OVER_CODE, 0, (Player) player);
+                }
+            }
+        });
+
         world.start();
         gameView.start();
         animationTimer.start();

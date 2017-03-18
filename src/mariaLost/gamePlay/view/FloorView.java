@@ -19,7 +19,7 @@ import java.util.Deque;
 import java.util.Iterator;
 
 /**
- * Created by elsacollet on 01/02/2017.
+ * Created by crede on 01/02/2017.
  */
 public class FloorView extends Canvas {
 

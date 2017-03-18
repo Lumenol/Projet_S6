@@ -7,7 +7,7 @@ import mariaLost.items.interfaces.Item;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**
- * Created by elsacollet on 09/02/2017.
+ * Created by crede on 09/02/2017.
  */
 public class Money extends AbstractItem implements ActionableItem {
 

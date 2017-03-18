@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 
 /**
  * Created by crede on 21/02/2017.
+ * Permet de gerer l'argent des items
  */
 public class Monnayeur {
 
