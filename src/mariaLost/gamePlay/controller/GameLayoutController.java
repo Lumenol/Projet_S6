@@ -86,7 +86,7 @@ public class GameLayoutController {
                 if (event.getButton().equals(MouseButton.PRIMARY) && delayAttack.isOver()) {
                     delayAttack.start();
                     Point2D point = new Point2D(event.getX(), event.getY());
-                    world.addFisrt(FireballAttack.getFireball(player.getAttackStartingPoint(point), new Direction(player.pointDirection(point))));
+                    world.add(FireballAttack.getFireball(player.getAttackStartingPoint(point), new Direction(player.pointDirection(point))));
                 }
             }
         });

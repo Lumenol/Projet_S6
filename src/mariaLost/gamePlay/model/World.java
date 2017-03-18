@@ -55,6 +55,7 @@ public class World implements Model {
                 Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(
                         new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                 itemFromSquare.addAll(items);
+                itemFromSquare.add(player);
                 EnemyController.handleEnemies(itemFromSquare);
 
                 //Fait bouge les items
@@ -91,7 +92,6 @@ public class World implements Model {
     public World(AbstractMobileItem player) {
         start = Starter.getInstance();
         this.player = player;
-        items.add(player);
     }
 
     public ReadOnlyBooleanProperty finishProperty() {
@@ -190,8 +190,8 @@ public class World implements Model {
         player.setDestination(coordinate);
     }
 
-    public void addFisrt(AbstractItem item) {
-        items.addFirst(item);
+    public void add(AbstractItem item) {
+        items.addLast(item);
     }
 
 }
