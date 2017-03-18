@@ -11,7 +11,7 @@ import java.util.LinkedList;
 /**
  * Created by crede on 28/01/2017.
  */
-public class MoteurPhysique {
+public class PhysicalMotor {
 
     /**
      * Deplace les objet de items en prenant en compte les collisions

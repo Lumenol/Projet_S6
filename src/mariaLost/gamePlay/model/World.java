@@ -58,7 +58,7 @@ public class World implements Model {
                 EnemyController.handleEnemies(itemFromSquare);
 
                 //Fait bouge les items
-                MoteurPhysique.move(itemFromSquare);
+                PhysicalMotor.move(itemFromSquare);
                 //Retire les items qui on terminer leur action
 
                 Collection<AbstractItem> aAjouter = new LinkedList<>();
