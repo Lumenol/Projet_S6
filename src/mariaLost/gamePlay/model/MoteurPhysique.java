@@ -107,9 +107,9 @@ public class MoteurPhysique {
             //essaye de se rendre a la position d'arrivée si il y a une collision alors place l'item avant l'objet percute
             if ((collision = collision(mobileItem, items)) != null) {
                 if (vx > 0) {
-                    xMax = collision.getMinX() - mobileItem.getBounds().getWidth();
+                    xMax = Math.max(xMin, collision.getMinX() - mobileItem.getBounds().getWidth());
                 } else {
-                    xMax = collision.getMaxX();
+                    xMax = Math.min(xMin, collision.getMaxX());
                 }
                 retour = false;
             }
@@ -119,9 +119,9 @@ public class MoteurPhysique {
             //essaye de se rendre a la position d'arrivée si il y a une collision alors place l'item avant l'objet percute
             if ((collision = collision(mobileItem, items)) != null) {
                 if (vy > 0) {
-                    yMax = collision.getMinY() - mobileItem.getBounds().getHeight();
+                    yMax = Math.max(yMin, collision.getMinY() - mobileItem.getBounds().getHeight());
                 } else {
-                    yMax = collision.getMaxY();
+                    yMax = Math.min(yMin, collision.getMaxY());
                 }
                 retour = false;
                 mobileItem.setPosition(xMax, yMax);

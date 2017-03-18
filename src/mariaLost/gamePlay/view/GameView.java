@@ -10,6 +10,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import mariaLost.gamePlay.controller.PlayerBarController;
 import mariaLost.gamePlay.interfaces.Followable;
 import mariaLost.parameters.Parameters_MariaLost;
 
@@ -43,9 +44,16 @@ public class GameView extends BorderPane {
         SimpleObjectProperty<Point2D> centerPlayer = new SimpleObjectProperty<>(Point2D.ZERO);
         floorView.folowProperty().bind(centerPlayer);
 
+
         //Enregistre l'état des touche
-        floorView.setOnKeyPressed(event -> keyState.put(event.getCode(), true));
-        floorView.setOnKeyReleased(event -> keyState.put(event.getCode(), false));
+        floorView.setOnKeyPressed(event -> {
+            keyState.put(event.getCode(), true);
+            event.consume();
+        });
+        floorView.setOnKeyReleased(event -> {
+            keyState.put(event.getCode(), false);
+            event.consume();
+        });
 
         //rafraîchi la vu
         animationTimer = new AnimationTimer() {

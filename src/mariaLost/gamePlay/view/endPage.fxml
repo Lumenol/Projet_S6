@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="600.0" styleClass="pane"
             stylesheets="@styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111"
-            fx:controller="mariaLost.gamePlay.view.EndPageController">
+            fx:controller="mariaLost.gamePlay.controller.EndPageController">
     <center>
         <GridPane fx:id="rootPane" hgap="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0"
                   prefWidth="490.0">

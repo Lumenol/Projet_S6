@@ -1,4 +1,4 @@
-package mariaLost.gamePlay.view;
+package mariaLost.gamePlay.controller;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import mariaLost.gamePlay.view.Life;
 import mariaLost.parameters.Parameters_MariaLost;
 
 /**

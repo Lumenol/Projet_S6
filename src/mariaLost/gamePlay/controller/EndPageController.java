@@ -1,4 +1,4 @@
-package mariaLost.gamePlay.view;
+package mariaLost.gamePlay.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

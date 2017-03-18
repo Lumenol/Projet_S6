@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" hgap="50.0" prefWidth="394.0" styleClass="pane"
           stylesheets="@styleSheet.css" xmlns="http://javafx.com/javafx/8.0.112"
-          fx:controller="mariaLost.gamePlay.view.PlayerBarController">
+          fx:controller="mariaLost.gamePlay.controller.PlayerBarController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="50.0"/>
