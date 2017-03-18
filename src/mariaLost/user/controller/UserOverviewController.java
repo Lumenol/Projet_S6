@@ -169,10 +169,11 @@ public class UserOverviewController {
         alert.setTitle("Maria Lost - Règles du Jeu ");
         alert.setHeaderText("Règles du jeu");
         alert.setContentText(
-                "\t\tObjectif\n"
-                        + "Rejoignez la sortie du labyrinthe (case verte) en ramassant le plus de pièces d'or."
+                "Aider Maria à sortir de là !"
+                        + "\t\tObjectif\n"
+                        + "Rejoignez la sortie du labyrinthe en ramassant le plus d'or possible."
                         + "En tuant les monstres, vous augmentez votre score.\n"
-                        + "Si vous mourez, toutes les pièces ramassées sont perdues.\n"
+                        + "Si vous mourez, toutes les pièces ramassées sont perdues et vous perdez des points.\n"
                         + "Vous pouvez retourner au menu principal en cliquant sur le bouton Menu\n"
                         + "ATTENTION votre progression pour ce niveau sera perdue\n\n"
                         + "\t\tCommandes\n"
