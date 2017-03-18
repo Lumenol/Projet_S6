@@ -1,4 +1,4 @@
-package mariaLost.items.Controller;
+package mariaLost.items.controller;
 
 import mariaLost.items.model.AbstractEnemy;
 import mariaLost.items.model.AbstractItem;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * Controller class for all enemies.
+ * controller class for all enemies.
  *
  * @author loic
  */

@@ -9,7 +9,7 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import mariaLost.gamePlay.interfaces.Model;
 import mariaLost.gamePlay.tools.Direction;
-import mariaLost.items.Controller.EnemyController;
+import mariaLost.items.controller.EnemyController;
 import mariaLost.items.interfaces.Drawable;
 import mariaLost.items.model.AbstractEnemy;
 import mariaLost.items.model.AbstractItem;
@@ -52,10 +52,10 @@ public class World implements Model {
                 time = now;
                 //recupere tout les items
                 Dimension2D dimension = floor.getDimension();
-                Collection<AbstractItem> itemFromSquare = (Collection<AbstractItem>) floor.getItemFromSquare(
+                Deque<AbstractItem> itemFromSquare = (Deque<AbstractItem>) floor.getItemFromSquare(
                         new Rectangle2D(0, 0, dimension.getWidth(), dimension.getHeight()));
                 itemFromSquare.addAll(items);
-                itemFromSquare.add(player);
+                itemFromSquare.addLast(player);
                 EnemyController.handleEnemies(itemFromSquare);
 
                 //Fait bouge les items
@@ -119,6 +119,7 @@ public class World implements Model {
         items.forEach(abstractItem -> {
             if (abstractItem.getBounds().intersects(square)) linkedList.add(abstractItem);
         });
+        linkedList.addLast(player);
         return floorDrawableFromSquare;
     }
 
@@ -161,7 +162,6 @@ public class World implements Model {
             player.setPosition(floor.getBeginning().getMinX(), floor.getBeginning().getMinY());
 
             items.clear();
-            items.add(player);
             items.addAll(floor.getItems());
         } catch (Exception e) {
             e.printStackTrace();

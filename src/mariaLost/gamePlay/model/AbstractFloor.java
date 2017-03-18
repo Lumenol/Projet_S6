@@ -34,7 +34,7 @@ public abstract class AbstractFloor implements Floor, DrawableFloor {
      * 				The square to get the items from.
      * @return a Deque of abstract items
      */
-    public Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
+    public Deque<? extends AbstractItem> getItemFromSquare(Rectangle2D square) {
 
         int minWidth = Math.max(0, (int) square.getMinX()) / Parameters_MariaLost.CASE_WIDTH;
         double maxWidth = Math.min(dimension.getWidth(), square.getMaxX()) / Parameters_MariaLost.CASE_WIDTH;

@@ -5,6 +5,7 @@ import javafx.geometry.Rectangle2D;
 import mariaLost.items.model.AbstractItem;
 
 import java.util.Collection;
+import java.util.Deque;
 
 /**
  * Created by crede on 31/01/2017.
@@ -17,7 +18,7 @@ public interface Floor {
      * @param square zone
      * @return Item de la zone
      */
-    Collection<? extends AbstractItem> getItemFromSquare(Rectangle2D square);
+    Deque<? extends AbstractItem> getItemFromSquare(Rectangle2D square);
 
     /**
      * Retourne les dimmentions de l'etage
