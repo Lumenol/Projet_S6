@@ -180,7 +180,7 @@ public class UserOverviewController {
                         + "\tDéplacements\n"
                         + "Utilisez les touches ZQSD, les flèches ou faites un clic droit pour vous déplacer\n"
                         + "\tAttaque\n"
-                        + "Faites un clic gauche là où vous souhaitez envoyer une boulle de feu.\n"
+                        + "Faites un clic gauche là où vous souhaitez envoyer une boule de feu.\n"
         );
         alert.showAndWait();
     }
