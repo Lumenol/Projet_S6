@@ -57,6 +57,7 @@ public class Animation {
         this.autoReplay = autoReplay;
     }
 
+    //retourne la bonne image
     final public Image getImage() {
         if (isPlay) {
             double dTime = System.currentTimeMillis() - lastTime;

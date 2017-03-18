@@ -78,6 +78,7 @@ public class GenerateLaby extends AbstractFloor {
 
         generate(j, i);
 
+        //
         while (lastTest()) ;
         //Determine begining, ending, and items
 
@@ -347,6 +348,7 @@ public class GenerateLaby extends AbstractFloor {
                     change = true;
                 }
 
+                //Si il y a 2 mur en diagonal et du sol sur l'autre rajoute un mur pour faire l'angle
                 if (!(items[j][i] instanceof Wall) && items[j + 1][i] instanceof Wall && items[j][i + 1] instanceof Wall && !(items[j + 1][i + 1] instanceof Wall)) {
                     items[j][i] = new Wall(i * Parameters_MariaLost.CASE_WIDTH, j * Parameters_MariaLost.CASE_HEIGHT);
                     possible[j][i] = false;

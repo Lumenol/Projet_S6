@@ -35,9 +35,8 @@ public class World implements Model {
     private Starter start;
     private AbstractMobileItem player;
 
+    //Indique quand le niveau est fini
     private BooleanProperty finish = new SimpleBooleanProperty(false);
-
-    private boolean asFinish = false;
 
     private String mapPath = Parameters_MariaLost.FILEPATH_MAP;
 
@@ -46,7 +45,7 @@ public class World implements Model {
         //Limite a 60 Hz
         private long delay = 16000000L;
 
-        //boucle de rafraichissement
+        //boucle de rafraîchissement
         @Override
         public void handle(long now) {
             if (now - time >= delay) {
@@ -64,10 +63,12 @@ public class World implements Model {
 
                 Collection<AbstractItem> aAjouter = new LinkedList<>();
 
+                //supprime les items fini
                 for (Iterator<AbstractItem> iterator = items.iterator(); iterator.hasNext(); ) {
                     AbstractItem next = iterator.next();
                     if (next.isFinished()) {
                         iterator.remove();
+                        //Si c'est un ennemi ajoute des piece a ça mort
                         if (next instanceof AbstractEnemy) {
                             Point2D nextPosition = next.getPosition();
                             Money money = new Money(nextPosition.getX(), nextPosition.getY(), next.getMonnayeur().getValue());
@@ -76,7 +77,9 @@ public class World implements Model {
                         }
                     }
                 }
+
                 items.addAll(aAjouter);
+                //Le joueur n'a plus de vie ou a atteint la du donjon
                 if (player.getLifePoint() <= 0 || playerAtTheEnd()) {
                     finish.set(true);
                 }
@@ -150,6 +153,7 @@ public class World implements Model {
         try {
             this.floor = new GenerateLaby(i);
             if (floor == null) {
+                i = i % 4;
                 loadFloorFromFile(mapPath + String.valueOf(i) + ".txt");
             }
             player.setSpeed(Point2D.ZERO);
